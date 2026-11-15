@@ -26,3 +26,7 @@ Ollama ingestion reads bounded public HTML metadata and caches at most 30 offici
 ## Dependency boundaries
 
 Public model/research/news metadata needs internet and source availability, not model installation or an AI key. YouTube/private accounts/banking/optional cloud AI may require credentials. MCPs require endpoint approval and any provider-specific authentication. Coding gaps remain in workspace ownership, broader source curation/ranking, background reminders, large archives, and richer personal source collections. See the HTML report for every task's current score and remaining work.
+
+## November 15 clarification
+
+Email/calendar remains Google-only. Poker Hub provides a worldwide current/upcoming search query plus organizer-specific shortcuts; this is search planning, not a claim to have aggregated every tournament. Existing calendars show all configured sources together and retain ongoing multi-day events. The active AI assistant remains online-only; local inference/runtime code is preserved outside active build paths for later user-authorized configuration. The floating assistant launcher is draggable inside the app and saves only its position in local UI storage. API keys must be entered directly in the application secure-store setup.

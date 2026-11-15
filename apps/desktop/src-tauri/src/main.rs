@@ -25,6 +25,7 @@ mod model_catalogue;
 mod model_intelligence;
 mod notification_channels;
 mod peer_sync;
+mod poker_search;
 mod private_transfer;
 mod productivity;
 mod projects;
@@ -905,6 +906,7 @@ fn main() {
             productivity::mark_discovery,
             background_reminders::background_reminder_status,
             background_reminders::configure_background_reminders,
+            poker_search::poker_search_plan,
             productivity::automation_snapshot,
             productivity::research_collections,
             productivity::save_research_collections,

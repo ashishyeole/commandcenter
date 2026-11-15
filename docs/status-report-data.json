@@ -2,7 +2,7 @@
   "project": "Personal AI Command Center",
   "version": "0.5.0",
   "prd": "1.2",
-  "assessed_on": "2026-11-14",
+  "assessed_on": "2026-11-15",
   "timezone": "America/Chicago",
   "method": "Weighted code-completion estimate for the clarified local personal scope: sum(in-scope task score \u00d7 scope weight) / sum(in-scope weights). Scores are 0/25/50/75/100 and are manually assessed source coverage, not test results. Excluded requirements remain visible but contribute no weight. Earlier 82% covered the broader PRD and is not directly comparable. Verification and production-release tasks are not code-completion requirements.",
   "tasks": [
@@ -337,13 +337,13 @@
       "percent": 75,
       "weight": 3,
       "status": "Partially implemented",
-      "implemented": "Public event sources, change alerts, manual authority confirmation and bounded all-day daily/weekly recurrence expansion.",
-      "remaining": "Complex timed recurrence, monthly/BYDAY/exception rules and registration/satellite-specific alerts remain. Official tournament feed choices require a reliable publisher source.",
+      "implemented": "Public event sources, change alerts, manual authority confirmation and bounded all-day daily/weekly recurrence expansion. Worldwide current/upcoming web search planning plus organizer shortcuts, satellites/location/game hints, automatic year rollover, merged calendar sources and ongoing-event filtering.",
+      "remaining": "Complex timed recurrence, monthly/BYDAY/exception rules and registration/satellite-specific alert logic remain. Web search is not comprehensive live tournament aggregation.",
       "notes": "Source implementation; compile/package checks only. No runtime tests, provider actions or publication performed.",
-      "evidence": "apps/desktop/src-tauri/src/event_sources.rs",
+      "evidence": "docs/POKER-DISCOVERY.md",
       "original_prd_percent": 50,
       "in_scope": true,
-      "verification": "Repository tests and frontend/native compilation recorded in TEST-REPORT.html. New UI paths have not received native acceptance."
+      "verification": "Native query preparation verified; two Rust planner tests plus UI-logic assertions cover query bounds/year rollover and past/ongoing date filters. No exhaustive live aggregator claimed."
     },
     {
       "id": "T022",
@@ -447,13 +447,13 @@
       "area": "Companies & operations",
       "prd": "\u00a74.7",
       "phase": "V1",
-      "task": "Email and calendar connections",
+      "task": "Google-only email and calendar connections",
       "percent": 50,
       "weight": 5,
       "status": "Partially implemented",
       "implemented": "Google desktop PKCE OAuth, OS-secure tokens, inbox metadata and primary-calendar reads, pagination, cancellation, disconnect/revocation and explicit encrypted vault copies.",
-      "remaining": "Other providers, email body workflows, calendar writes and background account aggregation; actual provider acceptance.",
-      "notes": "Source reviewed and compiled where applicable. No tests, live provider calls or runtime acceptance performed in this pass.",
+      "remaining": "Google email-body workflows and background account aggregation remain. Calendar writes are outside the current read-only monitoring scope. Other providers are excluded by the user.",
+      "notes": "User selected Google-only on November 15. Existing Google OAuth/read-only metadata and calendar source remain implemented; no provider account was connected during this change.",
       "evidence": "apps/desktop/src-tauri/src/google_accounts.rs",
       "original_prd_percent": 50,
       "in_scope": true
@@ -678,12 +678,13 @@
       "percent": 100,
       "weight": 3,
       "status": "Implemented in source",
-      "implemented": "Provider credentials in OS secure store; exact outbound request preview, explicit approval, cancellation and selected-record context. Local runtime UI and IPC removed.",
+      "implemented": "Provider credentials in OS secure store; exact outbound request preview, explicit approval, cancellation and selected-record context. Local runtime UI and IPC removed. Draggable circular floating AI launcher, saved/clamped screen position and online request panel. Local-AI source is preserved dormant outside active builds.",
       "remaining": "User API key only if optional generated analysis is wanted. No AI account is needed for discovery or deterministic briefings.",
-      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
+      "notes": "Online-only now. User will enter an API key in the app later; local AI stays dormant until a later instruction.",
       "evidence": "apps/desktop/src-tauri/src/cloud_ai.rs",
       "original_prd_percent": 75,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Native QA verifies launcher opening/drag, keyboard movement and persisted position after quit/relaunch. Cloud responses require the owner\u2019s API key and were not tested."
     },
     {
       "id": "T043",
@@ -1655,7 +1656,7 @@
   "blockers": [
     {
       "title": "Optional provider connections",
-      "detail": "YouTube, private GitHub, email/calendar, bank feeds and optional cloud AI need their provider credentials/consent. Public model/news/research metadata and local record briefings do not need a local LLM.",
+      "detail": "Google-only email/calendar needs Google OAuth setup and sign-in. Private GitHub, banking, YouTube and optional online AI need their own credentials/consent. Poker search queries and public model/research metadata need no API key.",
       "tasks": "T013, T028, T029, T042, T057"
     },
     {

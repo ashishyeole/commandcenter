@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-15",
+  "profile": "com.personal.commandcenter.qa",
+  "passed": [
+    "Floating launcher opens online-only panel with disabled outbound preview until required inputs",
+    "Pointer drag moved launcher and open panel from lower-right to upper-left",
+    "Close restores launcher focus; Alt+Right and Enter move/reopen",
+    "Moved position persisted through full quit and relaunch",
+    "Poker query preparation produced worldwide and five organizer searches with 2026/2027 years",
+    "Corrected duplicate workspace rendering; one Poker search panel visible"
+  ],
+  "credentials_entered": false,
+  "cloud_request_sent": false,
+  "search_browser_opened": false,
+  "local_model_downloaded": false,
+  "limits": [
+    "UI smoke coverage only",
+    "No live online-AI response tested",
+    "Web query coverage is not comprehensive tournament aggregation"
+  ]
+}

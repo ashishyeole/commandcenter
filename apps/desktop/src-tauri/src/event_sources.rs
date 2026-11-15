@@ -451,6 +451,15 @@ pub fn save_calendar_event(
         ("calendar_event_id", event_id.as_str()),
         ("watch_schedule", if watch { "true" } else { "false" }),
         ("due", event["start"]["date"].as_str().unwrap_or("")),
+        ("end", event["end"]["date"].as_str().unwrap_or("")),
+        (
+            "end_exclusive",
+            if event["end"]["all_day"] == true {
+                "true"
+            } else {
+                "false"
+            },
+        ),
         ("source", event["source_url"].as_str().unwrap_or("")),
         ("venue", event["location"].as_str().unwrap_or("")),
         ("location", event["location"].as_str().unwrap_or("")),

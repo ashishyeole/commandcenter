@@ -14,3 +14,7 @@ The user asked to study the attachments and start this project. Requirements are
 ## Current user scope — local personal command center
 
 The latest user clarification supersedes deployment/execution requirements in the original PRD: monitor and organize external models, robotics, research, trends and ideas. Do not download/install/run LLMs, simulators, robots or generated prototypes. Public model catalogue metadata, approved MCP information, local record summaries and optional explicitly authorized cloud AI are in scope. Production readiness, commercial licensing/public onboarding and store releases are excluded from the active functionality percentage, retained separately as historical scope. No model or robot setup is required from the user.
+
+## User preferences — 2026-11-15
+
+Keep email/calendar integrations Google-only. Poker discovery should search across organizers/providers worldwide for current and upcoming tournaments, with ended events hidden by default; do not limit discovery to a single chosen organizer. Keep local-AI code dormant for future configuration. The active assistant is online-only with credentials entered in the app, and has a circular draggable AI launcher within the app viewport.
