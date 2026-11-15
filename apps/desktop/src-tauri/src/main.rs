@@ -20,8 +20,8 @@ mod hosted;
 mod invoices;
 mod mcp_stdio;
 mod mcp_tools;
+mod model_catalogue;
 mod model_intelligence;
-mod model_runtime;
 mod notification_channels;
 mod peer_sync;
 mod private_transfer;
@@ -848,9 +848,6 @@ fn main() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
-            model_runtime::inspect_local_model,
-            model_runtime::local_model_job,
-            model_runtime::manage_local_model,
             cloud_ai::save_cloud_key,
             cloud_ai::disconnect_cloud,
             cloud_ai::cloud_context_preview,
@@ -919,10 +916,6 @@ fn main() {
             model_intelligence::inspect_public_model,
             connectors::save_youtube_key,
             connectors::remove_youtube_key,
-            connectors::local_models,
-            connectors::build_semantic_index,
-            connectors::semantic_search,
-            connectors::ask_local,
             connectors::cancel_ai,
             projects::choose_project_folder,
             projects::project_folder,

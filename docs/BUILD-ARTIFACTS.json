@@ -1,6 +1,6 @@
 {
   "version": "0.5.0",
-  "generated_at": "2026-11-15T04:52:48.076603+00:00",
+  "generated_at": "2026-11-15T05:11:15.128695+00:00",
   "runtime_tested": false,
   "isolated_mac_qa_smoke_tested": true,
   "production_signed": false,
@@ -8,16 +8,16 @@
     {
       "platform": "macOS app",
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app",
-      "bytes": 78256238,
-      "sha256": "e1e9d0057e307f2f5c4471f77121bee8646bbd73060fbb26fd9609487588e6ce",
+      "bytes": 77971694,
+      "sha256": "184e6c31a7b7da90df42385db927af91f8ce85f16c530d3f8235c3a656fb4347",
       "hash_method": "SHA-256 of compact UTF-8 JSON array sorted by relative path; each entry has path plus file sha256 or symlink target; object keys sorted",
       "files": 5
     },
     {
       "platform": "macOS DMG",
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/dmg/Personal Command Center_0.5.0_arm64.dmg",
-      "bytes": 22919305,
-      "sha256": "f082e7f3fdc6bcae217612e44138bee6bd38489851a25eed73caf39cb0b25e70",
+      "bytes": 22788721,
+      "sha256": "b0db06bf84fbc9debacbb693f5c67ab4be2e010117fb4b1fcf54ce79bb9d5555",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     },

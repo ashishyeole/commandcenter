@@ -1,5 +1,6 @@
 pub mod archive;
 pub mod attachments;
+pub mod briefing;
 pub mod reminders;
 pub mod retention;
 pub mod sync;

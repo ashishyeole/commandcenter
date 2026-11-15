@@ -1,16 +1,16 @@
 Checksumming Protective Master Boot Record (MBR : 0)…
-Protective Master Boot Record (MBR :: verified   CRC32 $37130EAE
+Protective Master Boot Record (MBR :: verified   CRC32 $A1C4106E
 Checksumming GPT Header (Primary GPT Header : 1)…
- GPT Header (Primary GPT Header : 1): verified   CRC32 $A3746439
+ GPT Header (Primary GPT Header : 1): verified   CRC32 $F0F489DC
 Checksumming GPT Partition Data (Primary GPT Table : 2)…
-GPT Partition Data (Primary GPT Tabl: verified   CRC32 $0B1CEEED
+GPT Partition Data (Primary GPT Tabl: verified   CRC32 $5CA57C3E
 Checksumming  (Apple_Free : 3)…
                     (Apple_Free : 3): verified   CRC32 $00000000
 Checksumming disk image (Apple_APFS : 4)…
-         disk image (Apple_APFS : 4): verified   CRC32 $165D1CF8
+         disk image (Apple_APFS : 4): verified   CRC32 $0709DD6B
 Checksumming GPT Partition Data (Backup GPT Table : 5)…
-GPT Partition Data (Backup GPT Table: verified   CRC32 $0B1CEEED
+GPT Partition Data (Backup GPT Table: verified   CRC32 $5CA57C3E
 Checksumming GPT Header (Backup GPT Header : 6)…
-  GPT Header (Backup GPT Header : 6): verified   CRC32 $4801148C
-verified   CRC32 $7F92F511
+  GPT Header (Backup GPT Header : 6): verified   CRC32 $D749D4E5
+verified   CRC32 $BCEC9331
 hdiutil: verify: checksum of "target/debug/bundle/dmg/Personal Command Center_0.5.0_arm64.dmg" is VALID

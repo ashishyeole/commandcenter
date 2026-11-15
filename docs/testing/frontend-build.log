@@ -1,8 +1,4 @@
 
-> personal-command-center@0.5.0 build
-> npm run build -w apps/desktop
-
-
 > @command-center/desktop@0.5.0 build
 > tsc --noEmit && vite build
 
@@ -13,17 +9,17 @@ rendering chunks...
 computing gzip size...
 dist/index.html                         0.37 kB │ gzip:  0.27 kB
 dist/assets/index-DWbY_zeh.css         22.89 kB │ gzip:  6.11 kB
-dist/assets/link-BY-tMd38.js            0.43 kB │ gzip:  0.30 kB
-dist/assets/download-DDkKa47_.js        0.43 kB │ gzip:  0.32 kB
-dist/assets/Timeline-CW1y_Jyd.js        1.84 kB │ gzip:  0.84 kB
-dist/assets/InboxSources-D_vqoumQ.js    4.03 kB │ gzip:  1.73 kB
-dist/assets/Automations-BfY1PYP8.js     8.29 kB │ gzip:  3.09 kB
-dist/assets/Assistant-Dgj6XFsL.js      14.57 kB │ gzip:  4.85 kB
-dist/assets/DeviceSync-D4KeGYUL.js     16.60 kB │ gzip:  5.65 kB
-dist/assets/Discovery-DYtet81M.js      17.70 kB │ gzip:  6.46 kB
-dist/assets/DataPrivacy-DfEJ93i6.js    19.59 kB │ gzip:  6.17 kB
-dist/assets/Vault-DfACNO76.js          22.40 kB │ gzip:  6.58 kB
-dist/assets/Settings-StvgTx4Z.js       44.12 kB │ gzip: 12.05 kB
-dist/assets/Workspaces-DbCfYzAs.js     95.84 kB │ gzip: 28.34 kB
-dist/assets/index-B4X2vc6f.js         288.17 kB │ gzip: 89.15 kB
-✓ built in 785ms
+dist/assets/link-CAvtTgKV.js            0.43 kB │ gzip:  0.29 kB
+dist/assets/download-WU84NW-R.js        0.43 kB │ gzip:  0.32 kB
+dist/assets/Timeline-DPcwmn3w.js        1.84 kB │ gzip:  0.84 kB
+dist/assets/InboxSources-B3vVwP--.js    4.03 kB │ gzip:  1.73 kB
+dist/assets/Assistant-B14DWvtG.js       4.18 kB │ gzip:  1.74 kB
+dist/assets/Automations-aGdaep8t.js     7.94 kB │ gzip:  3.00 kB
+dist/assets/DeviceSync-Dvd2V8zH.js     16.60 kB │ gzip:  5.65 kB
+dist/assets/Discovery-BoMrKVOX.js      17.33 kB │ gzip:  6.26 kB
+dist/assets/DataPrivacy-tdeTBzPh.js    19.59 kB │ gzip:  6.17 kB
+dist/assets/Vault-Bucqqek4.js          22.40 kB │ gzip:  6.58 kB
+dist/assets/Settings-CBQhVx7R.js       44.17 kB │ gzip: 12.07 kB
+dist/assets/Workspaces-DhS5-iOE.js     95.69 kB │ gzip: 28.32 kB
+dist/assets/index-CRR1a39f.js         291.00 kB │ gzip: 89.91 kB
+✓ built in 693ms

@@ -10,3 +10,7 @@ The user asked to study the attachments and start this project. Requirements are
 - Keep edits incremental. Normally build and run relevant tests. The user has now explicitly authorized Mac/Windows build and feature testing, superseding the earlier no-tests request. Use isolated fixtures; do not alter a real profile or exercise live accounts/sends. Report actual coverage and platform limitations.
 - Update `docs/PLAN.md` with verified progress and material limitations.
 - Preserve user data. Import must validate first, be transactional, and never silently overwrite conflicts.
+
+## Current user scope — local personal command center
+
+The latest user clarification supersedes deployment/execution requirements in the original PRD: monitor and organize external models, robotics, research, trends and ideas. Do not download/install/run LLMs, simulators, robots or generated prototypes. Public model catalogue metadata, approved MCP information, local record summaries and optional explicitly authorized cloud AI are in scope. Production readiness, commercial licensing/public onboarding and store releases are excluded from the active functionality percentage, retained separately as historical scope. No model or robot setup is required from the user.

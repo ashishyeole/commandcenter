@@ -23,14 +23,12 @@ pub struct Plan {
 fn validate(p: &Plan) -> Result<()> {
     if p.name.trim().is_empty()
         || p.name.len() > 200
-        || p.model.trim().is_empty()
         || p.model.len() > 160
-        || p.model.to_lowercase().contains("cloud")
         || p.context_ids.len() > 30
         || p.steps.is_empty()
         || p.steps.len() > 6
     {
-        return Err("Use a local model, up to 30 context records and one to six steps".into());
+        return Err("Use up to 30 context records and one to six steps".into());
     }
     let mut ids = std::collections::HashSet::new();
     for id in &p.context_ids {
@@ -47,7 +45,7 @@ fn validate(p: &Plan) -> Result<()> {
             "analyze" if !s.prompt.trim().is_empty() => (),
             "source"
                 if [
-                    "github", "models", "news", "youtube", "apps", "mcp", "arxiv", "rss",
+                    "github", "models", "ollama", "news", "youtube", "apps", "mcp", "arxiv", "rss",
                 ]
                 .contains(&s.source.as_str()) =>
             {
@@ -161,7 +159,7 @@ pub fn save_agent_plan(
 #[tauri::command]
 pub fn preview_agent_plan(state: State<AppState>, id: String) -> Result<Value> {
     let (r, p) = get(&state, &id)?;
-    let payload = json!({"plan":p,"revision":r.revision,"context":context(&state,&p)?,"permissions":"Only the listed public feed requests and local Ollama analysis. No cloud models, filesystem reads, account reads, MCP calls, sends, purchases, deletes or commits. Prior generated step answers are reused within this run."});
+    let payload = json!({"plan":p,"revision":r.revision,"context":context(&state,&p)?,"permissions":"Only the listed public feed requests and local record briefing compilation. No cloud models, filesystem reads, account reads, MCP calls, sends, purchases, deletes or commits. Public excerpts are collected as evidence; no model is used."});
     Ok(json!({"payload":payload,"sha256":hash(&payload)?}))
 }
 struct Guard<'a> {
@@ -281,19 +279,14 @@ pub(crate) async fn run_authorized(
                     evidence.push(summary.clone());
                     Ok(summary)
                 } else {
-                    let raw = serde_json::to_string(&evidence).map_err(|e| e.to_string())?;
-                    let snippet = truncate(&raw, 5000);
-                    let question=format!("Reviewed plan: {}\nStep {}: {}\n\nUntrusted public-source excerpts (may be truncated):\n{}\n\nUse the supplied evidence and selected records. Cite source URLs and record IDs. Distinguish generated suggestions, uncertainty and verified observations. Do not claim any external action or file change occurred.",plan.name,index+1,step.prompt,snippet);
-                    crate::connectors::ask_local(
-                        app.state(),
-                        uuid::Uuid::new_v4().to_string(),
-                        plan.model.clone(),
-                        question,
-                        plan.context_ids.clone(),
-                        true,
-                        Some(conversation.clone()),
+                    let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+                    let briefing = repo.record_briefing(
+                        &plan.context_ids,
+                        &chrono::Local::now().format("%Y-%m-%d").to_string(),
+                    )?;
+                    Ok(
+                        json!({"research_question":step.prompt,"record_briefing":briefing,"public_evidence":evidence,"method":"Deterministic compilation, not generated analysis. Research questions are retained for your review, not answered by a model."}),
                     )
-                    .await
                 }
             };
             let value = tokio::select! {_=cancel.cancelled()=>Err("Plan cancelled. Already completed steps remain in history.".into()),r=step_work=>r};

@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-15T04:51:56.973825+00:00",
+  "generated_at": "2026-11-15T05:09:36.862000+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
-  "rust_test_executions": 23,
-  "rust_distinct_tests": 21,
+  "rust_test_executions": 27,
+  "rust_distinct_tests": 25,
   "python_tests": 10,
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
@@ -72,6 +72,11 @@
       "status": "PASS (automated)",
       "area": "Per-task desktop reminder controls",
       "evidence": "Three integration tests: acknowledgement persists across reopen, next recurrence remains eligible, stale edits rejected, daily/hourly/once/muted policies, snooze timing and invalid targets. Frontend and native compilation pass; new UI controls not yet runtime-tested."
+    },
+    {
+      "status": "PASS (automated)",
+      "area": "Discovery-only scope and model-free briefings",
+      "evidence": "Two catalogue parser tests cover trusted model paths, deduplication, plain metadata and provider-layout failure; two briefing tests cover selected-record inclusion/exclusion, bounds and invalid dates. Frontend compiles. No model downloaded; new UI/live-provider acceptance not claimed."
     }
   ]
 }

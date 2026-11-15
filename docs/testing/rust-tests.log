@@ -1,12 +1,66 @@
-   Compiling command-center-core v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/crates/core)
-   Compiling command-center-mobile-peer v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/crates/mobile-peer)
    Compiling personal-command-center v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/desktop/src-tauri)
+warning: function `local_models` is never used
+   --> apps/desktop/src-tauri/src/connectors.rs:460:14
+    |
+460 | pub async fn local_models(consent: bool) -> Result<Value> {
+    |              ^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: struct `LocalJobGuard` is never constructed
+   --> apps/desktop/src-tauri/src/connectors.rs:466:8
+    |
+466 | struct LocalJobGuard<'a> {
+    |        ^^^^^^^^^^^^^
+
+warning: function `ask_local` is never used
+   --> apps/desktop/src-tauri/src/connectors.rs:478:14
+    |
+478 | pub async fn ask_local(
+    |              ^^^^^^^^^
+
+warning: function `corpus` is never used
+   --> apps/desktop/src-tauri/src/connectors.rs:671:4
+    |
+671 | fn corpus(repo: &command_center_core::Repository) -> Result<Vec<(String, String, String, String)>> {
+    |    ^^^^^^
+
+warning: function `ensure_local_model` is never used
+   --> apps/desktop/src-tauri/src/connectors.rs:704:10
+    |
+704 | async fn ensure_local_model(c: &reqwest::Client, model: &str) -> Result<()> {
+    |          ^^^^^^^^^^^^^^^^^^
+
+warning: function `embedding_key` is never used
+   --> apps/desktop/src-tauri/src/connectors.rs:729:10
+    |
+729 | async fn embedding_key(c: &reqwest::Client, model: &str) -> Result<String> {
+    |          ^^^^^^^^^^^^^
+
+warning: function `embed` is never used
+   --> apps/desktop/src-tauri/src/connectors.rs:744:10
+    |
+744 | async fn embed(c: &reqwest::Client, model: &str, inputs: Vec<String>) -> Result<Vec<Vec<f32>>> {
+    |          ^^^^^
+
+warning: function `build_semantic_index` is never used
+   --> apps/desktop/src-tauri/src/connectors.rs:764:14
+    |
+764 | pub async fn build_semantic_index(
+    |              ^^^^^^^^^^^^^^^^^^^^
+
+warning: function `semantic_search` is never used
+   --> apps/desktop/src-tauri/src/connectors.rs:829:14
+    |
+829 | pub async fn semantic_search(
+    |              ^^^^^^^^^^^^^^^
+
 warning: linker stderr: ld: duplicate -rpath '@executable_path/../Frameworks' ignored
   |
   = note: `#[warn(linker_messages)]` on by default
 
-warning: `personal-command-center` (bin "personal-command-center" test) generated 1 warning
-    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.66s
+warning: `personal-command-center` (bin "personal-command-center" test) generated 10 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.44s
      Running unittests src/lib.rs (target/debug/deps/command_center_core-8789edf0255ac3e1)
 
 running 7 tests
@@ -20,11 +74,19 @@ test archive::tests::portable_roundtrip_and_tampering ... ok
 
 test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.78s
 
+     Running tests/record_briefing.rs (target/debug/deps/record_briefing-e9a952d60e41fd43)
+
+running 2 tests
+test briefing_rejects_unbounded_or_invalid_requests ... ok
+test briefing_only_uses_selected_current_ordinary_records ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
      Running tests/reminder_policy.rs (target/debug/deps/reminder_policy-957e7880e8c79b31)
 
 running 3 tests
-test policy_cadence_snooze_and_eligibility ... ok
 test policy_rejects_non_tasks_and_unknown_modes ... ok
+test policy_cadence_snooze_and_eligibility ... ok
 test acknowledgement_survives_reopen_but_does_not_suppress_next_occurrence ... ok
 
 test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
@@ -32,8 +94,8 @@ test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
      Running tests/sync_acceptance.rs (target/debug/deps/sync_acceptance-8c54d210fe5c5a96)
 
 running 8 tests
-test concurrent_note_edits_never_silently_overwrite ... ok
 test receiver_rejects_attachment_when_parent_category_is_not_granted ... ok
+test concurrent_note_edits_never_silently_overwrite ... ok
 test attachment_checksum_failure_does_not_advance_cursor ... ok
 test existing_file_content_cannot_change_under_same_identity ... ok
 test file_requires_both_attachment_and_parent_scope ... ok
@@ -41,7 +103,7 @@ test attachment_delete_vs_index_edit_is_reviewable ... ok
 test attachment_roundtrip_reopen_and_idempotence ... ok
 test maximum_file_fits_wire_and_retries_after_lost_ack ... ok
 
-test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 19.49s
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 19.14s
 
      Running unittests src/lib.rs (target/debug/deps/pcc_mobile_peer-2afee6f42af586c3)
 
@@ -49,16 +111,18 @@ running 2 tests
 test sync_wire::transport_tests::wrong_pinned_peer_cannot_authenticate ... ok
 test sync_wire::transport_tests::authenticated_large_file_frames_roundtrip ... ok
 
-test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.82s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.78s
 
      Running unittests src/main.rs (target/debug/deps/personal_command_center-1a5604d699cf08dd)
 
-running 3 tests
+running 5 tests
 test startup_config_tests::bundled_updater_configuration_deserializes_without_network_defaults ... ok
+test model_catalogue::tests::catalogue_only_accepts_model_links_and_plain_metadata ... ok
+test model_catalogue::tests::layout_failure_is_not_a_successful_empty_feed ... ok
 test sync_wire::transport_tests::wrong_pinned_peer_cannot_authenticate ... ok
 test sync_wire::transport_tests::authenticated_large_file_frames_roundtrip ... ok
 
-test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.83s
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.82s
 
    Doc-tests command_center_core
 

@@ -10,74 +10,34 @@
 
 vite v6.4.6 building for production...
 transforming...
-✓ 1630 modules transformed.
+✓ 1629 modules transformed.
 rendering chunks...
 computing gzip size...
 dist/index.html                         0.37 kB │ gzip:  0.27 kB
 dist/assets/index-DWbY_zeh.css         22.89 kB │ gzip:  6.11 kB
-dist/assets/link-QdZQnMKE.js            0.43 kB │ gzip:  0.30 kB
-dist/assets/download-CpAJG8f3.js        0.43 kB │ gzip:  0.32 kB
-dist/assets/Timeline-Bifi6Oyp.js        1.84 kB │ gzip:  0.84 kB
-dist/assets/InboxSources-BSkf2POy.js    4.03 kB │ gzip:  1.73 kB
-dist/assets/Automations-Dm1DBT-3.js     8.29 kB │ gzip:  3.09 kB
-dist/assets/Assistant-CbFtKEy-.js      14.57 kB │ gzip:  4.85 kB
-dist/assets/DeviceSync-C315cKRl.js     16.60 kB │ gzip:  5.65 kB
-dist/assets/Discovery-1IfD77lb.js      17.70 kB │ gzip:  6.46 kB
-dist/assets/DataPrivacy-CcAFGLd1.js    19.59 kB │ gzip:  6.17 kB
-dist/assets/Vault-Dn_UgKIO.js          22.40 kB │ gzip:  6.58 kB
-dist/assets/Settings-SZ6P_wmQ.js       44.12 kB │ gzip: 12.05 kB
-dist/assets/Workspaces-Ct4iKtib.js     95.84 kB │ gzip: 28.34 kB
-dist/assets/index-B4hOz4eI.js         290.98 kB │ gzip: 89.93 kB
-✓ built in 734ms
-   Compiling objc2-exception-helper v0.1.1
-   Compiling ring v0.17.14
-   Compiling objc2 v0.6.5
-   Compiling mac-notification-sys v0.6.15
-   Compiling libsqlite3-sys v0.39.1
-   Compiling objc2-foundation v0.3.2
-   Compiling wry v0.57.2
-   Compiling objc2-core-foundation v0.3.2
-   Compiling block2 v0.6.2
-   Compiling dispatch2 v0.3.1
-   Compiling rustls v0.23.46
-   Compiling snow v0.10.0
-   Compiling objc2-core-services v0.3.2
-   Compiling notify v8.2.2
-   Compiling rustls-webpki v0.103.17
-   Compiling rusqlite v0.41.1
-   Compiling command-center-core v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/crates/core)
-   Compiling tokio-rustls v0.26.6
-   Compiling rustls-platform-verifier v0.7.1
-   Compiling hyper-rustls v0.27.10
-   Compiling reqwest v0.13.5
-   Compiling reqwest v0.12.28
-   Compiling objc2-quartz-core v0.3.2
-   Compiling notify-rust v4.19.0
-   Compiling objc2-app-kit v0.3.2
-   Compiling objc2-web-kit v0.3.2
-   Compiling tao v0.37.2
-   Compiling window-vibrancy v0.8.1
-   Compiling muda v0.20.0
-   Compiling objc2-osa-kit v0.3.2
-   Compiling global-hotkey v0.8.0
-   Compiling rfd v0.15.4
-   Compiling osakit v0.3.1
-   Compiling tauri-runtime v2.12.2
-   Compiling tauri-runtime-wry v2.12.3
-   Compiling tauri v2.12.5
-   Compiling tauri-plugin-opener v2.7.3
-   Compiling tauri-plugin-updater v2.14.1
-   Compiling tauri-plugin-notification v2.8.1
-   Compiling tauri-plugin-global-shortcut v2.4.1
+dist/assets/link-C0sl0g6U.js            0.43 kB │ gzip:  0.30 kB
+dist/assets/download-CEgU0Jid.js        0.43 kB │ gzip:  0.32 kB
+dist/assets/Timeline-CX_B0Mj0.js        1.84 kB │ gzip:  0.84 kB
+dist/assets/InboxSources-BSaNhkJT.js    4.03 kB │ gzip:  1.73 kB
+dist/assets/Assistant-BMpsC7_j.js       4.18 kB │ gzip:  1.74 kB
+dist/assets/Automations-DZLueMOw.js     7.94 kB │ gzip:  3.00 kB
+dist/assets/DeviceSync-CIYhmBGB.js     16.60 kB │ gzip:  5.65 kB
+dist/assets/Discovery-BBdK97NT.js      17.33 kB │ gzip:  6.26 kB
+dist/assets/DataPrivacy-B_VhtL0u.js    19.59 kB │ gzip:  6.17 kB
+dist/assets/Vault-BeGykcPt.js          22.40 kB │ gzip:  6.58 kB
+dist/assets/Settings-BAAzbt75.js       44.17 kB │ gzip: 12.07 kB
+dist/assets/Workspaces-MffSb7nG.js     95.69 kB │ gzip: 28.32 kB
+dist/assets/index-CJFcSgO3.js         290.98 kB │ gzip: 89.89 kB
+✓ built in 680ms
    Compiling personal-command-center v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/desktop/src-tauri)
 warning: linker stderr: ld: duplicate -rpath '@executable_path/../Frameworks' ignored
   |
   = note: `#[warn(linker_messages)]` on by default
 
 warning: `personal-command-center` (bin "personal-command-center") generated 1 warning
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 22.87s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.41s
        Built application at: /Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/personal-command-center
     Bundling Personal Command Center.app (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app)
     Finished 1 bundle at:
-        /Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app (75.03 MiB)
+        /Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app (74.76 MiB)
 

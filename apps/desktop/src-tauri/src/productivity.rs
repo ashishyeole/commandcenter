@@ -64,13 +64,13 @@ pub fn save_automation(state: State<AppState>, value: Vec<Recipe>) -> Result<()>
         match r.kind.as_str() {
             "source"
                 if [
-                    "github", "models", "news", "mcp", "apps", "youtube", "arxiv", "rss",
+                    "github", "models", "ollama", "news", "mcp", "apps", "youtube", "arxiv", "rss",
                 ]
                 .contains(&r.source.as_str()) =>
             {
                 ()
             }
-            "brief" if !r.model.trim().is_empty() && !r.prompt.trim().is_empty() => (),
+            "brief" => (),
             _ => return Err("Choose a supported source or a local model and prompt".into()),
         }
         for id in &r.context_ids {
@@ -133,16 +133,12 @@ async fn execute(app: &tauri::AppHandle, recipe: Recipe) -> Result<Value> {
         .await
         .map(|feed| json!({"source":feed.source,"fetched_at":feed.fetched_at})),
         "brief" => {
-            crate::connectors::ask_local(
-                app.state(),
-                recipe.id.clone(),
-                recipe.model.clone(),
-                recipe.prompt.clone(),
-                recipe.context_ids.clone(),
-                true,
-                None,
+            let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+            repo.record_briefing(
+                &recipe.context_ids,
+                &chrono::Local::now().format("%Y-%m-%d").to_string(),
             )
-            .await
+            .map(|answer| json!({"answer":answer}))
         }
         _ => Err("Unsupported recipe".into()),
     };

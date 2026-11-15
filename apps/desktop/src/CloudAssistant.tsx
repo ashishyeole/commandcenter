@@ -2,8 +2,8 @@ import {useState} from 'react';
 import {invoke,isTauri} from '@tauri-apps/api/core';
 import type {Item} from './domain';
 import type {WorkspaceState} from './modules';
-export function CloudAssistant({data,items,reload}:{data:WorkspaceState;items:Item[];reload:()=>Promise<void>}){
- const [key,setKey]=useState(''),[model,setModel]=useState(''),[question,setQuestion]=useState(''),[selected,setSelected]=useState<string[]>([]),[preview,setPreview]=useState<{hash:string;payload:unknown;configured:boolean}|null>(null),[approved,setApproved]=useState(false),[busy,setBusy]=useState(false),[request,setRequest]=useState(''),[answer,setAnswer]=useState(''),[message,setMessage]=useState(''),[error,setError]=useState('');
+export function CloudAssistant({data,items,reload,initialQuestion=''}:{data:WorkspaceState;items:Item[];reload:()=>Promise<void>;initialQuestion?:string}){
+ const [key,setKey]=useState(''),[model,setModel]=useState(''),[question,setQuestion]=useState(initialQuestion),[selected,setSelected]=useState<string[]>([]),[preview,setPreview]=useState<{hash:string;payload:unknown;configured:boolean}|null>(null),[approved,setApproved]=useState(false),[busy,setBusy]=useState(false),[request,setRequest]=useState(''),[answer,setAnswer]=useState(''),[message,setMessage]=useState(''),[error,setError]=useState('');
  const records=[...items.map(i=>({id:i.id,title:i.title})),...data.records.filter(r=>!['missions','notifications','sessions'].includes(r.module)).map(r=>({id:r.id,title:r.title}))];
  function invalidate(){setPreview(null);setApproved(false);}
  async function run(fn:()=>Promise<void>){setError('');setBusy(true);try{await fn();}catch(e){setError(String(e));}finally{setBusy(false);}}
