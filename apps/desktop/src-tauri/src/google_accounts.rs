@@ -10,6 +10,7 @@ use tauri::State;
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use zeroize::{Zeroize, Zeroizing};
 const MAIL: &str = "https://www.googleapis.com/auth/gmail.metadata";
+const MAIL_BODY: &str = "https://www.googleapis.com/auth/gmail.readonly";
 const CAL: &str = "https://www.googleapis.com/auth/calendar.events.readonly";
 #[derive(Serialize, Deserialize, Default)]
 struct Credentials {
@@ -110,9 +111,16 @@ pub fn google_account_status(state: State<AppState>) -> Result<Value> {
         .setting("google_enabled")?
         .as_deref()
         == Some("true");
+    let body_approved = state
+        .repo
+        .lock()
+        .map_err(|_| "Database unavailable")?
+        .setting("google_body_approved")?
+        .as_deref()
+        == Some("true");
     let saved = read(&state).ok();
     Ok(
-        json!({"configured":saved.is_some(),"connected":enabled&&saved.as_ref().is_some_and(|s|!s.refresh_token.is_empty()||!s.access_token.is_empty()),"scopes":saved.as_ref().map(|s|s.scopes.as_str()).unwrap_or("")}),
+        json!({"body_approved":body_approved,"configured":saved.is_some(),"connected":enabled&&saved.as_ref().is_some_and(|s|!s.refresh_token.is_empty()||!s.access_token.is_empty()),"scopes":saved.as_ref().map(|s|s.scopes.as_str()).unwrap_or("")}),
     )
 }
 #[tauri::command]
@@ -135,6 +143,11 @@ pub fn configure_google_account(
         .lock()
         .map_err(|_| "Database unavailable")?
         .set_setting("google_enabled", "false")?;
+    state
+        .repo
+        .lock()
+        .map_err(|_| "Database unavailable")?
+        .set_setting("google_body_approved", "false")?;
     let c = Credentials {
         client_id,
         client_secret: secret.to_string(),
@@ -154,6 +167,7 @@ pub async fn connect_google_account(
     state: State<'_, AppState>,
     mail: bool,
     calendar: bool,
+    mail_bodies: Option<bool>,
     consent: bool,
 ) -> Result<Value> {
     if !consent || (!mail && !calendar) {
@@ -176,12 +190,22 @@ pub async fn connect_google_account(
         let csrf = nonce();
         let verifier = Zeroizing::new(nonce());
         let challenge = URL_SAFE_NO_PAD.encode(Sha256::digest(verifier.as_bytes()));
-        let scopes = [(mail, MAIL), (calendar, CAL)]
-            .into_iter()
-            .filter(|(b, _)| *b)
-            .map(|(_, s)| s)
-            .collect::<Vec<_>>()
-            .join(" ");
+        let scopes = [
+            (
+                mail,
+                if mail_bodies.unwrap_or(false) {
+                    MAIL_BODY
+                } else {
+                    MAIL
+                },
+            ),
+            (calendar, CAL),
+        ]
+        .into_iter()
+        .filter(|(b, _)| *b)
+        .map(|(_, s)| s)
+        .collect::<Vec<_>>()
+        .join(" ");
         let mut url = reqwest::Url::parse("https://accounts.google.com/o/oauth2/v2/auth")
             .map_err(|e| e.to_string())?;
         url.query_pairs_mut().extend_pairs([
@@ -299,7 +323,12 @@ pub async fn connect_google_account(
                 .as_i64()
                 .unwrap_or(3600)
                 .clamp(60, 86400);
-        c.scopes = token["scope"].as_str().unwrap_or(&scopes).into();
+        let granted = token["scope"].as_str().unwrap_or(&scopes);
+        c.scopes = scopes
+            .split_whitespace()
+            .filter(|required| scope_allows(granted, required))
+            .collect::<Vec<_>>()
+            .join(" ");
         let key = entry(&state)?;
         let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
         if state.data_epoch.load(Ordering::SeqCst) != epoch || cancel.is_cancelled() {
@@ -308,6 +337,14 @@ pub async fn connect_google_account(
         let raw = Zeroizing::new(serde_json::to_string(&c).map_err(|e| e.to_string())?);
         key.set_password(&raw)
             .map_err(|_| "Cannot save authorization to OS secure storage")?;
+        repo.set_setting(
+            "google_body_approved",
+            if mail && mail_bodies.unwrap_or(false) && scope_allows(&c.scopes, MAIL_BODY) {
+                "true"
+            } else {
+                "false"
+            },
+        )?;
         repo.set_setting("google_enabled", "true")?;
         Ok(json!({"connected":true,"scopes":c.scopes}))
     };
@@ -316,7 +353,7 @@ pub async fn connect_google_account(
 async fn access(state: &AppState, epoch: u64, required: &str) -> Result<Zeroizing<String>> {
     active(state, epoch)?;
     let mut c = read(state)?;
-    if !c.scopes.split_whitespace().any(|s| s == required) {
+    if !scope_allows(&c.scopes, required) {
         return Err("Reconnect and approve the required read-only scope".into());
     }
     if c.expires < chrono::Utc::now().timestamp() + 60 {
@@ -481,6 +518,11 @@ pub async fn disconnect_google_account(state: State<'_, AppState>, revoke: bool)
         .lock()
         .map_err(|_| "Database unavailable")?
         .set_setting("google_enabled", "false")?;
+    state
+        .repo
+        .lock()
+        .map_err(|_| "Database unavailable")?
+        .set_setting("google_body_approved", "false")?;
     if let Some(token) = state
         .jobs
         .lock()
@@ -510,4 +552,192 @@ pub async fn disconnect_google_account(state: State<'_, AppState>, revoke: bool)
         }
     }
     Ok(())
+}
+
+fn scope_allows(granted: &str, required: &str) -> bool {
+    granted
+        .split_whitespace()
+        .any(|s| s == required || (required == MAIL && s == MAIL_BODY))
+}
+#[tauri::command]
+pub async fn read_google_message(
+    state: State<'_, AppState>,
+    message_id: String,
+    consent: bool,
+) -> Result<Value> {
+    if !consent
+        || message_id.is_empty()
+        || message_id.len() > 100
+        || !message_id.bytes().all(|c| c.is_ascii_hexdigit())
+    {
+        return Err("Approve reading a selected Gmail message with a valid message ID".into());
+    }
+    if state
+        .repo
+        .lock()
+        .map_err(|_| "Database unavailable")?
+        .setting("google_body_approved")?
+        .as_deref()
+        != Some("true")
+    {
+        return Err("Select body access and reconnect to approve it for this app".into());
+    }
+    let (_job, cancel) = job(&state)?;
+    let epoch = state.data_epoch.load(Ordering::SeqCst);
+    let work = async {
+        let token = access(&state, epoch, MAIL_BODY).await?;
+        let value = response(
+            client()?
+                .get(format!(
+                    "https://gmail.googleapis.com/gmail/v1/users/me/messages/{message_id}"
+                ))
+                .bearer_auth(&*token)
+                .query(&[("format", "full")])
+                .send()
+                .await
+                .map_err(|_| "Gmail body request failed")?,
+        )
+        .await?;
+        let (text, format, truncated) = message_text(&value["payload"])?;
+        let title = value["payload"]["headers"]
+            .as_array()
+            .and_then(|headers| {
+                headers.iter().find(|h| {
+                    h["name"]
+                        .as_str()
+                        .is_some_and(|n| n.eq_ignore_ascii_case("Subject"))
+                })
+            })
+            .and_then(|h| h["value"].as_str())
+            .unwrap_or("Gmail message text preview")
+            .chars()
+            .take(500)
+            .collect::<String>();
+        active(&state, epoch)?;
+        Ok(
+            json!({"kind":"mail_body","rows":[{"id":message_id,"title":title,"body":text,"format":format,"truncated":truncated}],"fetched_at":command_center_core::now(),"scope":"Selected message text only. HTML converted to inert text; no images loaded, attachment files opened/saved, mail marked read or data sent to AI. Temporary view unless explicitly saved to your encrypted vault."}),
+        )
+    };
+    tokio::select! {_=cancel.cancelled()=>Err("Account request cancelled".into()),r=work=>r}
+}
+fn message_text(payload: &Value) -> Result<(String, String, bool)> {
+    fn visit(
+        v: &Value,
+        depth: usize,
+        count: &mut usize,
+        plain: &mut Vec<String>,
+        html: &mut Vec<String>,
+        bytes: &mut usize,
+    ) -> Result<()> {
+        *count += 1;
+        if depth > 12 || *count > 200 {
+            return Err("Message MIME structure exceeds safe preview limits".into());
+        }
+        let mime = v["mimeType"].as_str().unwrap_or("");
+        let attached = v["filename"].as_str().is_some_and(|s| !s.is_empty())
+            || v["headers"].as_array().is_some_and(|headers| {
+                headers.iter().any(|h| {
+                    h["name"]
+                        .as_str()
+                        .is_some_and(|n| n.eq_ignore_ascii_case("Content-Disposition"))
+                        && h["value"].as_str().is_some_and(|v| {
+                            v.split(';')
+                                .next()
+                                .unwrap_or("")
+                                .trim()
+                                .eq_ignore_ascii_case("attachment")
+                        })
+                })
+            });
+        if attached {
+            return Ok(());
+        }
+        if v["filename"].as_str().unwrap_or("").is_empty()
+            && ["text/plain", "text/html"].contains(&mime)
+        {
+            if let Some(data) = v["body"]["data"].as_str() {
+                if data.len() > 1024 * 1024 {
+                    return Err("Message text part exceeds 1 MiB preview limit".into());
+                }
+                let decoded = URL_SAFE_NO_PAD
+                    .decode(data.trim_end_matches('='))
+                    .map_err(|_| "Invalid encoded message text")?;
+                *bytes += decoded.len();
+                if *bytes > 1024 * 1024 {
+                    return Err("Combined message text exceeds 1 MiB preview limit".into());
+                }
+                let text = String::from_utf8_lossy(&decoded).into_owned();
+                if mime == "text/plain" {
+                    plain.push(text)
+                } else {
+                    html.push(text)
+                }
+            }
+        }
+        for child in v["parts"].as_array().into_iter().flatten() {
+            visit(child, depth + 1, count, plain, html, bytes)?;
+        }
+        Ok(())
+    }
+    let (mut plain, mut html, mut count, mut bytes) = (vec![], vec![], 0, 0);
+    visit(payload, 0, &mut count, &mut plain, &mut html, &mut bytes)?;
+    let (text, format) = if !plain.is_empty() {
+        (plain.join("\n\n"), "text/plain")
+    } else if !html.is_empty() {
+        let markup = html.join("\n");
+        if markup.bytes().filter(|c| *c == b'<').count() > 20_000 {
+            return Err("Message HTML exceeds preview markup limits".into());
+        }
+        let doc = dom_query::Document::from(markup);
+        doc.select("script,style,noscript,iframe,object,embed")
+            .remove();
+        (
+            doc.select("body").text().to_string(),
+            "HTML converted to text",
+        )
+    } else {
+        (
+            "No supported inline text body. Attachments are not downloaded.".into(),
+            "no inline text",
+        )
+    };
+    let mut end = text.len().min(12000);
+    while !text.is_char_boundary(end) {
+        end -= 1;
+    }
+    let truncated = end < text.len();
+    Ok((text[..end].to_owned(), format.into(), truncated))
+}
+#[cfg(test)]
+mod message_tests {
+    use super::*;
+    #[test]
+    fn body_scope_does_not_follow_from_metadata_grant() {
+        assert!(!scope_allows(MAIL, MAIL_BODY));
+        assert!(scope_allows(MAIL_BODY, MAIL));
+        assert!(!scope_allows(CAL, MAIL_BODY));
+    }
+    #[test]
+    fn mime_preview_prefers_plain_and_ignores_attachments() {
+        let value = json!({"parts":[{"mimeType":"text/html","body":{"data":URL_SAFE_NO_PAD.encode("<b>HTML</b>")}},{"mimeType":"text/plain","body":{"data":URL_SAFE_NO_PAD.encode("Plain fixture")}},{"mimeType":"text/plain","filename":"attachment.txt","body":{"data":URL_SAFE_NO_PAD.encode("Ignored attachment")}}]});
+        let (text, _, truncated) = message_text(&value).unwrap();
+        assert_eq!(text, "Plain fixture");
+        assert!(!truncated);
+    }
+    #[test]
+    fn unnamed_attachment_subtrees_are_not_used_as_message_body() {
+        let value = json!({"headers":[{"name":"Content-Disposition","value":"attachment"}],"parts":[{"mimeType":"text/plain","body":{"data":URL_SAFE_NO_PAD.encode("Do not preview attached content")}}]});
+        let (text, _, _) = message_text(&value).unwrap();
+        assert!(!text.contains("Do not preview"));
+    }
+    #[test]
+    fn html_is_inert_and_preview_is_utf8_bounded() {
+        let value = json!({"mimeType":"text/html","body":{"data":URL_SAFE_NO_PAD.encode("<p>Visible</p><script>hidden()</script><img src='https://example.test/tracker'>")}});
+        let (text, _, _) = message_text(&value).unwrap();
+        assert!(text.contains("Visible"));
+        assert!(!text.contains("hidden"));
+        let value = json!({"mimeType":"text/plain","body":{"data":URL_SAFE_NO_PAD.encode(format!("a{}","🧪".repeat(6000)))}});
+        let (text, _, truncated) = message_text(&value).unwrap();
+        assert!(truncated && text.len() <= 12000);
+    }
 }

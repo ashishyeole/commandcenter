@@ -58,6 +58,18 @@ pub fn unlock_vault(state: State<AppState>) -> Result<()> {
 }
 #[tauri::command]
 pub fn lock_vault(state: State<AppState>) -> Result<()> {
+    if let Some(token) = state
+        .jobs
+        .lock()
+        .map_err(|_| "Job state unavailable")?
+        .get("archive:stream")
+    {
+        token.cancel();
+    }
+    *state
+        .large_import
+        .lock()
+        .map_err(|_| "Import unavailable")? = None;
     *state.pending.lock().map_err(|_| "Import unavailable")? = None;
     *state.vault.lock().map_err(|_| "Vault unavailable")? = None;
     Ok(())

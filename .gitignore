@@ -30,3 +30,7 @@ __pycache__/
 *.tfstate*
 *.tfplan
 *.tfvars
+
+# Encrypted streaming archives and atomic-write temporary files
+*.paccs
+.tmp*

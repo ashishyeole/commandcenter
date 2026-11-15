@@ -782,13 +782,13 @@ pub fn validate_portable_extras(workspace: &PortableWorkspace) -> Result<()> {
             }
         }
     }
-    if workspace.feeds.len() > 6 {
+    if workspace.feeds.len() > 9 {
         return Err("Too many feed caches".into());
     }
     let mut sources = std::collections::HashSet::new();
     for feed in &workspace.feeds {
         if ![
-            "github", "models", "news", "mcp", "apps", "youtube", "arxiv", "rss",
+            "github", "models", "ollama", "news", "mcp", "apps", "youtube", "arxiv", "rss",
         ]
         .contains(&feed.source.as_str())
             || !sources.insert(&feed.source)

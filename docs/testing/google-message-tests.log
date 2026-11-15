@@ -1,0 +1,57 @@
+   Compiling objc2-exception-helper v0.1.1
+   Compiling ring v0.17.14
+   Compiling objc2 v0.6.5
+   Compiling libsqlite3-sys v0.39.1
+   Compiling mac-notification-sys v0.6.15
+   Compiling objc2-foundation v0.3.2
+   Compiling wry v0.57.2
+   Compiling objc2-core-foundation v0.3.2
+   Compiling block2 v0.6.2
+   Compiling dispatch2 v0.3.1
+   Compiling rustls v0.23.46
+   Compiling snow v0.10.0
+   Compiling objc2-core-services v0.3.2
+   Compiling notify v8.2.2
+   Compiling rustls-webpki v0.103.17
+   Compiling rusqlite v0.41.1
+   Compiling command-center-core v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/crates/core)
+   Compiling tokio-rustls v0.26.6
+   Compiling rustls-platform-verifier v0.7.1
+   Compiling hyper-rustls v0.27.10
+   Compiling reqwest v0.13.5
+   Compiling reqwest v0.12.28
+   Compiling objc2-quartz-core v0.3.2
+   Compiling notify-rust v4.19.0
+   Compiling objc2-app-kit v0.3.2
+   Compiling objc2-web-kit v0.3.2
+   Compiling tao v0.37.2
+   Compiling muda v0.20.0
+   Compiling window-vibrancy v0.8.1
+   Compiling objc2-osa-kit v0.3.2
+   Compiling global-hotkey v0.8.0
+   Compiling rfd v0.15.4
+   Compiling osakit v0.3.1
+   Compiling tauri-runtime v2.12.2
+   Compiling tauri-runtime-wry v2.12.3
+   Compiling tauri v2.12.5
+   Compiling tauri-plugin-opener v2.7.3
+   Compiling tauri-plugin-updater v2.14.1
+   Compiling tauri-plugin-notification v2.8.1
+   Compiling tauri-plugin-global-shortcut v2.4.1
+   Compiling personal-command-center v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/desktop/src-tauri)
+warning: linker stderr: ld: duplicate -rpath '@executable_path/../Frameworks' ignored
+  |
+  = note: `#[warn(linker_messages)]` on by default
+
+warning: `personal-command-center` (bin "personal-command-center" test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 11.18s
+     Running unittests src/main.rs (target/debug/deps/personal_command_center-1a5604d699cf08dd)
+
+running 4 tests
+test google_accounts::message_tests::body_scope_does_not_follow_from_metadata_grant ... ok
+test google_accounts::message_tests::unnamed_attachment_subtrees_are_not_used_as_message_body ... ok
+test google_accounts::message_tests::mime_preview_prefers_plain_and_ignores_attachments ... ok
+test google_accounts::message_tests::html_is_inert_and_preview_is_utf8_bounded ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 12 filtered out; finished in 0.00s
+

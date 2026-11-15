@@ -1,28 +1,31 @@
 {
   "version": "0.5.0",
-  "generated_at": "2026-11-15T14:56:49.251405+00:00",
+  "generated_at": "2026-11-15T16:00:04.224505+00:00",
   "runtime_tested": false,
   "isolated_mac_qa_smoke_tested": true,
   "production_signed": false,
   "artifacts": [
     {
       "platform": "macOS app",
+      "rebuilt_for_streaming_backup_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app",
-      "bytes": 78567886,
-      "sha256": "4b0811f4158e51338657f1fb6608012c7bc594e1dd29fb02d1db71ad338ecf7d",
+      "bytes": 79724574,
+      "sha256": "82336f123633688a7a44d43861abad344ea339d34ac1e7112930cababeadd1fb",
       "hash_method": "SHA-256 of compact UTF-8 JSON array sorted by relative path; each entry has path plus file sha256 or symlink target; object keys sorted",
       "files": 5
     },
     {
       "platform": "macOS DMG",
+      "rebuilt_for_streaming_backup_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/dmg/Personal Command Center_0.5.0_arm64.dmg",
-      "bytes": 22959691,
-      "sha256": "1df48a9a2bf469cc2b261fe31ea193b5608c859f30f9d6d799901995c91b6840",
+      "bytes": 23213972,
+      "sha256": "1284008473b7d947ae06db5200949d168ae4da65c2f08610fb6d26e10ed59b53",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     },
     {
       "platform": "iOS Simulator app",
+      "rebuilt_for_streaming_backup_changes": false,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/mobile-ios-final/Build/Products/Debug-iphonesimulator/CommandCenter.app",
       "bytes": 36402557,
       "sha256": "2b06e246c5cb10f5d5a55e113a36fce527ded8ea71361880ac365c67e5293d98",
@@ -31,6 +34,7 @@
     },
     {
       "platform": "Android ARM64 debug APK",
+      "rebuilt_for_streaming_backup_changes": false,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/mobile-android/app/build/outputs/apk/debug/app-debug.apk",
       "bytes": 159041476,
       "sha256": "83705da8a7efbcdb4d0ff8b698f42cdf9ba088a7d7f7a9dcb3627d2a1eea31d3",
@@ -46,6 +50,7 @@
   },
   "packaging_notes": [
     "macOS development app/DMG, iOS Simulator app and Android debug APK only.",
+    "Mobile binaries were not rebuilt for the streaming-backup/Google-preview changes; streaming backup UI is desktop-only.",
     "iOS shared Rust symbols are defined in the bundle; no developer libpcc dylib dependency.",
     "macOS voice bridge is bundled and referenced through @rpath.",
     "A separately identified macOS QA app passed selected native workflows. Normal artifacts have not all received runtime acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage."

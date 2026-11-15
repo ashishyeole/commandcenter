@@ -19,6 +19,7 @@ mod github_accounts;
 mod google_accounts;
 mod hosted;
 mod invoices;
+mod large_archives;
 mod mcp_stdio;
 mod mcp_tools;
 mod model_catalogue;
@@ -60,6 +61,7 @@ struct AppState {
     backup_lock: tokio::sync::Mutex<()>,
     data_epoch: std::sync::atomic::AtomicU64,
     pending: Mutex<Option<ExportData>>,
+    large_import: Mutex<Option<large_archives::Pending>>,
     vault: Mutex<Option<vault::VaultSession>>,
     jobs: Mutex<HashMap<String, tokio_util::sync::CancellationToken>>,
 }
@@ -401,6 +403,7 @@ struct Preview {
 #[tauri::command]
 async fn inspect_archive(state: State<'_, AppState>, password: String) -> Result<Option<Preview>> {
     *state.pending.lock().map_err(|_| "Import unavailable")? = None;
+
     let password = Zeroizing::new(password);
     if let Some(file) = rfd::AsyncFileDialog::new()
         .add_filter("Command Center backup", &["zip", "pacc", "json"])
@@ -487,6 +490,7 @@ async fn inspect_archive(state: State<'_, AppState>, password: String) -> Result
 #[tauri::command]
 fn cancel_import(state: State<AppState>) -> Result<()> {
     *state.pending.lock().map_err(|_| "Import unavailable")? = None;
+
     Ok(())
 }
 #[tauri::command]
@@ -677,6 +681,10 @@ fn reset_local_data(
         .data_epoch
         .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     *state.pending.lock().map_err(|_| "Import unavailable")? = None;
+    *state
+        .large_import
+        .lock()
+        .map_err(|_| "Import unavailable")? = None;
     *state.vault.lock().map_err(|_| "Vault unavailable")? = None;
     Ok(())
 }
@@ -801,6 +809,7 @@ fn main() {
                 backup_lock: tokio::sync::Mutex::new(()),
                 data_epoch: std::sync::atomic::AtomicU64::new(0),
                 pending: Mutex::new(None),
+                large_import: Mutex::new(None),
                 vault: Mutex::new(None),
                 jobs: Mutex::new(HashMap::new()),
             });
@@ -943,6 +952,10 @@ fn main() {
             save_record,
             save_preferences,
             export_archive,
+            large_archives::export_large_archive,
+            large_archives::preview_large_archive,
+            large_archives::apply_large_archive,
+            large_archives::discard_large_archive,
             export_mobile,
             inspect_archive,
             apply_import,
@@ -970,6 +983,7 @@ fn main() {
             google_accounts::configure_google_account,
             google_accounts::connect_google_account,
             google_accounts::read_google_account,
+            google_accounts::read_google_message,
             google_accounts::disconnect_google_account,
             mcp_tools::mcp_connections,
             mcp_tools::mcp_health,

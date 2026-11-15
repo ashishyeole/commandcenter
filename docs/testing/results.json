@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-15T14:56:35.007282+00:00",
+  "generated_at": "2026-11-15T16:01:04.058308+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
-  "rust_test_executions": 41,
-  "rust_distinct_tests": 39,
+  "rust_test_executions": 54,
+  "rust_distinct_tests": 52,
   "python_tests": 10,
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
@@ -97,7 +97,24 @@
       "status": "PASS (selected QA workflows)",
       "area": "Floating online assistant and poker search planning",
       "evidence": "Native QA: panel opening, pointer drag, keyboard movement/reopening, saved position after restart and worldwide/provider search generation. Two Rust query tests and ten UI-logic assertions cover date overlap/end semantics, cancelled events and position bounds. No credential entered, online AI call or browser search sent. Local-AI source preserved dormant."
+    },
+    {
+      "status": "PASS (automated)",
+      "area": "Large encrypted streaming backups",
+      "evidence": "PCCSTR01 file larger than 64 MiB exported and restored. Tests cover authenticated framing/manifest, wrong passwords, corruption/truncation/trailing bytes, reviewed checksum binding, duplicate IDs, cancellation, unsupported versions, original attachments/links, receiver-key vault encryption and excluded permissions. Full workspace run: 53 executions; one additional native cancellation test passes."
+    },
+    {
+      "status": "PASS (synthetic fixtures)",
+      "area": "Optional Gmail text-body preview",
+      "evidence": "Four scope/MIME tests cover metadata versus body authorization, plain preference, attachment subtree exclusion, inert HTML and UTF-8 truncation. Frontend/native compilation pass; no real account or message accessed."
+    },
+    {
+      "status": "BLOCKED (Mac locked)",
+      "area": "New streaming-backup native dialogs",
+      "evidence": "Isolated QA app built. Native automation reports the Mac is locked; unlock requested. New save/select/preview/apply dialogs have not received UI acceptance. Earlier floating-assistant and other selected native checks remain recorded separately."
     }
   ],
-  "ui_logic_assertions": 10
+  "ui_logic_assertions": 10,
+  "rust_workspace_executions": 53,
+  "rust_additional_targeted_executions": 1
 }

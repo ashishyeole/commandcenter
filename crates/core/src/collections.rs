@@ -24,32 +24,7 @@ impl Repository {
         .map_err(|e| e.to_string())
     }
     pub fn save_research_collections(&self, collections: &[Collection]) -> Result<()> {
-        if collections.len() > 30 {
-            return Err("At most 30 research collections".into());
-        }
-        let mut ids = std::collections::HashSet::new();
-        for c in collections {
-            uuid::Uuid::parse_str(&c.id).map_err(|_| "Invalid collection ID")?;
-            if !ids.insert(&c.id)
-                || c.name.trim().is_empty()
-                || c.name.len() > 120
-                || c.searches.is_empty()
-                || c.searches.len() > 12
-            {
-                return Err("Use unique IDs, a name and 1–12 source queries".into());
-            }
-            for s in &c.searches {
-                if s.query.len() > 300
-                    || ![
-                        "arxiv", "rss", "github", "models", "ollama", "news", "mcp", "youtube",
-                        "apps",
-                    ]
-                    .contains(&s.source.as_str())
-                {
-                    return Err("Invalid collection source or query".into());
-                }
-            }
-        }
+        validate_collections(collections)?;
         self.set_setting(
             "research_collections",
             &serde_json::to_string(collections).map_err(|e| e.to_string())?,
@@ -81,4 +56,33 @@ impl Repository {
         })
         .collect()
     }
+}
+
+pub fn validate_collections(collections: &[Collection]) -> Result<()> {
+    if collections.len() > 30 {
+        return Err("At most 30 research collections".into());
+    }
+    let mut ids = std::collections::HashSet::new();
+    for c in collections {
+        uuid::Uuid::parse_str(&c.id).map_err(|_| "Invalid collection ID")?;
+        if !ids.insert(&c.id)
+            || c.name.trim().is_empty()
+            || c.name.len() > 120
+            || c.searches.is_empty()
+            || c.searches.len() > 12
+        {
+            return Err("Use unique IDs, a name and 1–12 source queries".into());
+        }
+        for s in &c.searches {
+            if s.query.len() > 300
+                || ![
+                    "arxiv", "rss", "github", "models", "ollama", "news", "mcp", "youtube", "apps",
+                ]
+                .contains(&s.source.as_str())
+            {
+                return Err("Invalid collection source or query".into());
+            }
+        }
+    }
+    Ok(())
 }

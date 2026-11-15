@@ -5,6 +5,7 @@ pub mod collections;
 pub mod reminder_lease;
 pub mod reminders;
 pub mod retention;
+pub mod stream_archive;
 pub mod sync;
 pub mod vault_codec;
 pub mod watchlists;

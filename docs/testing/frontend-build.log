@@ -3,23 +3,23 @@
 
 vite v6.4.6 building for production...
 transforming...
-✓ 1636 modules transformed.
+✓ 1637 modules transformed.
 rendering chunks...
 computing gzip size...
 dist/index.html                           0.37 kB │ gzip:  0.27 kB
 dist/assets/index-B1LFK24E.css           24.08 kB │ gzip:  6.36 kB
-dist/assets/link-CXqFsVQ9.js              0.43 kB │ gzip:  0.30 kB
-dist/assets/download-BxKDtSK7.js          0.43 kB │ gzip:  0.32 kB
-dist/assets/Assistant-CTXRddEz.js         0.52 kB │ gzip:  0.35 kB
-dist/assets/Timeline-CLVuhVBr.js          1.84 kB │ gzip:  0.84 kB
-dist/assets/CloudAssistant-CYXW0xVC.js    3.78 kB │ gzip:  1.60 kB
-dist/assets/InboxSources--ZI6l7hC.js      4.03 kB │ gzip:  1.73 kB
-dist/assets/Automations-C8g534Se.js       7.94 kB │ gzip:  3.00 kB
-dist/assets/DeviceSync-Bt1yaJrz.js       16.60 kB │ gzip:  5.65 kB
-dist/assets/DataPrivacy-CQnaIupF.js      19.59 kB │ gzip:  6.17 kB
-dist/assets/Vault-DKcDd8IE.js            22.40 kB │ gzip:  6.58 kB
-dist/assets/Discovery-DI1DfXAs.js        23.85 kB │ gzip:  7.99 kB
-dist/assets/Settings-lVsAMMWc.js         46.59 kB │ gzip: 12.79 kB
-dist/assets/Workspaces-DPnc6tbJ.js      101.00 kB │ gzip: 29.93 kB
-dist/assets/index-CgBjuEdv.js           295.43 kB │ gzip: 91.36 kB
-✓ built in 743ms
+dist/assets/link-DuO4zXIy.js              0.43 kB │ gzip:  0.30 kB
+dist/assets/download-CBkt7psw.js          0.43 kB │ gzip:  0.32 kB
+dist/assets/Assistant-DGJfZAJI.js         0.52 kB │ gzip:  0.36 kB
+dist/assets/Timeline-Cm9c95E8.js          1.84 kB │ gzip:  0.84 kB
+dist/assets/CloudAssistant-C-E4TTJW.js    3.78 kB │ gzip:  1.60 kB
+dist/assets/InboxSources-2UdpvTpZ.js      4.03 kB │ gzip:  1.73 kB
+dist/assets/Automations-B5evB_y9.js       7.94 kB │ gzip:  3.00 kB
+dist/assets/DeviceSync-DZUlI8dZ.js       16.60 kB │ gzip:  5.65 kB
+dist/assets/Vault-Cet_TcTO.js            22.40 kB │ gzip:  6.58 kB
+dist/assets/DataPrivacy-CYF1-8wD.js      23.67 kB │ gzip:  7.18 kB
+dist/assets/Discovery-BDy3b2Ib.js        23.85 kB │ gzip:  7.99 kB
+dist/assets/Settings-DMx_xMqY.js         47.27 kB │ gzip: 13.03 kB
+dist/assets/Workspaces-B75ngI2e.js      101.00 kB │ gzip: 29.93 kB
+dist/assets/index-bAqPcVVG.js           295.43 kB │ gzip: 91.37 kB
+✓ built in 700ms
