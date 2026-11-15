@@ -1,10 +1,13 @@
 pub mod archive;
 pub mod attachments;
 pub mod briefing;
+pub mod collections;
+pub mod reminder_lease;
 pub mod reminders;
 pub mod retention;
 pub mod sync;
 pub mod vault_codec;
+pub mod watchlists;
 pub mod workspace;
 use chrono::{Datelike, Days, Months, NaiveDate, Utc};
 use rusqlite::{params, Connection};

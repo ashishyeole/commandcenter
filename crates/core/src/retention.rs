@@ -21,7 +21,7 @@ impl Policy {
     }
 }
 const CACHE_WHERE: &str =
-    "key IN ('agriculture_cache','business_search_last','model_evidence','app_market_snapshots') OR key LIKE 'event_cache:%'";
+    "key IN ('agriculture_cache','business_search_last','model_evidence','app_market_snapshots') OR key LIKE 'event_cache:%' OR key LIKE 'research_query:%'";
 impl Repository {
     pub fn retention_preview(&self, p: &Policy) -> Result<Value> {
         p.validate()?;

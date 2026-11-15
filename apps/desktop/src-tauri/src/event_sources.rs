@@ -228,16 +228,40 @@ fn parse(bytes: Vec<u8>, source: &Source) -> Result<Value> {
                 .iter()
                 .find(|p| p.name.eq_ignore_ascii_case("DTEND"))
                 .and_then(|p| date(p).ok());
-            rows.push(json!({"id":identity,"uid":uid,"title":title.chars().take(500).collect::<String>(),"description":get("DESCRIPTION"),"location":get("LOCATION"),"start":start,"end":end,"status":get("STATUS"),"recurrence":recurrence,"recurrence_instance":instance,"recurrence_expanded":false,"sequence":get("SEQUENCE"),"source_updated":get("LAST-MODIFIED"),"source_url":url,"calendar_url":source.url,"verification":if source.verified_authority{"Source authority explicitly confirmed by user; schedule is publisher-supplied and can change"}else{"Unconfirmed source authority; independently verify before travel or registration"}}));
+            rows.push(json!({"id":identity,"uid":uid,"title":title.chars().take(500).collect::<String>(),"description":get("DESCRIPTION"),"location":get("LOCATION"),"start":start,"end":end,"status":get("STATUS"),"recurrence":recurrence,"recurrence_instance":instance,"recurrence_expanded":false,"has_recurrence_exceptions":event.properties.iter().any(|p|["EXDATE","RDATE"].contains(&p.name.as_str())),"sequence":get("SEQUENCE"),"source_updated":get("LAST-MODIFIED"),"source_url":url,"calendar_url":source.url,"verification":if source.verified_authority{"Source authority explicitly confirmed by user; schedule is publisher-supplied and can change"}else{"Unconfirmed source authority; independently verify before travel or registration"}}));
         }
     }
+    // Expand only a precisely supported subset; complex rules retain their original declaration.
+    let overridden = rows
+        .iter()
+        .filter(|r| {
+            r["recurrence_instance"]
+                .as_str()
+                .is_some_and(|s| !s.is_empty())
+        })
+        .filter_map(|r| r["uid"].as_str().map(str::to_owned))
+        .collect::<std::collections::HashSet<_>>();
+    let mut expanded = Vec::new();
+    for row in rows {
+        if !overridden.contains(row["uid"].as_str().unwrap_or("")) {
+            if let Some(instances) = expand_all_day(&row) {
+                if expanded.len() + instances.len() > 1000 {
+                    return Err("Expanded calendar exceeds 1000 occurrences".into());
+                }
+                expanded.extend(instances);
+                continue;
+            }
+        }
+        expanded.push(row);
+    }
+    let mut rows = expanded;
     rows.sort_by(|a, b| {
         a["start"]["date"]
             .as_str()
             .cmp(&b["start"]["date"].as_str())
     });
     Ok(
-        json!({"source":source,"fetched_at":command_center_core::now(),"events":rows,"skipped":skipped.into_iter().take(30).collect::<Vec<_>>(),"notice":"Recurring rules are retained but not expanded. All-day end dates are exclusive. Floating times require source verification. Monetary guarantees are never inferred from prose."}),
+        json!({"source":source,"fetched_at":command_center_core::now(),"events":rows,"skipped":skipped.into_iter().take(30).collect::<Vec<_>>(),"notice":"Simple all-day DAILY/WEEKLY rules with INTERVAL and COUNT or date UNTIL are expanded up to 366 occurrences. Complex rules, exceptions and timed recurrences remain unexpanded; verify them at the publisher. All-day end dates are exclusive. Floating times require source verification. Monetary guarantees are never inferred from prose."}),
     )
 }
 async fn refresh(state: &AppState, id: &str) -> Result<Value> {
@@ -469,4 +493,135 @@ pub async fn poll(app: &tauri::AppHandle) -> Result<()> {
         }
     }
     Ok(())
+}
+
+fn expand_all_day(row: &Value) -> Option<Vec<Value>> {
+    if row["start"]["all_day"] != true
+        || row["has_recurrence_exceptions"] == true
+        || row["status"] == "CANCELLED"
+    {
+        return None;
+    }
+    let rule = row["recurrence"].as_str()?;
+    if rule.is_empty() {
+        return None;
+    }
+    let mut parts = std::collections::BTreeMap::new();
+    for part in rule.split(';') {
+        let (key, value) = part.split_once('=')?;
+        if !["FREQ", "INTERVAL", "COUNT", "UNTIL"].contains(&key)
+            || parts.insert(key, value).is_some()
+        {
+            return None;
+        }
+    }
+    let unit = match *parts.get("FREQ")? {
+        "DAILY" => 1u64,
+        "WEEKLY" => 7,
+        _ => return None,
+    };
+    let interval = parts
+        .get("INTERVAL")
+        .map(|s| s.parse::<u64>().ok())
+        .unwrap_or(Some(1))?;
+    if interval == 0 || interval > 366 {
+        return None;
+    }
+    let count = parts
+        .get("COUNT")
+        .map(|s| s.parse::<usize>().ok())
+        .unwrap_or(Some(366))?;
+    if count == 0 || count > 366 {
+        return None;
+    }
+    let until = parts
+        .get("UNTIL")
+        .map(|s| NaiveDate::parse_from_str(s, "%Y%m%d").ok())
+        .transpose_option()?;
+    if !parts.contains_key("COUNT") && until.is_none() {
+        return None;
+    }
+    let start = NaiveDate::parse_from_str(row["start"]["date"].as_str()?, "%Y-%m-%d").ok()?;
+    if until.is_some_and(|u| u < start)
+        || (parts.contains_key("COUNT") && parts.contains_key("UNTIL"))
+    {
+        return None;
+    }
+    let end = row["end"]["date"]
+        .as_str()
+        .and_then(|s| NaiveDate::parse_from_str(s, "%Y-%m-%d").ok());
+    let duration = end.map(|d| d - start);
+    let mut rows = Vec::new();
+    for i in 0..count {
+        let date = start.checked_add_days(chrono::Days::new(
+            unit.checked_mul(interval)?.checked_mul(i as u64)?,
+        ))?;
+        if until.is_some_and(|u| date > u) {
+            break;
+        }
+        let mut instance = row.clone();
+        instance["id"] = json!(format!("{}:{}", row["id"].as_str()?, date));
+        instance["start"]["date"] = json!(date.to_string());
+        if let Some(duration) = duration {
+            instance["end"]["date"] = json!((date + duration).to_string());
+        }
+        instance["recurrence_instance"] = json!(date.to_string());
+        instance["recurrence_expanded"] = json!(true);
+        rows.push(instance);
+    }
+    if !parts.contains_key("COUNT")
+        && until.is_some_and(|u| {
+            rows.last()
+                .and_then(|r| r["start"]["date"].as_str())
+                .and_then(|s| NaiveDate::parse_from_str(s, "%Y-%m-%d").ok())
+                .and_then(|d| d.checked_add_days(chrono::Days::new(unit * interval)))
+                .is_some_and(|next| next <= u)
+        })
+    {
+        return None;
+    }
+    Some(rows)
+}
+trait TransposeOption<T> {
+    fn transpose_option(self) -> Option<Option<T>>;
+}
+impl<T> TransposeOption<T> for Option<Option<T>> {
+    fn transpose_option(self) -> Option<Option<T>> {
+        match self {
+            None => Some(None),
+            Some(Some(v)) => Some(Some(v)),
+            Some(None) => None,
+        }
+    }
+}
+#[cfg(test)]
+mod recurrence_tests {
+    use super::*;
+    fn row(rule: &str) -> Value {
+        json!({"id":"fixture","uid":"fixture","start":{"date":"2027-01-31","all_day":true},"end":{"date":"2027-02-01"},"recurrence":rule,"has_recurrence_exceptions":false})
+    }
+    #[test]
+    fn weekly_all_day_instances_preserve_exclusive_duration() {
+        let r = expand_all_day(&row("FREQ=WEEKLY;COUNT=3")).unwrap();
+        assert_eq!(r.len(), 3);
+        assert_eq!(r[1]["start"]["date"], "2027-02-07");
+        assert_eq!(r[1]["end"]["date"], "2027-02-08");
+        assert_ne!(r[0]["id"], r[1]["id"]);
+    }
+    #[test]
+    fn until_between_weekly_dates_does_not_drop_supported_rule() {
+        let r = expand_all_day(&row("FREQ=WEEKLY;UNTIL=20270215")).unwrap();
+        assert_eq!(r.len(), 3);
+        assert!(expand_all_day(&row("FREQ=WEEKLY;UNTIL=20260101")).is_none());
+        assert!(expand_all_day(&row("FREQ=DAILY;COUNT=3;UNTIL=20270215")).is_none());
+    }
+    #[test]
+    fn unsupported_or_unbounded_rules_remain_unexpanded() {
+        assert!(expand_all_day(&row("FREQ=MONTHLY;COUNT=3")).is_none());
+        assert!(expand_all_day(&row("FREQ=DAILY")).is_none());
+        let mut r = row("FREQ=DAILY;COUNT=3");
+        r["has_recurrence_exceptions"] = json!(true);
+        assert!(expand_all_day(&r).is_none());
+        assert!(expand_all_day(&row("FREQ=DAILY;UNTIL=invalid")).is_none());
+    }
 }

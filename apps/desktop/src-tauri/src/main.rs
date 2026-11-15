@@ -3,6 +3,7 @@ mod agent_plans;
 mod agent_schedules;
 mod agriculture;
 mod app_market;
+mod background_reminders;
 mod backups;
 mod bank_accounts;
 mod business_demo;
@@ -686,6 +687,9 @@ fn poll_reminders(app: &tauri::AppHandle) -> Result<()> {
     if !coordinating_peers.is_empty() {
         repo.prepare_sync()?;
     }
+    if !repo.acquire_reminder_poll(chrono::Utc::now().timestamp())? {
+        return Ok(());
+    }
     repo.activate_conditions()?;
     let p = preferences(&repo)?;
     if !p.notifications {
@@ -757,6 +761,13 @@ fn poll_reminders(app: &tauri::AppHandle) -> Result<()> {
     Ok(())
 }
 fn main() {
+    let background = std::env::args().any(|a| a == "--reminder-check");
+    let mut context = tauri::generate_context!();
+    if background {
+        for window in &mut context.config_mut().app.windows {
+            window.visible = false;
+        }
+    }
     tauri::Builder::default()
         .plugin(tauri_plugin_notification::init())
         .plugin(tauri_plugin_opener::init())
@@ -775,7 +786,7 @@ fn main() {
                 })
                 .build(),
         )
-        .setup(|app| {
+        .setup(move |app| {
             let dir = app.path().app_data_dir()?;
             std::fs::create_dir_all(&dir)?;
             let repo =
@@ -792,6 +803,34 @@ fn main() {
                 vault: Mutex::new(None),
                 jobs: Mutex::new(HashMap::new()),
             });
+            if background {
+                let handle = app.handle().clone();
+                tauri::async_runtime::spawn(async move {
+                    let allowed = handle
+                        .state::<AppState>()
+                        .repo
+                        .lock()
+                        .ok()
+                        .and_then(|repo| repo.setting("background_reminders").ok().flatten())
+                        .as_deref()
+                        == Some("true");
+                    if allowed {
+                        let result = poll_reminders(&handle);
+                        if let Ok(repo) = handle.state::<AppState>().repo.lock() {
+                            let _ = repo.set_setting(
+                                "background_reminder_check",
+                                &command_center_core::now(),
+                            );
+                            let _ = repo.set_setting(
+                                "background_reminder_error",
+                                result.err().as_deref().unwrap_or(""),
+                            );
+                        }
+                    }
+                    handle.exit(0);
+                });
+                return Ok(());
+            }
             if let Err(error) = app
                 .global_shortcut()
                 .register("CommandOrControl+Shift+Space")
@@ -864,7 +903,11 @@ fn main() {
             backups::forget_backup_schedule,
             backups::run_scheduled_backup,
             productivity::mark_discovery,
+            background_reminders::background_reminder_status,
+            background_reminders::configure_background_reminders,
             productivity::automation_snapshot,
+            productivity::research_collections,
+            productivity::save_research_collections,
             productivity::save_automation,
             productivity::run_automation,
             productivity::plan_tasks,
@@ -927,6 +970,7 @@ fn main() {
             google_accounts::read_google_account,
             google_accounts::disconnect_google_account,
             mcp_tools::mcp_connections,
+            mcp_tools::mcp_health,
             mcp_tools::save_mcp_connection,
             mcp_tools::remove_mcp_connection,
             mcp_tools::preview_mcp_call,
@@ -1006,7 +1050,7 @@ fn main() {
             vault::attach_vault_file,
             vault::export_vault_file
         ])
-        .run(tauri::generate_context!())
+        .run(context)
         .expect("Could not launch Personal Command Center");
 }
 

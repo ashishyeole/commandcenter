@@ -335,3 +335,22 @@ pub fn update_task_reminder(
         .map_err(|_| "Database unavailable")?
         .update_task_reminder(&id, revision, cadence, acknowledge)
 }
+
+#[tauri::command]
+pub fn research_collections(state: State<AppState>) -> Result<Value> {
+    let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+    Ok(
+        json!({"collections":repo.research_collections()?,"snapshots":repo.research_query_snapshots()?}),
+    )
+}
+#[tauri::command]
+pub fn save_research_collections(
+    state: State<AppState>,
+    collections: Vec<command_center_core::collections::Collection>,
+) -> Result<()> {
+    state
+        .repo
+        .lock()
+        .map_err(|_| "Database unavailable")?
+        .save_research_collections(&collections)
+}

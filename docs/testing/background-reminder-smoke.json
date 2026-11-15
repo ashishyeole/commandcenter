@@ -1,0 +1,9 @@
+{
+  "profile": "com.personal.commandcenter.qa",
+  "exit_code": 0,
+  "enabled_check_exercised": true,
+  "desktop_notifications_enabled": false,
+  "last_check_recorded": true,
+  "os_task_registered": false,
+  "real_profile_touched": false
+}

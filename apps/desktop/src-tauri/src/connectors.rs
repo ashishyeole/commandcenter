@@ -410,7 +410,7 @@ pub async fn refresh_source(
         }
         _ => return Err("Unsupported public source".into()),
     }
-    let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+    let mut repo = state.repo.lock().map_err(|_| "Database unavailable")?;
     if state.data_epoch.load(std::sync::atomic::Ordering::SeqCst) != epoch {
         return Err("Data was reset during request".into());
     }
@@ -451,7 +451,10 @@ pub async fn refresh_source(
         }
     }
     repo.set_setting(&format!("feed_query:{source}"), &query)?;
-    repo.cache_feed(&source, &payload)
+    repo.cache_research_query(&source, &query, &payload)?;
+    let feed = repo.cache_feed(&source, &payload)?;
+    repo.evaluate_watchlists()?;
+    Ok(feed)
 }
 #[tauri::command]
 pub fn cancel_ai(state: State<AppState>, request_id: String) -> Result<()> {

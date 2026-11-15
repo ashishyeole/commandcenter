@@ -428,3 +428,12 @@ pub async fn run_mcp_request(
     }
     result
 }
+
+/// Health is derived from reviewed request history; this never pings an endpoint.
+#[tauri::command]
+pub fn mcp_health(state: State<AppState>) -> Result<Value> {
+    let connections = connections(&state)?;
+    let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+    let records = repo.records("", false)?;
+    Ok(json!(connections.into_iter().map(|c|{let latest=records.iter().filter(|r|r.module=="missions"&&r.fields.get("connection_id")==Some(&c.id)).max_by(|a,b|a.updated_at.cmp(&b.updated_at));json!({"id":c.id,"name":c.name,"enabled":c.enabled,"last_status":latest.map(|r|r.status.as_str()),"last_at":latest.map(|r|r.updated_at.as_str()),"last_operation":latest.and_then(|r|r.fields.get("tool")),"note":"Last observed request outcome; no connectivity or publisher trust guarantee."})}).collect::<Vec<_>>()))
+}

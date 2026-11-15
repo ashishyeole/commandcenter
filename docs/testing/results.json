@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-15T05:09:36.862000+00:00",
+  "generated_at": "2026-11-15T05:35:57.793624+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
-  "rust_test_executions": 27,
-  "rust_distinct_tests": 25,
+  "rust_test_executions": 39,
+  "rust_distinct_tests": 37,
   "python_tests": 10,
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
@@ -77,6 +77,21 @@
       "status": "PASS (automated)",
       "area": "Discovery-only scope and model-free briefings",
       "evidence": "Two catalogue parser tests cover trusted model paths, deduplication, plain metadata and provider-layout failure; two briefing tests cover selected-record inclusion/exclusion, bounds and invalid dates. Frontend compiles. No model downloaded; new UI/live-provider acceptance not claimed."
+    },
+    {
+      "status": "PASS (automated)",
+      "area": "Collections, watch thresholds and ownership",
+      "evidence": "Six new repository tests: collection/query persistence and cache bounds, numeric watch thresholds with disabled/duplicate handling, explicit owner links and rejected invalid/cyclic ownership. Frontend and native builds pass. New UI workflows not yet native-tested."
+    },
+    {
+      "status": "PASS (automated)",
+      "area": "Bounded calendar recurrence",
+      "evidence": "Daily/weekly all-day expansion tests preserve event duration and reject unsupported/unbounded rules. Timed, monthly, BYDAY and exception expansion remain unsupported."
+    },
+    {
+      "status": "PASS (selected isolated checks)",
+      "area": "After-quit reminder implementation",
+      "evidence": "OS schedule registration/removal code for macOS LaunchAgents and Windows Task Scheduler; scheduler string serialization and cross-connection lease tests. QA --reminder-check process passed disabled and enabled checks with desktop notifications off. No OS task registered; real scheduled delivery and Windows runtime remain unverified."
     }
   ]
 }

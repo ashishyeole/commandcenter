@@ -177,6 +177,67 @@ impl Repository {
     }
     pub fn save_record(&mut self, mut record: Record) -> Result<Record> {
         record.title = record.title.trim().into();
+        if record.module == "watchlists"
+            && record.fields.get("monitor").map(String::as_str) == Some("enabled")
+        {
+            let field = |k: &str| record.fields.get(k).map(String::as_str).unwrap_or("");
+            if !["stars", "downloads"].contains(&field("metric"))
+                || !["at_least", "at_most"].contains(&field("operator"))
+                || !field("target")
+                    .parse::<f64>()
+                    .is_ok_and(|n| n.is_finite() && n >= 0.0)
+            {
+                return Err("Enabled watchlists require stars/downloads, at_least/at_most and a finite nonnegative numeric target".into());
+            }
+            let url = url::Url::parse(field("source"))
+                .map_err(|_| "Watchlist source must be an exact discovery URL")?;
+            let host = if field("metric") == "stars" {
+                "github.com"
+            } else {
+                "huggingface.co"
+            };
+            if url.scheme() != "https"
+                || url.host_str() != Some(host)
+                || !url.username().is_empty()
+                || url.password().is_some()
+            {
+                return Err(
+                    "Watchlist metric must match its GitHub or Hugging Face HTTPS source".into(),
+                );
+            }
+        }
+
+        if let Some(owner) = record
+            .fields
+            .get("workspace_owner")
+            .filter(|id| !id.is_empty())
+            .cloned()
+        {
+            let records = self.records("", false)?;
+            let parent = records
+                .iter()
+                .find(|r| r.id == owner)
+                .ok_or("Workspace owner is unavailable; clear or replace it")?;
+            if !["projects", "companies"].contains(&parent.module.as_str()) {
+                return Err("Owner must be a project or company".into());
+            }
+            let mut seen = std::collections::HashSet::from([record.id.clone()]);
+            let mut current = Some(owner.clone());
+            while let Some(id) = current {
+                if !seen.insert(id.clone()) {
+                    return Err("Workspace ownership cannot form a cycle".into());
+                }
+                current = records
+                    .iter()
+                    .find(|r| r.id == id)
+                    .and_then(|r| r.fields.get("workspace_owner"))
+                    .filter(|s| !s.is_empty())
+                    .cloned();
+            }
+            if !record.links.contains(&owner) {
+                record.links.push(owner);
+            }
+        }
         record.validate()?;
         let tx = self.conn.transaction().map_err(err)?;
         let old: Option<(i64, String, String)> = tx
