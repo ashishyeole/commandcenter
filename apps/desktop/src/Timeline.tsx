@@ -1,0 +1,10 @@
+import {useState} from 'react';
+import {invoke,isTauri} from '@tauri-apps/api/core';
+import {WorkspaceRecord,WorkspaceState} from './modules';
+import {Item} from './domain';
+export function Timeline({data,reload,open}:{data:WorkspaceState;reload:()=>Promise<void>;open:(id:string)=>void}){
+ const [trash,setTrash]=useState<{items:Item[];records:WorkspaceRecord[]}|null>(null),[error,setError]=useState('');
+ async function refresh(){try{setTrash(await invoke('trash'));}catch(e){setError(String(e));}}
+ async function restore(record:Item|WorkspaceRecord){try{await invoke('module' in record?'save_record':'save_item',{['module' in record?'record':'item']:{...record,deleted_at:null}});await refresh();await reload();}catch(e){setError(String(e));}}
+ return <><div className="section-heading"><h2>Local timeline</h2><button className="secondary" disabled={!isTauri()} onClick={refresh}>View recoverable trash</button></div>{error&&<div className="error" role="alert">{error}</div>}{trash&&<section className="panel"><h2>Trash</h2><p>Deletion markers are retained for recovery and future synchronization.</p>{[...trash.items,...trash.records].map(r=><div className="timeline-row" key={r.id}><span>{r.title}</span><button className="secondary" onClick={()=>restore(r)}>Restore</button></div>)}{!trash.items.length&&!trash.records.length&&<p>Trash is empty.</p>}</section>}<div className="timeline">{data.history.map(event=>{let title=event.entity_id;try{title=JSON.parse(event.payload).title||title;}catch{}return <div className="timeline-row" key={event.event_id}><div><button className="item-title" onClick={()=>open(event.entity_id)}>{title}</button><small>{event.operation} · revision {event.revision} · device {event.device_id.slice(0,8)}</small></div><time>{new Date(event.timestamp).toLocaleString()}</time></div>;})}{!data.history.length&&<div className="empty">Your local activity will appear here.</div>}</div><small>Showing the latest 300 changes. Full history is included in matching exports.</small></>;
+}

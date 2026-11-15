@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>NSLocalNetworkUsageDescription</key><string>Discover and connect to devices you explicitly pair with, and exchange only the record categories you approve.</string>
+<key>NSBonjourServices</key><array><string>_pcc-sync._tcp</string></array>
+<key>NSMicrophoneUsageDescription</key><string>Capture speech only when you explicitly start desktop dictation.</string>
+<key>NSSpeechRecognitionUsageDescription</key><string>Transcribe speech using on-device recognition, with no cloud fallback.</string>
+</dict></plist>

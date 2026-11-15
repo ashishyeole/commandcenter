@@ -1,0 +1,5 @@
+expected   CRC32 $3D750F6F
+/dev/disk29         	EF57347C-0000-11AA-AA11-0030654	
+/dev/disk29s1       	41504653-0000-11AA-AA11-0030654	/private/tmp/pcc-final-dmg
+/dev/disk4          	GUID_partition_scheme          	
+/dev/disk4s1        	Apple_APFS                     	

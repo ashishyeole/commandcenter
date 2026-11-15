@@ -1,0 +1,3 @@
+[workspace]
+members = ["crates/core", "apps/desktop/src-tauri", "crates/mobile-peer"]
+resolver = "2"

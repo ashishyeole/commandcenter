@@ -1,0 +1,12 @@
+{
+  "identifier": "main",
+  "description": "Local main window only; no shell, network, or general filesystem plugin.",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "notification:allow-request-permission",
+    "notification:allow-is-permission-granted"
+  ]
+}

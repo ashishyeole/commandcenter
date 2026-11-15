@@ -1,0 +1,53 @@
+{
+  "version": "0.5.0",
+  "generated_at": "2026-11-15T04:52:48.076603+00:00",
+  "runtime_tested": false,
+  "isolated_mac_qa_smoke_tested": true,
+  "production_signed": false,
+  "artifacts": [
+    {
+      "platform": "macOS app",
+      "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app",
+      "bytes": 78256238,
+      "sha256": "e1e9d0057e307f2f5c4471f77121bee8646bbd73060fbb26fd9609487588e6ce",
+      "hash_method": "SHA-256 of compact UTF-8 JSON array sorted by relative path; each entry has path plus file sha256 or symlink target; object keys sorted",
+      "files": 5
+    },
+    {
+      "platform": "macOS DMG",
+      "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/dmg/Personal Command Center_0.5.0_arm64.dmg",
+      "bytes": 22919305,
+      "sha256": "f082e7f3fdc6bcae217612e44138bee6bd38489851a25eed73caf39cb0b25e70",
+      "hash_method": "SHA-256 of file bytes",
+      "files": 1
+    },
+    {
+      "platform": "iOS Simulator app",
+      "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/mobile-ios-final/Build/Products/Debug-iphonesimulator/CommandCenter.app",
+      "bytes": 36402557,
+      "sha256": "2b06e246c5cb10f5d5a55e113a36fce527ded8ea71361880ac365c67e5293d98",
+      "hash_method": "SHA-256 of compact UTF-8 JSON array sorted by relative path; each entry has path plus file sha256 or symlink target; object keys sorted",
+      "files": 5
+    },
+    {
+      "platform": "Android ARM64 debug APK",
+      "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/mobile-android/app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 159041476,
+      "sha256": "83705da8a7efbcdb4d0ff8b698f42cdf9ba088a7d7f7a9dcb3627d2a1eea31d3",
+      "hash_method": "SHA-256 of file bytes",
+      "files": 1
+    }
+  ],
+  "dependency_locks": {
+    "Cargo.lock": "6e1fcf7a25bcd6387ffa338d4e50d1750be0a8bf731456188ea9ed19728cef80",
+    "package-lock.json": "6214c3fbe1431dcb0f79a0a72bfc9055c6b29b4f39e2e2bef874d3341d79721b",
+    "deploy/terraform/.terraform.lock.hcl": "f9fc2ad61bee7285d680c398dd09896ad08ab13891b99ecfa62fc4f7bb6c6278",
+    "services/optional-host/requirements-push.lock": "41028b323e5c10b607a2ebbd362a925f2713767546bcf8a7e66fbbb2f1f522e3"
+  },
+  "packaging_notes": [
+    "macOS development app/DMG, iOS Simulator app and Android debug APK only.",
+    "iOS shared Rust symbols are defined in the bundle; no developer libpcc dylib dependency.",
+    "macOS voice bridge is bundled and referenced through @rpath.",
+    "A separately identified macOS QA app passed selected native workflows. Normal artifacts have not all received runtime acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage."
+  ]
+}

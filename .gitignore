@@ -1,0 +1,32 @@
+node_modules/
+dist/
+target/
+.DS_Store
+*.db*
+*.pacc
+*.zip
+.env*
+!.env.example
+
+# Native mobile build outputs
+.gradle/
+build/
+local.properties
+*.xcuserstate
+xcuserdata/
+DerivedData/
+
+# Generated shared mobile core libraries (rebuild from crates/mobile-peer)
+apps/mobile-android/app/src/main/jniLibs/
+
+# Generated macOS speech bridge
+apps/desktop/src-tauri/native/generated/
+
+# Optional hosted service Python compilation
+__pycache__/
+*.pyc
+# Infrastructure local state and plans
+.terraform/
+*.tfstate*
+*.tfplan
+*.tfvars

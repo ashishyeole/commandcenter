@@ -1,0 +1,15 @@
+test_delayed_invalid_result_cannot_disable_rotated_registration (test_push.PushTests.test_delayed_invalid_result_cannot_disable_rotated_registration) ... ok
+test_duplicate_event_and_rate_limit_do_not_resend (test_push.PushTests.test_duplicate_event_and_rate_limit_do_not_resend) ... ok
+test_explicit_send_approval (test_push.PushTests.test_explicit_send_approval) ... ok
+test_invalid_token_disables_current_registration (test_push.PushTests.test_invalid_token_disables_current_registration) ... ok
+test_other_subject_cannot_replace_delete_or_send (test_push.PushTests.test_other_subject_cannot_replace_delete_or_send) ... ok
+test_reader_cannot_register (test_push.PushTests.test_reader_cannot_register) ... ok
+test_registration_encrypted_and_listing_redacted (test_push.PushTests.test_registration_encrypted_and_listing_redacted) ... ok
+test_remove_registration_blocks_future_send (test_push.PushTests.test_remove_registration_blocks_future_send) ... ok
+test_token_bound_to_tenant_subject_device (test_push.PushTests.test_token_bound_to_tenant_subject_device) ... ok
+test_unknown_outcome_reserved_without_retry (test_push.PushTests.test_unknown_outcome_reserved_without_retry) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.016s
+
+OK

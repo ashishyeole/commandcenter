@@ -1,0 +1,29 @@
+
+> personal-command-center@0.5.0 build
+> npm run build -w apps/desktop
+
+
+> @command-center/desktop@0.5.0 build
+> tsc --noEmit && vite build
+
+vite v6.4.6 building for production...
+transforming...
+✓ 1629 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                         0.37 kB │ gzip:  0.27 kB
+dist/assets/index-DWbY_zeh.css         22.89 kB │ gzip:  6.11 kB
+dist/assets/link-BY-tMd38.js            0.43 kB │ gzip:  0.30 kB
+dist/assets/download-DDkKa47_.js        0.43 kB │ gzip:  0.32 kB
+dist/assets/Timeline-CW1y_Jyd.js        1.84 kB │ gzip:  0.84 kB
+dist/assets/InboxSources-D_vqoumQ.js    4.03 kB │ gzip:  1.73 kB
+dist/assets/Automations-BfY1PYP8.js     8.29 kB │ gzip:  3.09 kB
+dist/assets/Assistant-Dgj6XFsL.js      14.57 kB │ gzip:  4.85 kB
+dist/assets/DeviceSync-D4KeGYUL.js     16.60 kB │ gzip:  5.65 kB
+dist/assets/Discovery-DYtet81M.js      17.70 kB │ gzip:  6.46 kB
+dist/assets/DataPrivacy-DfEJ93i6.js    19.59 kB │ gzip:  6.17 kB
+dist/assets/Vault-DfACNO76.js          22.40 kB │ gzip:  6.58 kB
+dist/assets/Settings-StvgTx4Z.js       44.12 kB │ gzip: 12.05 kB
+dist/assets/Workspaces-DbCfYzAs.js     95.84 kB │ gzip: 28.34 kB
+dist/assets/index-B4X2vc6f.js         288.17 kB │ gzip: 89.15 kB
+✓ built in 785ms

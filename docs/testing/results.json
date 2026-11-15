@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-11-15T04:51:56.973825+00:00",
+  "version": "0.5.0",
+  "host": "macOS ARM64",
+  "rust_test_executions": 23,
+  "rust_distinct_tests": 21,
+  "python_tests": 10,
+  "failures_in_final_automated_runs": 0,
+  "full_prd_acceptance": false,
+  "results": [
+    {
+      "status": "PASS",
+      "area": "Rust storage/archive",
+      "evidence": "7 tests: persistence, recurrence, FTS, stale edits, import atomicity/idempotence, archive tampering/passwords and CSV protection."
+    },
+    {
+      "status": "PASS",
+      "area": "Causal sync and attachments",
+      "evidence": "8 integration tests: parent scope on both sides, checksums, reopen, duplicate retry, concurrent note edits, delete-versus-index conflicts, immutable file identity and 10 MiB files."
+    },
+    {
+      "status": "PASS",
+      "area": "Encrypted transport",
+      "evidence": "Two real localhost Noise tests run in both desktop/mobile targets: 14 MiB framed round trip and wrong pinned-key rejection. Synthetic keys only; no real device pairing."
+    },
+    {
+      "status": "PASS",
+      "area": "Native push server",
+      "evidence": "10 Python tests with provider calls mocked: consent, ownership, encrypted/redacted tokens, replay/rate limits, ambiguous sends, revocation and token-rotation race."
+    },
+    {
+      "status": "PASS",
+      "area": "Frontend and native compilation",
+      "evidence": "TypeScript/Vite build and native Rust test targets compile on this Mac."
+    },
+    {
+      "status": "PASS",
+      "area": "Mac DMG integrity/copy",
+      "evidence": "DMG checksum validation and read-only mount succeeded. Version 0.5.0 ARM64 app and Applications shortcut verified; copied to a temporary folder and signature rechecked."
+    },
+    {
+      "status": "FIXED",
+      "area": "Mac development signature",
+      "evidence": "Found an incomplete resource seal. Added explicit ad-hoc signing and verification to the debug-DMG packaging script; rebuilt DMG passes strict deep verification."
+    },
+    {
+      "status": "FIXED",
+      "area": "Native startup crash",
+      "evidence": "App launch exposed missing updater plugin configuration. Added empty pubkey/endpoints configuration; public keys remain supplied by the reviewed update flow. Regression test passes and isolated native app now launches. Normal Mac app and DMG rebuilt."
+    },
+    {
+      "status": "NOT READY",
+      "area": "Mac production trust",
+      "evidence": "Gatekeeper assessment rejects the development app. Ad-hoc signing is not Developer ID signing/notarization."
+    },
+    {
+      "status": "PASS (selected workflows)",
+      "area": "Mac native UI / launch workflows",
+      "evidence": "Separate com.personal.commandcenter.qa profile: launch, pinned Markdown note create/edit/search, original attachment import and safe preview, monthly Jan 31 \u2192 Feb 28 recurrence, quit/relaunch persistence, readable and encrypted archive export/duplicate-safe restore, wrong-password rejection. ZIP checksums and original attachment bytes independently match. This is a smoke test, not all-feature acceptance."
+    },
+    {
+      "status": "PENDING CI",
+      "area": "Windows build / installer / runtime",
+      "evidence": "GitHub Actions Mac/Windows check workflow is configured for push to the new repository. Awaiting a successful Windows run; no EXE or Windows runtime acceptance yet."
+    },
+    {
+      "status": "NOT RUN",
+      "area": "Other live feature acceptance",
+      "evidence": "Live account feeds, microphones, Ollama/cloud models, real APNs/FCM delivery, cross-device LAN pairing, background reminders and signed updates were not exercised. No real sends or account connections."
+    },
+    {
+      "status": "PASS (automated)",
+      "area": "Per-task desktop reminder controls",
+      "evidence": "Three integration tests: acknowledgement persists across reopen, next recurrence remains eligible, stale edits rejected, daily/hourly/once/muted policies, snooze timing and invalid targets. Frontend and native compilation pass; new UI controls not yet runtime-tested."
+    }
+  ]
+}

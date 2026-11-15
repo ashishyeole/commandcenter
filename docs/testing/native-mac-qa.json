@@ -1,0 +1,27 @@
+{
+  "tested_at": "2026-11-15T03:37:55.533690+00:00",
+  "bundle_id": "com.personal.commandcenter.qa",
+  "profile": "Dedicated QA profile; synthetic fixtures only",
+  "startup_defect": "Missing updater plugin Config caused PluginInitialization panic; fixed explicit empty pubkey/endpoints, added regression test.",
+  "observed_pass": [
+    "Native launch",
+    "Pinned Markdown note create/edit and keyword search",
+    "75-byte text attachment native import and safe preview",
+    "Monthly task January 31 2027 advances to February 28 2027",
+    "Note and task persist after full quit/relaunch",
+    "Readable ZIP export and preview: 0 new, 3 duplicates, 0 conflicts",
+    "ZIP restore: 0 imported, existing records kept",
+    "Encrypted backup export",
+    "Wrong password rejected: Wrong password or damaged backup",
+    "Correct password preview: 0 new, 3 duplicates, 0 conflicts",
+    "Encrypted restore: 0 imported, existing records kept"
+  ],
+  "limits": [
+    "Selected smoke workflows only",
+    "No clean-profile restore",
+    "No real accounts, providers, sends or production data",
+    "QA build changes identifier/product name only; final normal DMG integrity checked separately"
+  ],
+  "manifest_checksums_match": true,
+  "original_attachment_bytes_match": true
+}

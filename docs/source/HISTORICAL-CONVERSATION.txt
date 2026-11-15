@@ -1,0 +1,1518 @@
+
+I want to build an all-in-one desktop app for myself only for now, which will be installed on Mac and Windows, and maybe later in app stores as well, but predominantly on my desktop or my MacBook, where it will help me track my interests, like Git repositories, trending Git repositories, trending LLMs, trending learnings, or trending new tech, trending YouTube channels, or from where I could get the ideas for my own channel, also trending new apps, apps which are climbing fast on app stores, which are really good and which can be helpful for me to kind of bring in those ideas into my own apps. Also, I want to make sure that I am not missing out on any robotics, like I really want to build my own robot, and I want to build it, like do some research in that, where I could do maybe aquatic robots or aerial drones, any type of robotics which will have value in future and I would be able to start on it easily, and also an option to kind of customize it, add additional functionalities, also a planner, which would allow me to kind of quickly search, an AI agent, which would AI assistant, which would help me just quickly find the topics and land me on those topics, local memory, local AI, as much as we could, like use built-in capabilities of Windows and Mac for AI and storage and everything. Also daily reminders, daily news feeds, daily feeds of all these new repos and all that, that should be one of the sections. What else? Can you list down whatever I have said, whatever you have understood, and maybe then I'll go through it and then give you more requirements? Just high-level requirements, list of requirements you have understood so far.
+…
+Personal AI Command Center — High-Level Requirements (V0.1)
+What I understand is that you want to build a personal, AI-powered desktop intelligence and productivity platform that continuously discovers interesting technology, helps you learn, generates ideas, organizes your research, and assists you in turning those ideas into actual projects.
+
+This is more than a news aggregator. It is a combination of a technology radar, personal research assistant, AI agent, learning hub, idea incubator, and daily planner, with a strong local-first approach.
+
+Initially, this will be exclusively for your own use, but the architecture should allow future distribution through the Mac App Store, Microsoft Store, or potentially as a commercial product.
+
+1. Platform and core architecture
+ID
+
+Requirement
+
+P01
+
+Native-feeling desktop application for Windows and macOS
+
+P02
+
+Local-first architecture, functioning offline wherever possible
+
+P03
+
+Maximize local AI inference instead of depending entirely on cloud APIs
+
+P04
+
+Use built-in macOS and Windows capabilities for AI, storage, search, notifications, and security
+
+P05
+
+Local database for content, preferences, research, and history
+
+P06
+
+Modular architecture to add new functionality without redesigning the application
+
+P07
+
+Optional cloud synchronization between desktop devices
+
+P08
+
+Future compatibility with Microsoft Store and Mac App Store distribution
+
+P09
+
+Background data collection and scheduled updates
+
+2. Technology discovery and trend intelligence
+This is one of the most important parts of the application.
+
+Top 10 Trending GitHub Repositories This Week (August 2026) | IndieStartup
+A. GitHub and open-source intelligence
+
+Discover trending repositories, rapidly growing projects, useful developer tools, emerging frameworks, and innovative open-source software. Track stars, forks, contributors, releases, and growth velocity.
+
+B. LLM and AI model intelligence
+
+Track new LLMs, multimodal models, reasoning models, coding models, local inference models, AI frameworks, benchmarks, and Hugging Face releases. Highlight models that could run locally.
+
+Intel Backs Terafab’s AI Hardware Megafab - AI CERTs News
+C. Emerging technology radar
+
+Discover new technologies, research breakthroughs, developer platforms, AI agents, automation tools, new products, and technologies gaining adoption.
+
+WePlay stürmt die deutschen Unterhaltung-Charts: Platz 1 bei Google Play und App Store
+D. Mobile application intelligence
+
+Identify fast-growing iOS and Android applications, rising app categories, innovative UX patterns, useful features, monetization models, and ideas applicable to your own products.
+
+Bog's YouTuber Academy
+E. YouTube and creator intelligence
+
+Discover trending channels, fast-growing videos, emerging content categories, popular formats, and subjects that could inspire videos for your own channel.
+
+3. Robotics and autonomous systems research
+A dedicated research workspace for your long-term ambition of building your own robots.
+
+Menlo Research launches open-source humanoid kit built for 3D printing | Prism News
+Humanoid and general robotics
+
+Actuators, sensors, controllers, manipulation, mobility, and affordable robotics platforms.
+
+Virginia Tech College of Engineering moves ahead in Best Graduate Schools survey by 'U.S. News'   | Virginia Tech News | Virginia Tech
+Aerial robotics
+
+Drones, autonomous flight, navigation, computer vision, and inspection systems.
+
+ROV subacqueo di intervento - ROV - Boxfish Research - di osservazione / per acquacoltura / per fotogrammetria
+Aquatic robotics
+
+Underwater ROVs, autonomous surface vessels, inspection, and environmental monitoring.
+
+Building Robaka*, a small robocar prototype | by Alex Makarov | Medium
+Ground robotics
+
+Rovers, agricultural robotics, surveillance, navigation, and autonomous mobile platforms.
+
+Required capabilities:
+
+Track new robotics research, repositories, hardware, and projects.
+
+Identify beginner-friendly, affordable projects you can build yourself.
+
+Compare complexity, estimated costs, required components, and practical applications.
+
+Discover commercially valuable future robotics opportunities.
+
+Save projects into a personal robotics research workspace.
+
+Expand the system with additional robotics categories over time.
+
+4. Personal AI assistant and agent
+A central conversational AI assistant that understands the information collected throughout the application.
+
+ID
+
+Requirement
+
+AI01
+
+Natural-language interface for searching all collected information
+
+AI02
+
+AI-powered summaries of repositories, models, videos, articles, and projects
+
+AI03
+
+Semantic search using local embeddings and vector search
+
+AI04
+
+Persistent personal memory of interests, saved research, and projects
+
+AI05
+
+Support locally installed LLMs
+
+AI06
+
+Optional cloud AI models for tasks beyond local capabilities
+
+AI07
+
+AI agent capable of performing multi-step research
+
+AI08
+
+Ability to navigate directly to relevant content, sources, and saved items
+
+AI09
+
+Personalized recommendations based on interests and previous activity
+
+AI10
+
+Ability to turn research discoveries into ideas, notes, tasks, or projects
+
+Example interaction:
+
+"Find the most promising open-source robotics projects from the past 30 days that I could build for under $1,000, compare them, and create a research plan."
+
+The AI assistant should be able to work across multiple sections rather than being restricted to one content source.
+
+5. Daily intelligence feed and news dashboard
+A unified home screen for everything important happening across your interests.
+
+ILLUSTRATIVE DASHBOARD
+
+Your Daily Radar
+Personalized
+GitHub
+
+12 new
+AI Models
+
+8 new
+Robotics
+
+5 updates
+App Trends
+
+7 movers
+AI-curated briefing
+
+Top discoveries, why they matter, relevance to your interests, and suggested next actions.
+
+Save for later
+Research further
+Create task
+Illustrative layout and counts, not live data.
+
+Additional requirements include configurable refresh frequency, category filtering, deduplication, relevance ranking, bookmarks, read/unread status, and historical trend tracking.
+
+6. Personal planner, reminders, and productivity
+ID
+
+Requirement
+
+PL01
+
+Daily, weekly, and monthly planner
+
+PL02
+
+Quick task creation using natural language
+
+PL03
+
+Daily reminders and desktop notifications
+
+PL04
+
+Research-related task management
+
+PL05
+
+Learning schedules and progress tracking
+
+PL06
+
+Ability to convert discovered content into actionable tasks
+
+PL07
+
+Search across notes, tasks, saved articles, and research
+
+PL08
+
+AI-generated daily priorities
+
+PL09
+
+Optional integration with existing calendars
+
+7. Learning and personal development hub
+A workspace that helps you continuously develop new technical skills.
+
+Track trending technical skills and emerging learning topics.
+
+Discover tutorials, courses, technical articles, and educational YouTube content.
+
+Create personalized learning paths.
+
+Save learning resources and notes.
+
+Track learning progress.
+
+Ask the AI assistant to explain concepts or build practical exercises.
+
+Link learning topics to real projects.
+
+8. Idea discovery and innovation workspace
+This is an additional section I would recommend based on your goal of applying discoveries to your own projects.
+
+ID
+
+Requirement
+
+ID01
+
+Capture ideas from GitHub, videos, articles, apps, and robotics research
+
+ID02
+
+AI-assisted idea generation
+
+ID03
+
+Identify reusable features and technology from discovered projects
+
+ID04
+
+Organize ideas by category and project
+
+ID05
+
+Compare existing solutions and competitors
+
+ID06
+
+Evaluate feasibility, effort, and potential value
+
+ID07
+
+Convert an idea into a research project or implementation plan
+
+ID08
+
+Maintain an evolving personal idea backlog
+
+For example, a fast-growing fitness app might lead to an idea for your own fitness product, while a robotics repository could become a prototype project.
+
+9. Local memory, storage, and privacy
+The application should maintain a long-lived personal knowledge base.
+
+Local storage of feeds, bookmarks, notes, research, and AI conversations.
+
+Local vector database for semantic retrieval.
+
+Persistent memory of your interests and preferences.
+
+Offline access to previously collected information.
+
+Local model management.
+
+Secure storage for API keys and credentials.
+
+Backup, export, and restore functionality.
+
+Optional synchronization across your Windows PC and MacBook.
+
+Control over which information is processed locally versus in the cloud.
+
+10. Extensibility and customization
+The system should be flexible enough that you can keep expanding it without rebuilding the core.
+
+Modular feature architecture.
+
+Add or remove dashboard widgets.
+
+Configure categories, sources, and interests.
+
+Add custom RSS feeds, APIs, websites, and repositories.
+
+Custom alerts and discovery rules.
+
+Support additional AI models and agents.
+
+Future plugin or extension architecture.
+
+Configurable dashboards and saved views.
+
+11. Proposed application navigation
+Personal AI Command Center
+Home & Daily Brief
+
+Technology Radar
+
+GitHub Explorer
+
+AI & LLM Explorer
+
+App Trends
+
+YouTube Trends
+
+Robotics Lab
+
+Learning Hub
+
+Idea Lab
+
+Planner
+
+Knowledge & Memory
+
+AI Assistant
+
+Settings & Extensions
+
+12. High-level priority classification
+My proposed prioritization, subject to your review:
+
+Module
+
+Priority
+
+Windows and macOS desktop application
+
+P0
+
+Unified daily intelligence dashboard
+
+P0
+
+GitHub trending discovery
+
+P0
+
+LLM and AI model discovery
+
+P0
+
+Technology news and research
+
+P0
+
+AI assistant and semantic search
+
+P0
+
+Local database and memory
+
+P0
+
+YouTube trending discovery
+
+P0
+
+Mobile app trends
+
+P0
+
+Robotics research hub
+
+P0
+
+Planner and reminders
+
+P0
+
+Learning hub
+
+P1
+
+Idea lab
+
+P1
+
+Advanced autonomous research agents
+
+P1
+
+Custom extensions and integrations
+
+P1
+
+Cross-device synchronization
+
+P2
+
+Public app store distribution
+
+P2
+
+P0 means essential for the initial application, P1 is a subsequent enhancement, and P2 is a later expansion.
+
+13. Additional capabilities worth considering
+These are suggestions, not yet confirmed requirements.
+
+Opportunity scoring: AI rates discoveries based on novelty, growth, practical value, and relevance to your projects.
+
+Technology relationship graph: Visually connect repositories, AI models, research papers, startups, and ideas.
+
+Research paper intelligence: Track arXiv, robotics publications, AI papers, and technical breakthroughs.
+
+Startup and product launch radar: Monitor Product Hunt, Hacker News, and emerging startups.
+
+Automated research agents: Schedule research tasks that investigate a topic and produce a structured report.
+
+Build Lab: A workspace that takes an idea through research, architecture, prototype, and implementation.
+
+Local development environment integration: Connect to VS Code, Git, local repositories, and development tools.
+
+Personalized alerts: Notify you when a repository, technology, or product crosses a growth threshold.
+
+Content creation assistant: Turn research into YouTube video concepts, scripts, outlines, and content calendars.
+
+Personal interest profiles: Separate interests such as AI, robotics, software engineering, mobile apps, and entrepreneurship, with independent discovery rules.
+
+Overall product definition
+A local-first, cross-platform personal AI operating workspace that discovers emerging technologies, organizes knowledge, researches opportunities, supports continuous learning, manages daily activities, and helps transform interesting discoveries into real projects.
+
+At this stage, I would keep the requirements focused on what the application must do, rather than committing to Electron, Tauri, .NET, Swift, Python, or any particular implementation stack.
+
+The next step is for you to review these 13 areas, add anything missing, and adjust the priorities. We can then turn the agreed scope into a structured PRD, followed by the architecture, data sources, local AI strategy, and desktop UI design.
+
+In I like that you have added to the additional capabilities worth considering. I would want you to expand more into that. Also something which would be agri-tech, because I am also interested in agri, agricultural, and poker as well, because I am also interested in poker. So like upcoming tournaments, alerts for those, etc., etc. Same thing, any agri expos, new agri-tech, then that would be another section. Also suggest me more additional features which I could build, like reminders, notifications, text messages, or things like that. Also I wanted to look at the opportunities where I could find local businesses and maybe some sort of an organization around it, like whether I have followed up with them, if I want to build, suggest building the website for them, things like that where I can help local businesses and I can also help myself by making money out of it. So essentially you would help me find different types of businesses in Austin and around. It doesn't matter actually, but we can start with Austin and around and eventually it could be global, right? But something where I could cheaply provide them, with profit of course, the websites and whatever they have, the digital footprint, the legacy websites they are using. So that would be another area. But again everything has to be quickly available. I should be able to talk to the AI assistant and just give me... Like just command them and it will land me on that information in the application. Also daily, daily kind of news feeds, quick ideas, things like that which I might have missed, like how your dot works, the ChatGPT dot, but on a broader scale and very, very customized to myself. And again, this app or installable will be customizable so that somebody else eventually if I end up selling it to someone else, they would be able to customize it for their needs. I would also like to track my LLCs, my emails and everything else, finances and cards and notifications, etc. So we'll be connecting with those as well. Yeah, and also, yeah, very important thing is available MCPs around the web. Like if there are MCPs which we can use, let's say if I decide to build some sort of 3D game, then there could be MCP from Unity or any other, or Unreal Engine. So instead of trying to build everything with LLM capability, we take help of those MCPs, things like that. So list of MCPs which might help in different areas. It would be just a section where I would be able to go through that and you would be updating the MCPs as they come. Same as LLM models under that we can have MCPs and other things.
+…
+Personal AI Command Center — Expanded Requirements V0.2
+Product scope expansion
+Your latest requirements significantly expand the concept. This is no longer just a technology discovery and productivity application. It is becoming a personal AI-powered intelligence, research, business, automation, and life-management platform.
+
+The defining idea is that you should be able to speak or type a command, and the application understands your intent, navigates to the correct workspace, retrieves information, and performs an action when authorized.
+
+It should also proactively discover opportunities, monitor your interests, remember what matters, and suggest what you should do next.
+
+1. Expanded product modules
+I would organize the application into six major groups, each containing customizable modules.
+
+Personal AI Command Center
+
+Discovery & Intelligence
+
+AI, GitHub, MCPs, apps, YouTube, technology
+
+Research & Innovation
+
+Robotics, agri-tech, ideas, learning, projects
+
+Business & Revenue
+
+Local leads, sales pipeline, websites, LLCs
+
+Personal Operations
+
+Email, finances, cards, calendar, tasks
+
+Interests & Events
+
+Poker, expos, tournaments, travel
+
+AI Agents & Automation
+
+Voice commands, memory, MCPs, alerts, workflows
+
+2. Agri-tech intelligence and agricultural research
+Home
+A dedicated agricultural innovation hub covering emerging technologies, commercial opportunities, farming equipment, crop management, and agricultural events.
+
+It should combine global agricultural research with information relevant to your own farm projects.
+
+Requirements:
+
+Discover emerging agri-tech, precision farming, agricultural robotics, irrigation automation, drones, sensors, and AI crop monitoring.
+
+Track agricultural exhibitions, expos, conferences, and demonstrations in India, the US, and globally.
+
+Maintain an agricultural equipment and technology catalog, including suppliers and estimated pricing.
+
+Track government subsidies, agricultural grants, financing schemes, and policy changes.
+
+Compare technologies by affordability, expected benefit, and suitability for specific crops or farm sizes.
+
+Save agricultural research into individual farm or project workspaces.
+
+Create reminders for expos, application deadlines, equipment maintenance, and seasonal activities.
+
+Monitor agricultural commodity prices and relevant market trends.
+
+Additional opportunity: An AI agricultural project advisor that could compare irrigation systems, orchard automation, solar pumps, farm robotics, and other technologies against your actual farm requirements.
+
+3. Poker intelligence and tournament planner
+2026 WSOP Summer Circuit Launches in Las Vegas Jul. 14–25, Overlapping the Main Bracelet Series  - BKReader
+A personalized poker tournament discovery, planning, and performance workspace.
+
+It should help identify worthwhile tournaments, plan participation, and maintain a searchable record of poker activity.
+
+Requirements:
+
+Track upcoming WSOP, WPT, regional, online, and international poker tournaments.
+
+Filter by buy-in, guaranteed prize pool, location, dates, game format, and structure.
+
+Discover satellite qualification opportunities.
+
+Alert when tournament schedules are published, registration opens, or relevant satellites are announced.
+
+Maintain tournament watchlists and travel planning.
+
+Track tournament results, buy-ins, cashes, expenses, and bankroll performance.
+
+Store hand histories and personal notes.
+
+Offer an AI poker study assistant for hand analysis and strategy review.
+
+Generate tournament calendars and reminders.
+
+Compare events by expected travel cost, schedule conflicts, and suitability.
+
+The tournament intelligence system should distinguish confirmed schedules and registration information from unverified announcements.
+
+4. Local business opportunity finder and revenue workspace
+ABOUT US | mysite
+This is a particularly interesting addition because it creates a direct revenue-generating capability.
+
+Initially, the system would identify potential customers around Austin and nearby communities, with the ability to expand nationally and globally.
+
+Business discovery and qualification
+The application should:
+
+Discover businesses by geography, industry, size, and type.
+
+Identify businesses with no website, outdated websites, poor mobile experiences, accessibility issues, or weak digital presence.
+
+Review publicly available business profiles, websites, and online listings.
+
+Identify opportunities for website redesign, online booking, digital menus, SEO, automation, chatbots, and lightweight business software.
+
+Estimate potential project value, implementation effort, and recurring maintenance revenue.
+
+Score leads according to fit, opportunity, and likely profitability.
+
+Lead management and sales CRM
+Each business should have its own record with contact information, website assessment, opportunity notes, proposed services, estimated deal value, and follow-up history.
+
+ILLUSTRATIVE LEAD RECORD
+
+Sample Local Business
+
+Austin, Texas · Website modernization
+
+Researching
+Estimated project
+
+$1,500–$3,000
+
+Potential service
+
+Website + SEO
+
+Suggested next action: Review the existing website and prepare a personalized proposal.
+
+Website audit
+Follow-up
+Proposal
+Example only; amounts are illustrative, not a valuation of a real business.
+
+Revenue and delivery management
+Generate website audit reports and proposal drafts.
+
+Create AI-generated website mockups or demos.
+
+Track contacted, interested, proposal sent, negotiation, won, and lost stages.
+
+Schedule follow-up reminders.
+
+Track client projects, invoices, recurring subscriptions, and profitability.
+
+Offer reusable website templates and standardized service packages.
+
+Integrate email and calendars for correspondence and scheduling.
+
+Require review before sending outreach or making external commitments.
+
+This module could eventually become a small-business digital transformation agency operating system inside your personal application.
+
+5. Company, LLC, and business administration
+A consolidated workspace for tracking multiple legal entities and business activities.
+
+Requirements:
+
+Company and LLC registry with ownership, jurisdiction, key dates, and status.
+
+EIN and registration details stored securely.
+
+Annual filing deadlines, registered-agent renewals, and compliance reminders.
+
+Business bank accounts, expenses, subscriptions, and revenue summaries.
+
+Company-specific document vaults.
+
+Contracts, vendor records, invoices, and payments.
+
+Separate company dashboards with consolidated personal oversight.
+
+AI-assisted document search and company administration.
+
+Company-specific email, tasks, contacts, and calendars.
+
+Future accounting and bookkeeping integrations.
+
+Sensitive records, credentials, and financial documents should use stronger storage protection than ordinary discovery feeds.
+
+6. Personal finance, email, and communications
+This should operate as a unified personal operations hub, not as a replacement for your bank or email provider.
+
+Module
+
+Capabilities
+
+Email intelligence
+
+Summaries, categorization, priority inbox, suggested replies, follow-up detection
+
+Calendar
+
+Events, availability, meeting preparation, scheduling conflicts
+
+Finances
+
+Connected accounts, transactions, cash flow, spending trends
+
+Cards
+
+Card inventory, payment due dates, annual fees, reward tracking
+
+Subscriptions
+
+Recurring payments, renewal reminders, unused services
+
+Documents
+
+Statements, receipts, contracts, bills, secure search
+
+Notifications
+
+Desktop alerts, email alerts, optional SMS and push
+
+Contacts
+
+Personal and business contacts, communication history
+
+Tasks
+
+Unified actionable items across all modules
+
+Financial and email integrations should be permission-based, with read-only access by default and explicit approval for sensitive actions.
+
+7. Expanded proactive AI capabilities
+This is where the application becomes more like a highly customized personal agent.
+
+Rather than waiting for every question, it should continuously evaluate subscribed sources and identify relevant changes.
+
+Proactive intelligence features:
+
+Daily personalized briefing across every enabled module.
+
+Morning summary of urgent tasks, discoveries, deadlines, and opportunities.
+
+Evening recap of completed activities and outstanding follow-ups.
+
+Weekly opportunity report highlighting promising technologies and business leads.
+
+Alerts for fast-growing GitHub repositories, models, apps, and new products.
+
+Recommendations connecting discoveries across different interests.
+
+AI-generated project ideas and suggested next steps.
+
+Detection of unfinished research, unanswered emails, and neglected tasks.
+
+Automated monitoring of events, deadlines, and registration openings.
+
+Adaptive recommendations based on what you save, dismiss, or act upon.
+
+For example, a new open-source robotics project could trigger a recommendation connecting that technology to agricultural drone monitoring and a potential commercial application.
+
+8. MCP discovery and integration marketplace
+This should be a major feature, not just a directory of MCP servers.
+
+The application should discover available Model Context Protocol (MCP) servers, explain what they do, evaluate their reliability, and let you connect them to your AI agents.
+
+MCP & Tools Marketplace
+Proposed module
+Unity - Manual: The Scene view
+Game development
+
+Unity, Unreal Engine, Blender, Godot, 3D assets, and testing tools.
+
+Code a Strawberry Harvesting Robot in 30 Minutes | Markaicode
+Robotics and simulation
+
+ROS, simulation environments, hardware interfaces, and robotics development tools.
+
+Medium
+Software engineering
+
+GitHub, development environments, databases, CI/CD, and infrastructure tools.
+
+AI for Workflow Automation | Orchestrate Operations | IntelliMinds
+Business automation
+
+CRM, communication, finance, marketing, productivity, and document tools.
+
+MCP catalog requirements
+ID
+
+Capability
+
+MCP01
+
+Search public MCP registries and supported provider catalogs
+
+MCP02
+
+Categorize MCPs by purpose and compatible applications
+
+MCP03
+
+Display functionality, installation requirements, licensing, and pricing
+
+MCP04
+
+Track newly published and updated MCP servers
+
+MCP05
+
+Evaluate security, publisher authenticity, maintenance, and trust
+
+MCP06
+
+Install and configure supported MCP integrations
+
+MCP07
+
+Manage permissions, credentials, and connected servers
+
+MCP08
+
+Let the AI assistant discover appropriate MCP tools automatically
+
+MCP09
+
+Monitor MCP compatibility, availability, and version changes
+
+MCP10
+
+Support locally hosted and remote MCP servers
+
+MCP11
+
+Allow creation and registration of custom MCP servers
+
+MCP12
+
+Maintain audit logs and require approval for sensitive tool actions
+
+There is already an official MCP Registry that can serve as an important discovery source. 
+
+Model Context Protocol Blog
++1
+
+For game development, Unity has an official MCP integration that can interact with scenes, scripts, and editor functions. Unreal Engine also documents an experimental MCP server with editor automation capabilities. 
+
+Unity
++1
+
+The application should distinguish officially supported integrations from community-maintained servers and unverified listings.
+
+How the AI should use MCPs
+Suppose you say:
+
+"I want to prototype an underwater inspection robot. Find open-source designs, create a basic 3D model, and prepare a component list."
+
+The agent could discover relevant research, identify a suitable 3D modeling integration, invoke authorized tools, generate a bill of materials, and save the resulting project to your Robotics Lab.
+
+Key architectural requirement: MCP is one integration method, not the only method. The application should support MCP, REST APIs, local command-line tools, native operating-system capabilities, and direct database connections through a common tool-execution layer.
+
+9. Voice-first command center and universal navigation
+This is a foundational requirement across every module.
+
+Universal AI Command Bar
+
+Ask, search, navigate, or automate anything...
+
+Illustrative interface, not a functioning command input.
+
+The assistant should support voice and text input, global keyboard shortcuts, contextual commands, and direct navigation to any relevant screen.
+
+Examples:
+
+Your command
+
+Expected behavior
+
+"Show me the hottest GitHub repos today."
+
+Open GitHub trends, sorted by growth
+
+"Find poker tournaments above $1M guaranteed."
+
+Open filtered tournament calendar
+
+"Show agri expos in Maharashtra next year."
+
+Open relevant agricultural event results
+
+"Which Austin businesses need better websites?"
+
+Open qualified local business leads
+
+"Find Unity MCPs."
+
+Open filtered MCP catalog
+
+"Remind me to follow up with this business Friday."
+
+Create a linked reminder
+
+"What did I research about underwater robots?"
+
+Search local memory and open saved research
+
+"Summarize my important emails and company deadlines."
+
+Generate a cross-module briefing
+
+The application should support three distinct behaviors: navigate, answer, and act. It should understand which is intended without requiring you to specify a module.
+
+10. Notifications, reminders, and communications engine
+Rather than implementing reminders independently in each module, I recommend one central notification engine.
+
+Channel
+
+Intended use
+
+Windows/macOS notifications
+
+Daily alerts, reminders, discoveries
+
+In-app notification center
+
+Unified history and actionable alerts
+
+Email
+
+Digests, summaries, important reminders
+
+SMS
+
+Selected urgent or time-sensitive notifications
+
+Mobile push, later
+
+Notifications when away from desktop
+
+Voice alerts
+
+Optional spoken reminders and briefings
+
+Calendar events
+
+Deadlines, appointments, tournaments, expos
+
+Webhooks
+
+Trigger external automations and workflows
+
+Additional functionality should include quiet hours, priority levels, snoozing, recurring reminders, escalation rules, delivery status, and notification deduplication.
+
+For SMS, the application would need an external messaging provider or supported device integration. Desktop operating systems alone cannot guarantee cross-platform SMS delivery.
+
+11. Additional features I would recommend
+These are new suggestions beyond your confirmed requirements.
+
+Feature
+
+What it adds
+
+Priority
+
+Opportunity Engine
+
+Finds potentially profitable ideas across technology, local businesses, and your interests
+
+High
+
+Agent Mission Control
+
+Shows what each AI agent is researching or executing, with progress and approvals
+
+High
+
+Universal Inbox
+
+Combines actionable emails, tasks, alerts, leads, and reminders
+
+High
+
+Personal Knowledge Graph
+
+Connects people, companies, research, projects, events, and ideas
+
+High
+
+AI Daily Chief of Staff
+
+Prioritizes the day and recommends what deserves attention
+
+High
+
+Personal Relationship CRM
+
+Tracks contacts, meetings, conversations, and follow-ups
+
+High
+
+Research Watchlists
+
+Continuously monitors selected topics, competitors, technologies, and events
+
+High
+
+Browser Research Assistant
+
+Saves pages, extracts useful information, and organizes research
+
+High
+
+Automated Website Audit Studio
+
+Evaluates business websites and generates redesign opportunities
+
+High
+
+Project Builder
+
+Turns ideas into requirements, milestones, prototypes, and implementation tasks
+
+High
+
+Travel and Event Optimizer
+
+Combines tournaments, conferences, expos, travel costs, and schedules
+
+Medium
+
+Personal Asset Manager
+
+Tracks equipment, warranties, vehicles, devices, and maintenance
+
+Medium
+
+Research Paper Lab
+
+Tracks scientific publications, patents, and academic breakthroughs
+
+Medium
+
+AI Content Studio
+
+Generates scripts, content plans, and publishing workflows from research
+
+Medium
+
+Price and Availability Watcher
+
+Monitors equipment, hardware, software, and event availability
+
+Medium
+
+Automation Recipe Library
+
+Reusable workflows such as research → summarize → save → notify
+
+Medium
+
+Personal Analytics
+
+Shows where your time, attention, and money are going
+
+Medium
+
+Extension Builder
+
+Allows new modules and integrations to be configured or developed
+
+Medium
+
+12. Personalization and future commercialization
+The application should be designed around a configurable personal profile, rather than hardcoding your particular interests.
+
+Each user should eventually be able to:
+
+Enable or disable entire modules.
+
+Create custom interest categories.
+
+Configure preferred discovery sources.
+
+Choose local or cloud AI models.
+
+Connect personal accounts and tools.
+
+Configure agent permissions and automation rules.
+
+Customize dashboards, notification schedules, and ranking criteria.
+
+Maintain separate personal and business workspaces.
+
+Export their information and configuration.
+
+A future user interested only in finance, real estate, and travel should be able to configure the same underlying application without seeing robotics, poker, or agricultural modules.
+
+13. Proposed intelligent workflow
+Voice / Text / Scheduled Trigger
+
+Personal AI Orchestrator
+
+Intent understanding · Context · Memory · Planning
+
+Local AI
+
+MCP / APIs
+
+Knowledge
+
+Action and Navigation Engine
+
+Search · Open · Save · Create · Schedule · Execute with permission
+
+Personalized Dashboard + Persistent Memory
+
+The design should separate the user interface, AI orchestration, data collection, integrations, and module-specific business logic. That separation is what will allow the application to expand without becoming an unmaintainable collection of features.
+
+14. Updated implementation priorities
+I would now propose three stages.
+
+Stage 1 — Personal intelligence foundation: Windows/macOS desktop app, universal AI command bar, local memory, AI model integration, daily dashboard, technology discovery, MCP catalog, basic planner, and notifications.
+
+Stage 2 — Specialized personal workspaces: Robotics, agri-tech, poker, business opportunity finder, lead CRM, company tracking, email, finance integrations, and advanced research agents.
+
+Stage 3 — Automation and commercial readiness: Agent workflows, website generation and delivery, advanced MCP execution, customizable modules, cross-device synchronization, extension marketplace, and public distribution.
+
+The most important design decision is to build one intelligent core with modular workspaces, rather than a separate AI system for every interest.
+
+That gives you a single assistant that understands the connections between your technology research, businesses, projects, finances, events, and personal priorities—while keeping each module independently configurable and replaceable.
+
+This is a substantially expanded V0.2 scope. We can keep refining the feature inventory before selecting the technology stack or defining the MVP.
+
+Also ability to take notes or ask AI to quickly take notes and then pin those notes, etc. Like important tasks could be an area that I have marked some of those tasks important, some of those tasks persistent, forever, repeating, things like that. So yeah, that's the thing and that's the requirement. Yeah, it's a life management software, all in one, you could say, but that would really help me quickly find stuff instead of going to YouTube, going to GitHub and trying to search through the things. I will have those things readily available, right.
+Agreed. This adds an important dimension to the product: a unified personal life-management system, where information is not only discovered but also captured, remembered, organized, prioritized, and made instantly accessible.
+
+I'll incorporate this into our evolving requirements as V0.3 — Notes, Tasks, Memory, and Personal Organization.
+
+1. Quick Notes and AI Note-Taking
+Instant note capture: Type or speak a note from anywhere in the application.
+
+AI note-taking: Say, "Remember this idea about agricultural drones," and the assistant creates and categorizes the note.
+
+Pinned notes: Pin important notes to the home dashboard or individual workspaces.
+
+Persistent notes: Keep selected notes permanently visible until manually unpinned.
+
+Smart organization: Automatically classify notes under robotics, business, poker, agriculture, personal, etc.
+
+Rich notes: Support text, images, links, attachments, checklists, and code snippets.
+
+Linked notes: Connect notes to GitHub repositories, videos, contacts, projects, or tasks.
+
+AI summaries: Summarize lengthy notes and extract actionable items.
+
+Semantic search: Find notes by meaning, even when you don't remember the exact words.
+
+2. Advanced Task and Priority Management
+Tasks should support more than a simple completed/not-completed status.
+
+Task type
+
+Behavior
+
+Normal
+
+Standard task with optional due date
+
+Important
+
+Highlighted in the dashboard
+
+Critical
+
+High-priority notifications
+
+Pinned
+
+Always visible in a designated area
+
+Persistent
+
+Remains active until explicitly completed or dismissed
+
+Recurring
+
+Repeats daily, weekly, monthly, yearly, or on a custom schedule
+
+Forever recurring
+
+Continues indefinitely until disabled
+
+Scheduled
+
+Activates at a specified date and time
+
+Conditional
+
+Triggers when a specific event occurs
+
+Waiting for
+
+Tracks dependencies such as responses or approvals
+
+Someday
+
+Saved for future consideration without immediate pressure
+
+A task can have multiple attributes. For example, a recurring task can also be important, pinned, and persistent.
+
+3. Personal Command Dashboard
+ILLUSTRATIVE HOME SCREEN
+
+My Life Command Center
+Ask anything, take a note, create a task...
+
+Pinned Notes
+
+Underwater robot research
+
+New mobile app ideas
+
+Business strategy
+
+Priority Tasks
+
+Review LLC filings
+
+Daily tech research
+
+Robotics prototype
+
+Daily Discoveries
+
+Trending repositories
+
+New AI models
+
+App growth signals
+
+Upcoming
+
+Poker tournaments
+
+Agri-tech expos
+
+Business follow-ups
+
+Conceptual layout; content is illustrative.
+
+4. Universal Capture and Retrieval
+I would add a particularly important capability: capture anything, from anywhere, in seconds.
+
+For example:
+
+"Take a note: explore underwater drone navigation using computer vision."
+
+"Pin this GitHub repository to my robotics project."
+
+"Remind me every Monday to review new AI models."
+
+"Keep this task visible until I finish it."
+
+"Find that YouTube video about robotic arms I saved two months ago."
+
+"What were my ideas about agricultural automation?"
+
+"Show everything I have marked important across all my projects."
+
+"Turn my notes from yesterday into a prioritized task list."
+
+The assistant should execute these commands, save the information locally, and navigate directly to the relevant workspace.
+
+5. Additional capabilities I recommend
+Universal Quick Capture: A system-wide keyboard shortcut opens a small command window without requiring you to switch to the main application.
+
+Clipboard Intelligence: Optionally recognize copied URLs, text, and code, then offer to save, summarize, or categorize them.
+
+Personal Timeline: A searchable history of discoveries, notes, tasks, conversations, decisions, and completed activities.
+
+Focus Mode: Display only pinned notes, critical tasks, and current projects while hiding distracting feeds.
+
+Contextual Memory: When you return to a project after several weeks, the AI summarizes what you were doing, where you stopped, and what remains.
+
+Daily Knowledge Digest: Alongside new discoveries, resurface valuable saved information you may have forgotten.
+
+One-Click Actions: Every article, repository, video, research paper, or business lead should offer consistent actions such as Save, Pin, Summarize, Create Task, Research, and Share.
+
+6. Core product principle
+I would formalize the central requirement as:
+
+The application must minimize the time between thinking of something and finding, saving, understanding, or acting on it.
+
+You should not need to remember which website contained something, which workspace you saved it in, or which application holds a task.
+
+The AI should find it for you.
+
+And if something important happens while you're not actively using the application, its discovery and notification agents should bring it to your attention.
+
+The underlying design should support four fundamental actions across every module:
+
+Discover
+
+Remember
+
+Retrieve
+
+Act
+
+One important architectural addition: Notes, tasks, reminders, bookmarks, and AI memory should be shared platform services, not separately implemented inside every module. This will allow the same note or task to be linked to multiple projects, remain searchable globally, and appear wherever it is relevant.
+
+That becomes a foundational requirement for V0.3, alongside local-first operation, customizable workspaces, voice-first interaction, proactive intelligence, and secure integration with external services.
+
+Now, from V0 to V4, whatever so many versions we have created, all are equally important requirements. Considering all that, can you create the PRD? You don't have to be detailed, but at least the LLM which I will use to build this should understand the PRD, the concept, and it should start building. So it would be a DMG and EXE, I would think, for Windows and DMG for Mac, and then App Store apps on both Android and iOS. So as per that, build it. I can host it in the cloud. The backend will be in the cloud, and preferably it would be a cloud-agnostic implementation, though we will start with Google Cloud, right? And from there, we can support other cloud servers, but we'll start with Google Cloud for now. And yeah, security has to be there, CSRF, and then critical data, banking data, etc., has to be encrypted. My personal documents can be encrypted. We can later allow documents to be added related to the stuff I am working on. So the progress of the stuff. Let's say if I find something and I like that, right? If we search and we find a GitHub repo, then I end up starting on that. So we could have a kind of project management in that, where my current project is, right? That app would have that intelligence in a way that if I said, Okay, I'm interested in that, and I would say, Okay, I have started on that, then that app should have access to my local to understand whether I am using which LLM. Which environment to build that, or use that repo, or build that concept, and it should be able to track the progress on the dashboard within the app. So yeah, it would be an interesting way to kind of organize my projects as well. Maybe we can go ahead and create MCP communication between two, or direct file access, whichever is the fastest way, right? A local database. It could have access to my GitHub repos as well. Yeah, I think that's a better way, so that it knows which projects I have started and anything on the local. It should also give me where I am working on it, what was the last session, was it on my Mac, on my desktop, or did I just work through my phone. Things like that. Very personal corner, but yeah. So come up with the PRD with the best user experience possible, because on the mobile it would be a very lightweight app. It can just be a few things which matter most, right? And on desktop it will be a full-fledged version.
+…
+Personal AI Command Center — Product Requirements Document
+PRD v1.0 · Build-ready specification
+I'm consolidating all requirements from our previous iterations into one product specification. All previously discussed modules are included in the product scope, even though we will implement them in phases.
+
+The product will have three primary components:
+
+Desktop — Full Experience
+
+Windows installer (.exe) and macOS installer (.dmg), with the complete intelligence dashboard, AI agents, research, project management, and local integrations.
+
+Mobile — Lightweight Companion
+
+Native iOS and Android applications for AI conversations, voice commands, notes, tasks, notifications, project status, and daily briefings.
+
+Cloud — Shared Intelligence Backend
+
+Google Cloud initially, with a cloud-agnostic backend, secure synchronization, data collection, scheduling, and remote agent orchestration.
+
+The most important addition is continuous project awareness: the application should know what you're researching, what you've decided to build, which repository and development environment you're using, where you last worked, and what progress you've made.
+
+That turns the product from a discovery dashboard into a genuine personal operating workspace.
+
+Your PRD is ready
+Personal AI Command Center — PRD v1.0
+
+14 sections · Complete product scope · Architecture · Security · Implementation roadmap · Acceptance tests
+
+Download the complete PRD (.md)
+
+The Markdown format is intentional: you can give this file directly to a coding LLM or AI development environment as the primary product specification.
+
+Important architectural decisions included
+Area
+
+Recommended approach
+
+Desktop
+
+Tauri 2 + React/TypeScript + Rust
+
+Windows distribution
+
+Signed EXE installer
+
+macOS distribution
+
+Signed, notarized DMG
+
+iOS
+
+Native SwiftUI
+
+Android
+
+Native Kotlin/Jetpack Compose
+
+Backend
+
+Modular monolith, API-first
+
+Initial cloud
+
+Google Cloud
+
+Cloud portability
+
+Containerized services + Terraform/OpenTofu
+
+Cloud database
+
+PostgreSQL + pgvector
+
+Local database
+
+SQLite
+
+Local AI
+
+Ollama/llama.cpp-compatible runtime
+
+Integrations
+
+MCP + APIs + CLI + native OS capabilities
+
+Security
+
+OAuth/OIDC, TLS, CSRF protections, scoped permissions, encryption of sensitive data
+
+Synchronization
+
+Offline-first, device-aware, incremental cloud sync
+
+These are proposed engineering choices, not irreversible commitments.
+
+One feature I consider especially important
+Project Intelligence and Session Continuity
+
+You discover a repository or an interesting technology.
+You tell the AI, "I'm interested in building this."
+The application creates a project and links the relevant research.
+When you begin development, it associates your authorized local folder, Git repository, IDE, and development tools.
+It tracks actual development activity, milestones, commits, tasks, and the last device used.
+When you return, the assistant summarizes where you stopped and what to do next.
+The PRD explicitly distinguishes observed development activity from AI-generated assumptions, and requires your permission before accessing local directories or sensitive files.
+
+Where I would begin building
+I recommend the first working vertical slice be:
+
+Desktop command bar → AI note-taking → local database → Google Cloud sync → mobile companion → pinned notes and recurring tasks.
+
+Alongside that, establish the project data model and GitHub/local repository integration.
+
+This tests the most important architectural foundations early: desktop performance, offline behavior, local storage, cross-device synchronization, AI commands, security, and mobile connectivity.
+
+The PRD preserves all your modules—including technology discovery, robotics, agriculture, poker, local business opportunities, finance, LLC management, MCP discovery, and project intelligence. Implementation phases determine build order, not whether a requirement belongs in the product.
+
+You can now hand the document to your coding LLM and ask it to implement Phase 0, then the first end-to-end workflow, using the PRD as its source of truth.
+
+
+personal_ai_command_center_prd_v1.md
+Document
+Update the PRD where we will have everything local, database, all that, and internet connection. But backend would just be something which would be, we'll be syncing the data with the backend, could be part of V2, because if I'm on multiple devices, then the data has to be synced across devices, and that's where we would use the cloud backend. Or if there is a better way without using the cloud backend, we can just have a backup in the cloud somewhere as a part of V2. But multiple devices, when they come into the same Wi‑Fi, or maybe we use some other protocol between the apps via internet, but we sync the data that way, right? And then there is very less, little footprint on the cloud, right?
+Yes. I would change the PRD from cloud-first with offline support to fully local-first, with optional peer-to-peer synchronization and cloud backup in V2.
+
+This is a better fit for your personal application because it reduces recurring cloud costs, keeps sensitive information under your control, and allows the desktop application to operate independently.
+
+Revised architecture
+Windows / macOS Desktop
+
+Local database · Local AI · Research agents · Project files · Git integration
+
+Optional secure device synchronization
+
+iOS / Android
+
+Local SQLite · Notes · Tasks · AI commands
+
+Optional V2 Cloud
+
+Encrypted backups · Sync relay if needed
+
+The distinction is important: the internet remains essential for discovering fresh information, but your own backend does not need to run continuously.
+
+I recommend SQLite on each device, direct HTTPS connections to external information providers, local AI inference where practical, and secure LAN synchronization in V2. Internet-based device sync can be added through a lightweight encrypted relay when devices cannot communicate directly.
+
+One limitation worth preserving in the PRD: cloud backup alone is not the same as reliable multi-device synchronization. Simultaneous edits, conflicts, deleted records, and device history need a proper synchronization protocol.
+
+Updated PRD v1.1 — Local-First Architecture
+Personal AI Command Center — PRD v1.1
+
+Download Updated PRD (.md)
+
+Complete requirements preserved · Local-first architecture · Optional V2 synchronization
+
+I've updated the actual PRD, including its architecture, security requirements, development phases, acceptance tests, and instructions for your coding LLM.
+
+What changed
+Component
+
+V1
+
+V2
+
+Local SQLite database
+
+
+
+Local AI and agents
+
+
+
+Internet research and APIs
+
+
+
+Notes, tasks, projects
+
+
+
+Windows/macOS desktop
+
+
+
+Lightweight mobile companion
+
+Local data
+
+Synced data
+
+Same-Wi-Fi device synchronization
+
+—
+
+
+Internet-based synchronization
+
+—
+
+Optional
+
+Encrypted cloud backups
+
+—
+
+Optional
+
+Dedicated cloud backend
+
+Not required
+
+Only if needed
+
+My recommended synchronization strategy
+Start with direct peer-to-peer synchronization over your home or office Wi-Fi. Your Windows PC and MacBook can exchange encrypted changes without Google Cloud.
+
+For devices on different networks, introduce secure peer-to-peer connectivity or a small relay service only when necessary. An optional cloud backup can provide disaster recovery independently of synchronization.
+
+This approach keeps cloud costs close to zero for the core application, although external APIs, remote AI models, and optional storage may still incur charges.
+
+Most importantly, the PRD now explicitly instructs the coding LLM not to provision Google Cloud or build a hosted backend for V1. The application must work locally first, while keeping its data model ready for future synchronization.
+
+All previously agreed functional requirements remain intact.
+
+
+personal_ai_command_center_prd_v1_1_local_first.md
+Document
+
+
+
+
