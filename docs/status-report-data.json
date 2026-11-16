@@ -144,13 +144,13 @@
       "percent": 100,
       "weight": 2,
       "status": "Implemented in source",
-      "implemented": "Saved dashboard widget ordering/visibility; interest, published-date, title and observed growth sorts; independent topic/query caches and source-attributed results.",
-      "remaining": "Live ranking quality depends on provider metadata. Popularity is not an independent quality benchmark.",
-      "notes": "v0.3 source and relevant compile checks completed; runtime behavior remains unverified. No live account or provider was exercised.",
+      "implemented": "Topic-first combined feed with multiple subscriptions, per-provider filters, provider/query caches, topic/type/provider/date/region/reading filters, cross-stream deduplication, balanced topic/source order, opt-in refresh scheduling, source health and failure isolation.",
+      "remaining": "Public provider availability and optional credentials affect live coverage; rankings retain their provider meaning.",
+      "notes": "v0.3 source and relevant compile checks completed; runtime behavior remains unverified. No live account or provider was exercised. Public channel video feeds need no key. X/LinkedIn live reads are access-dependent; Reddit public RSS was refused during live QA. Imported links are explicitly labeled.",
       "evidence": "apps/desktop/src/Today.tsx",
       "original_prd_percent": 75,
       "in_scope": true,
-      "verification": "Repository tests and frontend/native compilation recorded in TEST-REPORT.html. New UI paths have not received native acceptance."
+      "verification": "Live public source checks and selected isolated Mac workflows are recorded in DISCOVERY-AGGREGATION.md and TEST-REPORT.html."
     },
     {
       "id": "T010",
@@ -161,12 +161,13 @@
       "percent": 100,
       "weight": 2,
       "status": "Implemented in source",
-      "implemented": "Opt-in public repository search with source timestamps and save/project actions.",
-      "remaining": "No known scope gap in this narrowly defined task; runtime verification remains outstanding.",
-      "notes": "Total-star ranking is not measured growth velocity; live API behavior untested.",
+      "implemented": "Public GitHub aggregation for top repositories and recent repositories, query operators, language/license/creation-window/ranking filters, source metadata and linked saved/project actions.",
+      "remaining": "Unauthenticated public API quotas apply; private repositories remain separately authorized.",
+      "notes": "Live native API checks passed, including 30 repositories matching Python/MIT filters. Total-star ranking and recent-creation ranking are distinct from independently measured trend velocity.",
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Live public source checks and selected isolated Mac workflows are recorded in DISCOVERY-AGGREGATION.md and TEST-REPORT.html."
     },
     {
       "id": "T011",
@@ -209,13 +210,13 @@
       "percent": 100,
       "weight": 2,
       "status": "Implemented in source",
-      "implemented": "Newest-video search plus explicit public channel statistics and observed rounded subscriber changes between matching snapshots. Side-by-side cached cross-source/creator comparisons show observations and shared research terms with explicit limitations. Cross-channel title-topic opportunities from cached videos, evidence-linked Content Studio drafts, and measured growth percentile ranking within comparable provider/metric cohorts.",
-      "remaining": "YouTube API key and approved refreshes are required for live data. Creator names/counts are provider observations; additional providers are optional.",
+      "implemented": "Keyless public YouTube channel aggregation by handle/URL/ID, recent uploads and full-color thumbnails, plus optional keyed keyword/channel-statistics search and existing research comparisons.",
+      "remaining": "Public channel feeds need no key. Broad keyword search and subscriber statistics need an optional YouTube Data API key; personalized account home feeds are not claimed.",
       "notes": "Synthetic analytics tests cover metric isolation, stale samples, cache deduplication and multi-creator evidence. Suggested topics are lexical research leads, not verified audience demand.",
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 75,
       "in_scope": true,
-      "verification": "Synthetic analytics assertions and selected isolated Mac radar/draft workflows pass. Live-provider and market-quality acceptance remain unverified."
+      "verification": "Live public source checks and selected isolated Mac workflows are recorded in DISCOVERY-AGGREGATION.md and TEST-REPORT.html."
     },
     {
       "id": "T014",
@@ -274,13 +275,13 @@
       "percent": 100,
       "weight": 3,
       "status": "Implemented in source",
-      "implemented": "Side-by-side research comparisons, source-based research briefs, robotics news/paper topic shortcuts and linked research tasks. Curated aquatic/aerial/ground/humanoid/manipulation/soft-robot queries, MIT/NASA source directories, cross-provider topic attention windows, comparable measured-growth ranks and evidence-linked research idea drafts.",
-      "remaining": "Refresh public source queries with consent for live observations. No model, robot, simulator or hardware setup is needed. Independent quality/market verification is external research.",
+      "implemented": "Live robotics feed combining libraries, models, papers, IEEE news, videos and public social posts, plus source-based comparisons, research radar and evidence-linked workspace/document creation.",
+      "remaining": "Provider availability remains external; no model, robot, simulator or hardware setup is required.",
       "notes": "Topic scores describe the local cached sample and expose their formula. Raw stars/downloads/subscribers are never added together; no hardware or local execution.",
       "evidence": "apps/desktop/src/WorkspaceTools.tsx",
       "original_prd_percent": 50,
       "in_scope": true,
-      "verification": "Synthetic analytics assertions and selected isolated Mac radar/draft workflows pass. Live-provider and market-quality acceptance remain unverified."
+      "verification": "Live public source checks and selected isolated Mac workflows are recorded in DISCOVERY-AGGREGATION.md and TEST-REPORT.html."
     },
     {
       "id": "T018",
@@ -307,7 +308,7 @@
       "percent": 75,
       "weight": 3,
       "status": "Partially implemented",
-      "implemented": "Commodity observations, provider attribution, expo feeds and source-linked research records. Added irrigation, precision-farming, orchard/farm-robotics, solar-pump and scheme research queries; USDA ARS/NASS sources and official India myScheme/PM-KUSUM bookmarks, with topic attention windows and sourced ideas.",
+      "implemented": "Commodity observations, provider attribution, expo feeds and source-linked research records. Added irrigation, precision-farming, orchard/farm-robotics, solar-pump and scheme research queries; USDA ARS/NASS sources and official India myScheme/PM-KUSUM bookmarks, with topic attention windows and sourced ideas. Added live AgFunderNews/AGDAILY aggregation and dated India/US/global agriculture event sources.",
       "remaining": "Automatic state-specific scheme ingestion and broader official feeds remain source-dependent. Current scheme portals are explicit bookmarks; no eligibility or current open application window is inferred.",
       "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
       "evidence": "apps/desktop/src-tauri/src/agriculture.rs",
@@ -339,7 +340,7 @@
       "percent": 75,
       "weight": 3,
       "status": "Partially implemented",
-      "implemented": "Public event sources, change alerts, manual authority confirmation and bounded all-day daily/weekly recurrence expansion. Worldwide current/upcoming web search planning plus organizer shortcuts, satellites/location/game hints, automatic year rollover, merged calendar sources and ongoing-event filtering. Bounded all-day, UTC, IANA-zone and floating DAILY/WEEKLY/MONTHLY/YEARLY recurrence with selected BYDAY/BYMONTHDAY/BYMONTH/WKST filters and EXDATE/RDATE.",
+      "implemented": "Public event sources, change alerts, manual authority confirmation and bounded all-day daily/weekly recurrence expansion. Worldwide current/upcoming web search planning plus organizer shortcuts, satellites/location/game hints, automatic year rollover, merged calendar sources and ongoing-event filtering. Bounded all-day, UTC, IANA-zone and floating DAILY/WEEKLY/MONTHLY/YEARLY recurrence with selected BYDAY/BYMONTHDAY/BYMONTH/WKST filters and EXDATE/RDATE. Actual live WPT, WSOP, PokerStars Live and multi-organizer calendar ingestion into the combined feed; current/upcoming dates and local event tracking.",
       "remaining": "Overridden RECURRENCE-ID series, BYSETPOS/other unsupported rules, DURATION/EXRULE, unbounded rules and registration/satellite-specific alert logic remain. Web search is not comprehensive live tournament aggregation.",
       "notes": "Source implementation; compile/package checks only. No runtime tests, provider actions or publication performed. Seven new synthetic parser tests cover monthly invalid dates, leap years, ordinal weekdays, DST, exact DTEND duration, exclusions/additions, inclusive UNTIL, bounds and unsupported-rule preservation. No live feed accessed.",
       "evidence": "docs/POKER-DISCOVERY.md",
@@ -502,12 +503,13 @@
       "percent": 100,
       "weight": 3,
       "status": "Implemented in source",
-      "implemented": "Markdown editor/preview; ordinary attachments, raster/text previews, original export, version lineage, checksums and extracted-text search. Explicit PDF text and PNG/JPEG OCR indexing via optional local tools. Explicitly scoped causal attachment sync across desktop/mobile, with checksum validation, resumable acknowledged batches, conflict choices and companion file export.",
-      "remaining": "Runtime acceptance remains unrun. Files are bounded to 10 MiB and retry from the start if interrupted. A WYSIWYG editor is an enhancement, not an explicit PRD requirement; current rich content uses Markdown with inert preview.",
-      "notes": "Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction.",
+      "implemented": "Source-linked Markdown research documents, multi-source citation templates with size-aware splitting, local file upload from document editors and the global owner picker, original file retention and existing attachment previews/sync.",
+      "remaining": "Files are bounded to 10 MiB. WYSIWYG editing and real cross-device/file-provider acceptance remain separate.",
+      "notes": "Aggregation-linked document/file changes compile and selected native workflows are recorded separately. Credentials and real private files were not used in QA.",
       "evidence": "crates/core/src/sync.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Live public source checks and selected isolated Mac workflows are recorded in DISCOVERY-AGGREGATION.md and TEST-REPORT.html."
     },
     {
       "id": "T032",
@@ -1089,7 +1091,7 @@
       "status": "Implemented in source",
       "implemented": "Selective exports include explicit owner links through existing dependency traversal, linked records and scoped attachments.",
       "remaining": "Owner references outside a deliberately narrow export can remain unresolved unless linked-record inclusion is selected; this is disclosed in export UI.",
-      "notes": "Source reviewed and compiled where applicable. No tests, live provider calls or runtime acceptance performed in this pass.",
+      "notes": "Source reviewed and compiled where applicable. No tests, live provider calls or runtime acceptance performed in this pass. Full-scope aggregated source configuration/caches roundtrip; subscriptions restore disabled, and automatic-read permission/credentials are excluded.",
       "evidence": "apps/desktop/src-tauri/src/main.rs",
       "original_prd_percent": 75,
       "in_scope": true,
@@ -1657,7 +1659,8 @@
     "LOCAL-SCOPE.md",
     "STREAMING-BACKUPS.md",
     "GOOGLE-MESSAGE-PREVIEWS.md",
-    "APPEARANCE.md"
+    "APPEARANCE.md",
+    "DISCOVERY-AGGREGATION.md"
   ],
   "blockers": [
     {
@@ -1674,6 +1677,11 @@
       "title": "MCP source permissions",
       "detail": "Approved endpoints and individual data-access permissions are needed. Some MCP providers require accounts/keys; no unrelated tooling is installed automatically.",
       "tasks": "T048, T049"
+    },
+    {
+      "title": "Social feed access",
+      "detail": "Public Bluesky/Mastodon and YouTube channels work without accounts. Reddit public RSS was refused/rate-limited; authorized Reddit reads need approved access. X needs developer access and LinkedIn has no open personal home-feed API. The owner has no developer API access; local links/JSON imports remain available.",
+      "tasks": "Discovery social coverage"
     }
   ],
   "scope": "Personal local command center: discover, monitor, organize, compare and track. No local LLM/model downloads, robotics execution, prototype execution or production commercialization."

@@ -2,7 +2,13 @@
 use crate::{workspace::Record, Repository, Result};
 impl Repository {
     pub fn evaluate_watchlists(&mut self) -> Result<usize> {
-        let snapshots = self.research_query_snapshots()?;
+        let mut snapshots = self.research_query_snapshots()?;
+        snapshots.extend(
+            self.feeds()?
+                .into_iter()
+                .map(|f| serde_json::json!({"fetched_at":f.fetched_at,"items":f.items})),
+        );
+        snapshots.sort_by(|a, b| b["fetched_at"].as_str().cmp(&a["fetched_at"].as_str()));
         let mut changed = 0;
         for mut r in self
             .records("", false)?
@@ -68,11 +74,12 @@ impl Repository {
             let saved = self.save_record(r)?;
             changed += 1;
             if triggered {
-                let mut n = Record::new(
-                    "notifications",
-                    &format!("Watchlist: {}", saved.title),
-                    &self.device_id,
-                );
+                let title = format!("Watchlist: {}", saved.title);
+                let mut end = title.len().min(500);
+                while !title.is_char_boundary(end) {
+                    end -= 1;
+                }
+                let mut n = Record::new("notifications", &title[..end], &self.device_id);
                 n.status = "needs_review".into();
                 n.links.push(saved.id);
                 n.summary=format!("Cached {metric}: {value}; threshold {operator} {threshold}. Source observation: {observed_at}. Provider-reported metadata; verify freshness before acting.");

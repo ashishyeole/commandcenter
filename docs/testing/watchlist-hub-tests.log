@@ -1,0 +1,13 @@
+   Compiling rusqlite v0.41.1
+   Compiling command-center-core v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/crates/core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.87s
+     Running tests/watchlist_thresholds.rs (target/debug/deps/watchlist_thresholds-5cb26397e6d0cb4f)
+
+running 4 tests
+test enabled_monitor_rejects_invalid_threshold_or_mismatched_host ... ok
+test arbitrary_prices_and_disabled_monitors_are_not_evaluated ... ok
+test cached_threshold_triggers_once_and_preserves_source_evidence ... ok
+test topic_feed_observations_override_stale_queries_and_trigger_once ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+

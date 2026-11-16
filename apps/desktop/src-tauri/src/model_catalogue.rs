@@ -2,20 +2,48 @@
 use crate::{connectors::Discovery, Result};
 use futures_util::StreamExt;
 pub async fn fetch(query: &str, timestamp: &str) -> Result<Vec<Discovery>> {
-    let url = reqwest::Url::parse_with_params("https://ollama.com/search", &[("q", query)])
-        .map_err(|e| e.to_string())?;
-    let response = crate::research::public_client(&url)
-        .await?
-        .get(url)
-        .send()
-        .await
-        .map_err(|_| "Ollama catalogue unavailable")?;
-    if !response.status().is_success() {
-        return Err(format!(
-            "Ollama catalogue returned {}; try later",
-            response.status()
-        ));
+    let mut url = reqwest::Url::parse("https://ollama.com/search").map_err(|e| e.to_string())?;
+    if !query.trim().is_empty() {
+        url.query_pairs_mut().append_pair("q", query);
     }
+    let mut redirects = 0;
+    let response = loop {
+        let response = crate::research::public_client(&url)
+            .await?
+            .get(url.clone())
+            .send()
+            .await
+            .map_err(|_| "Ollama catalogue unavailable")?;
+        if response.status().is_redirection() {
+            if redirects >= 3 {
+                return Err("Too many Ollama catalogue redirects".into());
+            }
+            let location = response
+                .headers()
+                .get("location")
+                .and_then(|v| v.to_str().ok())
+                .ok_or("Catalogue redirect missing location")?;
+            let next = url
+                .join(location)
+                .map_err(|_| "Invalid catalogue redirect")?;
+            if next.scheme() != "https"
+                || next.host_str() != Some("ollama.com")
+                || next.path() != "/search"
+            {
+                return Err("Unexpected catalogue redirect; metadata search only".into());
+            }
+            url = next;
+            redirects += 1;
+            continue;
+        }
+        if !response.status().is_success() {
+            return Err(format!(
+                "Ollama catalogue returned {}; try later",
+                response.status()
+            ));
+        }
+        break response;
+    };
     let mut stream = response.bytes_stream();
     let mut bytes = Vec::new();
     while let Some(chunk) = stream.next().await {

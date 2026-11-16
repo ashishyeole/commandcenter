@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-11-16T19:20:46.369635+00:00",
+  "source": "Reddit public RSS",
+  "credentials_used": false,
+  "observations": [
+    {
+      "count": 0,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-16T19:20:37.652871+00:00",
+        "error": "Feed returned HTTP 403 Forbidden; redirects are not followed",
+        "status": "error"
+      },
+      "id": "robotics-reddit",
+      "provider": "reddit",
+      "samples": [],
+      "topic": "robotics"
+    },
+    {
+      "count": 0,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-16T19:20:37.653369+00:00",
+        "error": "Reddit public RSS is paused/rate-limited. Retry in 900 seconds; existing results retained.",
+        "status": "error"
+      },
+      "id": "ai-reddit",
+      "provider": "reddit",
+      "samples": [],
+      "topic": "ai"
+    },
+    {
+      "count": 0,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-16T19:20:37.653863+00:00",
+        "error": "Reddit public RSS is paused/rate-limited. Retry in 900 seconds; existing results retained.",
+        "status": "error"
+      },
+      "id": "poker-reddit",
+      "provider": "reddit",
+      "samples": [],
+      "topic": "poker"
+    }
+  ],
+  "decision": "Disabled in starter feed after public endpoint refusal. Authorized read-only access or imported links remain available."
+}

@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-11-16T20:10:52.263459+00:00",
+  "profile": "com.personal.commandcenter.discoveryqa",
+  "isolated": true,
+  "real_accounts_used": false,
+  "observed": [
+    "Fresh startup opens Discover with empty feed and no automatic public request; Load my feeds explicitly starts the batch.",
+    "Native UI shows 611 combined results and 30/30 sources refreshed across AI/models, code/libraries, robotics, agriculture, poker and learning.",
+    "Saved a live model; Saved state survives quit/relaunch. URL-reused saved sources also shown in the project picker.",
+    "Live AgriTech India event details show 20–22 August 2027, Bangalore and organizer URL. Created editable cited note with source URL, dates, fetched time and provenance.",
+    "Exactly one attachment panel in note editor; selected /private/tmp/pcc-discovery-qa.txt through native picker, attached 107 bytes and previewed the expected synthetic text.",
+    "Created QA combined discovery project from a GitHub repository plus agriculture event. Both saved links persisted after quit/relaunch.",
+    "Track event opened Agri-tech record with original source URL, dates and Bangalore venue text.",
+    "India region filter yielded five matching entries, including the official India event and India social/news mentions; Reset view restored all 611.",
+    "Hugging Face details expose downloads, likes, library, license and tags; no model weights requested.",
+    "Watch in app opened a separate YouTube reader, loaded a public Stanford Short without sign-in and played it; Pause switched to Play and seek advanced from 1% to 9%. Closed reader.",
+    "Added QA saved social reference using a synthetic LinkedIn public URL without opening it. Combined feed labeled it Imported link / user-supplied summary.",
+    "After restart, cached feeds, saved model and source-linked project remained. No automatic refresh started.",
+    "Found stale event configuration panels after workspace navigation. Added keyed view container; rebuilt, restarted and repeated project/agriculture-to-Discover navigation. No stale panels remained in the final screenshot."
+  ],
+  "not_exercised": [
+    "Real X, LinkedIn, Reddit OAuth, keyed YouTube keyword search or other account connections",
+    "Live JSON native file-picker import (bounded parser/validation covered by native tests)",
+    "30-minute automatic refresh waiting cycle, all cancellation/network races and all provider-filter UI combinations",
+    "Full Windows feature UI acceptance",
+    "Full PRD end-to-end acceptance"
+  ]
+}

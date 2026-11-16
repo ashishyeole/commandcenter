@@ -109,6 +109,8 @@ pub struct Change {
 #[serde(deny_unknown_fields)]
 pub struct PortableWorkspace {
     #[serde(default)]
+    pub discovery_sources: Option<serde_json::Value>,
+    #[serde(default)]
     pub attachments: Vec<crate::attachments::Attachment>,
     pub records: Vec<Record>,
     pub history: Vec<Change>,
@@ -316,6 +318,7 @@ impl Repository {
                     }
                     serde_json::Value::Object(clean)
                 }),
+            discovery_sources: self.portable_discovery_sources()?,
             feeds: self.feeds()?,
         })
     }
@@ -358,6 +361,13 @@ impl Repository {
             tx.execute(
                 "INSERT OR IGNORE INTO settings(key,value) VALUES('preferences',?1)",
                 [preferences.to_string()],
+            )
+            .map_err(err)?;
+        }
+        if let Some(sources) = &workspace.discovery_sources {
+            tx.execute(
+                "INSERT OR IGNORE INTO settings(key,value) VALUES('discovery_hub_streams',?1)",
+                [sources.to_string()],
             )
             .map_err(err)?;
         }
@@ -450,6 +460,12 @@ impl Repository {
     pub fn revoke_folder(&self, id: &str) -> Result<()> {
         self.conn
             .execute("DELETE FROM local_bindings WHERE project_id=?1", [id])
+            .map_err(err)?;
+        Ok(())
+    }
+    pub fn remove_cached_feed(&self, source: &str) -> Result<()> {
+        self.conn
+            .execute("DELETE FROM feed_cache WHERE source=?1", [source])
             .map_err(err)?;
         Ok(())
     }
@@ -786,22 +802,37 @@ pub fn validate_portable_extras(workspace: &PortableWorkspace) -> Result<()> {
             }
         }
     }
-    if workspace.feeds.len() > 9 {
+    if let Some(sources) = &workspace.discovery_sources {
+        validate_discovery_sources(sources)?;
+    }
+    if workspace.feeds.len() > 73 {
         return Err("Too many feed caches".into());
     }
     let mut sources = std::collections::HashSet::new();
     for feed in &workspace.feeds {
-        if ![
-            "github", "models", "ollama", "news", "mcp", "apps", "youtube", "arxiv", "rss",
-        ]
-        .contains(&feed.source.as_str())
+        let hub = feed.source.strip_prefix("hub:").is_some_and(|s| {
+            !s.is_empty()
+                && s.len() <= 80
+                && s.bytes().all(|c| c.is_ascii_alphanumeric() || c == b'-')
+        });
+        if !(hub
+            || [
+                "github", "models", "ollama", "news", "mcp", "apps", "youtube", "arxiv", "rss",
+            ]
+            .contains(&feed.source.as_str()))
             || !sources.insert(&feed.source)
         {
             return Err("Invalid cached feed source".into());
         }
         chrono::DateTime::parse_from_rfc3339(&feed.fetched_at).map_err(err)?;
         let items = feed.items.as_array().ok_or("Invalid cached feed items")?;
-        if items.len() > 100 {
+        if items.len()
+            > if feed.source == "hub:imported-links" {
+                1000
+            } else {
+                100
+            }
+        {
             return Err("Cached feed exceeds item limit".into());
         }
         for item in items {
@@ -842,6 +873,124 @@ pub fn validate_portable_extras(workspace: &PortableWorkspace) -> Result<()> {
                     )
                     .map_err(err)?;
                 }
+            }
+        }
+    }
+    Ok(())
+}
+
+impl Repository {
+    pub fn portable_discovery_sources(&self) -> Result<Option<serde_json::Value>> {
+        let Some(raw) = self.setting("discovery_hub_streams")? else {
+            return Ok(None);
+        };
+        let mut sources: serde_json::Value = serde_json::from_str(&raw).map_err(err)?;
+        for source in sources.as_array_mut().ok_or("Invalid discovery sources")? {
+            source["enabled"] = serde_json::json!(false);
+        }
+        validate_discovery_sources(&sources)?;
+        Ok(Some(sources))
+    }
+}
+pub fn validate_discovery_sources(value: &serde_json::Value) -> Result<()> {
+    let sources = value.as_array().ok_or("Invalid discovery sources")?;
+    if sources.len() > 64 {
+        return Err("Too many discovery sources".into());
+    }
+    let mut ids = std::collections::HashSet::new();
+    for s in sources {
+        let object = s.as_object().ok_or("Invalid discovery source")?;
+        if object.keys().any(|k| {
+            ![
+                "id", "name", "topic", "provider", "query", "kind", "region", "enabled", "options",
+            ]
+            .contains(&k.as_str())
+        }) {
+            return Err("Unsupported discovery source field".into());
+        }
+        let id = s["id"].as_str().ok_or("Invalid discovery source ID")?;
+        if id.is_empty()
+            || id.len() > 80
+            || !id.bytes().all(|c| c.is_ascii_alphanumeric() || c == b'-')
+            || !ids.insert(id)
+            || s["enabled"] != false
+        {
+            return Err(
+                "Portable sources must have unique IDs and remain disabled until reviewed".into(),
+            );
+        }
+        for (k, max) in [
+            ("name", 160),
+            ("query", 2000),
+            ("topic", 80),
+            ("provider", 80),
+            ("kind", 80),
+            ("region", 80),
+        ] {
+            if !s[k].as_str().is_some_and(|s| s.len() <= max) {
+                return Err("Invalid discovery source value".into());
+            }
+        }
+        if ![
+            "ai",
+            "code",
+            "robotics",
+            "agriculture",
+            "poker",
+            "learning",
+            "custom",
+        ]
+        .contains(&s["topic"].as_str().unwrap_or(""))
+            || ![
+                "github",
+                "models",
+                "ollama",
+                "arxiv",
+                "rss",
+                "news",
+                "youtube",
+                "youtube_feed",
+                "reddit",
+                "bluesky",
+                "mastodon",
+                "events",
+                "calendar",
+                "x",
+                "linkedin",
+                "import",
+                "mcp",
+                "apps",
+            ]
+            .contains(&s["provider"].as_str().unwrap_or(""))
+            || ![
+                "models", "repos", "news", "papers", "videos", "social", "events",
+            ]
+            .contains(&s["kind"].as_str().unwrap_or(""))
+        {
+            return Err("Unsupported discovery source type".into());
+        }
+        if ["rss", "events", "calendar"].contains(&s["provider"].as_str().unwrap_or("")) {
+            let u = url::Url::parse(s["query"].as_str().unwrap_or("")).map_err(err)?;
+            if u.scheme() != "https"
+                || u.host_str().is_none()
+                || !u.username().is_empty()
+                || u.password().is_some()
+                || u.fragment().is_some()
+            {
+                return Err("Unsafe discovery source URL".into());
+            }
+        }
+        let options = s["options"].as_object().ok_or("Invalid source options")?;
+        for (key, value) in options {
+            if key == "days" {
+                if !value.as_u64().is_some_and(|n| n <= 365) {
+                    return Err("Invalid discovery date window".into());
+                }
+            } else if !["sort", "language", "task", "license", "region", "duration"]
+                .contains(&key.as_str())
+                || !value.as_str().is_some_and(|s| s.len() <= 100)
+            {
+                return Err("Unsupported source option".into());
             }
         }
     }

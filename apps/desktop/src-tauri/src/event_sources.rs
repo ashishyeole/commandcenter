@@ -157,7 +157,7 @@ pub(crate) fn date(p: &ical::property::Property) -> Result<Value> {
         json!({"date":naive.date().to_string(),"local_time":naive.to_string(),"all_day":false,"timezone":"floating; source does not specify timezone","raw":value}),
     )
 }
-fn parse(bytes: Vec<u8>, source: &Source) -> Result<Value> {
+pub(crate) fn parse(bytes: Vec<u8>, source: &Source) -> Result<Value> {
     let text = std::str::from_utf8(&bytes).map_err(|_| "Calendar must be UTF-8")?;
     if !text.contains("BEGIN:VCALENDAR") {
         return Err("Source is not an iCalendar document".into());

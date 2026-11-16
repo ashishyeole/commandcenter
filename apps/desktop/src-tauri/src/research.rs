@@ -33,25 +33,16 @@ fn public(ip: IpAddr) -> bool {
     }
 }
 fn clean(value: &str, max: usize) -> String {
-    let mut tag = false;
-    value
-        .chars()
-        .filter(|c| {
-            if *c == '<' {
-                tag = true;
-                false
-            } else if *c == '>' {
-                tag = false;
-                false
-            } else {
-                !tag
-            }
-        })
-        .take(max)
-        .collect::<String>()
+    let doc = dom_query::Document::from(format!("<div>{value}</div>"));
+    doc.select("script,style").remove();
+    doc.select("body")
+        .text()
         .split_whitespace()
         .collect::<Vec<_>>()
         .join(" ")
+        .chars()
+        .take(max)
+        .collect()
 }
 pub async fn fetch(state: &AppState, source: &str, query: &str) -> Result<Vec<Discovery>> {
     let endpoint = if source == "arxiv" {
@@ -95,6 +86,10 @@ pub async fn fetch(state: &AppState, source: &str, query: &str) -> Result<Vec<Di
     let client = public_client(&endpoint).await?;
     let mut response = client
         .get(endpoint.clone())
+        .header(
+            "Accept",
+            "application/atom+xml, application/rss+xml, application/xml;q=0.9, text/xml;q=0.8",
+        )
         .send()
         .await
         .map_err(|_| "Feed request failed")?;
@@ -141,13 +136,21 @@ pub async fn fetch(state: &AppState, source: &str, query: &str) -> Result<Vec<Di
         bytes.extend_from_slice(&chunk);
     }
     let xml = std::str::from_utf8(&bytes).map_err(|_| "Feed must use UTF-8")?;
+    parse_feed(xml, &endpoint, source, &command_center_core::now())
+}
+pub(crate) fn parse_feed(
+    xml: &str,
+    endpoint: &reqwest::Url,
+    source: &str,
+    timestamp: &str,
+) -> Result<Vec<Discovery>> {
     let mut reader = quick_xml::Reader::from_str(xml);
     reader.config_mut().trim_text(true);
     let mut stack: Vec<String> = vec![];
     let mut fields: BTreeMap<String, String> = BTreeMap::new();
     let mut entry_depth = 0;
     let mut rows = vec![];
-    let fetched = command_center_core::now();
+    let fetched = timestamp.to_owned();
     loop {
         match reader.read_event().map_err(|_| "Malformed XML feed")? {
             Event::DocType(_) => {
@@ -202,6 +205,9 @@ pub async fn fetch(state: &AppState, source: &str, query: &str) -> Result<Vec<Di
                     let text = quick_xml::escape::unescape(e.as_ref())
                         .map_err(|_| "Unsupported XML entity")?;
                     if let Some(name) = stack.last() {
+                        if name == "title" && stack.len() != entry_depth + 1 {
+                            continue;
+                        }
                         let field = fields.entry(name.clone()).or_default();
                         if field.len() < 16000 {
                             field.push_str(&text.chars().take(8000).collect::<String>());
@@ -212,6 +218,9 @@ pub async fn fetch(state: &AppState, source: &str, query: &str) -> Result<Vec<Di
             Event::CData(e) => {
                 if entry_depth > 0 {
                     if let Some(name) = stack.last() {
+                        if name == "title" && stack.len() != entry_depth + 1 {
+                            continue;
+                        }
                         let field = fields.entry(name.clone()).or_default();
                         if field.len() < 16000 {
                             field.push_str(&e.as_ref().chars().take(8000).collect::<String>());
@@ -225,6 +234,9 @@ pub async fn fetch(state: &AppState, source: &str, query: &str) -> Result<Vec<Di
                     let value =
                         quick_xml::escape::unescape(&raw).map_err(|_| "Unsupported XML entity")?;
                     if let Some(name) = stack.last() {
+                        if name == "title" && stack.len() != entry_depth + 1 {
+                            continue;
+                        }
                         let field = fields.entry(name.clone()).or_default();
                         if field.len() < 16000 {
                             field.push_str(&value);
@@ -325,4 +337,23 @@ pub(crate) async fn public_client(endpoint: &reqwest::Url) -> Result<reqwest::Cl
         .user_agent("PersonalCommandCenter/0.5 (user-authorized feed reader)")
         .build()
         .map_err(|e| e.to_string())
+}
+
+#[cfg(test)]
+mod aggregation_parser_tests {
+    use super::*;
+    #[test]
+    fn channel_media_titles_do_not_duplicate_and_markup_is_inert() {
+        let xml = r#"<feed xmlns:media="http://search.yahoo.com/mrss/"><entry><title>Robot lecture</title><link href="https://www.youtube.com/watch?v=M7lc1UVf-VE"/><media:group><media:title>Robot lecture</media:title><media:description>&lt;p&gt;Learn robotics&lt;/p&gt;&lt;script&gt;steal()&lt;/script&gt;</media:description></media:group><published>2026-11-16T12:00:00Z</published></entry></feed>"#;
+        let rows = parse_feed(
+            xml,
+            &reqwest::Url::parse("https://www.youtube.com/feeds/videos.xml").unwrap(),
+            "rss",
+            "2026-11-16T12:00:00Z",
+        )
+        .unwrap();
+        assert_eq!(rows.len(), 1);
+        assert_eq!(rows[0].title, "Robot lecture");
+        assert_eq!(rows[0].description, "Learn robotics");
+    }
 }

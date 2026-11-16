@@ -30,3 +30,7 @@ Public model/research/news metadata needs internet and source availability, not 
 ## November 15 clarification
 
 Email/calendar remains Google-only. Poker Hub provides a worldwide current/upcoming search query plus organizer-specific shortcuts; this is search planning, not a claim to have aggregated every tournament. Existing calendars show all configured sources together and retain ongoing multi-day events. The active AI assistant remains online-only; local inference/runtime code is preserved outside active build paths for later user-authorized configuration. The floating assistant launcher is draggable inside the app and saves only its position in local UI storage. API keys must be entered directly in the application secure-store setup.
+
+## Primary workflow clarified on 2026-11-16
+
+One aggregated topic feed is the app's core experience: monitor external models, repositories, news, research, libraries, lectures, videos, social posts and upcoming events; then save selected information, write/upload related documents and start workspace work. The owner chose worldwide with US/India filters, keyless public YouTube channels, and confirmed no X/LinkedIn developer API access. See [Discovery aggregation](DISCOVERY-AGGREGATION.md) for current coverage, actual live evidence and social access limits.

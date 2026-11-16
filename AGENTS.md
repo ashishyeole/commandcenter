@@ -18,3 +18,9 @@ The latest user clarification supersedes deployment/execution requirements in th
 ## User preferences — 2026-11-15
 
 Keep email/calendar integrations Google-only. Poker discovery should search across organizers/providers worldwide for current and upcoming tournaments, with ended events hidden by default; do not limit discovery to a single chosen organizer. Keep local-AI code dormant for future configuration. The active assistant is online-only with credentials entered in the app, and has a circular draggable AI launcher within the app viewport.
+
+## Core product clarification — 2026-11-16
+
+Discover is the primary entry view: aggregate information across topics/providers into one feed, rather than making the owner operate separate provider search forms. Include public model/repo rankings, news/papers/libraries, YouTube channel uploads/lectures, robotics/agriculture developments, upcoming poker/agriculture events and useful public social feeds. Saving, cited documents/file uploads and workspaces should follow naturally from discoveries. Keep the four appearance themes and image-only draggable assistant.
+
+The owner chose worldwide coverage with US/India filters, public YouTube feeds without a key for now, and all five social providers plus useful alternatives. They confirmed no X/LinkedIn developer API access. Show access restrictions honestly; public-link/import support is allowed, but do not scrape signed-in personal feeds, fabricate working connectors or read an OS credential unless that integration was configured on the current device/profile. No local model/simulator/hardware setup. Verify public source behavior through the native pipeline and record failures as well as successes.

@@ -104,6 +104,68 @@ pub async fn refresh_source(
     if !consent {
         return Err("Approve the public-source request first".into());
     }
+    refresh_cached(&state, source, query, SourceOptions::default(), None).await
+}
+#[derive(Clone, Default, Serialize, Deserialize)]
+#[serde(default, deny_unknown_fields)]
+pub struct SourceOptions {
+    pub sort: String,
+    pub days: u32,
+    pub language: String,
+    pub task: String,
+    pub license: String,
+    pub region: String,
+    pub duration: String,
+}
+impl SourceOptions {
+    pub fn validate(&self) -> Result<()> {
+        if ![0, 1, 7, 30, 90, 365].contains(&self.days)
+            || self.language.len() > 40
+            || self.task.len() > 80
+            || self.license.len() > 80
+            || !self
+                .language
+                .bytes()
+                .all(|c| c.is_ascii_alphanumeric() || b"-+#._".contains(&c))
+            || !self
+                .task
+                .bytes()
+                .chain(self.license.bytes())
+                .all(|c| c.is_ascii_alphanumeric() || b"-._".contains(&c))
+            || ![
+                "",
+                "stars",
+                "forks",
+                "updated",
+                "downloads",
+                "trendingScore",
+                "likes",
+                "lastModified",
+                "date",
+                "relevance",
+                "viewCount",
+                "hot",
+                "new",
+                "top",
+            ]
+            .contains(&self.sort.as_str())
+            || !["", "US", "IN", "GB", "CA", "AU", "DE"].contains(&self.region.as_str())
+            || !["", "any", "short", "medium", "long"].contains(&self.duration.as_str())
+        {
+            return Err("Invalid provider filters".into());
+        }
+        Ok(())
+    }
+}
+pub(crate) async fn refresh_cached(
+    state: &AppState,
+    source: String,
+    query: String,
+    options: SourceOptions,
+    cache_key: Option<String>,
+) -> Result<CachedFeed> {
+    options.validate()?;
+
     if query.len() > 300 {
         return Err("Search is too long".into());
     }
@@ -115,7 +177,7 @@ pub async fn refresh_source(
     {
         return Err("Unsupported public source".into());
     }
-    {
+    if !(source == "rss" && cache_key.is_some()) {
         let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
         let next = repo
             .setting(&format!("source_next:{source}"))?
@@ -136,18 +198,37 @@ pub async fn refresh_source(
     let c = client(false)?;
     let timestamp = now();
     let mut out = vec![];
+    let mut attributes = std::collections::HashMap::<String, Value>::new();
     match source.as_str() {
         "arxiv" | "rss" => {
             out = crate::research::fetch(&state, &source, &query).await?;
         }
         "github" => {
-            let q = if query.trim().is_empty() {
+            let mut q = if query.trim().is_empty() {
                 format!(
                     "created:>{}",
                     (chrono::Utc::now() - chrono::Duration::days(30)).format("%Y-%m-%d")
                 )
             } else {
                 query.clone()
+            };
+            if options.days > 0 {
+                q.push_str(&format!(
+                    " created:>{}",
+                    (chrono::Utc::now() - chrono::Duration::days(options.days.into()))
+                        .format("%Y-%m-%d")
+                ));
+            }
+            if !options.language.is_empty() {
+                q.push_str(&format!(" language:{}", options.language));
+            }
+            if !options.license.is_empty() {
+                q.push_str(&format!(" license:{}", options.license));
+            }
+            let gh_sort = if ["stars", "forks", "updated"].contains(&options.sort.as_str()) {
+                options.sort.as_str()
+            } else {
+                "stars"
             };
             let v = source_json(
                 &state,
@@ -157,7 +238,7 @@ pub async fn refresh_source(
                     .header("Accept", "application/vnd.github+json")
                     .query(&[
                         ("q", q.as_str()),
-                        ("sort", "stars"),
+                        ("sort", gh_sort),
                         ("order", "desc"),
                         ("per_page", "30"),
                     ])
@@ -170,6 +251,7 @@ pub async fn refresh_source(
                 .as_array()
                 .ok_or("GitHub returned no results array")?
             {
+                attributes.insert(format!("github:{}",r["id"]),json!({"language":r["language"],"license":r["license"]["spdx_id"],"stars":r["stargazers_count"],"forks":r["forks_count"],"topics":r["topics"],"updated_at":r["updated_at"],"provider_order":gh_sort}));
                 out.push(Discovery {
                     id: format!("github:{}", r["id"]),
                     title: text(r, "full_name"),
@@ -187,24 +269,48 @@ pub async fn refresh_source(
             out = crate::model_catalogue::fetch(&query, &timestamp).await?;
         }
         "models" => {
+            let hf_sort = if ["downloads", "trendingScore", "likes", "lastModified"]
+                .contains(&options.sort.as_str())
+            {
+                options.sort.as_str()
+            } else {
+                "downloads"
+            };
+            let mut request = c.get("https://huggingface.co/api/models").query(&[
+                ("search", query.as_str()),
+                ("sort", hf_sort),
+                ("direction", "-1"),
+                ("limit", "30"),
+                ("full", "true"),
+            ]);
+            let mut filters = Vec::new();
+            if !options.task.is_empty() {
+                request = request.query(&[("pipeline_tag", options.task.as_str())]);
+            }
+            if !options.language.is_empty() {
+                filters.push(options.language.clone());
+            }
+            if !options.license.is_empty() {
+                filters.push(format!("license:{}", options.license));
+            }
+            if !filters.is_empty() {
+                request = request.query(
+                    &filters
+                        .iter()
+                        .map(|f| ("filter", f.as_str()))
+                        .collect::<Vec<_>>(),
+                );
+            }
             let v = source_json(
                 &state,
                 &source,
                 epoch,
-                c.get("https://huggingface.co/api/models")
-                    .query(&[
-                        ("search", query.as_str()),
-                        ("sort", "downloads"),
-                        ("direction", "-1"),
-                        ("limit", "30"),
-                    ])
-                    .send()
-                    .await
-                    .map_err(|e| e.to_string())?,
+                request.send().await.map_err(|e| e.to_string())?,
             )
             .await?;
             for r in v.as_array().ok_or("Model API returned no results array")? {
                 let id = text(r, "id");
+                attributes.insert(format!("hf:{id}"),json!({"task":r["pipeline_tag"],"library":r["library_name"],"downloads":r["downloads"],"likes":r["likes"],"tags":r["tags"],"license":r["tags"].as_array().and_then(|tags|tags.iter().filter_map(Value::as_str).find_map(|t|t.strip_prefix("license:"))),"provider_order":hf_sort}));
                 out.push(Discovery {
                     id: format!("hf:{id}"),
                     title: id.clone(),
@@ -212,26 +318,38 @@ pub async fn refresh_source(
                     url: format!("https://huggingface.co/{id}"),
                     source: source.clone(),
                     metric: format!("{} downloads · {} likes", r["downloads"], r["likes"]),
-                    published_at: r["lastModified"].as_str().map(str::to_owned),
+                    published_at: r["lastModified"].as_str().or(r["last_modified"].as_str()).map(str::to_owned),
                     fetched_at: timestamp.clone(),
-                    verification: "Hugging Face API · compatibility not evaluated".into(),
+                    verification: format!("Hugging Face API · provider rank: {hf_sort}; metadata only, no model download or inference"),
                 });
             }
         }
         "news" => {
+            let endpoint = if options.sort == "date" {
+                "https://hn.algolia.com/api/v1/search_by_date"
+            } else {
+                "https://hn.algolia.com/api/v1/search"
+            };
+            let mut request = c.get(endpoint).query(&[
+                ("query", query.as_str()),
+                ("tags", "story"),
+                ("hitsPerPage", "30"),
+            ]);
+            if options.days > 0 {
+                request = request.query(&[(
+                    "numericFilters",
+                    format!(
+                        "created_at_i>{}",
+                        (chrono::Utc::now() - chrono::Duration::days(options.days.into()))
+                            .timestamp()
+                    ),
+                )]);
+            }
             let v = source_json(
                 &state,
                 &source,
                 epoch,
-                c.get("https://hn.algolia.com/api/v1/search")
-                    .query(&[
-                        ("query", query.as_str()),
-                        ("tags", "story"),
-                        ("hitsPerPage", "30"),
-                    ])
-                    .send()
-                    .await
-                    .map_err(|e| e.to_string())?,
+                request.send().await.map_err(|e| e.to_string())?,
             )
             .await?;
             for r in v["hits"]
@@ -337,22 +455,39 @@ pub async fn refresh_source(
                     out.push(Discovery {id:format!("youtube-channel:{id}"),title:text(snippet,"title"),description:text(snippet,"description"),url:format!("https://www.youtube.com/channel/{id}"),source:source.clone(),metric:format!("{subscribers} subscribers (provider rounded) · {} views · {} videos",stats["viewCount"].as_str().unwrap_or("unknown"),stats["videoCount"].as_str().unwrap_or("unknown")),published_at:snippet["publishedAt"].as_str().map(str::to_owned),fetched_at:timestamp.clone(),verification:"YouTube API public channel snapshot. Subscribers may be rounded/hidden; observed changes are not exact audience growth or a forecast.".into()});
                 }
             } else {
+                let order = if ["date", "relevance", "viewCount"].contains(&options.sort.as_str()) {
+                    options.sort.as_str()
+                } else {
+                    "date"
+                };
+                let mut request = c
+                    .get("https://www.googleapis.com/youtube/v3/search")
+                    .query(&[
+                        ("key", key.as_str()),
+                        ("part", "snippet"),
+                        ("type", "video"),
+                        ("q", query.as_str()),
+                        ("order", order),
+                        ("maxResults", "25"),
+                    ]);
+                if options.days > 0 {
+                    request = request.query(&[(
+                        "publishedAfter",
+                        (chrono::Utc::now() - chrono::Duration::days(options.days.into()))
+                            .to_rfc3339(),
+                    )]);
+                }
+                if !options.region.is_empty() {
+                    request = request.query(&[("regionCode", &options.region)]);
+                }
+                if !options.duration.is_empty() {
+                    request = request.query(&[("videoDuration", &options.duration)]);
+                }
                 let v = source_json(
                     &state,
                     &source,
                     epoch,
-                    c.get("https://www.googleapis.com/youtube/v3/search")
-                        .query(&[
-                            ("key", key.as_str()),
-                            ("part", "snippet"),
-                            ("type", "video"),
-                            ("q", query.as_str()),
-                            ("order", "date"),
-                            ("maxResults", "25"),
-                        ])
-                        .send()
-                        .await
-                        .map_err(|_| "YouTube request failed")?,
+                    request.send().await.map_err(|_| "YouTube request failed")?,
                 )
                 .await?;
                 for r in v["items"]
@@ -415,14 +550,23 @@ pub async fn refresh_source(
         return Err("Data was reset during request".into());
     }
     let mut payload = serde_json::to_value(out).map_err(|e| e.to_string())?;
-    let same_query =
-        repo.setting(&format!("feed_query:{source}"))?.as_deref() == Some(query.as_str());
+    for item in payload.as_array_mut().into_iter().flatten() {
+        if let Some(meta) = item["id"].as_str().and_then(|id| attributes.get(id)) {
+            item["metadata"] = meta.clone();
+        }
+    }
+    let cache_source = cache_key.as_deref().unwrap_or(&source);
+    let fingerprint = serde_json::to_string(&json!([query, options])).map_err(|e| e.to_string())?;
+    let same_query = repo
+        .setting(&format!("feed_query:{cache_source}"))?
+        .as_deref()
+        == Some(fingerprint.as_str());
     if (source == "github"
         || source == "models"
         || (source == "youtube" && query.trim().starts_with("channel:")))
         && same_query
     {
-        if let Some(prior) = repo.feeds()?.into_iter().find(|f| f.source == source) {
+        if let Some(prior) = repo.feeds()?.into_iter().find(|f| f.source == cache_source) {
             if let (Ok(a), Ok(b)) = (
                 chrono::DateTime::parse_from_rfc3339(&prior.fetched_at),
                 chrono::DateTime::parse_from_rfc3339(&timestamp),
@@ -450,9 +594,16 @@ pub async fn refresh_source(
             }
         }
     }
-    repo.set_setting(&format!("feed_query:{source}"), &query)?;
+    repo.set_setting(&format!("feed_query:{cache_source}"), &fingerprint)?;
+    if cache_key.is_some() {
+        return Ok(CachedFeed {
+            source: cache_source.into(),
+            fetched_at: timestamp,
+            items: payload,
+        });
+    }
     repo.cache_research_query(&source, &query, &payload)?;
-    let feed = repo.cache_feed(&source, &payload)?;
+    let feed = repo.cache_feed(cache_source, &payload)?;
     repo.evaluate_watchlists()?;
     Ok(feed)
 }

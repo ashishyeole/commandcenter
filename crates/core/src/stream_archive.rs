@@ -33,6 +33,7 @@ enum Frame {
     Preferences(serde_json::Value),
     Feed(CachedFeed),
     Collections(Vec<crate::collections::Collection>),
+    DiscoverySources(serde_json::Value),
     End { count: u64, sha256: String },
 }
 #[derive(Default, Clone, Serialize)]
@@ -172,6 +173,7 @@ fn validate(frame: &Frame) -> Result<()> {
             ..Default::default()
         }),
         Frame::Collections(v) => crate::collections::validate_collections(v),
+        Frame::DiscoverySources(v) => crate::workspace::validate_discovery_sources(v),
         Frame::End { .. } => Ok(()),
     }
 }
@@ -237,6 +239,7 @@ fn decode<R: Read>(
             Frame::History(v) => Some(format!("history:{}", v.event_id)),
             Frame::Preferences(_) => Some("preferences".into()),
             Frame::Collections(_) => Some("collections".into()),
+            Frame::DiscoverySources(_) => Some("discovery_sources".into()),
             Frame::Feed(v) => Some(format!("feed:{}", v.source)),
             _ => None,
         };
@@ -282,6 +285,9 @@ impl Repository {
             encoder.emit(&Frame::Preferences(safe.into()))?;
         }
         encoder.emit(&Frame::Collections(self.research_collections()?))?;
+        if let Some(sources) = self.portable_discovery_sources()? {
+            encoder.emit(&Frame::DiscoverySources(sources))?;
+        }
         if let Some(key) = vault_key {
             let mut stmt = tx
                 .prepare("SELECT id,ciphertext FROM vault ORDER BY id")
@@ -428,6 +434,13 @@ impl Repository {
                 Frame::Preferences(v) => {
                     tx.execute(
                         "INSERT OR IGNORE INTO settings VALUES('preferences',?1)",
+                        [v.to_string()],
+                    )
+                    .map_err(err)?;
+                }
+                Frame::DiscoverySources(v) => {
+                    tx.execute(
+                        "INSERT OR IGNORE INTO settings VALUES('discovery_hub_streams',?1)",
                         [v.to_string()],
                     )
                     .map_err(err)?;
@@ -666,7 +679,10 @@ fn copy_frame(mut f: Frame, map: &HashMap<String, String>, device: &str) -> Resu
                 v.payload = serde_json::to_string(&payload).map_err(err)?;
             }
         }
-        Frame::Preferences(_) | Frame::Feed(_) | Frame::Collections(_) => return Ok(None),
+        Frame::Preferences(_)
+        | Frame::Feed(_)
+        | Frame::Collections(_)
+        | Frame::DiscoverySources(_) => return Ok(None),
         Frame::End { .. } => {}
     }
     Ok(Some(f))

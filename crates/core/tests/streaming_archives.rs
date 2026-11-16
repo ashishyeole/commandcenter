@@ -484,3 +484,56 @@ fn display_themes_roundtrip_without_permission_preferences() {
     data.workspace.preferences = Some(serde_json::json!({"theme":"remote-css-url"}));
     assert!(command_center_core::archive::export_all(&data).is_err());
 }
+
+#[test]
+fn aggregated_sources_and_caches_roundtrip_without_auto_read_permission() {
+    let source = Repository::open(":memory:").unwrap();
+    let spec = serde_json::json!([{"id":"test-source","name":"Public source","topic":"robotics","provider":"rss","query":"https://publisher.example/feed.xml","kind":"news","region":"world","enabled":true,"options":{"sort":"","days":0,"language":"","task":"","license":"","region":"","duration":""}}]);
+    source
+        .set_setting("discovery_hub_streams", &spec.to_string())
+        .unwrap();
+    source
+        .set_setting("discovery_hub_auto_refresh", "30")
+        .unwrap();
+    for index in 0..34 {
+        let rows = serde_json::json!([{"id":format!("item-{index}"),"title":"Public fixture","description":"Synthetic source metadata","url":format!("https://publisher.example/item/{index}"),"source":"rss","metric":"Fixture","fetched_at":now(),"published_at":null,"verification":"Synthetic"}]);
+        source
+            .cache_feed(&format!("hub:source-{index}"), &rows)
+            .unwrap();
+    }
+    let portable = source.portable_workspace().unwrap();
+    assert_eq!(
+        portable.discovery_sources.as_ref().unwrap()[0]["enabled"],
+        false
+    );
+    let mut data = command_center_core::archive::ExportData::default();
+    data.workspace = portable;
+    let bytes = command_center_core::archive::export_all(&data).unwrap();
+    let restored = command_center_core::archive::inspect_all(&bytes).unwrap();
+    assert_eq!(restored.workspace.feeds.len(), 34);
+    assert_eq!(
+        restored.workspace.discovery_sources.unwrap()[0]["enabled"],
+        false
+    );
+    let mut bytes = vec![];
+    source.export_stream(&mut bytes, PASSWORD, None).unwrap();
+    let mut target = Repository::open(":memory:").unwrap();
+    target.import_stream(&bytes[..], PASSWORD, None).unwrap();
+    assert_eq!(target.feeds().unwrap().len(), 34);
+    let specs: serde_json::Value =
+        serde_json::from_str(&target.setting("discovery_hub_streams").unwrap().unwrap()).unwrap();
+    assert_eq!(specs[0]["enabled"], false);
+    assert!(target
+        .setting("discovery_hub_auto_refresh")
+        .unwrap()
+        .is_none());
+    let mut unsafe_spec = spec;
+    unsafe_spec[0]["enabled"] = serde_json::json!(false);
+    unsafe_spec[0]["token"] = serde_json::json!("never portable");
+    assert!(command_center_core::workspace::validate_discovery_sources(&unsafe_spec).is_err());
+    let mut invalid = source.portable_workspace().unwrap();
+    invalid.feeds[0].source = "hub:../unsafe".into();
+    let mut data = command_center_core::archive::ExportData::default();
+    data.workspace = invalid;
+    assert!(command_center_core::archive::export_all(&data).is_err());
+}

@@ -23,5 +23,6 @@ jobs:
       - run: node scripts/test-ui-logic.cjs
       - run: node scripts/test-research-analytics.cjs
       - run: node scripts/test-source-images.cjs
+      - run: node scripts/test-discovery-feed.cjs
       - run: cargo test --workspace --locked
       - run: cargo build -p personal-command-center --locked
