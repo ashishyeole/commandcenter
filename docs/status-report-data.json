@@ -146,7 +146,7 @@
       "status": "Implemented in source",
       "implemented": "Topic-first combined feed with multiple subscriptions, per-provider filters, provider/query caches, topic/type/provider/date/region/reading filters, cross-stream deduplication, balanced topic/source order, opt-in refresh scheduling, source health and failure isolation.",
       "remaining": "Public provider availability and optional credentials affect live coverage; rankings retain their provider meaning.",
-      "notes": "v0.3 source and relevant compile checks completed; runtime behavior remains unverified. No live account or provider was exercised. Public channel video feeds need no key. X/LinkedIn live reads are access-dependent; Reddit public RSS was refused during live QA. Imported links are explicitly labeled.",
+      "notes": "Thirty enabled public sources passed native live refresh without accounts. Selected isolated Mac feed/save/document/workspace workflows passed. Public YouTube channel uploads need no key. X/LinkedIn live reads remain access-dependent; Reddit public RSS was refused and starter feeds are paused. Imported links are explicitly labeled.",
       "evidence": "apps/desktop/src/Today.tsx",
       "original_prd_percent": 75,
       "in_scope": true,
@@ -341,8 +341,8 @@
       "weight": 3,
       "status": "Partially implemented",
       "implemented": "Public event sources, change alerts, manual authority confirmation and bounded all-day daily/weekly recurrence expansion. Worldwide current/upcoming web search planning plus organizer shortcuts, satellites/location/game hints, automatic year rollover, merged calendar sources and ongoing-event filtering. Bounded all-day, UTC, IANA-zone and floating DAILY/WEEKLY/MONTHLY/YEARLY recurrence with selected BYDAY/BYMONTHDAY/BYMONTH/WKST filters and EXDATE/RDATE. Actual live WPT, WSOP, PokerStars Live and multi-organizer calendar ingestion into the combined feed; current/upcoming dates and local event tracking.",
-      "remaining": "Overridden RECURRENCE-ID series, BYSETPOS/other unsupported rules, DURATION/EXRULE, unbounded rules and registration/satellite-specific alert logic remain. Web search is not comprehensive live tournament aggregation.",
-      "notes": "Source implementation; compile/package checks only. No runtime tests, provider actions or publication performed. Seven new synthetic parser tests cover monthly invalid dates, leap years, ordinal weekdays, DST, exact DTEND duration, exclusions/additions, inclusive UNTIL, bounds and unsupported-rule preservation. No live feed accessed.",
+      "remaining": "Overridden RECURRENCE-ID series, BYSETPOS/other unsupported rules, DURATION/EXRULE, unbounded rules and registration/satellite-specific alert logic remain. Native aggregation covers supported public organizers and multi-organizer calendars; worldwide completeness and satellite registration status are not guaranteed.",
+      "notes": "Synthetic recurrence tests cover monthly invalid dates, leap years, ordinal weekdays, DST, DTEND duration, exclusions/additions, inclusive UNTIL, bounds and unsupported-rule preservation. Native live reads passed for WPT, WSOP, PokerStars, CardPlayer and agriculture schedules; selected India event tracking and region filtering passed in Mac QA. Supported-source coverage does not guarantee every tournament, satellite or registration change worldwide.",
       "evidence": "docs/POKER-DISCOVERY.md",
       "original_prd_percent": 50,
       "in_scope": true,
@@ -1091,7 +1091,7 @@
       "status": "Implemented in source",
       "implemented": "Selective exports include explicit owner links through existing dependency traversal, linked records and scoped attachments.",
       "remaining": "Owner references outside a deliberately narrow export can remain unresolved unless linked-record inclusion is selected; this is disclosed in export UI.",
-      "notes": "Source reviewed and compiled where applicable. No tests, live provider calls or runtime acceptance performed in this pass. Full-scope aggregated source configuration/caches roundtrip; subscriptions restore disabled, and automatic-read permission/credentials are excluded.",
+      "notes": "Standard and streaming archive tests roundtrip aggregated source configuration and 34 cached feeds. Subscriptions restore disabled; credentials and automatic-read approval are excluded. Earlier selected native streaming dialogs passed; a new hub-configuration restore was verified in repository tests rather than a native restore dialog.",
       "evidence": "apps/desktop/src-tauri/src/main.rs",
       "original_prd_percent": 75,
       "in_scope": true,
@@ -1665,7 +1665,7 @@
   "blockers": [
     {
       "title": "Optional provider connections",
-      "detail": "Google-only email/calendar needs Google OAuth setup and sign-in. Private GitHub, banking, YouTube and optional online AI need their own credentials/consent. Poker search queries and public model/research metadata need no API key.",
+      "detail": "Google-only email/calendar needs Google OAuth setup and sign-in. Private GitHub, banking and optional online AI need credentials/consent. Starter public YouTube channel feeds, public model/repository/research metadata and configured event schedules work without keys; broad YouTube keyword search needs an optional API key.",
       "tasks": "T013, T028, T029, T042, T057"
     },
     {

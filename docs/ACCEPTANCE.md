@@ -1,5 +1,7 @@
 # Acceptance checks
 
+Current verification is recorded in [TEST-REPORT.html](TEST-REPORT.html), [testing/results.json](testing/results.json) and [Discovery aggregation](DISCOVERY-AGGREGATION.md). The dated implementation records below are historical; earlier locked-Mac, unbuilt-Windows and skipped-test statements do not describe the latest checks. Full PRD acceptance remains open.
+
 ## Automated
 
 - `npm run build`: strict TypeScript and production frontend build.

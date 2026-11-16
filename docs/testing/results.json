@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T20:10:52.266783+00:00",
+  "generated_at": "2026-11-16T20:30:44.339915+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
   "rust_test_executions": 79,
@@ -31,12 +31,12 @@
     {
       "status": "PASS",
       "area": "Frontend and native compilation",
-      "evidence": "Current aggregation code passes TypeScript/Vite, 56 UI/analytics/image/feed assertions and 79 workspace Rust executions (77 distinct tests). Isolated Mac app builds. Current Windows packaging results are recorded separately after CI."
+      "evidence": "Aggregation source dc1b077 passes TypeScript/Vite, 56 UI/analytics/image/feed assertions, workspace Rust tests and native compilation on macOS and Windows in CI (43947634210). Local Mac workspace: 79 executions / 77 distinct tests. Native public reads and selected Mac workflows are recorded separately."
     },
     {
       "status": "PASS",
       "area": "Mac DMG integrity/copy",
-      "evidence": "Current aggregation development DMG checksum verified, mounted read-only; version 0.5.0 ARM64, Applications shortcut and strict deep ad-hoc signature checked. Delivery-copy bytes match packaged DMG. See discovery-dmg-inspection.log; no real profile launched."
+      "evidence": "Aggregation source dc1b077: local 0.5.0 ARM64 development DMG passes hdiutil checksum, read-only mounted version/Applications-shortcut check and strict deep ad-hoc signature verification. Delivery copy matches packaged bytes. Normal real profile was not launched."
     },
     {
       "status": "FIXED",
@@ -61,7 +61,7 @@
     {
       "status": "PASS (installer smoke)",
       "area": "Windows build / installer / runtime",
-      "evidence": "96c7403 release packaging and workspace tests succeeded in CI. Windows runner: silent install exit 0; native Personal Command Center window stayed running 15 seconds; silent uninstall exit 0. Local installer SHA-256 matches CI evidence. Theme UI received selected native Mac checks; full Windows feature UI and interactive backup prompts remain unverified."
+      "evidence": "Aggregation source dc1b077: Windows release packaging and workspace tests succeeded in CI (43947663885). Isolated runner: silent install exit 0, native Personal Command Center window stayed running 15 seconds, silent uninstall exit 0. Matching local artifact checksum verified separately. Full Windows feature UI and interactive dialogs remain unverified."
     },
     {
       "status": "NOT RUN",
