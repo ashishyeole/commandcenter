@@ -130,6 +130,7 @@ pub fn configure_google_account(
     client_secret: String,
 ) -> Result<()> {
     let (_job, _) = job(&state)?;
+    crate::google_background::clear(&state)?;
     let secret = Zeroizing::new(client_secret);
     if client_id.len() > 300
         || !client_id.ends_with(".apps.googleusercontent.com")
@@ -174,6 +175,7 @@ pub async fn connect_google_account(
         return Err("Select read-only scopes and approve browser sign-in".into());
     }
     let (_job, cancel) = job(&state)?;
+    crate::google_background::clear(&state)?;
     let epoch = state.data_epoch.load(Ordering::SeqCst);
     let mut c = read(&state)?;
     let work = async {
@@ -513,6 +515,7 @@ pub async fn read_google_account(
 }
 #[tauri::command]
 pub async fn disconnect_google_account(state: State<'_, AppState>, revoke: bool) -> Result<()> {
+    crate::google_background::clear(&state)?;
     state
         .repo
         .lock()
@@ -554,7 +557,7 @@ pub async fn disconnect_google_account(state: State<'_, AppState>, revoke: bool)
     Ok(())
 }
 
-fn scope_allows(granted: &str, required: &str) -> bool {
+pub(crate) fn scope_allows(granted: &str, required: &str) -> bool {
     granted
         .split_whitespace()
         .any(|s| s == required || (required == MAIL && s == MAIL_BODY))
@@ -740,4 +743,8 @@ mod message_tests {
         let (text, _, truncated) = message_text(&value).unwrap();
         assert!(truncated && text.len() <= 12000);
     }
+}
+
+pub(crate) fn granted_scopes(state: &AppState) -> Result<String> {
+    Ok(read(state)?.scopes.clone())
 }

@@ -6,6 +6,7 @@ permissions:
 jobs:
   package:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: macos-latest
@@ -23,9 +24,15 @@ jobs:
       - run: npm ci
       - run: cargo test --workspace --locked
       - run: npm run tauri -w apps/desktop -- build --bundles ${{ matrix.bundle }}
+      - name: Install, launch and uninstall on isolated Windows runner
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./.github/scripts/windows-package-smoke.ps1
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: unsigned-${{ matrix.os }}
           path: |
             target/release/bundle/dmg/*.dmg
             target/release/bundle/nsis/*.exe
+            target/release/bundle/windows-launch-smoke.json

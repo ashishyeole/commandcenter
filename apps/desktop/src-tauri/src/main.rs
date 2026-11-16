@@ -18,6 +18,7 @@ mod event_sources;
 mod extensions;
 mod github_accounts;
 mod google_accounts;
+mod google_background;
 mod hosted;
 mod invoices;
 mod large_archives;
@@ -63,6 +64,7 @@ struct AppState {
     data_epoch: std::sync::atomic::AtomicU64,
     pending: Mutex<Option<ExportData>>,
     large_import: Mutex<Option<large_archives::Pending>>,
+    google_cache: Mutex<Option<google_background::Cache>>,
     vault: Mutex<Option<vault::VaultSession>>,
     jobs: Mutex<HashMap<String, tokio_util::sync::CancellationToken>>,
 }
@@ -687,6 +689,10 @@ fn reset_local_data(
         .lock()
         .map_err(|_| "Import unavailable")? = None;
     *state.vault.lock().map_err(|_| "Vault unavailable")? = None;
+    *state
+        .google_cache
+        .lock()
+        .map_err(|_| "Account cache unavailable")? = None;
     Ok(())
 }
 fn poll_reminders(app: &tauri::AppHandle) -> Result<()> {
@@ -811,6 +817,7 @@ fn main() {
                 data_epoch: std::sync::atomic::AtomicU64::new(0),
                 pending: Mutex::new(None),
                 large_import: Mutex::new(None),
+                google_cache: Mutex::new(None),
                 vault: Mutex::new(None),
                 jobs: Mutex::new(HashMap::new()),
             });
@@ -880,6 +887,7 @@ fn main() {
                     tokio::time::sleep(std::time::Duration::from_secs(120)).await;
                     let _ = projects::poll(&project_handle).await;
                     let _ = event_sources::poll(&project_handle).await;
+                    let _ = google_background::poll(&project_handle).await;
                 }
             });
             let handle = app.handle().clone();
@@ -980,6 +988,9 @@ fn main() {
             projects::project_folder,
             projects::revoke_project_folder,
             website_audit::audit_public_website,
+            google_background::google_background_status,
+            google_background::save_google_background,
+            google_background::read_google_background,
             google_accounts::google_account_status,
             google_accounts::configure_google_account,
             google_accounts::connect_google_account,

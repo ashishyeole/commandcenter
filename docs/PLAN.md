@@ -183,3 +183,12 @@ Expanded bounded public-calendar recurrence to all-day, UTC, IANA and floating d
 
 
 Final checkpoint: 66 workspace Rust test executions (64 distinct), TypeScript/Vite and native Mac build pass. Development app/DMG rebuilt; ad-hoc signature and DMG checksum verification pass. Mac streaming export/preview/password rejection/missing-only import/linked-copy restore passed in the isolated QA profile; that lock blocker is resolved. The scheduled writer and new calendar recurrence parser have automated synthetic coverage, not native/provider acceptance. Mobile binaries were not rebuilt. GitHub CLI has no authenticated session, so Windows CI status could not be checked; no Windows executable/runtime evidence exists. The weighted code estimate remains 92%: these additions reduce partial-task gaps without claiming unsupported rules or remaining engineering work complete.
+
+
+## Local installer completion follow-up — 2026-11-15
+
+Confirmed d46c26c checks passed on both macOS and Windows through the existing repository Git credential helper; credentials were never printed or persisted. This supersedes the earlier unauthenticated-GitHub-CLI limitation. Added Windows NSIS install/native-window/uninstall smoke checks to the opt-in packaging workflow.
+
+Implemented explicit Google background read permission, per-scope validation, bounded intervals, first-page header/calendar collection, 30-minute memory-only snapshots, status/stop controls and Inbox display. Configuration changes, disconnect, reset and TTL invalidate snapshots; background reads never fetch message bodies or enter ordinary storage, search, export, sync or AI. Defaults remain off. Two synthetic privacy tests pass; actual OAuth/provider testing still needs owner setup.
+
+Added Research radar with curated robotics/agriculture queries, MIT/NASA/USDA and official India scheme sources, cached publication windows, within-provider comparable growth percentiles, lexical cross-channel creator research suggestions and evidence-linked idea/content drafts. Thirteen synthetic analytics assertions and frontend build pass. These are explicit local-sample heuristics, not market-wide growth or verified demand. No model or hardware is downloaded or run.
