@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T21:50:45.188199+00:00",
+  "generated_at": "2026-11-16T23:35:21.798693+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
   "rust_test_executions": 100,
@@ -86,7 +86,7 @@
     {
       "status": "PASS (automated)",
       "area": "Bounded calendar recurrence",
-      "evidence": "10 recurrence/parser tests cover daily/weekly/monthly/yearly, month-end skipping, leap years, ordinal weekdays, interval weeks, IANA DST, DTEND duration, EXDATE/RDATE, inclusive UNTIL and unsupported-rule preservation. Up to 366 occurrences within a 36,600-day scan. RECURRENCE-ID overrides, BYSETPOS, DURATION/EXRULE and unbounded rules remain unexpanded. No live feed/native UI acceptance."
+      "evidence": "Current parser regressions cover all-day/UTC/IANA/floating recurrence, month ends/leap years/ordinal weekdays, DST, EXDATE/RDATE, BYSETPOS, DURATION/EXRULE, individual RECURRENCE-ID overrides and finite rolling previews for unbounded rules. Unsupported rules/RANGE overrides remain explicit. See remaining-native-tests.log and CALENDAR-RECURRENCE.md. No exhaustive publisher/calendar acceptance claim."
     },
     {
       "status": "PASS (selected isolated checks)",
@@ -116,7 +116,7 @@
     {
       "status": "PASS (synthetic files)",
       "area": "Scheduled streaming backups",
-      "evidence": "Two tests cover legacy schedules defaulting to standard format and verified encrypted .paccs writing/restorability, wrong-password rejection and cleanup on failed export. Local/mounted folders supported; direct WebDAV stays standard. Native OS-keychain-backed unattended schedule execution remains unverified; the new format selector was observed in native QA."
+      "evidence": "Current source supports approved local/mounted and direct WebDAV streaming. Synthetic writer and streamed HTTP readback/size/cancel checks pass. Native QA verified manual streaming export/title-only restore; real unattended OS-keychain/WebDAV scheduling remains unverified."
     },
     {
       "status": "PASS (synthetic and selected QA checks)",
@@ -179,14 +179,14 @@
       "evidence": "500 temporary SQLite notes, 100 capture and 30 snapshot/search samples. Actual p50/p95/max in local-benchmark.json. Excludes native render/accessibility/device latency."
     },
     {
-      "status": "BLOCKED (Mac locked)",
+      "status": "PASS (selected isolated Mac workflows)",
       "area": "New native UI acceptance",
-      "evidence": "Mac locked at final CUA attempt. Owner unlock requested asynchronously. New fields/statement dialogs, rendered website webview and permission/benchmark UI are compiled and selectively unit-tested, but new native UI flows are not yet accepted."
+      "evidence": "Unlocked Mac, current source 7167bfa QA identifier: benchmark, disabled provider inventory/pause history, excluded-context rejection, encrypted statement exact-match/create/duplicate skip, review clear/lock, native streaming export/title-only restore preserving local body, visible incognito rendered audit and reviewed-priority persistence. Quit/relaunch confirmed note, policy, ledger and audit/priority persistence. No real account, remote WebDAV or cloud AI request. See remaining-native-qa.json; full feature acceptance remains open."
     },
     {
       "status": "PASS",
       "area": "Current Mac and Windows CI",
-      "evidence": "Source 7167bfa passed both Mac/Windows checks (43961556928) and both installer packaging jobs (43961588059). Windows installer/native-window/uninstall smoke passes; local Mac DMG integrity/version/signature/shortcut passes. New Mac UI, full Windows features and real mobile devices remain unverified."
+      "evidence": "Source 7167bfa passed both Mac/Windows checks (43961556928) and both installer packaging jobs (43961588059). Windows installer/native-window/uninstall smoke passes; local Mac DMG integrity/version/signature/shortcut passes. Selected new isolated Mac workflows now pass; full Windows features, configured providers and real mobile devices remain unverified."
     }
   ],
   "ui_logic_assertions": 68,
@@ -208,5 +208,7 @@
     "public_sources_success": 30,
     "public_sources_total": 30,
     "native_qa": "discovery-native-qa.json"
-  }
+  },
+  "isolated_mac_qa_smoke_tested": true,
+  "mac_native_qa": "remaining-native-qa.json"
 }

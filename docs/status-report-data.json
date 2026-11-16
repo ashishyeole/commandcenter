@@ -91,7 +91,8 @@
         "Assistive technology and target-machine acceptance"
       ],
       "owner_actions": [],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "Selected unlocked Mac QA checks pass at functional source 7167bfa; see testing/remaining-native-qa.json for exact workflows and limitations. Automated regression/build evidence is retained. Real accounts, WebDAV, full Windows/device and assistive-technology acceptance remain unverified where applicable."
     },
     {
       "id": "T006",
@@ -436,7 +437,8 @@
       "owner_actions": [
         "Confirm lead fit/need/budget where known"
       ],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "Selected unlocked Mac QA checks pass at functional source 7167bfa; see testing/remaining-native-qa.json for exact workflows and limitations. Automated regression/build evidence is retained. Real accounts, WebDAV, full Windows/device and assistive-technology acceptance remain unverified where applicable."
     },
     {
       "id": "T025",
@@ -526,7 +528,8 @@
       "owner_actions": [
         "Connect an institution only if desired; choose an authorized statement JSON for local reconciliation"
       ],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "Selected unlocked Mac QA checks pass at functional source 7167bfa; see testing/remaining-native-qa.json for exact workflows and limitations. Automated regression/build evidence is retained. Real accounts, WebDAV, full Windows/device and assistive-technology acceptance remain unverified where applicable."
     },
     {
       "id": "T030",
@@ -1092,7 +1095,8 @@
       "owner_actions": [
         "Configure only desired providers; revoke remote grants with the provider when needed"
       ],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "Selected unlocked Mac QA checks pass at functional source 7167bfa; see testing/remaining-native-qa.json for exact workflows and limitations. Automated regression/build evidence is retained. Real accounts, WebDAV, full Windows/device and assistive-technology acceptance remain unverified where applicable."
     },
     {
       "id": "T062",
@@ -1114,7 +1118,8 @@
       "owner_actions": [
         "Review the exact retention/compaction preview before applying; sync all paired peers first"
       ],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "Selected unlocked Mac QA checks pass at functional source 7167bfa; see testing/remaining-native-qa.json for exact workflows and limitations. Automated regression/build evidence is retained. Real accounts, WebDAV, full Windows/device and assistive-technology acceptance remain unverified where applicable."
     },
     {
       "id": "T063",
@@ -1253,7 +1258,8 @@
       "owner_actions": [
         "Choose destination/recovery password and approve scope; no service needed for local backups"
       ],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "Selected unlocked Mac QA checks pass at functional source 7167bfa; see testing/remaining-native-qa.json for exact workflows and limitations. Automated regression/build evidence is retained. Real accounts, WebDAV, full Windows/device and assistive-technology acceptance remain unverified where applicable."
     },
     {
       "id": "T071",
@@ -1806,13 +1812,16 @@
       "title": "Source availability and optional datasets",
       "detail": "PIB RSS DNS failed and remains paused. The public patent index returned historical records. Proprietary app-market data needs an authorized schema-1 endpoint/import; custom prices need an approved public JSON endpoint. Live provider acceptance does not follow from source code completion.",
       "tasks": "T012, T014, T019, T047"
-    },
-    {
-      "title": "New native Mac UI checks",
-      "detail": "Mac remains locked after two final CUA attempts. Unlock is needed for the new statement/selected-field restore dialogs, rendered audit webview and permission/benchmark UI. Automated tests, app/DMG integrity and cross-platform CI pass; these UI flows are not claimed accepted.",
-      "tasks": "T005, T024, T029, T061, T070"
     }
   ],
   "scope": "Personal local command center: discover, monitor, organize, compare and track. No local LLM/model downloads, robotics execution, prototype execution or production commercialization.",
-  "desktop_source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c"
+  "desktop_source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
+  "resolved_blockers": [
+    {
+      "title": "New native Mac UI checks",
+      "resolved_at": "2026-11-16T23:35:21.798693+00:00",
+      "evidence": "testing/remaining-native-qa.json",
+      "scope": "Selected isolated benchmark/permission/AI-policy/statement/field-restore/rendered-audit/restart checks passed. Full feature/device/provider acceptance remains separate."
+    }
+  ]
 }

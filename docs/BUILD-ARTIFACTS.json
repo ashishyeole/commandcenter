@@ -1,8 +1,8 @@
 {
   "version": "0.5.0",
-  "generated_at": "2026-11-16T21:50:45.361511+00:00",
+  "generated_at": "2026-11-16T23:35:41.230689+00:00",
   "runtime_tested": false,
-  "isolated_mac_qa_smoke_tested": false,
+  "isolated_mac_qa_smoke_tested": true,
   "production_signed": false,
   "artifacts": [
     {
@@ -67,13 +67,14 @@
     "Mobile UI and shared Rust libraries were rebuilt for exact-occurrence task reminder receipt coordination. Desktop-only field restore, WebDAV, scholarly sources and account controls are not claimed as a mobile redesign.",
     "iOS shared Rust symbols are defined in the bundle; no developer libpcc dylib dependency.",
     "macOS voice bridge is bundled and referenced through @rpath.",
-    "Windows release installer passed CI silent install, native-window launch and silent uninstall. Earlier source dc1b077 isolated macOS Discovery QA passed selected aggregation/document/workspace workflows. New source native UI checks are blocked by the locked Mac; current regression/build evidence and revision-specific prior UI checks are recorded separately. Normal artifacts have not all received feature acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage."
+    "Windows release installer passed CI silent install, native-window launch and silent uninstall. Earlier source dc1b077 isolated macOS Discovery QA passed selected aggregation/document/workspace workflows. Current-source isolated native QA covers benchmark, provider permissions, AI exclusions, encrypted statement reconciliation, selected-title restore, rendered public audit and restart persistence when matching evidence is recorded. Full feature/provider/device acceptance remains separate. Normal artifacts have not all received feature acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage."
   ],
   "desktop_source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
+  "mac_native_qa_evidence": "testing/remaining-native-qa.json",
   "windows_installer_smoke_verified": true,
   "mobile_ui_source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
   "runtime_coverage_by_platform": {
-    "macOS": "Current source passes Rust/frontend checks, app compilation and DMG checksum/mounted version/strict signature/shortcut inspection. New native UI acceptance is blocked by the locked Mac. Earlier selected workflows passed at their separately identified revisions.",
+    "macOS": "Matching current-source isolated native QA passed benchmark, permission inventory/pause, AI exclusion enforcement, encrypted statement reconcile/create/duplicate checks, title-only restore preserving body, rendered audit/priority and restart persistence; see remaining-native-qa.json. Full feature/provider/accessibility acceptance remains open.",
     "Windows": "Installer/native-window/uninstaller smoke passed",
     "iOS": "Compilation only",
     "Android": "Compilation only"

@@ -1,0 +1,71 @@
+{
+  "source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
+  "checked_at": "2026-11-16T23:35:21.798693+00:00",
+  "product": "Command Center Discovery QA",
+  "identifier": "com.personal.commandcenter.discoveryqa",
+  "qa_app_path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Command Center Discovery QA.app",
+  "normal_profile_accessed": false,
+  "real_accounts_used": false,
+  "real_financial_actions": false,
+  "provider_credentials_entered": false,
+  "cloud_requests_sent": false,
+  "models_downloaded": false,
+  "all_selected_checks_passed": true,
+  "checks": [
+    {
+      "id": "N01",
+      "status": "PASS",
+      "workflow": "Native benchmark",
+      "observed": "Diagnostics ran a disposable 500-note benchmark. Capture p95 0.30625 ms (100 samples), dashboard p95 1.400833 ms and keyword search p95 1.474083 ms (30 each). Storage/API metrics, not rendered latency or assistive-technology acceptance."
+    },
+    {
+      "id": "N02",
+      "status": "PASS",
+      "workflow": "Connection inventory and pause",
+      "observed": "All 11 optional provider flags showed Disabled, without credential prompts. Disable listed connections retained disabled status and added 11 local lifecycle entries. No real configured-provider revocation or in-flight account read tested."
+    },
+    {
+      "id": "N03",
+      "status": "PASS",
+      "workflow": "AI exclusion and persistence",
+      "observed": "Excluded synthetic New research document. Selected it in Assistant with a placeholder model ID and question; exact outbound preview was rejected with the device AI-exclusion error. No API key or request used. Exclusion checkbox remained selected after quit/relaunch."
+    },
+    {
+      "id": "N04",
+      "status": "PASS",
+      "workflow": "Encrypted statement reconciliation",
+      "observed": "Created an unreviewed synthetic USD 12.50 expense in QA Checking/Personal. Native JSON picker loaded two rows with default Skip; exact expense match was offered. Explicitly chose reconcile existing expense and create USD 40.00 income, then approved. UI reported 1 created, 1 reconciled, 0 skipped; 2 encrypted records, net USD 27.50. Reopening same statement showed Already imported for both and disabled zero-change apply."
+    },
+    {
+      "id": "N05",
+      "status": "PASS",
+      "workflow": "Private-review cleanup and restart",
+      "observed": "Clear private review removed temporary statement rows; Lock removed ledger details and returned the locked view. After quit/relaunch the vault started locked. Explicit QA-only unlock showed 2 records, both marked reconciled, income USD 40.00 / expense USD 12.50 / net USD 27.50. Relocked after inspection."
+    },
+    {
+      "id": "N06",
+      "status": "PASS",
+      "workflow": "Title-only streaming restore",
+      "observed": "Created a synthetic note and exported a verified .paccs through the native Save dialog, private-vault option off (9 streamed records, 9 history events). Edited local title and body. Native Open dialog authenticated archive; selected Choose ordinary records and incoming fields, compared incoming/local title values, selected only title and approved. UI reported 1 record applied. Title reverted to backup value while edited local body stayed unchanged, including after quit/relaunch."
+    },
+    {
+      "id": "N07",
+      "status": "PASS",
+      "workflow": "Rendered public website audit",
+      "observed": "Synthetic CRM lead for https://example.com/; explicit rendered-DOM and public-page consent. A separate visible isolated-session window opened, displayed the public page and automatically closed after sampling. Nine explained checks returned a 20/100 heuristic review signal and saved it in the lead; persisted after quit/relaunch. One public page request; no login, forms, outreach or private account session."
+    },
+    {
+      "id": "N08",
+      "status": "PASS",
+      "workflow": "Reviewed priority persistence",
+      "observed": "Rendered audit signal contributed 8/40 to priority. On this synthetic fixture, changing service-fit to personally confirmed added 25 points, producing 33/100. Saved reviewed priority; after quit/relaunch both priority 33/100 and rendered audit 20/100 persisted."
+    }
+  ],
+  "limits": [
+    "Selected isolated Mac workflows only; not full PRD or accessibility acceptance.",
+    "No real Plaid enrollment, Google/AI account, merchant feed or WebDAV endpoint used.",
+    "Full Windows feature UI, physical mobile devices, native push delivery and cross-device mobile coordination remain unverified.",
+    "Earlier LAN listener in QA was stopped before testing; no pairing or real device exchange occurred.",
+    "No functional code changes were needed; delivered Mac DMG remains the verified build of the same functional source."
+  ]
+}
