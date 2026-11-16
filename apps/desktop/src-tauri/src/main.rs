@@ -80,6 +80,7 @@ struct Preferences {
     backup_reminder_days: u32,
     escalate_critical: bool,
     ui_scale: u32,
+    theme: String,
     high_contrast: bool,
     reduce_motion: bool,
 }
@@ -95,6 +96,7 @@ impl Default for Preferences {
             interests: vec![],
             backup_reminder_days: 30,
             ui_scale: 100,
+            theme: "mono".into(),
             high_contrast: false,
             reduce_motion: false,
             escalate_critical: false,
@@ -172,6 +174,7 @@ fn save_preferences(state: State<AppState>, value: Preferences) -> Result<()> {
         || value.interests.len() > 20
         || value.interests.iter().any(|s| s.len() > 80)
         || ![100, 115, 130, 150, 175, 200].contains(&value.ui_scale)
+        || !["mono", "lumen", "slate", "midnight"].contains(&value.theme.as_str())
         || value.backup_reminder_days > 365
         || value.quiet_start > 23
         || value.quiet_end > 23

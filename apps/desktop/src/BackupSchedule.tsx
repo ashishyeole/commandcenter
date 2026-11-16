@@ -1,8 +1,9 @@
 import {useEffect,useState} from 'react';
 import {invoke,isTauri} from '@tauri-apps/api/core';
 type Config={backend?:string;enabled:boolean;approved:boolean;interval_hours:number;include_vault:boolean;streaming?:boolean;retain:number};
-export function BackupSchedule({reload}:{reload:()=>Promise<void>}){
+export function BackupSchedule({reload,onBusyChange}:{reload:()=>Promise<void>;onBusyChange?:(busy:boolean)=>void}){
  const [config,setConfig]=useState<Config>({enabled:false,approved:false,interval_hours:24,include_vault:false,retain:0}),[destination,setDestination]=useState(''),[webdav,setWebdav]=useState(''),[username,setUsername]=useState(''),[remotePassword,setRemotePassword]=useState(''),[password,setPassword]=useState(''),[health,setHealth]=useState<{status:string;started_at:string;next_at:string;error?:string;result?:{rotation_warnings?:string[]}}|null>(null),[busy,setBusy]=useState(false),[dirty,setDirty]=useState(false),[error,setError]=useState(''),[message,setMessage]=useState('');
+ useEffect(()=>{onBusyChange?.(busy);},[busy,onBusyChange]);
  async function load(){const v=await invoke<{config:Config;destination:string|null;health:typeof health}>('backup_schedule_snapshot');setConfig({...v.config,interval_hours:v.config.interval_hours||24});setDestination(v.destination||'');setHealth(v.health);}
  useEffect(()=>{if(isTauri())void load().catch(e=>setError(String(e)));},[]);
  async function run(fn:()=>Promise<void>){setBusy(true);setError('');try{await fn();await reload();}catch(e){setError(String(e));}finally{setBusy(false);}}

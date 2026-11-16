@@ -11,3 +11,5 @@ Measured-growth ranks recompute changes per day from snapshot deltas and elapsed
 Creator opportunities use shared title terms across at least two videos and two reported channel names. Names are not verified identities. Suggestions can be saved as editable Content Studio drafts with source URLs and an evidence-checking outline. Research topics similarly create editable, evidence-linked Idea Lab records. These actions save locally; they do not publish, execute tools or send anything to AI.
 
 Thirteen synthetic analytics assertions exercise deduplication, publication windows, token boundaries, metric isolation, percentile/rate calculation, stale observations and cross-creator evidence. Real feeds still need internet/source availability; YouTube needs a key. Native QA coverage is recorded separately.
+
+Selected isolated Mac QA on 2026-11-16 verified synthetic topic counts/score, local research and creator draft saving, and arXiv query preparation with fetch consent still off. No live provider search was made.

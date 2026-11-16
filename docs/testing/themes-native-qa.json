@@ -1,0 +1,25 @@
+{
+  "tested_on": "2026-11-16",
+  "profile": "com.personal.commandcenter.qa",
+  "data": "Synthetic records and cached public-source fixtures only; real profile unchanged.",
+  "result": "PASS (selected workflows)",
+  "observations": [
+    "All four theme choices rendered: Monochrome, Lumen, Slate and Midnight. Monochrome/Midnight use Geist Mono; Lumen/Slate use Geist Sans.",
+    "Slate survived quit/relaunch; header selector switched back to Monochrome. Native preference validation and archive roundtrips pass for all four IDs.",
+    "Assistant launcher displays its Sparkles image without visible AI text; opens/closes panel, drags across the app and retains its position after restart.",
+    "YouTube sample thumbnail remained full color against the monochrome UI. Synthetic metadata used the public IFrame API sample video thumbnail; no YouTube API key/account was used.",
+    "Settings exposes Appearance, Reminders, Connections, and System & updates. Connections has no general Save preferences control covering provider controls.",
+    "Discover exposes Browse sources, Research radar and Saved research; compact Public discovery source select and Source scope & limitations disclosure are available.",
+    "Data & privacy exposes Export & restore, Large & scheduled backups, Cleanup & diagnostics and Mobile exchange. Unsaved synthetic archive password survived switching sections, then was cleared. ArrowRight moved tab focus/selection.",
+    "Workspace domain selector groups all domains and preserves record counts. Synthetic Idea Lab and Content Studio records remained visible.",
+    "Research radar displayed 4 matches, 4 recent publications, 2 provider types, 2 positive observations and attention score 10. Saved a research idea and creator content draft locally.",
+    "Prepare arxiv search switched to Browse sources with all:underwater AND cat:cs.RO; approval remained unchecked and Refresh disabled.",
+    "Google connection remained Not configured; body/scope/background/recurring approval controls were off, interval 15 minutes. Stop background reads & clear snapshot confirmed success without connecting an account.",
+    "Scheduled streaming format selector is visible; actual unattended execution was not exercised."
+  ],
+  "limitations": [
+    "Selected native Mac workflows only, not all-feature or assistive-technology acceptance.",
+    "No real Google account, cloud AI call, account credentials, provider search API or real device pairing.",
+    "Windows current-source native UI and mobile real-device acceptance remain separate."
+  ]
+}

@@ -306,6 +306,7 @@ impl Repository {
                         "interests",
                         "backup_reminder_days",
                         "ui_scale",
+                        "theme",
                         "high_contrast",
                         "reduce_motion",
                     ] {
@@ -753,6 +754,9 @@ pub fn validate_portable_extras(workspace: &PortableWorkspace) -> Result<()> {
                 "ui_scale" => value
                     .as_u64()
                     .is_some_and(|n| [100, 115, 130, 150, 175, 200].contains(&n)),
+                "theme" => value
+                    .as_str()
+                    .is_some_and(|v| ["mono", "lumen", "slate", "midnight"].contains(&v)),
                 "high_contrast" | "reduce_motion" => value.is_boolean(),
                 "backup_reminder_days" => value.as_u64().is_some_and(|n| n <= 365),
                 "enabled_modules" => value.as_array().is_some_and(|v| {

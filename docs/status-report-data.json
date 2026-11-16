@@ -2,7 +2,7 @@
   "project": "Personal AI Command Center",
   "version": "0.5.0",
   "prd": "1.2",
-  "assessed_on": "2026-11-15",
+  "assessed_on": "2026-11-16",
   "timezone": "America/Chicago",
   "method": "Weighted code-completion estimate for the clarified local personal scope: sum(in-scope task score \u00d7 scope weight) / sum(in-scope weights). Scores are 0/25/50/75/100 and are manually assessed source coverage, not test results. Excluded requirements remain visible but contribute no weight. Earlier 82% covered the broader PRD and is not directly comparable. Verification and production-release tasks are not code-completion requirements.",
   "tasks": [
@@ -17,7 +17,7 @@
       "status": "Implemented in source",
       "implemented": "React/TypeScript desktop UI and native Rust commands.",
       "remaining": "No known scope gap in this narrowly defined task; runtime verification remains outstanding.",
-      "notes": "macOS compilation completed; Windows runtime not verified.",
+      "notes": "Mac/Windows builds and Windows installer/native-window/uninstaller smoke passed at the recorded revision. Selected isolated Mac UI workflows pass; full acceptance remains open.",
       "evidence": "crates/core/src/lib.rs",
       "original_prd_percent": 100,
       "in_scope": true
@@ -80,9 +80,9 @@
       "percent": 50,
       "weight": 3,
       "status": "Partially implemented",
-      "implemented": "Keyboard navigation, modal labels, skip navigation, configurable 100\u2013200% scale, contrast and motion preferences. On-demand page bundles reduce initial JavaScript to approximately 288 KB.",
+      "implemented": "Keyboard navigation, modal labels, skip navigation, configurable 100\u2013200% scale, contrast and motion preferences. On-demand page bundles reduce initial JavaScript to approximately 288 KB. Four persistent themes (Monochrome, Lumen, Slate, Midnight), bundled Geist typography, grouped navigation and keyboard section tabs, compact provider/domain selectors, retained provenance details and full-color source thumbnails.",
       "remaining": "Measured capture/dashboard latency and assistive-technology acceptance remain.",
-      "notes": "Source implementation; compile/package checks only. No runtime tests, provider actions or publication performed.",
+      "notes": "Selected Mac appearance, section navigation and unsaved-form checks pass; no measured performance or full assistive-technology acceptance claim.",
       "evidence": "apps/desktop/src/main.tsx",
       "original_prd_percent": 50,
       "in_scope": true
@@ -214,7 +214,8 @@
       "notes": "Synthetic analytics tests cover metric isolation, stale samples, cache deduplication and multi-creator evidence. Suggested topics are lexical research leads, not verified audience demand.",
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 75,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Synthetic analytics assertions and selected isolated Mac radar/draft workflows pass. Live-provider and market-quality acceptance remain unverified."
     },
     {
       "id": "T014",
@@ -278,7 +279,8 @@
       "notes": "Topic scores describe the local cached sample and expose their formula. Raw stars/downloads/subscribers are never added together; no hardware or local execution.",
       "evidence": "apps/desktop/src/WorkspaceTools.tsx",
       "original_prd_percent": 50,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Synthetic analytics assertions and selected isolated Mac radar/draft workflows pass. Live-provider and market-quality acceptance remain unverified."
     },
     {
       "id": "T018",
@@ -453,7 +455,7 @@
       "status": "Implemented in source",
       "implemented": "Google desktop PKCE OAuth, OS-secure tokens, inbox metadata and primary-calendar reads, pagination, cancellation, disconnect/revocation and explicit encrypted vault copies. Optional separately authorized Gmail readonly message-text previews, plain-text MIME preference, inert HTML conversion, bounded/truncated UTF-8 output and no automatic AI/context transfer. Explicit background inbox/header and upcoming-calendar refresh with device-local consent, bounded intervals, memory-only 30-minute snapshots, TTL/config/epoch validation, cancellation and disconnect/reset invalidation.",
       "remaining": "Owner Google OAuth client configuration and sign-in are needed for live use; no known code gap in the configured Google-only read flow. Other providers and calendar writes are excluded.",
-      "notes": "No real account accessed. Synthetic tests cover required consent/scopes and expired/replaced/reset snapshots. First-page background aggregation is bounded; manual pagination remains available. No bodies or account data enter ordinary storage, sync, exports, search or AI.",
+      "notes": "No real account accessed. Synthetic tests cover required consent/scopes and expired/replaced/reset snapshots. First-page background aggregation is bounded; manual pagination remains available. No bodies or account data enter ordinary storage, sync, exports, search or AI. Native Mac QA verified default-off controls and stop/clear without a configured account.",
       "evidence": "apps/desktop/src-tauri/src/google_accounts.rs",
       "original_prd_percent": 50,
       "in_scope": true,
@@ -679,13 +681,13 @@
       "percent": 100,
       "weight": 3,
       "status": "Implemented in source",
-      "implemented": "Provider credentials in OS secure store; exact outbound request preview, explicit approval, cancellation and selected-record context. Local runtime UI and IPC removed. Draggable circular floating AI launcher, saved/clamped screen position and online request panel. Local-AI source is preserved dormant outside active builds.",
+      "implemented": "Provider credentials in OS secure store; exact outbound request preview, explicit approval, cancellation and selected-record context. Local runtime UI and IPC removed. Draggable circular floating AI launcher, saved/clamped screen position and online request panel. Local-AI source is preserved dormant outside active builds. Image-only Sparkles launcher without visible AI label.",
       "remaining": "User API key only if optional generated analysis is wanted. No AI account is needed for discovery or deterministic briefings.",
       "notes": "Online-only now. User will enter an API key in the app later; local AI stays dormant until a later instruction.",
       "evidence": "apps/desktop/src-tauri/src/cloud_ai.rs",
       "original_prd_percent": 75,
       "in_scope": true,
-      "verification": "Native QA verifies launcher opening/drag, keyboard movement and persisted position after quit/relaunch. Cloud responses require the owner\u2019s API key and were not tested."
+      "verification": "Selected isolated native Mac QA: panel opening/closing, pointer and keyboard movement, restart persistence and image-only launcher. Online requests still require owner API key and separate approval."
     },
     {
       "id": "T043",
@@ -1654,7 +1656,8 @@
     "V0.5-DELIVERY.md",
     "LOCAL-SCOPE.md",
     "STREAMING-BACKUPS.md",
-    "GOOGLE-MESSAGE-PREVIEWS.md"
+    "GOOGLE-MESSAGE-PREVIEWS.md",
+    "APPEARANCE.md"
   ],
   "blockers": [
     {

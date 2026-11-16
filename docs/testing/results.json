@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-16T02:00:55.495316+00:00",
+  "generated_at": "2026-11-16T17:08:35.124214+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
-  "rust_test_executions": 68,
-  "rust_distinct_tests": 66,
+  "rust_test_executions": 69,
+  "rust_distinct_tests": 67,
   "python_tests": 10,
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
@@ -116,26 +116,33 @@
     {
       "status": "PASS (synthetic files)",
       "area": "Scheduled streaming backups",
-      "evidence": "Two tests cover legacy schedules defaulting to standard format and verified encrypted .paccs writing/restorability, wrong-password rejection and cleanup on failed export. Local/mounted folders supported; direct WebDAV stays standard. Native OS-keychain-backed unattended schedule execution and new format selector not runtime-tested."
+      "evidence": "Two tests cover legacy schedules defaulting to standard format and verified encrypted .paccs writing/restorability, wrong-password rejection and cleanup on failed export. Local/mounted folders supported; direct WebDAV stays standard. Native OS-keychain-backed unattended schedule execution remains unverified; the new format selector was observed in native QA."
     },
     {
-      "status": "PASS (synthetic fixtures)",
+      "status": "PASS (synthetic and selected QA checks)",
       "area": "Google background refresh",
-      "evidence": "Two tests cover required saved consent/scopes, memory snapshot expiry, profile reset and configuration replacement. Default off; no real account read. Native UI check currently waits for Mac unlock."
+      "evidence": "Two automated tests cover required consent/scopes, memory expiry, reset and replacement. Native isolated Mac QA: no account configured; scopes/body/background/approval default off; 15-minute interval; stop-and-clear confirmed. No live account read or OAuth acceptance."
     },
     {
-      "status": "PASS (automated)",
+      "status": "PASS (synthetic and selected QA checks)",
       "area": "Research radar and creator opportunities",
-      "evidence": "13 assertions cover publication windows, word boundaries, newest-cache deduplication, isolated metric cohorts/percentiles, recomputed rates, stale data and multi-creator evidence. Native UI check currently waits for Mac unlock."
+      "evidence": "13 analytics assertions pass. Native isolated Mac QA matched 4 cached fixtures, recent/provider/positive counts and score 10; saved an Idea Lab research draft and Content Studio draft. Prepared arXiv query with approval still off. No live provider API request or publishing."
     },
     {
       "status": "PASS (compilation only)",
       "area": "Mobile private-file addition and preview",
       "evidence": "Latest iOS Simulator app and Android ARM64 debug APK compile. Selected files \u226410 MiB attach to encrypted record drafts; text/image previews remain in memory and are bounded. No plaintext temp files or automatic uploads. Real file-provider/lifecycle/device workflows are unverified."
+    },
+    {
+      "status": "PASS (automated and selected QA)",
+      "area": "Four themes, sections and source thumbnails",
+      "evidence": "Monochrome, Lumen, Slate and Midnight rendered in isolated Mac QA; saved theme and assistant position survived restart. Image-only assistant opens and drags. Full-color YouTube thumbnail verified. Settings/Discover/Data sections, unsaved form preservation, keyboard tab navigation, grouped domain selector and source provenance disclosure verified. 12 source-image/theme assertions and all-four-theme portable archive test pass. No arbitrary image destinations or remote fonts; bundled Geist fonts use OFL."
     }
   ],
   "ui_logic_assertions": 10,
-  "rust_workspace_executions": 68,
+  "rust_workspace_executions": 69,
   "rust_additional_targeted_executions": 0,
-  "research_analytics_assertions": 13
+  "research_analytics_assertions": 13,
+  "source_image_theme_assertions": 12,
+  "total_ui_assertions": 35
 }

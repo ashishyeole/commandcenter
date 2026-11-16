@@ -272,6 +272,7 @@ impl Repository {
                 "interests",
                 "backup_reminder_days",
                 "ui_scale",
+                "theme",
                 "high_contrast",
                 "reduce_motion",
             ]

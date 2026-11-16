@@ -455,3 +455,32 @@ fn linked_copy_rejects_bad_review_and_changed_second_pass_atomically() {
     assert!(target.list("", true).unwrap().is_empty());
     assert!(target.history().unwrap().is_empty());
 }
+
+#[test]
+fn display_themes_roundtrip_without_permission_preferences() {
+    for theme in ["mono", "lumen", "slate", "midnight"] {
+        let source = Repository::open(":memory:").unwrap();
+        source
+            .set_setting(
+                "preferences",
+                &serde_json::json!({"theme":theme,"notifications":true}).to_string(),
+            )
+            .unwrap();
+        let mut bytes = vec![];
+        source.export_stream(&mut bytes, PASSWORD, None).unwrap();
+        let mut target = Repository::open(":memory:").unwrap();
+        target.import_stream(&bytes[..], PASSWORD, None).unwrap();
+        let value: serde_json::Value =
+            serde_json::from_str(&target.setting("preferences").unwrap().unwrap()).unwrap();
+        assert_eq!(value["theme"], theme);
+        assert!(value.get("notifications").is_none());
+        let mut standard = command_center_core::archive::ExportData::default();
+        standard.workspace = source.portable_workspace().unwrap();
+        let bytes = command_center_core::archive::export_all(&standard).unwrap();
+        let restored = command_center_core::archive::inspect_all(&bytes).unwrap();
+        assert_eq!(restored.workspace.preferences.unwrap()["theme"], theme);
+    }
+    let mut data = command_center_core::archive::ExportData::default();
+    data.workspace.preferences = Some(serde_json::json!({"theme":"remote-css-url"}));
+    assert!(command_center_core::archive::export_all(&data).is_err());
+}

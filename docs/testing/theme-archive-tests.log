@@ -1,0 +1,11 @@
+   Compiling libsqlite3-sys v0.39.1
+   Compiling rusqlite v0.41.1
+   Compiling command-center-core v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/crates/core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.86s
+     Running tests/streaming_archives.rs (target/debug/deps/streaming_archives-646ea245dc75d29c)
+
+running 1 test
+test display_themes_roundtrip_without_permission_preferences ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 1.66s
+

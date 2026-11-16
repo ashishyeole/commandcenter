@@ -1,0 +1,1 @@
+12 source-image/theme assertions passed: fixed CDN destinations, dropped private query strings, rejected credentials/local or spoofed URLs, four themes and safe fallback.

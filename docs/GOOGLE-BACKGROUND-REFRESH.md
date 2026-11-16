@@ -9,3 +9,5 @@ Snapshots are serialized in a zeroizing in-memory buffer for at most 30 minutes.
 Inbox can show the latest approved memory snapshot after view consent; manual pagination remains separate. The existing Inbox view clears displayed results when hidden or after five minutes. Saved permission controls future background reads independently of that temporary view. Users can still explicitly copy individual manual results into the encrypted vault.
 
 Two synthetic tests cover required consent/scopes and expiry/reset/replacement invalidation. No Google account was connected or read during testing; live provider acceptance requires the owner's OAuth client and sign-in.
+
+Selected isolated Mac QA on 2026-11-16 verified Not configured, default-off scope/body/background/recurring controls, 15-minute interval and successful stop/clear. No account was connected or read.

@@ -1,0 +1,8 @@
+import {Check,Palette} from 'lucide-react';
+import {themes,themeId,type ThemeId} from './themes';
+export function ThemeSelect({value,onChange,disabled=false}:{value:unknown;onChange:(id:ThemeId)=>void;disabled?:boolean}){
+ return <label className="theme-select"><Palette size={15} aria-hidden="true"/><span className="sr-only">Color theme</span><select aria-label="Color theme" value={themeId(value)} disabled={disabled} onChange={e=>onChange(themeId(e.target.value))}>{themes.map(t=><option key={t.id} value={t.id}>{t.name}</option>)}</select></label>;
+}
+export function ThemePicker({value,onChange,disabled=false}:{value:unknown;onChange:(id:ThemeId)=>void;disabled?:boolean}){
+ return <section className="panel full appearance-panel"><div className="section-heading"><h2>Appearance</h2><span className="pill">4 themes</span></div><p>A quieter workspace, with full-color source images. Theme changes save immediately on this device. Monochrome and Midnight use locally bundled Geist Mono; Lumen and Slate use Geist Sans.</p><div className="theme-grid">{themes.map(t=><button key={t.id} className={`theme-card ${themeId(value)===t.id?'selected':''}`} aria-pressed={themeId(value)===t.id} disabled={disabled} onClick={()=>onChange(t.id)}><span className="theme-sample" aria-hidden="true" style={{background:t.colors[0],color:t.colors[2]}}><span className="theme-sample-nav" style={{background:t.colors[3]}}/><span className="theme-sample-content"><span style={{background:t.colors[2]}}/><span style={{background:t.colors[1]}}/><span style={{background:t.colors[1]}}/></span></span><span className="theme-name">{t.name}{themeId(value)===t.id&&<Check size={15}/>}</span><span className="theme-description">{t.description}</span></button>)}</div></section>;
+}
