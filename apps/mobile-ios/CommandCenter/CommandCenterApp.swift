@@ -1,4 +1,5 @@
 import SwiftUI
+import ImageIO
 import UserNotifications
 import SQLite3
 import UniformTypeIdentifiers
@@ -521,6 +522,8 @@ struct MobileVaultView:View {
 }
 struct PrivateEntryEditor:View {
     @State var entry:PrivateEntry
+    @State private var choosingFile=false
+    @State private var fileMessage=""
     var onCancel:()->Void
     var onSave:(PrivateEntry)->Void
     var body:some View {
@@ -531,7 +534,13 @@ struct PrivateEntryEditor:View {
                     ForEach(["document","finance","company","subscription"],id:\.self) { Text($0).tag($0) }
                 }
                 TextEditor(text:$entry.body).frame(minHeight:220)
-                if entry.file_base64 != nil { Text("This record includes an encrypted attachment. Editing text preserves the original attachment.").font(.caption) }
+                Button(entry.file_base64 == nil ? "Choose private file (up to 10 MiB)" : "Replace private file in draft") { choosingFile=true }
+                Text("Only the selected file is read. Save encrypts it with this record. No temporary plaintext file or upload is created.").font(.caption)
+                if entry.file_base64 != nil {
+                    PrivateFilePreview(entry:entry)
+                    Button("Remove attachment from draft",role:.destructive) {entry.filename=nil;entry.file_base64=nil}
+                }
+                if !fileMessage.isEmpty {Text(fileMessage).font(.caption)}
             }.navigationTitle("Private record").toolbar {
                 ToolbarItem(placement:.cancellationAction) { Button("Cancel",action:onCancel) }
                 ToolbarItem(placement:.confirmationAction) {
@@ -539,6 +548,34 @@ struct PrivateEntryEditor:View {
                 }
             }
         }.privacySensitive()
+        .fileImporter(isPresented:$choosingFile,allowedContentTypes:[.data]) { result in
+            do {
+                let url=try result.get();let access=url.startAccessingSecurityScopedResource();defer{if access{url.stopAccessingSecurityScopedResource()}}
+                let name=url.lastPathComponent
+                guard !name.isEmpty,name.utf8.count<=500,!name.unicodeScalars.contains(where:{CharacterSet.controlCharacters.contains($0)}) else{throw StoreError(message:"Invalid attachment filename")}
+                guard let stream=InputStream(url:url) else{throw StoreError(message:"Cannot read selected file")}
+                stream.open();defer{stream.close()};var bytes=Data();var buffer=[UInt8](repeating:0,count:8192)
+                while true {let n=stream.read(&buffer,maxLength:buffer.count);if n==0{break};guard n>0 else{throw stream.streamError ?? StoreError(message:"File read failed")};guard bytes.count+n<=10*1024*1024 else{throw StoreError(message:"Private file exceeds 10 MiB")};bytes.append(contentsOf:buffer.prefix(n))}
+                entry.filename=name;entry.file_base64=bytes.base64EncodedString();if entry.title.isEmpty{entry.title=String(name.prefix(100))};fileMessage="Selected \(name). Save to encrypt; Cancel leaves the saved record unchanged."
+            }catch{fileMessage=error.localizedDescription}
+        }
+    }
+}
+struct PrivateFilePreview:View {
+    let entry:PrivateEntry
+    private func image(_ bytes:Data)->CGImage? {
+        guard let source=CGImageSourceCreateWithData(bytes as CFData,nil),let props=CGImageSourceCopyPropertiesAtIndex(source,0,nil) as? [String:Any],let width=props[kCGImagePropertyPixelWidth as String] as? Int,let height=props[kCGImagePropertyPixelHeight as String] as? Int,width>0,height>0,width<=20000,height<=20000,width*height<=20_000_000 else{return nil}
+        return CGImageSourceCreateThumbnailAtIndex(source,0,[kCGImageSourceCreateThumbnailFromImageAlways:true,kCGImageSourceThumbnailMaxPixelSize:1600,kCGImageSourceCreateThumbnailWithTransform:true] as CFDictionary)
+    }
+    var body:some View {
+        if let text=entry.file_base64,text.utf8.count<=14*1024*1024,let bytes=Data(base64Encoded:text),bytes.count<=10*1024*1024 {
+            let name=entry.filename ?? "Private attachment"
+            Text("\(name) · \(bytes.count) bytes").font(.caption)
+            let ext=URL(fileURLWithPath:name).pathExtension.lowercased()
+            if ["png","jpg","jpeg"].contains(ext),let preview=image(bytes) {Image(decorative:preview,scale:1).resizable().scaledToFit().frame(maxHeight:300)}
+            else if ["txt","md","csv","json","log","yaml","yml","xml","rs","py","js","ts","html"].contains(ext) {Text(String(decoding:bytes.prefix(12000),as:UTF8.self)).font(.caption.monospaced());if bytes.count>12000{Text("Preview limited to first 12,000 bytes.").font(.caption)}}
+            else {Text("No inline preview for this type or image size. The original is retained for encrypted backup.").font(.caption)}
+        }
     }
 }
 

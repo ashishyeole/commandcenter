@@ -20,5 +20,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: npm ci
       - run: npm run build
+      - run: node scripts/test-ui-logic.cjs
+      - run: node scripts/test-research-analytics.cjs
       - run: cargo test --workspace --locked
       - run: cargo build -p personal-command-center --locked

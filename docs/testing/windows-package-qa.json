@@ -1,0 +1,11 @@
+{
+  "platform": "windows",
+  "installer": "Personal Command Center_0.5.0_x64-setup.exe",
+  "sha256": "FA1AC3397159D2AD078A0C5C7A28A9DA6808835DD8013537A1CEB5EECD0D3389",
+  "install_exit": 0,
+  "launch": "native window created and process stayed running for 15 seconds",
+  "uninstall_exit": 0,
+  "synthetic_runner": true,
+  "full_feature_acceptance": false,
+  "window_title": "Personal Command Center"
+}

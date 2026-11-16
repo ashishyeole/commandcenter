@@ -3,6 +3,7 @@
 from pathlib import Path
 import datetime, hashlib, json, plistlib
 ROOT=Path(__file__).resolve().parents[1]
+import subprocess
 version=json.loads((ROOT/'package.json').read_text())['version']
 artifacts=[('macOS app',ROOT/'target/debug/bundle/macos/Personal Command Center.app'),('macOS DMG',ROOT/f'target/debug/bundle/dmg/Personal Command Center_{version}_arm64.dmg'),('iOS Simulator app',ROOT/'target/mobile-ios-final/Build/Products/Debug-iphonesimulator/CommandCenter.app'),('Android ARM64 debug APK',ROOT/'apps/mobile-android/app/build/outputs/apk/debug/app-debug.apk')]
 def sha(path):
@@ -10,6 +11,8 @@ def sha(path):
     with path.open('rb') as stream:
         for chunk in iter(lambda:stream.read(1024*1024),b''): digest.update(chunk)
     return digest.hexdigest()
+windows=ROOT/'target/windows-package/nsis'/f'Personal Command Center_{version}_x64-setup.exe'
+if windows.exists(): artifacts.append(('Windows NSIS installer',windows))
 rows=[]
 for platform,path in artifacts:
     if not path.exists(): raise SystemExit(f'Missing artifact: {path}')
@@ -28,9 +31,15 @@ for platform,path in artifacts:
         count=len(entries)
     else:
         size=path.stat().st_size;digest=sha(path);method='SHA-256 of file bytes';count=1
-    rows.append({'platform':platform,'rebuilt_for_streaming_backup_changes':platform in ['macOS app','macOS DMG'],'path':str(path),'bytes':size,'sha256':digest,'hash_method':method,'files':count})
+    rows.append({'platform':platform,'rebuilt_for_current_functional_changes':True,'path':str(path),'bytes':size,'sha256':digest,'hash_method':method,'files':count})
 metadata=json.loads((ROOT/'apps/mobile-android/app/build/outputs/apk/debug/output-metadata.json').read_text())
 if any(e['versionName']!=version for e in metadata['elements']): raise SystemExit('Stale Android package version')
-data={'version':version,'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'runtime_tested':False,'isolated_mac_qa_smoke_tested':True,'production_signed':False,'artifacts':rows,'dependency_locks':{p:sha(ROOT/p) for p in ['Cargo.lock','package-lock.json','deploy/terraform/.terraform.lock.hcl','services/optional-host/requirements-push.lock']},'packaging_notes':['macOS development app/DMG, iOS Simulator app and Android debug APK only.','Mobile binaries were not rebuilt for the streaming-backup/Google-preview changes; streaming backup UI is desktop-only.','iOS shared Rust symbols are defined in the bundle; no developer libpcc dylib dependency.','macOS voice bridge is bundled and referenced through @rpath.','A separately identified macOS QA app passed selected native workflows. Normal artifacts have not all received runtime acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage.']}
+data={'version':version,'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'runtime_tested':False,'isolated_mac_qa_smoke_tested':True,'production_signed':False,'artifacts':rows,'dependency_locks':{p:sha(ROOT/p) for p in ['Cargo.lock','package-lock.json','deploy/terraform/.terraform.lock.hcl','services/optional-host/requirements-push.lock']},'packaging_notes':['macOS development app/DMG, iOS Simulator app and Android debug APK only.','Mobile UI binaries were rebuilt for private-file addition/preview; mobile Rust bindings are unchanged. Streaming backup and Google/radar UI are desktop-only.','iOS shared Rust symbols are defined in the bundle; no developer libpcc dylib dependency.','macOS voice bridge is bundled and referenced through @rpath.','Windows release installer passed CI silent install, native-window launch and silent uninstall. A separately identified macOS QA app passed earlier selected native workflows; the latest Google/radar UI checks await Mac unlock. Normal artifacts have not all received feature acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage.']}
+data['desktop_source_revision']=subprocess.check_output(['git','log','-1','--format=%H','--','apps/desktop','crates/core'],cwd=ROOT,text=True).strip()
+evidence=ROOT/'docs/testing/windows-package-qa.json'
+qa=json.loads(evidence.read_text()) if evidence.exists() else {}
+data['windows_installer_smoke_verified']=windows.exists() and qa.get('install_exit')==0 and qa.get('uninstall_exit')==0 and qa.get('sha256','').lower()==sha(windows)
+data['mobile_ui_source_revision']=subprocess.check_output(['git','log','-1','--format=%H','--','apps/mobile-ios','apps/mobile-android'],cwd=ROOT,text=True).strip()
+data['runtime_coverage_by_platform']={'macOS':'Earlier selected isolated QA workflows passed; newest Google/radar UI is blocked by the locked Mac.','Windows':'Installer/native-window/uninstaller smoke passed' if data['windows_installer_smoke_verified'] else 'No matching smoke evidence','iOS':'Compilation only','Android':'Compilation only'}
 (ROOT/'docs/BUILD-ARTIFACTS.json').write_text(json.dumps(data,indent=2)+'\n')
 print('Recorded',version,'and',len(rows),'existing artifacts. No runtime verification performed.')

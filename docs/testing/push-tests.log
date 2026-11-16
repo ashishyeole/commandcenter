@@ -10,6 +10,6 @@ test_token_bound_to_tenant_subject_device (test_push.PushTests.test_token_bound_
 test_unknown_outcome_reserved_without_retry (test_push.PushTests.test_unknown_outcome_reserved_without_retry) ... ok
 
 ----------------------------------------------------------------------
-Ran 10 tests in 0.016s
+Ran 10 tests in 0.040s
 
 OK

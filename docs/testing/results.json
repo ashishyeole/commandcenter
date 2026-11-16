@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-16T00:05:21.841470+00:00",
+  "generated_at": "2026-11-16T02:00:55.495316+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
-  "rust_test_executions": 66,
-  "rust_distinct_tests": 64,
+  "rust_test_executions": 68,
+  "rust_distinct_tests": 66,
   "python_tests": 10,
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
@@ -59,14 +59,14 @@
       "evidence": "Separate com.personal.commandcenter.qa profile: launch, pinned Markdown note create/edit/search, original attachment import and safe preview, monthly Jan 31 \u2192 Feb 28 recurrence, quit/relaunch persistence, readable and encrypted archive export/duplicate-safe restore, wrong-password rejection. ZIP checksums and original attachment bytes independently match. This is a smoke test, not all-feature acceptance."
     },
     {
-      "status": "UNVERIFIED",
+      "status": "PASS (installer smoke)",
       "area": "Windows build / installer / runtime",
-      "evidence": "NSIS packaging and GitHub Actions workflow remain configured. No Windows host/EXE/runtime evidence. Attempted CI status check; GitHub CLI is not authenticated here, so remote build status could not be verified."
+      "evidence": "ef1e9c3 release packaging succeeded in CI. Windows runner: silent install exit 0; native Personal Command Center window stayed running 15 seconds; silent uninstall exit 0. Local installer SHA-256 matches CI evidence. All workspace tests/build passed in Windows. Full feature UI and interactive backup prompt acceptance are not claimed."
     },
     {
       "status": "NOT RUN",
       "area": "Other live feature acceptance",
-      "evidence": "Live account feeds, microphones, Ollama/cloud models, real APNs/FCM delivery, cross-device LAN pairing, background reminders and signed updates were not exercised. No real sends or account connections."
+      "evidence": "Live accounts, microphones, cloud AI calls, real APNs/FCM delivery, cross-device LAN pairing, real OS reminder delivery and signed updates were not exercised. No models downloaded and no real sends/account connections."
     },
     {
       "status": "PASS (automated)",
@@ -117,9 +117,25 @@
       "status": "PASS (synthetic files)",
       "area": "Scheduled streaming backups",
       "evidence": "Two tests cover legacy schedules defaulting to standard format and verified encrypted .paccs writing/restorability, wrong-password rejection and cleanup on failed export. Local/mounted folders supported; direct WebDAV stays standard. Native OS-keychain-backed unattended schedule execution and new format selector not runtime-tested."
+    },
+    {
+      "status": "PASS (synthetic fixtures)",
+      "area": "Google background refresh",
+      "evidence": "Two tests cover required saved consent/scopes, memory snapshot expiry, profile reset and configuration replacement. Default off; no real account read. Native UI check currently waits for Mac unlock."
+    },
+    {
+      "status": "PASS (automated)",
+      "area": "Research radar and creator opportunities",
+      "evidence": "13 assertions cover publication windows, word boundaries, newest-cache deduplication, isolated metric cohorts/percentiles, recomputed rates, stale data and multi-creator evidence. Native UI check currently waits for Mac unlock."
+    },
+    {
+      "status": "PASS (compilation only)",
+      "area": "Mobile private-file addition and preview",
+      "evidence": "Latest iOS Simulator app and Android ARM64 debug APK compile. Selected files \u226410 MiB attach to encrypted record drafts; text/image previews remain in memory and are bounded. No plaintext temp files or automatic uploads. Real file-provider/lifecycle/device workflows are unverified."
     }
   ],
   "ui_logic_assertions": 10,
-  "rust_workspace_executions": 66,
-  "rust_additional_targeted_executions": 0
+  "rust_workspace_executions": 68,
+  "rust_additional_targeted_executions": 0,
+  "research_analytics_assertions": 13
 }
