@@ -1,6 +1,6 @@
 {
   "version": "0.5.0",
-  "generated_at": "2026-11-16T01:59:01.708461+00:00",
+  "generated_at": "2026-11-16T02:08:42.952856+00:00",
   "runtime_tested": false,
   "isolated_mac_qa_smoke_tested": true,
   "production_signed": false,
@@ -65,5 +65,12 @@
     "Windows release installer passed CI silent install, native-window launch and silent uninstall. A separately identified macOS QA app passed earlier selected native workflows; the latest Google/radar UI checks await Mac unlock. Normal artifacts have not all received feature acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage."
   ],
   "desktop_source_revision": "ef1e9c3e06f836bd4f1afcfc9c4837fff70c4585",
-  "windows_installer_smoke_verified": true
+  "windows_installer_smoke_verified": true,
+  "mobile_ui_source_revision": "ee5f972e42300420b23f2a0660b8e99ad99ab56e",
+  "runtime_coverage_by_platform": {
+    "macOS": "Earlier selected isolated QA workflows passed; newest Google/radar UI is blocked by the locked Mac.",
+    "Windows": "Installer/native-window/uninstaller smoke passed",
+    "iOS": "Compilation only",
+    "Android": "Compilation only"
+  }
 }
