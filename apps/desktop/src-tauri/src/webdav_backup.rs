@@ -63,7 +63,7 @@ pub fn save_webdav_destination(
         .map_err(|e| format!("Secure store refused WebDAV credentials: {e}"))?;
     repo.set_setting("backup_webdav", url.as_str())?;
     // A new destination always requires a fresh scope approval.
-    repo.set_setting("backup_schedule", &json!({"backend":"webdav","enabled":false,"approved":false,"interval_hours":24,"include_vault":false,"retain":0}).to_string())
+    repo.set_setting("backup_schedule", &json!({"streaming":false,"backend":"webdav","enabled":false,"approved":false,"interval_hours":24,"include_vault":false,"retain":0}).to_string())
 }
 pub fn forget(device: &str) -> Result<()> {
     match entry(device)?.delete_credential() {
@@ -188,7 +188,7 @@ pub async fn execute(
         return Err("Uploaded archive failed checksum verification".into());
     }
     archive::inspect_all(&Zeroizing::new(archive::decrypt(&readback, &password)?))?;
-    let info = json!({"sha256":digest,"verified_at":now(),"path":target.as_str(),"backend":"webdav","encrypted":true,"records":count,"includes_vault":config.include_vault,"modules":[],"bytes":size});
+    let info = json!({"sha256":digest,"verified_at":now(),"path":target.as_str(),"streaming":false,"backend":"webdav","encrypted":true,"records":count,"includes_vault":config.include_vault,"modules":[],"bytes":size});
     let mut owned: Vec<Value> = {
         let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
         if state.data_epoch.load(std::sync::atomic::Ordering::SeqCst) != epoch {

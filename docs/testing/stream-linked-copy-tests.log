@@ -1,0 +1,11 @@
+   Compiling command-center-core v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/crates/core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.71s
+     Running tests/streaming_archives.rs (target/debug/deps/streaming_archives-646ea245dc75d29c)
+
+running 3 tests
+test linked_copy_private_records_use_fresh_ids_and_receiver_key ... ok
+test linked_copy_rejects_bad_review_and_changed_second_pass_atomically ... ok
+test linked_copies_preserve_originals_and_remap_relationships_and_history ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.95s
+

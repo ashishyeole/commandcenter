@@ -1,0 +1,15 @@
+   Compiling personal-command-center v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/desktop/src-tauri)
+warning: linker stderr: ld: duplicate -rpath '@executable_path/../Frameworks' ignored
+  |
+  = note: `#[warn(linker_messages)]` on by default
+
+warning: `personal-command-center` (bin "personal-command-center" test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.13s
+     Running unittests src/main.rs (target/debug/deps/personal_command_center-1a5604d699cf08dd)
+
+running 2 tests
+test backups::stream_schedule_tests::legacy_schedules_keep_standard_format ... ok
+test backups::stream_schedule_tests::scheduled_stream_is_verified_encrypted_and_restorable ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.80s
+

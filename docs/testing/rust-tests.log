@@ -1,27 +1,25 @@
-   Compiling command-center-core v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/crates/core)
-   Compiling command-center-mobile-peer v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/crates/mobile-peer)
    Compiling personal-command-center v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/desktop/src-tauri)
 warning: linker stderr: ld: duplicate -rpath '@executable_path/../Frameworks' ignored
   |
   = note: `#[warn(linker_messages)]` on by default
 
 warning: `personal-command-center` (bin "personal-command-center" test) generated 1 warning
-    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.46s
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.47s
      Running unittests src/lib.rs (target/debug/deps/command_center_core-8789edf0255ac3e1)
 
 running 10 tests
 test archive::tests::csv_formula_protection ... ok
 test archive::tests::rejects_modified_payload_and_future_schema ... ok
+test tests::invalid_import_is_atomic ... ok
 test tests::restore_is_idempotent_and_preserves_local_conflicts ... ok
 test tests::tombstones_and_hostile_search ... ok
-test tests::invalid_import_is_atomic ... ok
 test reminder_lease::tests::independent_connections_share_the_lease ... ok
 test tests::persists_searches_and_recurs ... ok
-test stream_archive::hostile_tests::unknown_versions_and_cancellation_do_not_import_partial_data ... ok
 test stream_archive::hostile_tests::authenticated_duplicate_ids_roll_back_all_prior_frames ... ok
+test stream_archive::hostile_tests::unknown_versions_and_cancellation_do_not_import_partial_data ... ok
 test archive::tests::portable_roundtrip_and_tampering ... ok
 
-test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.93s
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.79s
 
      Running tests/record_briefing.rs (target/debug/deps/record_briefing-e9a952d60e41fd43)
 
@@ -46,39 +44,42 @@ running 2 tests
 test collections_preserve_queries_and_cache_independently ... ok
 test collection_limits_and_cache_bound ... ok
 
-test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
 
      Running tests/streaming_archives.rs (target/debug/deps/streaming_archives-ec8138ee87820b74)
 
-running 6 tests
+running 9 tests
 test standard_archives_accept_all_nine_current_feed_sources ... ok
-test streaming_preserves_workspace_relationships_and_original_attachments ... ok
+test linked_copy_private_records_use_fresh_ids_and_receiver_key ... ok
 test private_records_are_reencrypted_with_receiver_key ... ok
+test streaming_preserves_workspace_relationships_and_original_attachments ... ok
 test streaming_roundtrip_keeps_conflicts_and_excludes_permissions ... ok
+test linked_copy_rejects_bad_review_and_changed_second_pass_atomically ... ok
+test linked_copies_preserve_originals_and_remap_relationships_and_history ... ok
 test corrupt_truncated_wrong_password_and_review_mismatch_are_atomic ... ok
 test streams_beyond_standard_archive_size_without_collecting_the_output ... ok
 
-test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 34.70s
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 32.05s
 
      Running tests/sync_acceptance.rs (target/debug/deps/sync_acceptance-8c54d210fe5c5a96)
 
 running 8 tests
 test receiver_rejects_attachment_when_parent_category_is_not_granted ... ok
-test concurrent_note_edits_never_silently_overwrite ... ok
 test attachment_checksum_failure_does_not_advance_cursor ... ok
+test concurrent_note_edits_never_silently_overwrite ... ok
 test existing_file_content_cannot_change_under_same_identity ... ok
 test file_requires_both_attachment_and_parent_scope ... ok
 test attachment_delete_vs_index_edit_is_reviewable ... ok
 test attachment_roundtrip_reopen_and_idempotence ... ok
 test maximum_file_fits_wire_and_retries_after_lost_ack ... ok
 
-test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 20.35s
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 18.85s
 
      Running tests/watchlist_thresholds.rs (target/debug/deps/watchlist_thresholds-644691285a5cfcec)
 
 running 3 tests
-test enabled_monitor_rejects_invalid_threshold_or_mismatched_host ... ok
 test arbitrary_prices_and_disabled_monitors_are_not_evaluated ... ok
+test enabled_monitor_rejects_invalid_threshold_or_mismatched_host ... ok
 test cached_threshold_triggers_once_and_preserves_source_evidence ... ok
 
 test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
@@ -97,28 +98,38 @@ running 2 tests
 test sync_wire::transport_tests::wrong_pinned_peer_cannot_authenticate ... ok
 test sync_wire::transport_tests::authenticated_large_file_frames_roundtrip ... ok
 
-test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.95s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.73s
 
      Running unittests src/main.rs (target/debug/deps/personal_command_center-1a5604d699cf08dd)
 
-running 15 tests
-test google_accounts::message_tests::body_scope_does_not_follow_from_metadata_grant ... ok
+running 25 tests
 test background_reminders::tests::launch_agent_escapes_paths_and_has_no_shell ... ok
-test startup_config_tests::bundled_updater_configuration_deserializes_without_network_defaults ... ok
-test poker_search::tests::invalid_horizons_and_unbounded_input_fail ... ok
-test event_sources::recurrence_tests::unsupported_or_unbounded_rules_remain_unexpanded ... ok
+test google_accounts::message_tests::body_scope_does_not_follow_from_metadata_grant ... ok
+test backups::stream_schedule_tests::legacy_schedules_keep_standard_format ... ok
 test google_accounts::message_tests::unnamed_attachment_subtrees_are_not_used_as_message_body ... ok
 test google_accounts::message_tests::mime_preview_prefers_plain_and_ignores_attachments ... ok
-test event_sources::recurrence_tests::weekly_all_day_instances_preserve_exclusive_duration ... ok
+test poker_search::tests::invalid_horizons_and_unbounded_input_fail ... ok
+test large_archives::cancellation_tests::cancelled_io_never_forwards_new_data ... ok
+test event_sources::recurrence_tests::unsupported_or_unbounded_rules_remain_unexpanded ... ok
 test event_sources::recurrence_tests::until_between_weekly_dates_does_not_drop_supported_rule ... ok
-test poker_search::tests::cross_provider_query_rolls_across_year_end_and_encodes_input ... ok
+test startup_config_tests::bundled_updater_configuration_deserializes_without_network_defaults ... ok
+test event_sources::recurrence_tests::weekly_all_day_instances_preserve_exclusive_duration ... ok
+test event_sources::expanded_calendar_tests::monthly_invalid_month_days_are_skipped_instead_of_clamped ... ok
+test event_sources::expanded_calendar_tests::weekly_days_respect_interval_and_week_start ... ok
+test event_sources::expanded_calendar_tests::nonexistent_local_time_does_not_consume_count ... ok
 test model_catalogue::tests::layout_failure_is_not_a_successful_empty_feed ... ok
+test event_sources::expanded_calendar_tests::timezone_dst_preserves_wall_clock_and_duration_with_exceptions ... ok
 test model_catalogue::tests::catalogue_only_accepts_model_links_and_plain_metadata ... ok
+test poker_search::tests::cross_provider_query_rolls_across_year_end_and_encodes_input ... ok
 test google_accounts::message_tests::html_is_inert_and_preview_is_utf8_bounded ... ok
+test event_sources::expanded_calendar_tests::exclusions_win_and_unknown_exception_syntax_prevents_expansion ... ok
+test event_sources::expanded_calendar_tests::ordinal_weekdays_negative_month_days_and_leap_years ... ok
 test sync_wire::transport_tests::wrong_pinned_peer_cannot_authenticate ... ok
+test event_sources::expanded_calendar_tests::utc_until_is_inclusive_and_unsupported_rules_stay_explicit ... ok
+test backups::stream_schedule_tests::scheduled_stream_is_verified_encrypted_and_restorable ... ok
 test sync_wire::transport_tests::authenticated_large_file_frames_roundtrip ... ok
 
-test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.91s
+test result: ok. 25 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.74s
 
    Doc-tests command_center_core
 

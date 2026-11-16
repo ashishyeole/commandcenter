@@ -15,37 +15,38 @@ rendering chunks...
 computing gzip size...
 dist/index.html                           0.37 kB │ gzip:  0.27 kB
 dist/assets/index-B1LFK24E.css           24.08 kB │ gzip:  6.36 kB
-dist/assets/link-BrAbhcxW.js              0.43 kB │ gzip:  0.29 kB
-dist/assets/download-IlYZL1bW.js          0.43 kB │ gzip:  0.32 kB
-dist/assets/Assistant-Dk2AR_XO.js         0.52 kB │ gzip:  0.35 kB
-dist/assets/Timeline-qLewrOEv.js          1.84 kB │ gzip:  0.84 kB
-dist/assets/CloudAssistant-B-Ira1Px.js    3.78 kB │ gzip:  1.60 kB
-dist/assets/InboxSources-Cw-cCtca.js      4.03 kB │ gzip:  1.73 kB
-dist/assets/Automations-kSpBZNnl.js       7.94 kB │ gzip:  3.00 kB
-dist/assets/DeviceSync-DOOzKFWo.js       16.60 kB │ gzip:  5.65 kB
-dist/assets/Vault-hYvzAldM.js            22.40 kB │ gzip:  6.58 kB
-dist/assets/DataPrivacy-CGHVv3zo.js      23.67 kB │ gzip:  7.18 kB
-dist/assets/Discovery-BIwsyUd5.js        23.85 kB │ gzip:  7.99 kB
-dist/assets/Settings-DTkD3Oxj.js         47.30 kB │ gzip: 13.04 kB
-dist/assets/Workspaces-CiaKLPWR.js      101.00 kB │ gzip: 29.93 kB
-dist/assets/index-CP8ub6ea.js           295.43 kB │ gzip: 91.36 kB
-✓ built in 633ms
+dist/assets/link-wTAcCPF0.js              0.43 kB │ gzip:  0.30 kB
+dist/assets/download-CtGV7QlY.js          0.43 kB │ gzip:  0.32 kB
+dist/assets/Assistant-BarO-JyL.js         0.52 kB │ gzip:  0.36 kB
+dist/assets/Timeline-5btV6RGX.js          1.84 kB │ gzip:  0.84 kB
+dist/assets/CloudAssistant-Cb8Hu8Zt.js    3.78 kB │ gzip:  1.60 kB
+dist/assets/InboxSources-Bkm5KRFY.js      4.03 kB │ gzip:  1.73 kB
+dist/assets/Automations-BlMX-KI6.js       7.94 kB │ gzip:  3.00 kB
+dist/assets/DeviceSync-BIDAxdso.js       16.60 kB │ gzip:  5.65 kB
+dist/assets/Vault-ZFzHFFzK.js            22.40 kB │ gzip:  6.58 kB
+dist/assets/Discovery-BlUr0Byf.js        23.85 kB │ gzip:  7.99 kB
+dist/assets/DataPrivacy-DAyuvc4T.js      25.31 kB │ gzip:  7.63 kB
+dist/assets/Settings-B56cK8Vx.js         47.30 kB │ gzip: 13.04 kB
+dist/assets/Workspaces-aM6PD2-q.js      101.00 kB │ gzip: 29.93 kB
+dist/assets/index-DPYT-4t_.js           295.43 kB │ gzip: 91.37 kB
+✓ built in 797ms
    Compiling objc2-exception-helper v0.1.1
    Compiling ring v0.17.14
    Compiling objc2 v0.6.5
    Compiling libsqlite3-sys v0.39.1
    Compiling mac-notification-sys v0.6.15
+   Compiling personal-command-center v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/desktop/src-tauri)
    Compiling objc2-foundation v0.3.2
    Compiling wry v0.57.2
+   Compiling rustls v0.23.46
+   Compiling snow v0.10.0
    Compiling objc2-core-foundation v0.3.2
    Compiling block2 v0.6.2
    Compiling dispatch2 v0.3.1
-   Compiling rustls v0.23.46
-   Compiling snow v0.10.0
-   Compiling objc2-core-services v0.3.2
-   Compiling notify v8.2.2
    Compiling rustls-webpki v0.103.17
+   Compiling objc2-core-services v0.3.2
    Compiling rusqlite v0.41.1
+   Compiling notify v8.2.2
    Compiling command-center-core v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/crates/core)
    Compiling tokio-rustls v0.26.6
    Compiling rustls-platform-verifier v0.7.1
@@ -70,15 +71,14 @@ dist/assets/index-CP8ub6ea.js           295.43 kB │ gzip: 91.36 kB
    Compiling tauri-plugin-updater v2.14.1
    Compiling tauri-plugin-notification v2.8.1
    Compiling tauri-plugin-global-shortcut v2.4.1
-   Compiling personal-command-center v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/desktop/src-tauri)
 warning: linker stderr: ld: duplicate -rpath '@executable_path/../Frameworks' ignored
   |
   = note: `#[warn(linker_messages)]` on by default
 
 warning: `personal-command-center` (bin "personal-command-center") generated 1 warning
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 13.09s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 18.39s
        Built application at: /Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/personal-command-center
     Bundling Personal Command Center.app (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app)
     Finished 1 bundle at:
-        /Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app (76.44 MiB)
+        /Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app (76.69 MiB)
 

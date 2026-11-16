@@ -73,7 +73,7 @@ pub async fn preview_large_archive(
   let mut temp=tempfile::NamedTempFile::new().map_err(|e|e.to_string())?;let copied=std::io::copy(&mut Cancellable{inner:source,token:token.clone()}.take(BYTE_LIMIT+1),temp.as_file_mut()).map_err(|e|e.to_string())?;if copied>BYTE_LIMIT{return Err("Streaming archive exceeds 8 GiB".into());}
   let mut reader=Cancellable{inner:temp.reopen().map_err(|e|e.to_string())?,token:token.clone()};let mut hash=Sha256::new();let mut buffer=[0;65536];loop{let n=reader.read(&mut buffer).map_err(|e|e.to_string())?;if n==0{break;}hash.update(&buffer[..n]);}let sha256=format!("{:x}",hash.finalize());
   let summary=state.repo.lock().map_err(|_|"Database unavailable")?.inspect_stream(std::io::BufReader::new(Cancellable{inner:temp.reopen().map_err(|e|e.to_string())?,token:token.clone()}),&password)?;
-  let id=uuid::Uuid::new_v4().to_string();let result=json!({"name":name,"id":id,"sha256":sha256,"summary":summary,"bytes":copied,"policy":"Import only missing IDs; existing records and permissions are kept. No connection permissions, keys or schedules are restored. Corrupt, incomplete or modified archives roll back completely."});
+  let id=uuid::Uuid::new_v4().to_string();let result=json!({"name":name,"id":id,"sha256":sha256,"summary":summary,"bytes":copied,"policy":"Default: import missing IDs. You can instead create fresh linked copies of all incoming records; existing local records and permissions are kept. No connection permissions, keys or schedules are restored. Corrupt, incomplete or modified archives roll back completely."});
   let _repo=state.repo.lock().map_err(|_|"Database unavailable")?;if state.data_epoch.load(std::sync::atomic::Ordering::SeqCst)!=epoch{return Err("Data reset during preview; select the archive again".into());}
   let mut pending=state.large_import.lock().map_err(|_|"Import state unavailable")?;
   if token.is_cancelled(){return Err("Archive preview cancelled".into());}
@@ -87,8 +87,16 @@ pub async fn apply_large_archive(
     reviewed_sha256: String,
     password: String,
     confirmation: String,
+    copy_all: Option<bool>,
 ) -> Result<Summary> {
-    if confirmation != "IMPORT MISSING RECORDS" {
+    let copy_all = copy_all.unwrap_or(false);
+    if confirmation
+        != if copy_all {
+            "IMPORT LINKED COPIES"
+        } else {
+            "IMPORT MISSING RECORDS"
+        }
+    {
         return Err("Review the streaming import policy first".into());
     }
     let password = Zeroizing::new(password);
@@ -115,15 +123,25 @@ pub async fn apply_large_archive(
         if state.data_epoch.load(std::sync::atomic::Ordering::SeqCst) != p.epoch {
             return Err("Data reset since preview; verify the archive again".into());
         }
-        repo.import_stream_checked(
-            std::io::BufReader::new(Cancellable {
-                inner: p.file.reopen().map_err(|e| e.to_string())?,
-                token: token.clone(),
-            }),
-            &password,
-            key.as_deref().map(|k| k.as_slice()),
-            Some(&reviewed_sha256),
-        )
+        let input = std::io::BufReader::new(Cancellable {
+            inner: p.file.reopen().map_err(|e| e.to_string())?,
+            token: token.clone(),
+        });
+        if copy_all {
+            repo.import_stream_copies(
+                input,
+                &password,
+                key.as_deref().map(|k| k.as_slice()),
+                Some(&reviewed_sha256),
+            )
+        } else {
+            repo.import_stream_checked(
+                input,
+                &password,
+                key.as_deref().map(|k| k.as_slice()),
+                Some(&reviewed_sha256),
+            )
+        }
     })
     .await
     .map_err(|_| "Streaming import interrupted".to_string())?
@@ -211,5 +229,14 @@ mod cancellation_tests {
         assert!(writer.write(b"private").is_err());
         assert!(writer.inner.is_empty());
         assert!(writer.flush().is_err());
+    }
+}
+
+impl<T: Seek> Seek for Cancellable<T> {
+    fn seek(&mut self, pos: SeekFrom) -> std::io::Result<u64> {
+        if self.token.is_cancelled() {
+            return Err(std::io::Error::other("Archive operation cancelled"));
+        }
+        self.inner.seek(pos)
     }
 }

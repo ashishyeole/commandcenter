@@ -1,0 +1,20 @@
+   Compiling personal-command-center v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/desktop/src-tauri)
+warning: linker stderr: ld: duplicate -rpath '@executable_path/../Frameworks' ignored
+  |
+  = note: `#[warn(linker_messages)]` on by default
+
+warning: `personal-command-center` (bin "personal-command-center" test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.55s
+     Running unittests src/main.rs (target/debug/deps/personal_command_center-1a5604d699cf08dd)
+
+running 7 tests
+test event_sources::expanded_calendar_tests::nonexistent_local_time_does_not_consume_count ... ok
+test event_sources::expanded_calendar_tests::monthly_invalid_month_days_are_skipped_instead_of_clamped ... ok
+test event_sources::expanded_calendar_tests::weekly_days_respect_interval_and_week_start ... ok
+test event_sources::expanded_calendar_tests::timezone_dst_preserves_wall_clock_and_duration_with_exceptions ... ok
+test event_sources::expanded_calendar_tests::exclusions_win_and_unknown_exception_syntax_prevents_expansion ... ok
+test event_sources::expanded_calendar_tests::ordinal_weekdays_negative_month_days_and_leap_years ... ok
+test event_sources::expanded_calendar_tests::utc_until_is_inclusive_and_unsupported_rules_stay_explicit ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 18 filtered out; finished in 0.01s
+

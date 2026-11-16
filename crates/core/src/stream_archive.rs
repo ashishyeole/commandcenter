@@ -15,8 +15,8 @@ use rusqlite::params;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::{
-    collections::HashSet,
-    io::{Read, Write},
+    collections::{HashMap, HashSet},
+    io::{Read, Seek, SeekFrom, Write},
 };
 use zeroize::Zeroizing;
 const MAGIC: &[u8; 8] = b"PCCSTR01";
@@ -298,6 +298,42 @@ impl Repository {
         encoder.finish()?;
         tx.commit().map_err(err)
     }
+    /// Deliberate full-copy restore: fresh IDs and remapped explicit relationships/history.
+    pub fn import_stream_copies<R: Read + Seek>(
+        &mut self,
+        mut input: R,
+        password: &str,
+        vault_key: Option<&[u8]>,
+        expected_sha256: Option<&str>,
+    ) -> Result<Summary> {
+        input.seek(SeekFrom::Start(0)).map_err(err)?;
+        let mut reader = HashReader {
+            inner: &mut input,
+            hash: Sha256::new(),
+        };
+        let mut mapping = HashMap::new();
+        let mut fresh = HashSet::new();
+        decode(&mut reader, password, |frame| {
+            if let Some(old) = frame_id(&frame) {
+                let id = loop {
+                    let id = uuid::Uuid::new_v4().to_string();
+                    let exists:bool=self.conn.query_row("SELECT EXISTS(SELECT 1 FROM items WHERE id=?1 UNION ALL SELECT 1 FROM records WHERE id=?1 UNION ALL SELECT 1 FROM attachments WHERE id=?1 UNION ALL SELECT 1 FROM vault WHERE id=?1)",[&id],|r|r.get(0)).map_err(err)?;
+                    if !exists && fresh.insert(id.clone()) {
+                        break id;
+                    }
+                };
+                mapping.insert(old.to_owned(), id);
+            }
+            Ok(())
+        })?;
+        let checksum = format!("{:x}", reader.hash.finalize());
+        if expected_sha256.is_some_and(|expected| expected != checksum) {
+            return Err("Reviewed archive checksum changed".into());
+        }
+        input.seek(SeekFrom::Start(0)).map_err(err)?;
+        // Bind the second pass to the first even when the caller has no preview checksum.
+        self.import_stream_mapped(input, password, vault_key, Some(&checksum), Some(&mapping))
+    }
     pub fn inspect_stream<R: Read>(&self, input: R, password: &str) -> Result<Summary> {
         let mut summary = Summary::default();
         decode(input, password, |frame| {
@@ -321,6 +357,17 @@ impl Repository {
         vault_key: Option<&[u8]>,
         expected_sha256: Option<&str>,
     ) -> Result<Summary> {
+        self.import_stream_mapped(input, password, vault_key, expected_sha256, None)
+    }
+    fn import_stream_mapped<R: Read>(
+        &mut self,
+        input: R,
+        password: &str,
+        vault_key: Option<&[u8]>,
+        expected_sha256: Option<&str>,
+        mapping: Option<&HashMap<String, String>>,
+    ) -> Result<Summary> {
+        let device = self.device_id.clone();
         let mut input = HashReader {
             inner: input,
             hash: Sha256::new(),
@@ -328,6 +375,15 @@ impl Repository {
         let tx = self.conn.transaction().map_err(err)?;
         let mut summary = Summary::default();
         decode(&mut input, password, |frame| {
+            let frame = if let Some(mapping) = mapping {
+                let Some(frame) = copy_frame(frame, mapping, &device)? else {
+                    return Ok(());
+                };
+                frame
+            } else {
+                frame
+            };
+            validate(&frame)?;
             count(&tx, &frame, &mut summary)?;
             match frame {
                 Frame::Item(v) => {
@@ -521,4 +577,96 @@ mod hostile_tests {
             .is_err());
         assert!(target.list("", true).unwrap().is_empty());
     }
+}
+
+fn frame_id(f: &Frame) -> Option<&str> {
+    match f {
+        Frame::Item(v) => Some(&v.id),
+        Frame::Record(v) => Some(&v.id),
+        Frame::Attachment(v) => Some(&v.id),
+        Frame::Vault(v) => Some(&v.id),
+        _ => None,
+    }
+}
+fn remap(id: &mut String, map: &HashMap<String, String>) {
+    if let Some(new) = map.get(id) {
+        *id = new.clone();
+    }
+}
+fn copied_title(title: &mut String) {
+    let suffix = " (imported copy)";
+    let mut end = title.len().min(500 - suffix.len());
+    while !title.is_char_boundary(end) {
+        end -= 1;
+    }
+    *title = format!("{}{suffix}", &title[..end]);
+}
+fn copy_item(v: &mut Item, map: &HashMap<String, String>, device: Option<&str>) {
+    remap(&mut v.id, map);
+    if let Some(parent) = v.recurrence.strip_prefix("after:") {
+        if let Some(new) = map.get(parent) {
+            v.recurrence = format!("after:{new}");
+        }
+    }
+    if let Some(device) = device {
+        copied_title(&mut v.title);
+        v.revision = 1;
+        v.device_id = device.into();
+        v.created_at = crate::now();
+        v.updated_at = crate::now();
+    }
+}
+fn copy_record(v: &mut Record, map: &HashMap<String, String>, device: Option<&str>) {
+    remap(&mut v.id, map);
+    for id in &mut v.links {
+        remap(id, map);
+    }
+    if let Some(id) = v.fields.get_mut("workspace_owner") {
+        remap(id, map);
+    }
+    if let Some(device) = device {
+        copied_title(&mut v.title);
+        v.revision = 1;
+        v.device_id = device.into();
+        v.created_at = crate::now();
+        v.updated_at = crate::now();
+    }
+}
+fn copy_frame(mut f: Frame, map: &HashMap<String, String>, device: &str) -> Result<Option<Frame>> {
+    match &mut f {
+        Frame::Item(v) => copy_item(v, map, Some(device)),
+        Frame::Record(v) => copy_record(v, map, Some(device)),
+        Frame::Attachment(v) => {
+            remap(&mut v.id, map);
+            remap(&mut v.owner_id, map);
+            if let Some(id) = &mut v.previous_id {
+                remap(id, map);
+            }
+        }
+        Frame::Vault(v) => {
+            remap(&mut v.id, map);
+            copied_title(&mut v.title);
+            v.updated_at = crate::now();
+        }
+        Frame::History(v) => {
+            if !map.contains_key(&v.entity_id) {
+                return Ok(None);
+            }
+            remap(&mut v.entity_id, map);
+            v.event_id = uuid::Uuid::new_v4().to_string();
+            let value: serde_json::Value = serde_json::from_str(&v.payload).map_err(err)?;
+            if value.get("kind").is_some() {
+                let mut payload: Item = serde_json::from_value(value).map_err(err)?;
+                copy_item(&mut payload, map, None);
+                v.payload = serde_json::to_string(&payload).map_err(err)?;
+            } else {
+                let mut payload: Record = serde_json::from_value(value).map_err(err)?;
+                copy_record(&mut payload, map, None);
+                v.payload = serde_json::to_string(&payload).map_err(err)?;
+            }
+        }
+        Frame::Preferences(_) | Frame::Feed(_) | Frame::Collections(_) => return Ok(None),
+        Frame::End { .. } => {}
+    }
+    Ok(Some(f))
 }

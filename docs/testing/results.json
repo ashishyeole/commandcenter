@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-15T16:01:04.058308+00:00",
+  "generated_at": "2026-11-16T00:05:21.841470+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
-  "rust_test_executions": 54,
-  "rust_distinct_tests": 52,
+  "rust_test_executions": 66,
+  "rust_distinct_tests": 64,
   "python_tests": 10,
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
@@ -49,7 +49,7 @@
       "evidence": "App launch exposed missing updater plugin configuration. Added empty pubkey/endpoints configuration; public keys remain supplied by the reviewed update flow. Regression test passes and isolated native app now launches. Normal Mac app and DMG rebuilt."
     },
     {
-      "status": "NOT READY",
+      "status": "EXCLUDED (personal scope)",
       "area": "Mac production trust",
       "evidence": "Gatekeeper assessment rejects the development app. Ad-hoc signing is not Developer ID signing/notarization."
     },
@@ -59,9 +59,9 @@
       "evidence": "Separate com.personal.commandcenter.qa profile: launch, pinned Markdown note create/edit/search, original attachment import and safe preview, monthly Jan 31 \u2192 Feb 28 recurrence, quit/relaunch persistence, readable and encrypted archive export/duplicate-safe restore, wrong-password rejection. ZIP checksums and original attachment bytes independently match. This is a smoke test, not all-feature acceptance."
     },
     {
-      "status": "PENDING CI",
+      "status": "UNVERIFIED",
       "area": "Windows build / installer / runtime",
-      "evidence": "GitHub Actions Mac/Windows check workflow is configured for push to the new repository. Awaiting a successful Windows run; no EXE or Windows runtime acceptance yet."
+      "evidence": "NSIS packaging and GitHub Actions workflow remain configured. No Windows host/EXE/runtime evidence. Attempted CI status check; GitHub CLI is not authenticated here, so remote build status could not be verified."
     },
     {
       "status": "NOT RUN",
@@ -86,7 +86,7 @@
     {
       "status": "PASS (automated)",
       "area": "Bounded calendar recurrence",
-      "evidence": "Daily/weekly all-day expansion tests preserve event duration and reject unsupported/unbounded rules. Timed, monthly, BYDAY and exception expansion remain unsupported."
+      "evidence": "10 recurrence/parser tests cover daily/weekly/monthly/yearly, month-end skipping, leap years, ordinal weekdays, interval weeks, IANA DST, DTEND duration, EXDATE/RDATE, inclusive UNTIL and unsupported-rule preservation. Up to 366 occurrences within a 36,600-day scan. RECURRENCE-ID overrides, BYSETPOS, DURATION/EXRULE and unbounded rules remain unexpanded. No live feed/native UI acceptance."
     },
     {
       "status": "PASS (selected isolated checks)",
@@ -101,7 +101,7 @@
     {
       "status": "PASS (automated)",
       "area": "Large encrypted streaming backups",
-      "evidence": "PCCSTR01 file larger than 64 MiB exported and restored. Tests cover authenticated framing/manifest, wrong passwords, corruption/truncation/trailing bytes, reviewed checksum binding, duplicate IDs, cancellation, unsupported versions, original attachments/links, receiver-key vault encryption and excluded permissions. Full workspace run: 53 executions; one additional native cancellation test passes."
+      "evidence": "PCCSTR01 file larger than 64 MiB exported/restored. Full workspace tests cover framing/manifest, wrong passwords, corruption/truncation/trailing bytes, checksum binding, duplicate IDs, cancellation, future versions, attachments/links, vault encryption and excluded permissions. Linked-copy tests preserve originals/configuration, remap relationships/history/attachment versions, check UTF-8 title bounds and roll back changed second-pass input."
     },
     {
       "status": "PASS (synthetic fixtures)",
@@ -109,12 +109,17 @@
       "evidence": "Four scope/MIME tests cover metadata versus body authorization, plain preference, attachment subtree exclusion, inert HTML and UTF-8 truncation. Frontend/native compilation pass; no real account or message accessed."
     },
     {
-      "status": "BLOCKED (Mac locked)",
+      "status": "PASS (selected QA workflows)",
       "area": "New streaming-backup native dialogs",
-      "evidence": "Isolated QA app built. Native automation reports the Mac is locked; unlock requested. New save/select/preview/apply dialogs have not received UI acceptance. Earlier floating-assistant and other selected native checks remain recorded separately."
+      "evidence": "Mac unlocked. Separate QA profile: native .paccs export verified 3 records, wrong password rejected, preview showed 3 existing IDs and 4 history events, missing-only import kept all originals, linked-copy import created 3 copies. Dashboard showed original and copy note/task with unchanged due date. No real profile, private vault or account used."
+    },
+    {
+      "status": "PASS (synthetic files)",
+      "area": "Scheduled streaming backups",
+      "evidence": "Two tests cover legacy schedules defaulting to standard format and verified encrypted .paccs writing/restorability, wrong-password rejection and cleanup on failed export. Local/mounted folders supported; direct WebDAV stays standard. Native OS-keychain-backed unattended schedule execution and new format selector not runtime-tested."
     }
   ],
   "ui_logic_assertions": 10,
-  "rust_workspace_executions": 53,
-  "rust_additional_targeted_executions": 1
+  "rust_workspace_executions": 66,
+  "rust_additional_targeted_executions": 0
 }

@@ -16,6 +16,7 @@ pub struct BackupSchedule {
     pub approved: bool,
     pub interval_hours: u32,
     pub include_vault: bool,
+    pub streaming: bool,
     pub retain: u32,
     pub backend: String,
 }
@@ -80,6 +81,9 @@ pub fn save_backup_schedule(
     }
     if !["", "local", "webdav"].contains(&config.backend.as_str()) {
         return Err("Unknown backup backend".into());
+    }
+    if config.streaming && config.backend == "webdav" {
+        return Err("Streaming schedules require a local or mounted folder; direct WebDAV uses standard archives".into());
     }
     if config.enabled && !config.approved {
         return Err("Approve scheduled backup access first".into());
@@ -149,10 +153,14 @@ async fn execute(app: &tauri::AppHandle) -> Result<String> {
     let (mut data, device, destination, epoch, vault_rows) = {
         let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
         (
-            ExportData {
-                items: repo.list("", true)?,
-                workspace: repo.portable_workspace()?,
-                vault: vec![],
+            if config.streaming {
+                ExportData::default()
+            } else {
+                ExportData {
+                    items: repo.list("", true)?,
+                    workspace: repo.portable_workspace()?,
+                    vault: vec![],
+                }
             },
             repo.device_id.clone(),
             repo.setting(if config.backend == "webdav" {
@@ -162,7 +170,7 @@ async fn execute(app: &tauri::AppHandle) -> Result<String> {
             })?
             .ok_or("Choose a backup destination first")?,
             state.data_epoch.load(std::sync::atomic::Ordering::SeqCst),
-            if config.include_vault {
+            if config.include_vault && !config.streaming {
                 repo.vault_rows()?
             } else {
                 vec![]
@@ -193,7 +201,7 @@ async fn execute(app: &tauri::AppHandle) -> Result<String> {
                     .get_password()
                     .map_err(|_| "Backup recovery password is unavailable in OS secure storage")?,
             );
-            if config.include_vault {
+            if config.include_vault && !config.streaming {
                 // Explicit saved per-category permission allows unattended decryption solely for encrypted backup.
                 let vault_key = Zeroizing::new(
                     keyring::Entry::new("com.personal.commandcenter.vault", &device)
@@ -206,29 +214,56 @@ async fn execute(app: &tauri::AppHandle) -> Result<String> {
                         .push(crate::vault::reveal(&vault_key, &id, &bytes)?);
                 }
             }
-            let count = data.items.len()
-                + data.workspace.records.len()
-                + data.workspace.attachments.len()
-                + data.vault.len();
-            let zip = Zeroizing::new(archive::export_all(&data)?);
-            archive::inspect_all(&zip)?;
-            let bytes = archive::encrypt(&zip, &password)?;
-            let name = format!(
-                "command-center-{device}-{}-{}.pacc",
-                chrono::Utc::now().format("%Y%m%dT%H%M%SZ"),
-                uuid::Uuid::new_v4()
-            );
-            let target = root.join(name);
-            // Hold the database lock while committing the snapshot file, so reset cannot race a write.
+            let info = if config.streaming {
+                let vault_key = if config.include_vault {
+                    Some(Zeroizing::new(
+                        keyring::Entry::new("com.personal.commandcenter.vault", &device)
+                            .map_err(|e| e.to_string())?
+                            .get_secret()
+                            .map_err(|_| "Vault key unavailable; backup was not created")?,
+                    ))
+                } else {
+                    None
+                };
+                let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+                if state.data_epoch.load(std::sync::atomic::Ordering::SeqCst) != epoch {
+                    return Err("Data was reset; backup cancelled".into());
+                }
+                write_streaming_backup(
+                    &repo,
+                    &root,
+                    &password,
+                    vault_key.as_deref().map(|k| k.as_slice()),
+                )?
+            } else {
+                let count = data.items.len()
+                    + data.workspace.records.len()
+                    + data.workspace.attachments.len()
+                    + data.vault.len();
+                let zip = Zeroizing::new(archive::export_all(&data)?);
+                archive::inspect_all(&zip)?;
+                let bytes = archive::encrypt(&zip, &password)?;
+                let name = format!(
+                    "command-center-{device}-{}-{}.pacc",
+                    chrono::Utc::now().format("%Y%m%dT%H%M%SZ"),
+                    uuid::Uuid::new_v4()
+                );
+                let target = root.join(name);
+                // Hold the database lock while committing the snapshot file, so reset cannot race a write.
+                let _repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+                if state.data_epoch.load(std::sync::atomic::Ordering::SeqCst) != epoch {
+                    return Err("Data was reset; backup cancelled".into());
+                }
+                crate::atomic_write(&target, &bytes)?;
+                let readback = std::fs::read(&target).map_err(|e| e.to_string())?;
+                let decrypted = Zeroizing::new(archive::decrypt(&readback, &password)?);
+                archive::inspect_all(&decrypted)?;
+                json!({"sha256":format!("{:x}",Sha256::digest(&bytes)),"verified_at":now(),"path":target.display().to_string(),"encrypted":true,"records":count,"includes_vault":config.include_vault,"modules":[],"bytes":bytes.len()})
+            };
             let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
             if state.data_epoch.load(std::sync::atomic::Ordering::SeqCst) != epoch {
                 return Err("Data was reset; backup cancelled".into());
             }
-            crate::atomic_write(&target, &bytes)?;
-            let readback = std::fs::read(&target).map_err(|e| e.to_string())?;
-            let decrypted = Zeroizing::new(archive::decrypt(&readback, &password)?);
-            archive::inspect_all(&decrypted)?;
-            let info = json!({"sha256":format!("{:x}",Sha256::digest(&bytes)),"verified_at":now(),"path":target.display().to_string(),"encrypted":true,"records":count,"includes_vault":config.include_vault,"modules":[],"bytes":bytes.len()});
             repo.set_setting("last_backup", &info.to_string())?;
             let mut owned: Vec<Value> =
                 serde_json::from_str(&repo.setting("scheduled_archives")?.unwrap_or("[]".into()))
@@ -256,7 +291,7 @@ async fn execute(app: &tauri::AppHandle) -> Result<String> {
                     if path.parent() != Some(root.as_path())
                         || !path.file_name().and_then(|s| s.to_str()).is_some_and(|s| {
                             s.starts_with(&format!("command-center-{device}-"))
-                                && s.ends_with(".pacc")
+                                && (s.ends_with(".pacc") || s.ends_with(".paccs"))
                         })
                     {
                         return true;
@@ -265,10 +300,10 @@ async fn execute(app: &tauri::AppHandle) -> Result<String> {
                         Ok(meta)
                             if meta.is_file()
                                 && !meta.file_type().is_symlink()
-                                && meta.len() <= 64 * 1024 * 1024 + 50
-                                && std::fs::read(&path).is_ok_and(|b| {
-                                    v["sha256"].as_str()
-                                        == Some(format!("{:x}", Sha256::digest(&b)).as_str())
+                                && meta.len()
+                                    <= command_center_core::stream_archive::BYTE_LIMIT
+                                && file_sha256(&path).is_ok_and(|hash| {
+                                    v["sha256"].as_str() == Some(hash.as_str())
                                 }) =>
                         {
                             match std::fs::remove_file(&path) {
@@ -329,4 +364,90 @@ pub async fn poll(app: &tauri::AppHandle) -> Result<()> {
         execute(app).await?;
     }
     Ok(())
+}
+
+// Internal-only destination: selected/approved by the native folder dialog, never a renderer path.
+fn write_streaming_backup(
+    repo: &command_center_core::Repository,
+    root: &std::path::Path,
+    password: &str,
+    vault_key: Option<&[u8]>,
+) -> Result<Value> {
+    use std::io::Write;
+    if !root.is_dir() || root.canonicalize().map_err(|e| e.to_string())? != root {
+        return Err("Backup destination is missing or changed".into());
+    }
+    let mut temp = tempfile::NamedTempFile::new_in(root).map_err(|e| e.to_string())?;
+    {
+        let mut output = std::io::BufWriter::new(temp.as_file_mut());
+        repo.export_stream(&mut output, password, vault_key)?;
+        output.flush().map_err(|e| e.to_string())?;
+    }
+    temp.as_file().sync_all().map_err(|e| e.to_string())?;
+    let summary = repo.inspect_stream(
+        std::io::BufReader::new(temp.reopen().map_err(|e| e.to_string())?),
+        password,
+    )?;
+    let bytes = temp.as_file().metadata().map_err(|e| e.to_string())?.len();
+    let digest = file_sha256(temp.path())?;
+    let target = root.join(format!(
+        "command-center-{}-{}-{}.paccs",
+        repo.device_id,
+        chrono::Utc::now().format("%Y%m%dT%H%M%SZ"),
+        uuid::Uuid::new_v4()
+    ));
+    temp.persist_noclobber(&target).map_err(|e| e.to_string())?;
+    Ok(
+        json!({"sha256":digest,"verified_at":now(),"path":target.display().to_string(),"encrypted":true,"records":summary.records,"includes_vault":vault_key.is_some(),"modules":[],"bytes":bytes,"format":"PCCSTR01"}),
+    )
+}
+fn file_sha256(path: &std::path::Path) -> Result<String> {
+    use std::io::Read;
+    let mut reader = std::io::BufReader::new(std::fs::File::open(path).map_err(|e| e.to_string())?);
+    let mut digest = Sha256::new();
+    let mut chunk = [0u8; 65536];
+    let mut size = 0u64;
+    loop {
+        let n = reader.read(&mut chunk).map_err(|e| e.to_string())?;
+        if n == 0 {
+            break;
+        }
+        size = size.checked_add(n as u64).ok_or("Archive size overflow")?;
+        if size > command_center_core::stream_archive::BYTE_LIMIT {
+            return Err("Archive exceeds 8 GiB".into());
+        }
+        digest.update(&chunk[..n]);
+    }
+    Ok(format!("{:x}", digest.finalize()))
+}
+#[cfg(test)]
+mod stream_schedule_tests {
+    use super::*;
+    #[test]
+    fn legacy_schedules_keep_standard_format() {
+        let config: BackupSchedule =
+            serde_json::from_str(r#"{"enabled":false,"backend":"local","interval_hours":24}"#)
+                .unwrap();
+        assert!(!config.streaming);
+    }
+    #[test]
+    fn scheduled_stream_is_verified_encrypted_and_restorable() {
+        let root = tempfile::tempdir().unwrap();
+        let root = root.path().canonicalize().unwrap();
+        let repo = command_center_core::Repository::open(":memory:").unwrap();
+        let password = "synthetic-schedule-backup-password";
+        let info = write_streaming_backup(&repo, &root, password, None).unwrap();
+        let path = std::path::Path::new(info["path"].as_str().unwrap());
+        assert_eq!(path.extension().unwrap(), "paccs");
+        assert_eq!(info["sha256"], file_sha256(path).unwrap());
+        assert!(repo
+            .inspect_stream(std::fs::File::open(path).unwrap(), "wrong-password")
+            .is_err());
+        repo.inspect_stream(std::fs::File::open(path).unwrap(), password)
+            .unwrap();
+        assert_eq!(std::fs::read_dir(&root).unwrap().count(), 1);
+        let before = std::fs::read_dir(&root).unwrap().count();
+        assert!(write_streaming_backup(&repo, &root, "short", None).is_err());
+        assert_eq!(std::fs::read_dir(&root).unwrap().count(), before);
+    }
 }

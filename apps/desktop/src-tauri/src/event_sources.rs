@@ -119,7 +119,7 @@ fn clean(s: &str) -> String {
         .take(12000)
         .collect()
 }
-fn date(p: &ical::property::Property) -> Result<Value> {
+pub(crate) fn date(p: &ical::property::Property) -> Result<Value> {
     let value = p.value.as_deref().ok_or("Missing date")?;
     if value.len() == 8 {
         let d = NaiveDate::parse_from_str(value, "%Y%m%d").map_err(|_| "Invalid all-day date")?;
@@ -228,7 +228,47 @@ fn parse(bytes: Vec<u8>, source: &Source) -> Result<Value> {
                 .iter()
                 .find(|p| p.name.eq_ignore_ascii_case("DTEND"))
                 .and_then(|p| date(p).ok());
-            rows.push(json!({"id":identity,"uid":uid,"title":title.chars().take(500).collect::<String>(),"description":get("DESCRIPTION"),"location":get("LOCATION"),"start":start,"end":end,"status":get("STATUS"),"recurrence":recurrence,"recurrence_instance":instance,"recurrence_expanded":false,"has_recurrence_exceptions":event.properties.iter().any(|p|["EXDATE","RDATE"].contains(&p.name.as_str())),"sequence":get("SEQUENCE"),"source_updated":get("LAST-MODIFIED"),"source_url":url,"calendar_url":source.url,"verification":if source.verified_authority{"Source authority explicitly confirmed by user; schedule is publisher-supplied and can change"}else{"Unconfirmed source authority; independently verify before travel or registration"}}));
+            let mut exdates = vec![];
+            let mut rdates = vec![];
+            let mut exceptions_invalid = event
+                .properties
+                .iter()
+                .filter(|p| p.name.eq_ignore_ascii_case("RRULE"))
+                .count()
+                > 1
+                || event.properties.iter().any(|p| {
+                    ["EXRULE", "DURATION"]
+                        .iter()
+                        .any(|name| p.name.eq_ignore_ascii_case(name))
+                });
+            exceptions_invalid |= end.is_none()
+                && event
+                    .properties
+                    .iter()
+                    .any(|p| p.name.eq_ignore_ascii_case("DTEND"));
+            for property in &event.properties {
+                if !["EXDATE", "RDATE"]
+                    .iter()
+                    .any(|name| property.name.eq_ignore_ascii_case(name))
+                {
+                    continue;
+                }
+                for value in property.value.as_deref().unwrap_or("").split(',') {
+                    let mut part = property.clone();
+                    part.value = Some(value.into());
+                    match date(&part) {
+                        Ok(v) => {
+                            if property.name.eq_ignore_ascii_case("EXDATE") {
+                                exdates.push(v)
+                            } else {
+                                rdates.push(v)
+                            }
+                        }
+                        Err(_) => exceptions_invalid = true,
+                    }
+                }
+            }
+            rows.push(json!({"id":identity,"uid":uid,"title":title.chars().take(500).collect::<String>(),"description":get("DESCRIPTION"),"location":get("LOCATION"),"start":start,"end":end,"status":get("STATUS"),"recurrence":recurrence,"recurrence_instance":instance,"recurrence_expanded":false,"recurrence_exdates":exdates,"recurrence_rdates":rdates,"recurrence_exceptions_invalid":exceptions_invalid,"has_recurrence_exceptions":event.properties.iter().any(|p|["EXDATE","RDATE"].contains(&p.name.as_str())),"sequence":get("SEQUENCE"),"source_updated":get("LAST-MODIFIED"),"source_url":url,"calendar_url":source.url,"verification":if source.verified_authority{"Source authority explicitly confirmed by user; schedule is publisher-supplied and can change"}else{"Unconfirmed source authority; independently verify before travel or registration"}}));
         }
     }
     // Expand only a precisely supported subset; complex rules retain their original declaration.
@@ -244,7 +284,7 @@ fn parse(bytes: Vec<u8>, source: &Source) -> Result<Value> {
     let mut expanded = Vec::new();
     for row in rows {
         if !overridden.contains(row["uid"].as_str().unwrap_or("")) {
-            if let Some(instances) = expand_all_day(&row) {
+            if let Some(instances) = crate::event_recurrence::expand(&row) {
                 if expanded.len() + instances.len() > 1000 {
                     return Err("Expanded calendar exceeds 1000 occurrences".into());
                 }
@@ -261,7 +301,7 @@ fn parse(bytes: Vec<u8>, source: &Source) -> Result<Value> {
             .cmp(&b["start"]["date"].as_str())
     });
     Ok(
-        json!({"source":source,"fetched_at":command_center_core::now(),"events":rows,"skipped":skipped.into_iter().take(30).collect::<Vec<_>>(),"notice":"Simple all-day DAILY/WEEKLY rules with INTERVAL and COUNT or date UNTIL are expanded up to 366 occurrences. Complex rules, exceptions and timed recurrences remain unexpanded; verify them at the publisher. All-day end dates are exclusive. Floating times require source verification. Monetary guarantees are never inferred from prose."}),
+        json!({"source":source,"fetched_at":command_center_core::now(),"events":rows,"skipped":skipped.into_iter().take(30).collect::<Vec<_>>(),"notice":"Bounded DAILY/WEEKLY/MONTHLY/YEARLY all-day, UTC, IANA-zone or floating recurrences support INTERVAL, COUNT/UNTIL, selected BYDAY/BYMONTHDAY/BYMONTH/WKST filters and EXDATE/RDATE, up to 366 instances within 100 years. Invalid or ambiguous local times are omitted. Unsupported rules and series with overridden RECURRENCE-ID instances remain unexpanded; verify them at the publisher. All-day end dates are exclusive. Floating times require source verification. Monetary guarantees are never inferred from prose."}),
     )
 }
 async fn refresh(state: &AppState, id: &str) -> Result<Value> {
@@ -504,114 +544,15 @@ pub async fn poll(app: &tauri::AppHandle) -> Result<()> {
     Ok(())
 }
 
-fn expand_all_day(row: &Value) -> Option<Vec<Value>> {
-    if row["start"]["all_day"] != true
-        || row["has_recurrence_exceptions"] == true
-        || row["status"] == "CANCELLED"
-    {
-        return None;
-    }
-    let rule = row["recurrence"].as_str()?;
-    if rule.is_empty() {
-        return None;
-    }
-    let mut parts = std::collections::BTreeMap::new();
-    for part in rule.split(';') {
-        let (key, value) = part.split_once('=')?;
-        if !["FREQ", "INTERVAL", "COUNT", "UNTIL"].contains(&key)
-            || parts.insert(key, value).is_some()
-        {
-            return None;
-        }
-    }
-    let unit = match *parts.get("FREQ")? {
-        "DAILY" => 1u64,
-        "WEEKLY" => 7,
-        _ => return None,
-    };
-    let interval = parts
-        .get("INTERVAL")
-        .map(|s| s.parse::<u64>().ok())
-        .unwrap_or(Some(1))?;
-    if interval == 0 || interval > 366 {
-        return None;
-    }
-    let count = parts
-        .get("COUNT")
-        .map(|s| s.parse::<usize>().ok())
-        .unwrap_or(Some(366))?;
-    if count == 0 || count > 366 {
-        return None;
-    }
-    let until = parts
-        .get("UNTIL")
-        .map(|s| NaiveDate::parse_from_str(s, "%Y%m%d").ok())
-        .transpose_option()?;
-    if !parts.contains_key("COUNT") && until.is_none() {
-        return None;
-    }
-    let start = NaiveDate::parse_from_str(row["start"]["date"].as_str()?, "%Y-%m-%d").ok()?;
-    if until.is_some_and(|u| u < start)
-        || (parts.contains_key("COUNT") && parts.contains_key("UNTIL"))
-    {
-        return None;
-    }
-    let end = row["end"]["date"]
-        .as_str()
-        .and_then(|s| NaiveDate::parse_from_str(s, "%Y-%m-%d").ok());
-    let duration = end.map(|d| d - start);
-    let mut rows = Vec::new();
-    for i in 0..count {
-        let date = start.checked_add_days(chrono::Days::new(
-            unit.checked_mul(interval)?.checked_mul(i as u64)?,
-        ))?;
-        if until.is_some_and(|u| date > u) {
-            break;
-        }
-        let mut instance = row.clone();
-        instance["id"] = json!(format!("{}:{}", row["id"].as_str()?, date));
-        instance["start"]["date"] = json!(date.to_string());
-        if let Some(duration) = duration {
-            instance["end"]["date"] = json!((date + duration).to_string());
-        }
-        instance["recurrence_instance"] = json!(date.to_string());
-        instance["recurrence_expanded"] = json!(true);
-        rows.push(instance);
-    }
-    if !parts.contains_key("COUNT")
-        && until.is_some_and(|u| {
-            rows.last()
-                .and_then(|r| r["start"]["date"].as_str())
-                .and_then(|s| NaiveDate::parse_from_str(s, "%Y-%m-%d").ok())
-                .and_then(|d| d.checked_add_days(chrono::Days::new(unit * interval)))
-                .is_some_and(|next| next <= u)
-        })
-    {
-        return None;
-    }
-    Some(rows)
-}
-trait TransposeOption<T> {
-    fn transpose_option(self) -> Option<Option<T>>;
-}
-impl<T> TransposeOption<T> for Option<Option<T>> {
-    fn transpose_option(self) -> Option<Option<T>> {
-        match self {
-            None => Some(None),
-            Some(Some(v)) => Some(Some(v)),
-            Some(None) => None,
-        }
-    }
-}
 #[cfg(test)]
 mod recurrence_tests {
     use super::*;
     fn row(rule: &str) -> Value {
-        json!({"id":"fixture","uid":"fixture","start":{"date":"2027-01-31","all_day":true},"end":{"date":"2027-02-01"},"recurrence":rule,"has_recurrence_exceptions":false})
+        json!({"id":"fixture","uid":"fixture","start":{"date":"2027-01-31","all_day":true},"end":{"date":"2027-02-01","all_day":true},"recurrence":rule,"has_recurrence_exceptions":false})
     }
     #[test]
     fn weekly_all_day_instances_preserve_exclusive_duration() {
-        let r = expand_all_day(&row("FREQ=WEEKLY;COUNT=3")).unwrap();
+        let r = crate::event_recurrence::expand(&row("FREQ=WEEKLY;COUNT=3")).unwrap();
         assert_eq!(r.len(), 3);
         assert_eq!(r[1]["start"]["date"], "2027-02-07");
         assert_eq!(r[1]["end"]["date"], "2027-02-08");
@@ -619,18 +560,127 @@ mod recurrence_tests {
     }
     #[test]
     fn until_between_weekly_dates_does_not_drop_supported_rule() {
-        let r = expand_all_day(&row("FREQ=WEEKLY;UNTIL=20270215")).unwrap();
+        let r = crate::event_recurrence::expand(&row("FREQ=WEEKLY;UNTIL=20270215")).unwrap();
         assert_eq!(r.len(), 3);
-        assert!(expand_all_day(&row("FREQ=WEEKLY;UNTIL=20260101")).is_none());
-        assert!(expand_all_day(&row("FREQ=DAILY;COUNT=3;UNTIL=20270215")).is_none());
+        assert!(crate::event_recurrence::expand(&row("FREQ=WEEKLY;UNTIL=20260101")).is_none());
+        assert!(
+            crate::event_recurrence::expand(&row("FREQ=DAILY;COUNT=3;UNTIL=20270215")).is_none()
+        );
     }
     #[test]
     fn unsupported_or_unbounded_rules_remain_unexpanded() {
-        assert!(expand_all_day(&row("FREQ=MONTHLY;COUNT=3")).is_none());
-        assert!(expand_all_day(&row("FREQ=DAILY")).is_none());
+        assert!(crate::event_recurrence::expand(&row("FREQ=HOURLY;COUNT=3")).is_none());
+        assert!(crate::event_recurrence::expand(&row("FREQ=DAILY")).is_none());
         let mut r = row("FREQ=DAILY;COUNT=3");
         r["has_recurrence_exceptions"] = json!(true);
-        assert!(expand_all_day(&r).is_none());
-        assert!(expand_all_day(&row("FREQ=DAILY;UNTIL=invalid")).is_none());
+        assert!(crate::event_recurrence::expand(&r).is_none());
+        assert!(crate::event_recurrence::expand(&row("FREQ=DAILY;UNTIL=invalid")).is_none());
+    }
+}
+
+#[cfg(test)]
+mod expanded_calendar_tests {
+    use super::*;
+    fn calendar(properties: &str) -> Value {
+        let source = Source {
+            id: "synthetic-source".into(),
+            name: "Fixture".into(),
+            url: "https://example.com/fixtures.ics".into(),
+            category: "poker".into(),
+            verified_authority: false,
+            enabled: false,
+            interval_minutes: 60,
+        };
+        parse(format!("BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nUID:fixture\r\nSUMMARY:Fixture event\r\n{properties}\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n").into_bytes(),&source).unwrap()
+    }
+    fn dates(c: &Value) -> Vec<&str> {
+        c["events"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|e| e["start"]["date"].as_str().unwrap())
+            .collect()
+    }
+    #[test]
+    fn monthly_invalid_month_days_are_skipped_instead_of_clamped() {
+        let c=calendar("DTSTART;VALUE=DATE:20270131\r\nDTEND;VALUE=DATE:20270201\r\nRRULE:FREQ=MONTHLY;COUNT=3");
+        assert_eq!(dates(&c), vec!["2027-01-31", "2027-03-31", "2027-05-31"]);
+        assert_eq!(c["events"][1]["end"]["date"], "2027-04-01");
+        // Preserve prior all-day instance identity so existing watches still match.
+        assert!(c["events"][0]["id"]
+            .as_str()
+            .unwrap()
+            .ends_with(":2027-01-31"));
+    }
+    #[test]
+    fn ordinal_weekdays_negative_month_days_and_leap_years() {
+        let c = calendar("DTSTART;VALUE=DATE:20270129\r\nRRULE:FREQ=MONTHLY;BYDAY=-1FR;COUNT=3");
+        assert_eq!(dates(&c), vec!["2027-01-29", "2027-02-26", "2027-03-26"]);
+        let c = calendar("DTSTART;VALUE=DATE:20270131\r\nRRULE:FREQ=MONTHLY;BYMONTHDAY=-1;COUNT=3");
+        assert_eq!(dates(&c), vec!["2027-01-31", "2027-02-28", "2027-03-31"]);
+        let c = calendar("DTSTART;VALUE=DATE:20240229\r\nRRULE:FREQ=YEARLY;COUNT=3");
+        assert_eq!(dates(&c), vec!["2024-02-29", "2028-02-29", "2032-02-29"]);
+    }
+    #[test]
+    fn weekly_days_respect_interval_and_week_start() {
+        let c=calendar("DTSTART;VALUE=DATE:20270301\r\nRRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=MO,WE;WKST=SU;COUNT=4");
+        assert_eq!(
+            dates(&c),
+            vec!["2027-03-01", "2027-03-03", "2027-03-15", "2027-03-17"]
+        );
+    }
+    #[test]
+    fn timezone_dst_preserves_wall_clock_and_duration_with_exceptions() {
+        let c=calendar("DTSTART;TZID=America/New_York:20270313T090000\r\nDTEND;TZID=America/New_York:20270313T103000\r\nRRULE:FREQ=DAILY;COUNT=3\r\nEXDATE;TZID=America/New_York:20270314T090000\r\nRDATE;TZID=America/New_York:20270320T090000,20270320T090000");
+        let e = c["events"].as_array().unwrap();
+        assert_eq!(e.len(), 3);
+        assert_eq!(e[0]["start"]["at"], "2027-03-13T09:00:00-05:00");
+        assert_eq!(e[1]["start"]["at"], "2027-03-15T09:00:00-04:00");
+        assert_eq!(e[1]["end"]["at"], "2027-03-15T10:30:00-04:00");
+        assert_eq!(e[2]["start"]["at"], "2027-03-20T09:00:00-04:00");
+    }
+    #[test]
+    fn nonexistent_local_time_does_not_consume_count() {
+        let c =
+            calendar("DTSTART;TZID=America/New_York:20270313T023000\r\nRRULE:FREQ=DAILY;COUNT=3");
+        let e = c["events"].as_array().unwrap();
+        assert_eq!(e.len(), 3);
+        assert_eq!(e[1]["start"]["raw"], "20270315T023000");
+        assert_eq!(e[2]["start"]["raw"], "20270316T023000");
+    }
+    #[test]
+    fn utc_until_is_inclusive_and_unsupported_rules_stay_explicit() {
+        let c=calendar("DTSTART:20270101T230000Z\r\nDTEND:20270102T010000Z\r\nRRULE:FREQ=DAILY;UNTIL=20270103T230000Z");
+        let e = c["events"].as_array().unwrap();
+        assert_eq!(e.len(), 3);
+        assert_eq!(e[2]["end"]["at"], "2027-01-04T01:00:00+00:00");
+        for rule in [
+            "FREQ=MONTHLY;BYDAY=MO,TU;BYSETPOS=-1;COUNT=3",
+            "FREQ=DAILY;UNTIL=20270103",
+            "FREQ=DAILY",
+            "FREQ=YEARLY;INTERVAL=366;COUNT=2",
+        ] {
+            let c = calendar(&format!("DTSTART:20270101T230000Z\r\nRRULE:{rule}"));
+            assert_eq!(c["events"].as_array().unwrap().len(), 1);
+            assert_eq!(c["events"][0]["recurrence_expanded"], false);
+        }
+    }
+    #[test]
+    fn exclusions_win_and_unknown_exception_syntax_prevents_expansion() {
+        let c=calendar("DTSTART;VALUE=DATE:20270101\r\nRRULE:FREQ=DAILY;COUNT=2\r\nEXDATE;VALUE=DATE:20270101\r\nRDATE;VALUE=DATE:20270101,20270103");
+        assert_eq!(dates(&c), vec!["2027-01-02", "2027-01-03"]);
+        for extra in [
+            "EXDATE:invalid",
+            "RDATE;VALUE=PERIOD:20270101T120000Z/PT1H",
+            "EXRULE:FREQ=DAILY;COUNT=1",
+            "DURATION:PT2H",
+            "DTEND:invalid",
+            "RRULE:FREQ=WEEKLY;COUNT=2",
+        ] {
+            let c = calendar(&format!(
+                "DTSTART;VALUE=DATE:20270101\r\nRRULE:FREQ=DAILY;COUNT=2\r\n{extra}"
+            ));
+            assert_eq!(c["events"][0]["recurrence_expanded"], false);
+        }
     }
 }

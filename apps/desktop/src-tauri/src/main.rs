@@ -13,6 +13,7 @@ mod connectors;
 mod document_index;
 mod document_security;
 mod documents;
+mod event_recurrence;
 mod event_sources;
 mod extensions;
 mod github_accounts;

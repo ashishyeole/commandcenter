@@ -1,0 +1,41 @@
+{
+  "observed_at": "2026-11-15T23:28:16.454991+00:00",
+  "profile": "com.personal.commandcenter.qa",
+  "synthetic_only": true,
+  "format": "PCCSTR01",
+  "results": [
+    {
+      "workflow": "Native save/export",
+      "result": "PASS",
+      "evidence": "Exported 3 synthetic records to qa-stream-roundtrip.paccs; UI confirmed verification."
+    },
+    {
+      "workflow": "Wrong password",
+      "result": "PASS",
+      "evidence": "Native selection rejected archive with Wrong password or damaged streaming archive."
+    },
+    {
+      "workflow": "Verified preview",
+      "result": "PASS",
+      "evidence": "3 records, 0 missing, 3 existing IDs, 0 private records, 4 history events."
+    },
+    {
+      "workflow": "Missing-only repeat import",
+      "result": "PASS",
+      "evidence": "Imported 0 missing records; existing records were kept."
+    },
+    {
+      "workflow": "Linked-copy import",
+      "result": "PASS",
+      "evidence": "Chose fresh linked copies, approved policy, applied. Imported 3 linked copies; existing records were kept. Today showed both original and imported-copy note/task, including unchanged monthly due date 2027-02-28."
+    }
+  ],
+  "limitations": [
+    "Selected synthetic workflows only; no large native UI stress run or private vault UI acceptance.",
+    "Relationship/history/attachment-version remapping and receiver-key vault copy verified by repository tests.",
+    "No real profile, accounts, keychain permission, OS schedule or network request used."
+  ],
+  "resolved_blockers": [
+    "Mac unlocked; earlier native-dialog lock blocker resolved."
+  ]
+}
