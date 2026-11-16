@@ -2,6 +2,7 @@ pub mod archive;
 pub mod attachments;
 pub mod briefing;
 pub mod collections;
+pub mod integrations;
 pub mod reminder_lease;
 pub mod reminders;
 pub mod retention;

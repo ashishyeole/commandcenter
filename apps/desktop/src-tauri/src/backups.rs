@@ -82,9 +82,6 @@ pub fn save_backup_schedule(
     if !["", "local", "webdav"].contains(&config.backend.as_str()) {
         return Err("Unknown backup backend".into());
     }
-    if config.streaming && config.backend == "webdav" {
-        return Err("Streaming schedules require a local or mounted folder; direct WebDAV uses standard archives".into());
-    }
     if config.enabled && !config.approved {
         return Err("Approve scheduled backup access first".into());
     }
@@ -179,7 +176,16 @@ async fn execute(app: &tauri::AppHandle) -> Result<String> {
     };
     let started = now();
     state.repo.lock().map_err(|_|"Database unavailable")?.set_setting("backup_job_health",&json!({"status":"running","started_at":started,"next_at":(chrono::Utc::now()+chrono::Duration::hours(config.interval_hours as i64)).to_rfc3339()}).to_string())?;
-    let result = if config.backend == "webdav" {
+    let result = if config.backend == "webdav" && config.streaming {
+        crate::webdav_stream::execute(
+            app.clone(),
+            config.clone(),
+            device.clone(),
+            destination.clone(),
+            epoch,
+        )
+        .await
+    } else if config.backend == "webdav" {
         crate::webdav_backup::execute(
             &state,
             &config,

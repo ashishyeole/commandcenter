@@ -339,6 +339,18 @@ class PeerSecrets(private val context:Context,private val device:String){
 class TaskReminderReceiver:android.content.BroadcastReceiver(){
     companion object{
         private const val CHANNEL="pcc-task-reminders"
+        @Synchronized fun coordinatedReview(context:Context):Boolean {
+            if(!enabled(context)||!context.getSharedPreferences("reminders",Context.MODE_PRIVATE).getBoolean("coordinated",false))return false
+            val manager=context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+            if(!manager.areNotificationsEnabled()||java.time.LocalTime.now().hour !in 8..21)return true
+            manager.createNotificationChannel(android.app.NotificationChannel(CHANNEL,"Task review reminders",android.app.NotificationManager.IMPORTANCE_DEFAULT))
+            if(manager.getNotificationChannel(CHANNEL)?.importance==android.app.NotificationManager.IMPORTANCE_NONE)return true
+            val store=LocalStore(context);val today=LocalDate.now().toString();val keys=store.native("reminder_candidates",JSONObject().put("today",today)).getJSONArray("keys")
+            if(keys.length()==0)return true
+            val open=android.app.PendingIntent.getActivity(context,1402,Intent(context,MainActivity::class.java),android.app.PendingIntent.FLAG_UPDATE_CURRENT or android.app.PendingIntent.FLAG_IMMUTABLE)
+            manager.notify(1401,android.app.Notification.Builder(context,CHANNEL).setSmallIcon(android.R.drawable.ic_dialog_info).setContentTitle("A task needs your attention").setContentText("Open Command Center to review your due tasks.").setContentIntent(open).setAutoCancel(true).setVisibility(android.app.Notification.VISIBILITY_PRIVATE).build())
+            store.native("reminder_submitted",JSONObject().put("today",today).put("keys",JSONArray((0 until minOf(keys.length(),128)).map{keys.getString(it)})).put("consent",true));return true
+        }
         fun enabled(context:Context)=context.getSharedPreferences("reminders",Context.MODE_PRIVATE).getBoolean("enabled",false)
         private fun pending(context:Context)=android.app.PendingIntent.getBroadcast(context,1401,Intent(context,TaskReminderReceiver::class.java).setAction("com.personal.commandcenter.REMIND"),android.app.PendingIntent.FLAG_UPDATE_CURRENT or android.app.PendingIntent.FLAG_IMMUTABLE)
         fun schedule(context:Context){val alarm=context.getSystemService(Context.ALARM_SERVICE) as android.app.AlarmManager;alarm.cancel(pending(context));if(!enabled(context))return;val fire=java.util.Calendar.getInstance().apply{set(java.util.Calendar.HOUR_OF_DAY,9);set(java.util.Calendar.MINUTE,0);set(java.util.Calendar.SECOND,0);set(java.util.Calendar.MILLISECOND,0);if(timeInMillis<=System.currentTimeMillis())add(java.util.Calendar.DATE,1)};alarm.setAndAllowWhileIdle(android.app.AlarmManager.RTC_WAKEUP,fire.timeInMillis,pending(context))}
@@ -351,16 +363,20 @@ class TaskReminderReceiver:android.content.BroadcastReceiver(){
             manager.createNotificationChannel(android.app.NotificationChannel(CHANNEL,"Task review reminders",android.app.NotificationManager.IMPORTANCE_DEFAULT))
             if(!manager.areNotificationsEnabled()||manager.getNotificationChannel(CHANNEL)?.importance==android.app.NotificationManager.IMPORTANCE_NONE)return@runCatching
             val now=java.time.LocalTime.now();if(now.hour<8||now.hour>=22)return@runCatching
+            if(coordinatedReview(context))return@runCatching
             val due=LocalStore(context).list().any{it.optString("kind")=="task"&&it.optString("status")=="active"&&!it.isNull("due")&&it.getString("due")<=LocalDate.now().toString()}
             if(due){val open=android.app.PendingIntent.getActivity(context,1402,Intent(context,MainActivity::class.java),android.app.PendingIntent.FLAG_UPDATE_CURRENT or android.app.PendingIntent.FLAG_IMMUTABLE);manager.notify(1401,android.app.Notification.Builder(context,CHANNEL).setSmallIcon(android.R.drawable.ic_dialog_info).setContentTitle("Review your due tasks").setContentText("Open Command Center to review outstanding work.").setContentIntent(open).setAutoCancel(true).setVisibility(android.app.Notification.VISIBILITY_PRIVATE).build())}
         }}finally{result.finish()}}.start()
     }
 }
 @Composable fun MobileReminderControls(context:Context){
+    var coordinated by remember{mutableStateOf(context.getSharedPreferences("reminders",Context.MODE_PRIVATE).getBoolean("coordinated",false))}
+    LaunchedEffect(Unit){while(true){kotlinx.coroutines.delay(60000);if(context is android.app.Activity&&context.hasWindowFocus())runCatching{TaskReminderReceiver.coordinatedReview(context)}}}
+
     var enabled by remember{mutableStateOf(TaskReminderReceiver.enabled(context))};var message by remember{mutableStateOf("")}
     fun enable(){TaskReminderReceiver.setEnabled(context,true);enabled=true;message="Local task review enabled. Delivery depends on Android notification and battery settings."}
     val permission=rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()){allowed->if(allowed)enable()else message="Notifications were not allowed. Enable permission in Android Settings to receive reminders."}
-    Column{Text("Local task reminders",style=MaterialTheme.typography.titleSmall);Text("Opt-in generic task review around 9 AM. Android may delay inexact alarms; quiet hours are 10 PM–8 AM. Restart and timezone changes reschedule while enabled. Force-stop blocks delivery until reopening. No task titles or remote push service; these digests do not suppress another device’s alerts.",style=MaterialTheme.typography.bodySmall);TextButton(onClick={if(enabled){TaskReminderReceiver.setEnabled(context,false);enabled=false;message="Local task reminders disabled."}else if(android.os.Build.VERSION.SDK_INT>=33)permission.launch(Manifest.permission.POST_NOTIFICATIONS)else enable()}){Text(if(enabled)"Disable local reminders"else"Request permission & enable reminders")};if(message.isNotEmpty())Text(message,style=MaterialTheme.typography.bodySmall)}
+    Column{Row{Checkbox(coordinated,{coordinated=it;context.getSharedPreferences("reminders",Context.MODE_PRIVATE).edit().putBoolean("coordinated",it).apply()});Text("Coordinate due-task alerts with paired devices")};Text("Recent authenticated exact-occurrence receipts reduce duplicates after sync. Disconnected devices and simultaneous submissions can duplicate. No network wakeups are added; foreground checks and the daily alarm use the last synced state.",style=MaterialTheme.typography.bodySmall);Text("Local task reminders",style=MaterialTheme.typography.titleSmall);Text("Opt-in generic task review around 9 AM. Android may delay inexact alarms; quiet hours are 10 PM–8 AM. Restart and timezone changes reschedule while enabled. Force-stop blocks delivery until reopening. No task titles or remote push service; these digests do not suppress another device’s alerts.",style=MaterialTheme.typography.bodySmall);TextButton(onClick={if(enabled){TaskReminderReceiver.setEnabled(context,false);enabled=false;message="Local task reminders disabled."}else if(android.os.Build.VERSION.SDK_INT>=33)permission.launch(Manifest.permission.POST_NOTIFICATIONS)else enable()}){Text(if(enabled)"Disable local reminders"else"Request permission & enable reminders")};if(message.isNotEmpty())Text(message,style=MaterialTheme.typography.bodySmall)}
 }
 
 

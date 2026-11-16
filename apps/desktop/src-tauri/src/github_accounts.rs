@@ -164,7 +164,7 @@ pub fn configure_github_account(
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting("github_enabled", "false")
+        .set_integration_flag("github_enabled", false)
 }
 #[tauri::command]
 pub async fn connect_github_account(
@@ -318,7 +318,7 @@ pub async fn connect_github_account(
         let raw = Zeroizing::new(serde_json::to_string(&c).map_err(|e| e.to_string())?);
         key.set_password(&raw)
             .map_err(|_| "Cannot save authorization to OS secure storage")?;
-        repo.set_setting("github_enabled", "true")?;
+        repo.set_integration_flag("github_enabled", true)?;
         Ok(
             json!({"connected":true,"notice":"Only read endpoints are implemented. Configure the GitHub App with read-only contents, issues, pull requests and metadata; install it on selected repositories only."}),
         )
@@ -452,7 +452,7 @@ pub async fn disconnect_github_account(state: State<'_, AppState>, revoke: bool)
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting("github_enabled", "false")?;
+        .set_integration_flag("github_enabled", false)?;
     if let Some(t) = state
         .jobs
         .lock()

@@ -464,6 +464,168 @@ impl Repository {
         tx.commit().map_err(err)?;
         Ok(summary)
     }
+    /// Authenticated, bounded ordinary-record review; private contents are never exposed here.
+    pub fn review_stream_page<R: Read>(
+        &self,
+        input: R,
+        password: &str,
+        offset: usize,
+    ) -> Result<serde_json::Value> {
+        if offset > 1_000_000 {
+            return Err("Review offset exceeds limit".into());
+        }
+        let mut total = 0usize;
+        let mut rows = vec![];
+        decode(input, password, |frame| {
+            let (id, title, kind, value) = match frame {
+                Frame::Item(v) => (
+                    v.id.clone(),
+                    v.title.clone(),
+                    "item",
+                    serde_json::to_value(v).map_err(err)?,
+                ),
+                Frame::Record(v) => (
+                    v.id.clone(),
+                    v.title.clone(),
+                    "record",
+                    serde_json::to_value(v).map_err(err)?,
+                ),
+                _ => return Ok(()),
+            };
+            if total >= offset && rows.len() < 20 {
+                let local = self.restore_current(kind, &id)?;
+                rows.push(serde_json::json!({"id":id,"title":title,"kind":kind,"incoming":value,"current":local,"current_sha256":local.as_ref().map(restore_hash).transpose()?}));
+            }
+            total += 1;
+            Ok(())
+        })?;
+        Ok(
+            serde_json::json!({"rows":rows,"total":total,"offset":offset,"next_offset":if offset+20<total{Some(offset+20)}else{None}}),
+        )
+    }
+    fn restore_current(&self, kind: &str, id: &str) -> Result<Option<serde_json::Value>> {
+        read_restore_current(&self.conn, kind, id)
+    }
+    /// Selectively create missing ordinary records or merge explicitly selected non-identity fields.
+    pub fn import_stream_selection<R: Read>(
+        &mut self,
+        input: R,
+        password: &str,
+        expected_sha256: &str,
+        choices: &[RestoreChoice],
+    ) -> Result<Summary> {
+        if choices.is_empty() || choices.len() > 1000 {
+            return Err("Select 1–1000 ordinary records".into());
+        }
+        let device = self.device_id.clone();
+        let tx = self
+            .conn
+            .transaction_with_behavior(rusqlite::TransactionBehavior::Immediate)
+            .map_err(err)?;
+        let mut selected = HashMap::new();
+        let mut existing = HashMap::new();
+        for c in choices {
+            uuid::Uuid::parse_str(&c.id).map_err(err)?;
+            if !["item", "record"].contains(&c.kind.as_str())
+                || selected.insert(c.id.clone(), c).is_some()
+            {
+                return Err("Invalid or duplicate restore selection".into());
+            }
+            let current = read_restore_current(&tx, &c.kind, &c.id)?;
+            if current.as_ref().map(restore_hash).transpose()? != c.expected_current_sha256 {
+                return Err("Local record changed; review again".into());
+            }
+            if current.is_some() && c.fields.is_empty() {
+                return Err("Choose the exact fields to merge".into());
+            }
+            existing.insert(c.id.clone(), current);
+        }
+        let mut reader = HashReader {
+            inner: input,
+            hash: Sha256::new(),
+        };
+        let mut summary = Summary::default();
+        let mut seen = HashSet::new();
+        decode(&mut reader, password, |frame| {
+            let (kind, id, incoming) = match frame {
+                Frame::Item(v) => ("item", v.id.clone(), serde_json::to_value(v).map_err(err)?),
+                Frame::Record(v) => (
+                    "record",
+                    v.id.clone(),
+                    serde_json::to_value(v).map_err(err)?,
+                ),
+                _ => return Ok(()),
+            };
+            let Some(c) = selected.get(&id) else {
+                return Ok(());
+            };
+            if c.kind != kind {
+                return Err("Restore record type changed".into());
+            }
+            seen.insert(id.clone());
+            let local = existing.get(&id).unwrap();
+            let mut value = local.clone().unwrap_or_else(|| incoming.clone());
+            if local.is_some() {
+                for field in &c.fields {
+                    let allowed = if kind == "item" {
+                        [
+                            "title", "body", "pinned", "priority", "status", "due", "url",
+                        ]
+                        .contains(&field.as_str())
+                    } else {
+                        ["title", "summary", "pinned", "status", "tags"].contains(&field.as_str())
+                    };
+                    if allowed {
+                        value[field] = incoming[field].clone();
+                    } else if kind == "record" && field.starts_with("fields.") {
+                        let key = &field[7..];
+                        if key.is_empty() || key == "workspace_owner" || key.len() > 80 {
+                            return Err(
+                                "Ownership changes require the regular record editor".into()
+                            );
+                        }
+                        if let Some(v) = incoming["fields"].get(key) {
+                            value["fields"][key] = v.clone();
+                        } else if let Some(fields) = value["fields"].as_object_mut() {
+                            fields.remove(key);
+                        }
+                    } else {
+                        return Err(
+                            "Identity, relationship and permission fields cannot be merged".into(),
+                        );
+                    }
+                }
+            }
+            value["device_id"] = serde_json::json!(device);
+            value["updated_at"] = serde_json::json!(crate::now());
+            value["revision"] = serde_json::json!(
+                local
+                    .as_ref()
+                    .and_then(|v| v["revision"].as_i64())
+                    .unwrap_or(0)
+                    + 1
+            );
+            if kind == "item" {
+                let item: Item = serde_json::from_value(value).map_err(err)?;
+                item.validate()?;
+                crate::write(&tx, &item)?;
+            } else {
+                let record: Record = serde_json::from_value(value).map_err(err)?;
+                record.validate()?;
+                crate::workspace::write_record(&tx, &record)?;
+            }
+            summary.imported += 1;
+            summary.records += 1;
+            Ok(())
+        })?;
+        if seen.len() != selected.len()
+            || format!("{:x}", reader.hash.finalize()) != expected_sha256
+        {
+            return Err("Archive or selected identities changed; nothing was imported".into());
+        }
+        tx.commit().map_err(err)?;
+        Ok(summary)
+    }
 }
 fn exists(conn: &rusqlite::Connection, table: &str, id: &str) -> Result<bool> {
     // table is an internal constant, never renderer input.
@@ -686,4 +848,38 @@ fn copy_frame(mut f: Frame, map: &HashMap<String, String>, device: &str) -> Resu
         Frame::End { .. } => {}
     }
     Ok(Some(f))
+}
+
+#[derive(Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct RestoreChoice {
+    pub id: String,
+    pub kind: String,
+    pub expected_current_sha256: Option<String>,
+    pub fields: Vec<String>,
+}
+fn restore_hash(value: &serde_json::Value) -> Result<String> {
+    Ok(format!(
+        "{:x}",
+        Sha256::digest(serde_json::to_vec(value).map_err(err)?)
+    ))
+}
+
+fn read_restore_current(
+    conn: &rusqlite::Connection,
+    kind: &str,
+    id: &str,
+) -> Result<Option<serde_json::Value>> {
+    use rusqlite::OptionalExtension;
+    let sql = if kind == "item" {
+        "SELECT json_object('id',id,'kind',kind,'title',title,'body',body,'pinned',json(CASE WHEN pinned THEN 'true' ELSE 'false' END),'priority',priority,'status',status,'due',due,'recurrence',recurrence,'url',url,'created_at',created_at,'updated_at',updated_at,'device_id',device_id,'revision',revision,'deleted_at',deleted_at) FROM items WHERE id=?1"
+    } else {
+        "SELECT json_object('id',id,'module',module,'title',title,'summary',summary,'pinned',json(CASE WHEN pinned THEN 'true' ELSE 'false' END),'status',status,'tags',json(tags),'links',json(links),'fields',json(fields),'created_at',created_at,'updated_at',updated_at,'device_id',device_id,'revision',revision,'deleted_at',deleted_at) FROM records WHERE id=?1"
+    };
+    let raw: Option<String> = conn
+        .query_row(sql, [id], |r| r.get(0))
+        .optional()
+        .map_err(err)?;
+    raw.map(|v| serde_json::from_str(&v).map_err(err))
+        .transpose()
 }

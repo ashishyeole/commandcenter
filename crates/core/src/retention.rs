@@ -105,3 +105,67 @@ impl Repository {
         )
     }
 }
+
+fn sync_compaction_preview(conn: &rusqlite::Connection) -> Result<Value> {
+    use rusqlite::OptionalExtension;
+    let raw: Option<String> = conn
+        .query_row(
+            "SELECT value FROM settings WHERE key='paired_peers'",
+            [],
+            |r| r.get(0),
+        )
+        .optional()
+        .map_err(err)?;
+    let peers: Vec<String> = raw
+        .map(|v| serde_json::from_str(&v).map_err(err))
+        .transpose()?
+        .unwrap_or_default();
+    if peers.len() > 8 {
+        return Err("Invalid paired-peer registry".into());
+    }
+    let latest: i64 = conn
+        .query_row(
+            "SELECT COALESCE(MAX(sequence),0) FROM sync_events",
+            [],
+            |r| r.get(0),
+        )
+        .map_err(err)?;
+    let mut floor = latest;
+    for peer in &peers {
+        uuid::Uuid::parse_str(peer).map_err(err)?;
+        let sent: Option<i64> = conn
+            .query_row(
+                "SELECT sent FROM peer_progress WHERE peer_id=?1",
+                [peer],
+                |r| r.get(0),
+            )
+            .optional()
+            .map_err(err)?;
+        floor = floor.min(sent.unwrap_or(0));
+    }
+    let count:i64=conn.query_row("SELECT COUNT(*) FROM sync_events WHERE sequence<=?1 AND sequence NOT IN (SELECT MAX(sequence) FROM sync_events GROUP BY entity_id)",[floor],|r|r.get(0)).map_err(err)?;
+    Ok(
+        json!({"through":floor,"latest_sequence":latest,"paired_peers":peers,"removable_events":count,"boundary":"Only superseded events acknowledged by every currently paired peer are removed. Latest event per entity, vector clocks, tombstones, replay hashes and conflicts remain. Old content can still exist in latest-event merge bases, backups and other devices."}),
+    )
+}
+impl Repository {
+    pub fn sync_compaction_preview(&self) -> Result<Value> {
+        sync_compaction_preview(&self.conn)
+    }
+    pub fn compact_acknowledged_sync(&mut self, expected: &Value) -> Result<usize> {
+        let tx = self
+            .conn
+            .transaction_with_behavior(rusqlite::TransactionBehavior::Immediate)
+            .map_err(err)?;
+        let actual = sync_compaction_preview(&tx)?;
+        if &actual != expected {
+            return Err("Peer acknowledgements or journal changed; review again".into());
+        }
+        let floor = actual["through"]
+            .as_i64()
+            .ok_or("Invalid compaction boundary")?;
+        let deleted=tx.execute("DELETE FROM sync_events WHERE sequence<=?1 AND sequence NOT IN (SELECT MAX(sequence) FROM sync_events GROUP BY entity_id)",[floor]).map_err(err)?;
+        tx.commit().map_err(err)?;
+        Ok(deleted)
+    }
+}

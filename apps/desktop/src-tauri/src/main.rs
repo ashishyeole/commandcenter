@@ -6,8 +6,10 @@ mod app_market;
 mod background_reminders;
 mod backups;
 mod bank_accounts;
+mod bank_reconcile;
 mod business_demo;
 mod business_discovery;
+mod citation_review;
 mod cloud_ai;
 mod connectors;
 mod discovery_hub;
@@ -21,6 +23,7 @@ mod github_accounts;
 mod google_accounts;
 mod google_background;
 mod hosted;
+mod integration_controls;
 mod invoices;
 mod large_archives;
 mod mcp_stdio;
@@ -29,17 +32,22 @@ mod model_catalogue;
 mod model_intelligence;
 mod notification_channels;
 mod peer_sync;
+mod performance;
 mod poker_search;
+mod price_watch;
 mod private_transfer;
 mod productivity;
 mod projects;
+mod rendered_audit;
 mod research;
 mod retention;
+mod scholarly_sources;
 mod sync_wire;
 mod updates;
 mod vault;
 mod voice;
 mod webdav_backup;
+mod webdav_stream;
 mod website_audit;
 use command_center_core::{
     archive::{self, ExportData},
@@ -794,6 +802,8 @@ fn main() {
     let command_handler: fn(tauri::ipc::Invoke<tauri::Wry>) -> bool = tauri::generate_handler![
         cloud_ai::save_cloud_key,
         cloud_ai::disconnect_cloud,
+        citation_review::cloud_evidence_review,
+        citation_review::confirm_cloud_evidence,
         cloud_ai::cloud_context_preview,
         cloud_ai::ask_cloud,
         documents::list_attachments,
@@ -802,6 +812,7 @@ fn main() {
         documents::export_attachment,
         documents::trash_attachment,
         backups::backup_schedule_snapshot,
+        webdav_stream::download_webdav_stream,
         backups::choose_backup_destination,
         webdav_backup::save_webdav_destination,
         backups::save_backup_schedule,
@@ -838,6 +849,8 @@ fn main() {
         peer_sync::rotate_peer_identity,
         peer_sync::resolve_peer_conflict,
         snapshot,
+        price_watch::refresh_price_watch,
+        performance::benchmark_local_workspace,
         save_item,
         complete_task,
         trash,
@@ -850,6 +863,7 @@ fn main() {
         large_archives::export_large_archive,
         large_archives::preview_large_archive,
         large_archives::apply_large_archive,
+        large_archives::review_large_archive_records,
         large_archives::discard_large_archive,
         export_mobile,
         inspect_archive,
@@ -859,6 +873,7 @@ fn main() {
         reset_local_data,
         connectors::refresh_source,
         discovery_hub::discovery_hub,
+        discovery_hub::add_research_starters,
         discovery_hub::save_discovery_imports,
         discovery_hub::choose_discovery_link_import,
         discovery_hub::open_discovery_reader,
@@ -874,6 +889,9 @@ fn main() {
         discovery_hub::save_discovery_x_token,
         discovery_hub::remove_discovery_x_token,
         app_market::app_market_snapshots,
+        app_market::configure_market_feed,
+        app_market::remove_market_feed,
+        app_market::refresh_market_feed,
         app_market::import_app_market_snapshot,
         agent_schedules::agent_schedule_status,
         agent_schedules::configure_agent_schedule,
@@ -913,7 +931,17 @@ fn main() {
         agent_plans::save_agent_plan,
         agent_plans::preview_agent_plan,
         agent_plans::run_agent_plan,
+        bank_reconcile::choose_statement,
+        bank_reconcile::preview_statement,
+        bank_reconcile::apply_statement,
+        integration_controls::integration_inventory,
+        integration_controls::ai_context_policy,
+        integration_controls::set_ai_context_exclusion,
+        integration_controls::pause_data_connections,
         bank_accounts::bank_connection_status,
+        bank_accounts::start_bank_enrollment,
+        bank_accounts::complete_bank_enrollment,
+        bank_accounts::cancel_bank_enrollment,
         bank_accounts::configure_bank_connection,
         bank_accounts::disconnect_bank_connection,
         bank_accounts::read_bank_connection,
@@ -922,6 +950,8 @@ fn main() {
         business_discovery::save_discovered_lead,
         projects::set_project_watching,
         extensions::list_extensions,
+        extensions::validate_extension_manifest,
+        extensions::export_extension_manifest,
         extensions::install_extension,
         extensions::configure_extension,
         extensions::preview_extension,
@@ -953,6 +983,8 @@ fn main() {
         document_security::attachment_security_status,
         document_security::scan_attachment,
         retention::preview_retention,
+        retention::preview_sync_compaction,
+        retention::apply_sync_compaction,
         retention::apply_retention,
         retention::export_diagnostics,
         hosted::hosted_status,

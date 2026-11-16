@@ -1,3 +1,7 @@
+## Current reminder coordination
+
+An optional coordinated task-alert mode exchanges bounded exact-occurrence submission receipts through authenticated paired task sync. Recent receipts suppress only the matching current task revision. iOS submits generic alerts while foregrounded; Android checks while foregrounded and at its existing daily alarm. No background network service is added. Existing future iOS digests remain independent. Quiet hours and OS notification consent still apply. Disconnected peers, simultaneous submissions, system suppression and unavailable devices prevent exactly-once/delivery guarantees. Source compiles separately from real-device delivery acceptance. Historical milestones below are not the current feature inventory.
+
 ## Current v0.5 local companion status
 
 Encrypted vault, optional peer sync, local reminders, native-push registration and mobile plan approvals are now implemented in source. The historical milestone notes below describe earlier builds. Latest addition: select files up to 10 MiB into encrypted private records, replace/remove attachments in reviewed drafts, and preview bounded text/PNG/JPEG content entirely in memory. Text previews stop at 12,000 bytes; images are bounded to 20 megapixels and 1600-pixel previews. Other file types retain originals for encrypted backup. No temporary plaintext files or automatic uploads are created.

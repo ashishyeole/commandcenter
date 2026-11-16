@@ -27,7 +27,7 @@ pub fn save_cloud_key(state: State<AppState>, key: String) -> Result<()> {
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting("cloud_openai_enabled", "true")
+        .set_integration_flag("cloud_openai_enabled", true)
 }
 #[tauri::command]
 pub fn disconnect_cloud(state: State<AppState>) -> Result<()> {
@@ -35,7 +35,7 @@ pub fn disconnect_cloud(state: State<AppState>) -> Result<()> {
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting("cloud_openai_enabled", "false")?;
+        .set_integration_flag("cloud_openai_enabled", false)?;
     for (id, token) in state
         .jobs
         .lock()
@@ -63,6 +63,7 @@ fn payload(state: &AppState, model: &str, question: &str, ids: &[String]) -> Res
         return Err("Use a model name, question up to 8,000 bytes, and at most 30 records".into());
     }
     let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+    repo.ensure_ai_context_allowed(ids)?;
     let mut context = vec![];
     for i in repo.list("", false)? {
         if ids.contains(&i.id) {
@@ -211,6 +212,7 @@ pub async fn ask_cloud(
         {
             return Err("Cloud permission revoked or data reset during request".into());
         }
+        repo.ensure_ai_context_allowed(&context_ids)?;
         let mut record = Record::new(
             "missions",
             &format!(
@@ -219,12 +221,13 @@ pub async fn ask_cloud(
             ),
             &repo.device_id,
         );
-        record.status = if value["status"] == "completed" {
-            "completed"
-        } else {
-            "needs_review"
-        }
-        .into();
+        record.status =
+            if value["status"] == "completed" && unknown.is_empty() && context_ids.is_empty() {
+                "completed"
+            } else {
+                "needs_review"
+            }
+            .into();
         record.fields.insert(
             "response_status".into(),
             value["status"].as_str().unwrap_or("unknown").into(),

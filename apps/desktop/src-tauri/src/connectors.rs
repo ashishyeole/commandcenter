@@ -408,6 +408,16 @@ pub(crate) async fn refresh_cached(
             }
         }
         "youtube" => {
+            if state
+                .repo
+                .lock()
+                .map_err(|_| "Database unavailable")?
+                .setting("youtube_enabled")?
+                .as_deref()
+                != Some("true")
+            {
+                return Err("Configure YouTube keyword-search access on this device first; public channel feeds need no key".into());
+            }
             let key = zeroize::Zeroizing::new(
                 keyring::Entry::new("com.personal.commandcenter.api", "youtube")
                     .map_err(|e| e.to_string())?
@@ -621,7 +631,7 @@ pub fn cancel_ai(state: State<AppState>, request_id: String) -> Result<()> {
 }
 
 #[tauri::command]
-pub fn save_youtube_key(value: String) -> Result<()> {
+pub fn save_youtube_key(state: State<AppState>, value: String) -> Result<()> {
     let value = zeroize::Zeroizing::new(value);
     if value.len() < 20 || value.len() > 256 || value.chars().any(char::is_whitespace) {
         return Err("Enter a valid YouTube API key".into());
@@ -629,10 +639,20 @@ pub fn save_youtube_key(value: String) -> Result<()> {
     keyring::Entry::new("com.personal.commandcenter.api", "youtube")
         .map_err(|e| e.to_string())?
         .set_password(&value)
-        .map_err(|_| "OS secure store could not save the API key".into())
+        .map_err(|_| "OS secure store could not save the API key".to_string())?;
+    state
+        .repo
+        .lock()
+        .map_err(|_| "Database unavailable")?
+        .set_integration_flag("youtube_enabled", true)
 }
 #[tauri::command]
-pub fn remove_youtube_key() -> Result<()> {
+pub fn remove_youtube_key(state: State<AppState>) -> Result<()> {
+    state
+        .repo
+        .lock()
+        .map_err(|_| "Database unavailable")?
+        .set_integration_flag("youtube_enabled", false)?;
     match keyring::Entry::new("com.personal.commandcenter.api", "youtube")
         .map_err(|e| e.to_string())?
         .delete_credential()

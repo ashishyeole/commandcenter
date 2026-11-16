@@ -183,23 +183,29 @@ impl Repository {
             && record.fields.get("monitor").map(String::as_str) == Some("enabled")
         {
             let field = |k: &str| record.fields.get(k).map(String::as_str).unwrap_or("");
-            if !["stars", "downloads"].contains(&field("metric"))
+            if !["stars", "downloads", "price", "availability"].contains(&field("metric"))
                 || !["at_least", "at_most"].contains(&field("operator"))
                 || !field("target")
                     .parse::<f64>()
                     .is_ok_and(|n| n.is_finite() && n >= 0.0)
             {
-                return Err("Enabled watchlists require stars/downloads, at_least/at_most and a finite nonnegative numeric target".into());
+                return Err("Enabled watchlists require a supported numeric metric, at_least/at_most and a finite nonnegative numeric target".into());
             }
             let url = url::Url::parse(field("source"))
                 .map_err(|_| "Watchlist source must be an exact discovery URL")?;
+            let public_product = ["price", "availability"].contains(&field("metric"));
+            if field("metric") == "price"
+                && !["USD", "INR", "EUR", "GBP", "CAD", "AUD"].contains(&field("currency"))
+            {
+                return Err("Price watches require an explicit supported currency".into());
+            }
             let host = if field("metric") == "stars" {
                 "github.com"
             } else {
                 "huggingface.co"
             };
             if url.scheme() != "https"
-                || url.host_str() != Some(host)
+                || (!public_product && url.host_str() != Some(host))
                 || !url.username().is_empty()
                 || url.password().is_some()
             {
@@ -541,6 +547,35 @@ impl Repository {
         Uuid::parse_str(id).map_err(err)?;
         self.conn.execute("INSERT INTO vault VALUES(?1,?2,?3) ON CONFLICT(id) DO UPDATE SET ciphertext=excluded.ciphertext,updated_at=excluded.updated_at",params![id,ciphertext,now()]).map_err(err)?;
         Ok(())
+    }
+    /// Atomically apply a reviewed private batch; stale input rolls back every row.
+    pub fn save_vault_batch_checked(
+        &mut self,
+        rows: &[(String, Vec<u8>, Option<Vec<u8>>)],
+    ) -> Result<()> {
+        if rows.len() > 5000 {
+            return Err("Private batch exceeds 5000 rows".into());
+        }
+        let tx = self.conn.transaction().map_err(err)?;
+        let mut seen = std::collections::HashSet::new();
+        for (id, bytes, expected) in rows {
+            Uuid::parse_str(id).map_err(err)?;
+            check_owner(&tx, id, "vault")?;
+            if !seen.insert(id) {
+                return Err("Duplicate private batch identity".into());
+            }
+            let actual: Option<Vec<u8>> = tx
+                .query_row("SELECT ciphertext FROM vault WHERE id=?1", [id], |r| {
+                    r.get(0)
+                })
+                .optional()
+                .map_err(err)?;
+            if actual.as_ref() != expected.as_ref() {
+                return Err("Private records changed; review the batch again".into());
+            }
+            tx.execute("INSERT INTO vault VALUES(?1,?2,?3) ON CONFLICT(id) DO UPDATE SET ciphertext=excluded.ciphertext,updated_at=excluded.updated_at",params![id,bytes,now()]).map_err(err)?;
+        }
+        tx.commit().map_err(err)
     }
     pub fn save_vault_batch(&mut self, rows: &[(String, Vec<u8>)]) -> Result<()> {
         let tx = self.conn.transaction().map_err(err)?;
@@ -942,6 +977,10 @@ pub fn validate_discovery_sources(value: &serde_json::Value) -> Result<()> {
         ]
         .contains(&s["topic"].as_str().unwrap_or(""))
             || ![
+                "crossref",
+                "europepmc",
+                "patents",
+                "schemes",
                 "github",
                 "models",
                 "ollama",

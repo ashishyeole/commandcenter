@@ -61,3 +61,28 @@ pub async fn export_diagnostics(state: State<'_, AppState>, consent: bool) -> Re
     )?;
     Ok(json!({"saved":true,"uploaded":false}))
 }
+
+#[tauri::command]
+pub fn preview_sync_compaction(state: State<AppState>) -> Result<Value> {
+    let mut repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+    repo.prepare_sync()?;
+    let preview = repo.sync_compaction_preview()?;
+    Ok(json!({"preview":preview,"sha256":hash(&preview)?}))
+}
+#[tauri::command]
+pub fn apply_sync_compaction(
+    state: State<AppState>,
+    reviewed_sha256: String,
+    confirmation: String,
+) -> Result<usize> {
+    if confirmation != "COMPACT ACKNOWLEDGED SYNC HISTORY" {
+        return Err("Type COMPACT ACKNOWLEDGED SYNC HISTORY after reviewing the boundary".into());
+    }
+    let mut repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+    repo.prepare_sync()?;
+    let preview = repo.sync_compaction_preview()?;
+    if hash(&preview)? != reviewed_sha256 {
+        return Err("Compaction review changed".into());
+    }
+    repo.compact_acknowledged_sync(&preview)
+}

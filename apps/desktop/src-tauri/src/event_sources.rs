@@ -183,11 +183,35 @@ pub(crate) fn parse(bytes: Vec<u8>, source: &Source) -> Result<Value> {
                     .unwrap_or_default()
             };
             let uid = get("UID");
-            let title = get("SUMMARY");
+            let title = {
+                let v = get("SUMMARY");
+                if v.is_empty()
+                    && get("STATUS") == "CANCELLED"
+                    && event
+                        .properties
+                        .iter()
+                        .any(|p| p.name.eq_ignore_ascii_case("RECURRENCE-ID"))
+                {
+                    "Cancelled occurrence".into()
+                } else {
+                    v
+                }
+            };
             if uid.is_empty() || uid.len() > 1024 || title.is_empty() {
                 skipped.push("Event missing UID or title".to_string());
                 continue;
             }
+            let recurrence_id = event
+                .properties
+                .iter()
+                .find(|p| p.name.eq_ignore_ascii_case("RECURRENCE-ID"))
+                .and_then(|p| date(p).ok());
+            let range_override = event.properties.iter().any(|p| {
+                p.name.eq_ignore_ascii_case("RECURRENCE-ID")
+                    && p.params.as_ref().is_some_and(|pairs| {
+                        pairs.iter().any(|(k, _)| k.eq_ignore_ascii_case("RANGE"))
+                    })
+            });
             let start = match event
                 .properties
                 .iter()
@@ -196,6 +220,9 @@ pub(crate) fn parse(bytes: Vec<u8>, source: &Source) -> Result<Value> {
                 .transpose()
             {
                 Ok(Some(v)) => v,
+                Ok(None) if get("STATUS") == "CANCELLED" && recurrence_id.is_some() => {
+                    recurrence_id.clone().unwrap()
+                }
                 Ok(None) => {
                     skipped.push(format!("{title}: missing start date"));
                     continue;
@@ -223,11 +250,25 @@ pub(crate) fn parse(bytes: Vec<u8>, source: &Source) -> Result<Value> {
                 })
                 .map(|u| u.to_string())
                 .unwrap_or(source.url.clone());
-            let end = event
+            let mut end = event
                 .properties
                 .iter()
                 .find(|p| p.name.eq_ignore_ascii_case("DTEND"))
                 .and_then(|p| date(p).ok());
+            let duration = get("DURATION");
+            let duration_invalid = !duration.is_empty()
+                && (end.is_some()
+                    || crate::event_recurrence::duration_end(&start, &duration).is_none());
+            if end.is_none() && !duration.is_empty() {
+                end = crate::event_recurrence::duration_end(&start, &duration);
+            }
+            let exrules = event
+                .properties
+                .iter()
+                .filter(|p| p.name.eq_ignore_ascii_case("EXRULE"))
+                .filter_map(|p| p.value.clone())
+                .take(9)
+                .collect::<Vec<_>>();
             let mut exdates = vec![];
             let mut rdates = vec![];
             let mut exceptions_invalid = event
@@ -236,11 +277,8 @@ pub(crate) fn parse(bytes: Vec<u8>, source: &Source) -> Result<Value> {
                 .filter(|p| p.name.eq_ignore_ascii_case("RRULE"))
                 .count()
                 > 1
-                || event.properties.iter().any(|p| {
-                    ["EXRULE", "DURATION"]
-                        .iter()
-                        .any(|name| p.name.eq_ignore_ascii_case(name))
-                });
+                || duration_invalid
+                || exrules.len() > 8;
             exceptions_invalid |= end.is_none()
                 && event
                     .properties
@@ -268,31 +306,54 @@ pub(crate) fn parse(bytes: Vec<u8>, source: &Source) -> Result<Value> {
                     }
                 }
             }
-            rows.push(json!({"id":identity,"uid":uid,"title":title.chars().take(500).collect::<String>(),"description":get("DESCRIPTION"),"location":get("LOCATION"),"start":start,"end":end,"status":get("STATUS"),"recurrence":recurrence,"recurrence_instance":instance,"recurrence_expanded":false,"recurrence_exdates":exdates,"recurrence_rdates":rdates,"recurrence_exceptions_invalid":exceptions_invalid,"has_recurrence_exceptions":event.properties.iter().any(|p|["EXDATE","RDATE"].contains(&p.name.as_str())),"sequence":get("SEQUENCE"),"source_updated":get("LAST-MODIFIED"),"source_url":url,"calendar_url":source.url,"verification":if source.verified_authority{"Source authority explicitly confirmed by user; schedule is publisher-supplied and can change"}else{"Unconfirmed source authority; independently verify before travel or registration"}}));
+            rows.push(json!({"id":identity,"uid":uid,"title":title.chars().take(500).collect::<String>(),"description":get("DESCRIPTION"),"location":get("LOCATION"),"registration":get("X-REGISTRATION-STATUS"),"registration_url":get("X-REGISTRATION-URL"),"categories":get("CATEGORIES"),"related_event":get("RELATED-TO"),"start":start,"end":end,"status":get("STATUS"),"recurrence":recurrence,"recurrence_instance":instance,"recurrence_id":recurrence_id,"range_override":range_override,"duration":duration,"recurrence_exrules":exrules,"recurrence_expanded":false,"recurrence_exdates":exdates,"recurrence_rdates":rdates,"recurrence_exceptions_invalid":exceptions_invalid,"has_recurrence_exceptions":event.properties.iter().any(|p|["EXDATE","RDATE"].contains(&p.name.as_str())),"sequence":get("SEQUENCE"),"source_updated":get("LAST-MODIFIED"),"source_url":url,"calendar_url":source.url,"verification":if source.verified_authority{"Source authority explicitly confirmed by user; schedule is publisher-supplied and can change"}else{"Unconfirmed source authority; independently verify before travel or registration"}}));
         }
     }
-    // Expand only a precisely supported subset; complex rules retain their original declaration.
-    let overridden = rows
-        .iter()
-        .filter(|r| {
-            r["recurrence_instance"]
-                .as_str()
-                .is_some_and(|s| !s.is_empty())
-        })
-        .filter_map(|r| r["uid"].as_str().map(str::to_owned))
-        .collect::<std::collections::HashSet<_>>();
     let mut expanded = Vec::new();
-    for row in rows {
-        if !overridden.contains(row["uid"].as_str().unwrap_or("")) {
-            if let Some(instances) = crate::event_recurrence::expand(&row) {
-                if expanded.len() + instances.len() > 1000 {
-                    return Err("Expanded calendar exceeds 1000 occurrences".into());
+    let overrides = rows
+        .iter()
+        .filter(|r| r["recurrence_id"].is_object())
+        .cloned()
+        .collect::<Vec<_>>();
+    for row in &rows {
+        if row["recurrence_id"].is_object() {
+            continue;
+        }
+        let series = overrides
+            .iter()
+            .filter(|v| v["uid"] == row["uid"])
+            .collect::<Vec<_>>();
+        let supported = !series.iter().any(|v| v["range_override"] == true);
+        if supported {
+            if let Some(instances) = crate::event_recurrence::expand(row) {
+                for mut instance in instances {
+                    let key = crate::event_recurrence::occurrence_key(&instance["start"]);
+                    if let Some(replacement) = series.iter().find(|r| {
+                        crate::event_recurrence::occurrence_key(&r["recurrence_id"]) == key
+                    }) {
+                        let id = instance["id"].clone();
+                        instance = (*replacement).clone();
+                        instance["id"] = id;
+                        instance["recurrence_expanded"] = json!(true);
+                    }
+                    expanded.push(instance);
                 }
-                expanded.extend(instances);
                 continue;
             }
         }
-        expanded.push(row);
+        expanded.push(row.clone());
+        expanded.extend(series.into_iter().cloned());
+    }
+    for row in overrides {
+        if !rows
+            .iter()
+            .any(|r| r["uid"] == row["uid"] && r["recurrence_id"].is_null())
+        {
+            expanded.push(row);
+        }
+    }
+    if expanded.len() > 1000 {
+        return Err("Expanded calendar exceeds 1000 occurrences".into());
     }
     let mut rows = expanded;
     rows.sort_by(|a, b| {
@@ -301,7 +362,7 @@ pub(crate) fn parse(bytes: Vec<u8>, source: &Source) -> Result<Value> {
             .cmp(&b["start"]["date"].as_str())
     });
     Ok(
-        json!({"source":source,"fetched_at":command_center_core::now(),"events":rows,"skipped":skipped.into_iter().take(30).collect::<Vec<_>>(),"notice":"Bounded DAILY/WEEKLY/MONTHLY/YEARLY all-day, UTC, IANA-zone or floating recurrences support INTERVAL, COUNT/UNTIL, selected BYDAY/BYMONTHDAY/BYMONTH/WKST filters and EXDATE/RDATE, up to 366 instances within 100 years. Invalid or ambiguous local times are omitted. Unsupported rules and series with overridden RECURRENCE-ID instances remain unexpanded; verify them at the publisher. All-day end dates are exclusive. Floating times require source verification. Monetary guarantees are never inferred from prose."}),
+        json!({"source":source,"fetched_at":command_center_core::now(),"events":rows,"skipped":skipped.into_iter().take(30).collect::<Vec<_>>(),"notice":"Bounded DAILY/WEEKLY/MONTHLY/YEARLY all-day, UTC, IANA-zone or floating recurrences support INTERVAL, COUNT/UNTIL, selected BYDAY/BYMONTHDAY/BYMONTH/BYSETPOS/WKST filters, DURATION, EXDATE/RDATE/EXRULE and individual RECURRENCE-ID overrides, up to 366 instances within 100 years. Invalid or ambiguous local times are omitted. Unbounded rules show a rolling 366-day window. Unsupported rules and RANGE overrides remain unexpanded; verify them at the publisher. All-day end dates are exclusive. Floating times require source verification. Monetary guarantees are never inferred from prose."}),
     )
 }
 async fn refresh(state: &AppState, id: &str) -> Result<Value> {
@@ -390,10 +451,7 @@ async fn refresh(state: &AppState, id: &str) -> Result<Value> {
                 .find(|e| e["id"].as_str() == Some(event_id.as_str()))
         });
         if let (Some(a), Some(b)) = (previous, next) {
-            if a["start"] != b["start"]
-                || a["status"] != b["status"]
-                || a["location"] != b["location"]
-            {
+            if event_changed(a, b) {
                 let mut n = command_center_core::workspace::Record::new(
                     "notifications",
                     &format!("Schedule changed: {}", record.title),
@@ -415,6 +473,40 @@ async fn refresh(state: &AppState, id: &str) -> Result<Value> {
         &json!({"at":command_center_core::now(),"status":"refreshed"}).to_string(),
     )?;
     Ok(cache)
+}
+// Alert on publisher-supplied details, including registration text and satellite relationships.
+// Empty or removed values are changes, never inferred availability.
+fn event_changed(a: &Value, b: &Value) -> bool {
+    [
+        "title",
+        "start",
+        "end",
+        "status",
+        "location",
+        "description",
+        "source_url",
+        "registration",
+        "registration_url",
+        "categories",
+        "related_event",
+    ]
+    .iter()
+    .any(|k| a[*k] != b[*k])
+}
+#[cfg(test)]
+mod detail_tests {
+    use super::*;
+    #[test]
+    fn registration_and_satellite_changes_are_reviewed() {
+        let a = json!({"start":{"date":"2026-12-01"},"description":"Registration opens soon","related_event":"main-1"});
+        let mut b = a.clone();
+        b["description"] = json!("Registration open. Satellite seats available.");
+        assert!(event_changed(&a, &b));
+        b = a.clone();
+        b["related_event"] = json!("main-2");
+        assert!(event_changed(&a, &b));
+        assert!(!event_changed(&a, &a));
+    }
 }
 #[tauri::command]
 pub async fn refresh_event_source(
@@ -568,9 +660,13 @@ mod recurrence_tests {
         );
     }
     #[test]
-    fn unsupported_or_unbounded_rules_remain_unexpanded() {
+    fn unsupported_rules_remain_unexpanded_and_unbounded_rules_are_windowed() {
         assert!(crate::event_recurrence::expand(&row("FREQ=HOURLY;COUNT=3")).is_none());
-        assert!(crate::event_recurrence::expand(&row("FREQ=DAILY")).is_none());
+        let instances = crate::event_recurrence::expand(&row("FREQ=DAILY")).unwrap();
+        assert!(instances.len() <= 366);
+        assert!(instances
+            .iter()
+            .all(|v| v["recurrence_window_end"].is_string()));
         let mut r = row("FREQ=DAILY;COUNT=3");
         r["has_recurrence_exceptions"] = json!(true);
         assert!(crate::event_recurrence::expand(&r).is_none());
@@ -657,7 +753,6 @@ mod expanded_calendar_tests {
         for rule in [
             "FREQ=MONTHLY;BYDAY=MO,TU;BYSETPOS=-1;COUNT=3",
             "FREQ=DAILY;UNTIL=20270103",
-            "FREQ=DAILY",
             "FREQ=YEARLY;INTERVAL=366;COUNT=2",
         ] {
             let c = calendar(&format!("DTSTART:20270101T230000Z\r\nRRULE:{rule}"));
@@ -672,7 +767,6 @@ mod expanded_calendar_tests {
         for extra in [
             "EXDATE:invalid",
             "RDATE;VALUE=PERIOD:20270101T120000Z/PT1H",
-            "EXRULE:FREQ=DAILY;COUNT=1",
             "DURATION:PT2H",
             "DTEND:invalid",
             "RRULE:FREQ=WEEKLY;COUNT=2",
@@ -682,5 +776,39 @@ mod expanded_calendar_tests {
             ));
             assert_eq!(c["events"][0]["recurrence_expanded"], false);
         }
+    }
+    #[test]
+    fn positional_weekdays_duration_and_exrules_expand() {
+        let c=calendar("DTSTART;VALUE=DATE:20270129\r\nRRULE:FREQ=MONTHLY;BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1;COUNT=3\r\nDURATION:P2D");
+        assert_eq!(dates(&c), vec!["2027-01-29", "2027-02-26", "2027-03-31"]);
+        assert_eq!(c["events"][1]["end"]["date"], "2027-02-28");
+        let c=calendar("DTSTART;VALUE=DATE:20270101\r\nRRULE:FREQ=DAILY;COUNT=5\r\nEXRULE:FREQ=DAILY;INTERVAL=2;COUNT=3");
+        assert_eq!(dates(&c), vec!["2027-01-02", "2027-01-04"]);
+    }
+    #[test]
+    fn unbounded_series_has_explicit_finite_window() {
+        let today = chrono::Local::now().date_naive();
+        let c = calendar(&format!(
+            "DTSTART;VALUE=DATE:{}\r\nRRULE:FREQ=DAILY",
+            today.format("%Y%m%d")
+        ));
+        assert_eq!(c["events"].as_array().unwrap().len(), 366);
+        assert!(c["events"][0]["recurrence_window_end"].is_string());
+    }
+    #[test]
+    fn individual_override_replaces_original_occurrence() {
+        let source = Source {
+            id: uuid::Uuid::new_v4().to_string(),
+            name: "QA".into(),
+            url: "https://example.com/calendar.ics".into(),
+            category: "poker".into(),
+            verified_authority: false,
+            enabled: false,
+            interval_minutes: 60,
+        };
+        let text="BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nUID:series\r\nSUMMARY:Base\r\nDTSTART;VALUE=DATE:20270101\r\nRRULE:FREQ=DAILY;COUNT=3\r\nEND:VEVENT\r\nBEGIN:VEVENT\r\nUID:series\r\nSUMMARY:Moved\r\nRECURRENCE-ID;VALUE=DATE:20270102\r\nDTSTART;VALUE=DATE:20270105\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n";
+        let c = parse(text.as_bytes().to_vec(), &source).unwrap();
+        assert_eq!(dates(&c), vec!["2027-01-01", "2027-01-03", "2027-01-05"]);
+        assert_eq!(c["events"][2]["title"], "Moved");
     }
 }

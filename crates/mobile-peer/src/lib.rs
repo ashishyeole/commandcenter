@@ -1,4 +1,5 @@
 //! Shared mobile storage and Noise initiator. Platform wrappers keep keys and trust in secure storage.
+mod mobile_reminders;
 use base64::{engine::general_purpose::URL_SAFE_NO_PAD as B64, Engine};
 use command_center_core::{
     sync::{valid_scope, Batch},
@@ -167,7 +168,7 @@ async fn pair(repo: &mut Repository, request: &Value) -> Result<Value> {
     channel
         .send(&Hello {
             mobile: true,
-            deliveries: vec![],
+            deliveries: repo.recent_deliveries()?,
             device: repo.device_id.clone(),
             label: label.into(),
             scopes: selected.clone(),
@@ -232,7 +233,7 @@ async fn sync(repo: &mut Repository, request: &Value) -> Result<Value> {
     channel
         .send(&Hello {
             mobile: true,
-            deliveries: vec![],
+            deliveries: repo.recent_deliveries()?,
             device: repo.device_id.clone(),
             label: strarg(request, "label")?.into(),
             scopes: trust.scopes.clone(),
@@ -244,6 +245,7 @@ async fn sync(repo: &mut Repository, request: &Value) -> Result<Value> {
     if hello.device != trust.device || hello.scopes != trust.scopes {
         return Err("Peer identity or scope changed; re-pair explicitly".into());
     }
+    mobile_reminders::save_peer(repo, &trust.device, &trust.scopes, &hello.deliveries)?;
     let mut after = hello.received;
     let mut changed = 0;
     for _ in 0..32 {
@@ -313,6 +315,9 @@ fn dispatch(request: Value) -> Result<Value> {
             snapshot(&mut repo)
         }
         "snapshot" => snapshot(&mut repo),
+        "reminder_candidates" | "reminder_submitted" => {
+            mobile_reminders::dispatch(&repo, operation, &request)
+        }
         "attachments" => Ok(
             json!({"rows":repo.attachment_summaries(None,request["query"].as_str().unwrap_or(""),false)?}),
         ),
@@ -382,6 +387,10 @@ fn dispatch(request: Value) -> Result<Value> {
         }
         "forget" => {
             repo.forget_peer_progress(strarg(&request, "peer")?)?;
+            repo.set_setting(
+                &format!("mobile_receipts:{}", strarg(&request, "peer")?),
+                "null",
+            )?;
             Ok(json!({"revoked":true}))
         }
         "pair" | "sync" => {

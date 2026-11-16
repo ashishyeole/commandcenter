@@ -63,6 +63,7 @@ fn validate(p: &Plan) -> Result<()> {
 }
 fn context(state: &AppState, p: &Plan) -> Result<Value> {
     let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+    repo.ensure_ai_context_allowed(&p.context_ids)?;
     let mut rows = vec![];
     for i in repo.list("", false)? {
         if p.context_ids.contains(&i.id) {

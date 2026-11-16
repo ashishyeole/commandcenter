@@ -4,11 +4,13 @@ use serde_json::{json, Value};
 use tauri::State;
 #[tauri::command]
 pub async fn audit_public_website(
+    app: tauri::AppHandle,
     state: State<'_, AppState>,
     record_id: String,
     revision: i64,
     url: String,
     consent: bool,
+    rendered: Option<bool>,
 ) -> Result<Value> {
     if !consent {
         return Err(
@@ -48,44 +50,47 @@ pub async fn audit_public_website(
         )?;
         r
     };
-    let client = crate::research::public_client(&endpoint).await?;
-    let mut response = client
-        .get(endpoint.clone())
-        .header("Accept", "text/html")
-        .send()
-        .await
-        .map_err(|_| "Public site request failed")?;
-    if !response.status().is_success() {
-        return Err(format!(
-            "Site returned HTTP {}. Redirects are not followed; use its final HTTPS address.",
-            response.status()
-        ));
-    }
-    let content_type = response
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("")
-        .to_lowercase();
-    if !content_type.starts_with("text/html") {
-        return Err("Page must be served as text/html".into());
-    }
-    let mut bytes = vec![];
-    while let Some(chunk) = response
-        .chunk()
-        .await
-        .map_err(|_| "Site download interrupted")?
-    {
-        if bytes.len() + chunk.len() > 2 * 1024 * 1024 {
-            return Err("Page exceeds the 2 MiB limit".into());
+    let audit = if rendered.unwrap_or(false) {
+        crate::rendered_audit::inspect(app, endpoint.clone()).await?
+    } else {
+        let client = crate::research::public_client(&endpoint).await?;
+        let mut response = client
+            .get(endpoint.clone())
+            .header("Accept", "text/html")
+            .send()
+            .await
+            .map_err(|_| "Public site request failed")?;
+        if !response.status().is_success() {
+            return Err(format!(
+                "Site returned HTTP {}. Redirects are not followed; use its final HTTPS address.",
+                response.status()
+            ));
         }
-        bytes.extend_from_slice(&chunk);
-    }
-    let html = String::from_utf8(bytes).map_err(|_| "Only UTF-8 pages are supported")?;
-    if html.bytes().filter(|b| *b == b'<').count() > 20000 {
-        return Err("Page has too many markup elements".into());
-    }
-    let audit=tokio::task::spawn_blocking(move || {
+        let content_type = response
+            .headers()
+            .get("content-type")
+            .and_then(|v| v.to_str().ok())
+            .unwrap_or("")
+            .to_lowercase();
+        if !content_type.starts_with("text/html") {
+            return Err("Page must be served as text/html".into());
+        }
+        let mut bytes = vec![];
+        while let Some(chunk) = response
+            .chunk()
+            .await
+            .map_err(|_| "Site download interrupted")?
+        {
+            if bytes.len() + chunk.len() > 2 * 1024 * 1024 {
+                return Err("Page exceeds the 2 MiB limit".into());
+            }
+            bytes.extend_from_slice(&chunk);
+        }
+        let html = String::from_utf8(bytes).map_err(|_| "Only UTF-8 pages are supported")?;
+        if html.bytes().filter(|b| *b == b'<').count() > 20000 {
+            return Err("Page has too many markup elements".into());
+        }
+        let audit=tokio::task::spawn_blocking(move || {
         let doc=dom_query::Document::from(html);
         let title=doc.select("title").text().trim().chars().take(300).collect::<String>();
         let description=doc.select("meta[name='description']").attr("content").map(|v|v.trim().chars().take(500).collect::<String>()).unwrap_or_default();
@@ -105,6 +110,8 @@ pub async fn audit_public_website(
         let score:u64=checks.iter().filter(|c|c["passed"]==false).map(|c|c["weight"].as_u64().unwrap_or(0)).sum();
         json!({"url":endpoint.as_str(),"observed_at":command_center_core::now(),"opportunity_signal":score,"checks":checks,"scope":"Six static HTML checks, weighted missing-signal score 0–100. Higher means more review opportunities, not proven defects or a revenue prediction. No JavaScript rendering, performance, visual accessibility, security, traffic or business validation. No crawl, login, form submission or outreach."})
     }).await.map_err(|_|"Page analysis interrupted")?;
+        audit
+    };
     record.fields.insert(
         "audit".into(),
         serde_json::to_string_pretty(&audit).map_err(|e| e.to_string())?,

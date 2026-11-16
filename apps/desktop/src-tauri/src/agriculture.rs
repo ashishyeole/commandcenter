@@ -37,7 +37,7 @@ pub fn configure_agriculture_key(
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting(&format!("agriculture_enabled:{provider}"), "true")
+        .set_integration_flag(&format!("agriculture_enabled:{provider}"), true)
 }
 #[tauri::command]
 pub fn remove_agriculture_key(state: State<AppState>, provider: String) -> Result<()> {
@@ -46,7 +46,7 @@ pub fn remove_agriculture_key(state: State<AppState>, provider: String) -> Resul
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting(&format!("agriculture_enabled:{provider}"), "false")?;
+        .set_integration_flag(&format!("agriculture_enabled:{provider}"), false)?;
     match key.delete_credential() {
         Ok(()) | Err(keyring::Error::NoEntry) => Ok(()),
         Err(_) => Err("Provider disabled; secure credential removal failed".into()),

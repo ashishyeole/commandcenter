@@ -11,14 +11,14 @@ use tauri::State;
 use zeroize::Zeroizing;
 
 #[derive(Serialize, Deserialize)]
-struct Credentials {
-    username: String,
-    password: String,
+pub(crate) struct Credentials {
+    pub(crate) username: String,
+    pub(crate) password: String,
 }
-fn entry(device: &str) -> Result<keyring::Entry> {
+pub(crate) fn entry(device: &str) -> Result<keyring::Entry> {
     keyring::Entry::new("com.personal.commandcenter.webdav", device).map_err(|e| e.to_string())
 }
-fn endpoint(value: &str) -> Result<reqwest::Url> {
+pub(crate) fn endpoint(value: &str) -> Result<reqwest::Url> {
     let url = reqwest::Url::parse(value).map_err(|_| "Enter a valid HTTPS folder URL")?;
     if url.scheme() != "https"
         || url.host_str().is_none()

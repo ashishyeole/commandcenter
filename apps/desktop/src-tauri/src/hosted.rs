@@ -57,7 +57,7 @@ pub fn configure_hosted(
         .map_err(|e| e.to_string())?;
     let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
     repo.set_setting("hosted_origin", &origin)?;
-    repo.set_setting("hosted_enabled", "true")
+    repo.set_integration_flag("hosted_enabled", true)
 }
 #[tauri::command]
 pub fn disconnect_hosted(state: State<AppState>) -> Result<()> {
@@ -65,7 +65,7 @@ pub fn disconnect_hosted(state: State<AppState>) -> Result<()> {
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting("hosted_enabled", "false")?;
+        .set_integration_flag("hosted_enabled", false)?;
     match entry(&state)?.delete_credential() {
         Ok(()) | Err(keyring::Error::NoEntry) => Ok(()),
         Err(e) => Err(e.to_string()),

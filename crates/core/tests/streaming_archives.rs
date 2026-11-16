@@ -537,3 +537,120 @@ fn aggregated_sources_and_caches_roundtrip_without_auto_read_permission() {
     data.workspace = invalid;
     assert!(command_center_core::archive::export_all(&data).is_err());
 }
+
+#[test]
+fn selected_field_restore_keeps_unselected_content_and_rejects_stale_review() {
+    use command_center_core::stream_archive::RestoreChoice;
+    let mut source = Repository::open(":memory:").unwrap();
+    let original = note(&mut source, "Incoming title", "Incoming body");
+    let other = note(&mut source, "Not selected", "Leave out");
+    let mut bytes = vec![];
+    source.export_stream(&mut bytes, PASSWORD, None).unwrap();
+    let hash = format!("{:x}", Sha256::digest(&bytes));
+    let mut target = Repository::open(":memory:").unwrap();
+    target.import_missing(&[original.clone()]).unwrap();
+    let mut local = target.list("", false).unwrap().remove(0);
+    local.title = "My title".into();
+    local.body = "My edited body".into();
+    target.save(local).unwrap();
+    let page = target.review_stream_page(&bytes[..], PASSWORD, 0).unwrap();
+    let row = page["rows"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|r| r["id"] == original.id)
+        .unwrap();
+    let choice = RestoreChoice {
+        id: original.id.clone(),
+        kind: "item".into(),
+        expected_current_sha256: row["current_sha256"].as_str().map(str::to_owned),
+        fields: vec!["title".into()],
+    };
+    target
+        .import_stream_selection(&bytes[..], PASSWORD, &hash, &[choice.clone()])
+        .unwrap();
+    let local = target.list("", false).unwrap().remove(0);
+    assert_eq!(local.title, "Incoming title");
+    assert_eq!(local.body, "My edited body");
+    assert!(!target
+        .list("", false)
+        .unwrap()
+        .iter()
+        .any(|v| v.id == other.id));
+    assert!(target
+        .import_stream_selection(&bytes[..], PASSWORD, &hash, &[choice])
+        .is_err());
+    let before = target.list("", false).unwrap()[0].clone();
+    let page = target.review_stream_page(&bytes[..], PASSWORD, 0).unwrap();
+    let row = page["rows"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|r| r["id"] == original.id)
+        .unwrap();
+    let invalid = RestoreChoice {
+        id: original.id,
+        kind: "item".into(),
+        expected_current_sha256: row["current_sha256"].as_str().map(str::to_owned),
+        fields: vec!["device_id".into()],
+    };
+    assert!(target
+        .import_stream_selection(&bytes[..], PASSWORD, &hash, &[invalid])
+        .is_err());
+    assert_eq!(target.list("", false).unwrap()[0].body, before.body);
+}
+
+#[test]
+fn selected_record_fields_are_atomic_and_keep_relationships() {
+    use command_center_core::{stream_archive::RestoreChoice, workspace::Record};
+    let mut source = Repository::open(":memory:").unwrap();
+    let mut record = Record::new("projects", "Incoming project", &source.device_id);
+    record
+        .fields
+        .insert("objective".into(), "Incoming objective".into());
+    record.summary = "Incoming summary".into();
+    let incoming = source.save_record(record).unwrap();
+    let mut bytes = vec![];
+    source.export_stream(&mut bytes, PASSWORD, None).unwrap();
+    let hash = format!("{:x}", Sha256::digest(&bytes));
+    let mut target = Repository::open(":memory:").unwrap();
+    let mut local = incoming.clone();
+    local.device_id = target.device_id.clone();
+    local.title = "Local project".into();
+    local
+        .fields
+        .insert("objective".into(), "Local objective".into());
+    local
+        .fields
+        .insert("next_action".into(), "Local next action".into());
+    local.links.push(uuid::Uuid::new_v4().to_string());
+    let before = target.save_record(local).unwrap();
+    let page = target.review_stream_page(&bytes[..], PASSWORD, 0).unwrap();
+    let row = page["rows"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|r| r["id"] == incoming.id)
+        .unwrap();
+    let choice = RestoreChoice {
+        id: incoming.id.clone(),
+        kind: "record".into(),
+        expected_current_sha256: row["current_sha256"].as_str().map(str::to_owned),
+        fields: vec!["fields.objective".into(), "summary".into()],
+    };
+    assert!(target
+        .import_stream_selection(&bytes[..], PASSWORD, &"0".repeat(64), &[choice.clone()])
+        .is_err());
+    let unchanged = target.records("", false).unwrap().remove(0);
+    assert_eq!(unchanged.revision, before.revision);
+    assert_eq!(unchanged.fields["objective"], "Local objective");
+    target
+        .import_stream_selection(&bytes[..], PASSWORD, &hash, &[choice])
+        .unwrap();
+    let merged = target.records("", false).unwrap().remove(0);
+    assert_eq!(merged.title, "Local project");
+    assert_eq!(merged.fields["objective"], "Incoming objective");
+    assert_eq!(merged.fields["next_action"], "Local next action");
+    assert_eq!(merged.summary, "Incoming summary");
+    assert_eq!(merged.links, before.links);
+}

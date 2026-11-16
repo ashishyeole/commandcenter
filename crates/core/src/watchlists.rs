@@ -42,15 +42,25 @@ impl Repository {
             };
             let expected = match (item["source"].as_str(), metric.as_str()) {
                 (Some("github"), "stars") | (Some("models"), "downloads") => true,
+                (Some("price"), "price") => {
+                    item["currency"].as_str() == Some(get("currency")) && item["available"] != false
+                }
+                (Some("price"), "availability") => item["available"].is_boolean(),
                 _ => false,
             };
             if !expected {
                 continue;
             }
-            let value = item["metric"]
-                .as_str()
-                .and_then(|s| s.split_whitespace().next())
-                .and_then(|s| s.parse::<f64>().ok());
+            let value = if metric == "price" {
+                item["price"].as_f64()
+            } else if metric == "availability" {
+                item["available"].as_bool().map(|v| if v { 1. } else { 0. })
+            } else {
+                item["metric"]
+                    .as_str()
+                    .and_then(|s| s.split_whitespace().next())
+                    .and_then(|s| s.parse::<f64>().ok())
+            };
             let Some(value) = value.filter(|v| v.is_finite() && *v >= 0.0) else {
                 continue;
             };

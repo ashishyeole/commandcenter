@@ -88,10 +88,16 @@ pub async fn apply_large_archive(
     password: String,
     confirmation: String,
     copy_all: Option<bool>,
+    choices: Option<Vec<command_center_core::stream_archive::RestoreChoice>>,
 ) -> Result<Summary> {
     let copy_all = copy_all.unwrap_or(false);
+    if copy_all && choices.is_some() {
+        return Err("Choose either linked copies or selected-field restore".into());
+    }
     if confirmation
-        != if copy_all {
+        != if choices.is_some() {
+            "IMPORT REVIEWED FIELDS"
+        } else if copy_all {
             "IMPORT LINKED COPIES"
         } else {
             "IMPORT MISSING RECORDS"
@@ -114,7 +120,7 @@ pub async fn apply_large_archive(
         if p.id != id || p.sha256 != reviewed_sha256 {
             return Err("Archive review changed; preview again".into());
         }
-        let key = if p.vault_records > 0 {
+        let key = if p.vault_records > 0 && choices.is_none() {
             Some(crate::vault::session_key(&state)?)
         } else {
             None
@@ -127,7 +133,9 @@ pub async fn apply_large_archive(
             inner: p.file.reopen().map_err(|e| e.to_string())?,
             token: token.clone(),
         });
-        if copy_all {
+        if let Some(choices) = choices {
+            repo.import_stream_selection(input, &password, &reviewed_sha256, &choices)
+        } else if copy_all {
             repo.import_stream_copies(
                 input,
                 &password,
@@ -158,7 +166,7 @@ pub fn discard_large_archive(state: State<AppState>) -> Result<()> {
 const JOB: &str = "archive:stream";
 struct Job {
     app: tauri::AppHandle,
-    token: tokio_util::sync::CancellationToken,
+    pub(crate) token: tokio_util::sync::CancellationToken,
 }
 impl Job {
     fn start(app: &tauri::AppHandle) -> Result<Self> {
@@ -183,9 +191,9 @@ impl Drop for Job {
         };
     }
 }
-struct Cancellable<T> {
-    inner: T,
-    token: tokio_util::sync::CancellationToken,
+pub(crate) struct Cancellable<T> {
+    pub(crate) inner: T,
+    pub(crate) token: tokio_util::sync::CancellationToken,
 }
 impl<T: Read> Read for Cancellable<T> {
     fn read(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
@@ -239,4 +247,44 @@ impl<T: Seek> Seek for Cancellable<T> {
         }
         self.inner.seek(pos)
     }
+}
+
+#[tauri::command]
+pub async fn review_large_archive_records(
+    app: tauri::AppHandle,
+    id: String,
+    reviewed_sha256: String,
+    password: String,
+    offset: usize,
+) -> Result<Value> {
+    let job = Job::start(&app)?;
+    let password = Zeroizing::new(password);
+    tauri::async_runtime::spawn_blocking(move || {
+        let token = job.token.clone();
+        let state = app.state::<AppState>();
+        let (file, epoch) = {
+            let pending = state
+                .large_import
+                .lock()
+                .map_err(|_| "Import state unavailable")?;
+            let p = pending
+                .as_ref()
+                .ok_or("Choose and verify the archive first")?;
+            if p.id != id || p.sha256 != reviewed_sha256 {
+                return Err("Archive review changed".into());
+            }
+            (p.file.reopen().map_err(|e| e.to_string())?, p.epoch)
+        };
+        let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+        if state.data_epoch.load(std::sync::atomic::Ordering::SeqCst) != epoch {
+            return Err("Workspace reset; preview again".into());
+        }
+        repo.review_stream_page(
+            std::io::BufReader::new(Cancellable { inner: file, token }),
+            &password,
+            offset,
+        )
+    })
+    .await
+    .map_err(|_| "Archive review interrupted".to_string())?
 }

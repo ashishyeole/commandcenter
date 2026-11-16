@@ -137,11 +137,27 @@ pub async fn import_app_market_snapshot(
     }
     let snapshot: Snapshot = serde_json::from_slice(&bytes)
         .map_err(|_| "Invalid schema-1 market snapshot JSON; see docs/APP-MARKET-FORMAT.md")?;
+    cache_snapshot(&state, snapshot, epoch, None)
+}
+
+fn cache_snapshot(
+    state: &AppState,
+    snapshot: Snapshot,
+    epoch: u64,
+    expected_feed: Option<&str>,
+) -> Result<Value> {
     snapshot.validate()?;
     let value = serde_json::to_value(&snapshot).map_err(|e| e.to_string())?;
     let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
     if epoch != state.data_epoch.load(std::sync::atomic::Ordering::SeqCst) {
         return Err("Workspace reset during file selection".into());
+    }
+    if let Some(url) = expected_feed {
+        if repo.setting("app_market_enabled")?.as_deref() != Some("true")
+            || repo.setting("app_market_feed")?.as_deref() != Some(url)
+        {
+            return Err("Market feed permission or destination changed".into());
+        }
     }
     let mut rows: Vec<Value> =
         serde_json::from_str(&repo.setting("app_market_snapshots")?.unwrap_or("[]".into()))
@@ -160,4 +176,158 @@ pub async fn import_app_market_snapshot(
     Ok(
         json!({"imported":true,"apps":snapshot.apps.len(),"notice":"Imported publisher/user declarations, not independently verified metrics. Up to eight recent snapshots are cached; retain the original licensed files separately."}),
     )
+}
+fn market_entry(state: &AppState) -> Result<keyring::Entry> {
+    let device = state
+        .repo
+        .lock()
+        .map_err(|_| "Database unavailable")?
+        .device_id
+        .clone();
+    keyring::Entry::new("com.personal.commandcenter.market-feed", &device)
+        .map_err(|e| e.to_string())
+}
+#[tauri::command]
+pub fn configure_market_feed(
+    state: State<AppState>,
+    url: String,
+    token: String,
+    consent: bool,
+) -> Result<()> {
+    let token = zeroize::Zeroizing::new(token);
+    let u =
+        reqwest::Url::parse(&url).map_err(|_| "Enter a fixed public HTTPS snapshot endpoint")?;
+    if !consent
+        || !public_url(&url)
+        || u.query().is_some()
+        || u.fragment().is_some()
+        || url.len() > 2000
+        || token.len() > 4096
+        || token.chars().any(char::is_whitespace)
+    {
+        return Err("Approve a fixed HTTPS schema-1 market snapshot endpoint without URL credentials/query; optional bearer token stays in the OS secure store".into());
+    }
+    if state
+        .jobs
+        .lock()
+        .map_err(|_| "Jobs unavailable")?
+        .contains_key("market:refresh")
+    {
+        return Err("Cancel the active refresh before replacing its destination".into());
+    }
+    let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+    repo.set_integration_flag("app_market_enabled", false)?;
+    if token.is_empty() {
+        match market_entry_unlocked(&repo.device_id)?.delete_credential() {
+            Ok(()) | Err(keyring::Error::NoEntry) => (),
+            Err(_) => return Err("Could not clear previous market credential".into()),
+        }
+    } else {
+        market_entry_unlocked(&repo.device_id)?
+            .set_password(&token)
+            .map_err(|_| "OS secure store refused market credential")?;
+    }
+    repo.set_setting("app_market_feed", u.as_str())?;
+    repo.set_setting(
+        "app_market_feed_auth",
+        if token.is_empty() { "false" } else { "true" },
+    )?;
+    repo.set_integration_flag("app_market_enabled", true)
+}
+fn market_entry_unlocked(device: &str) -> Result<keyring::Entry> {
+    keyring::Entry::new("com.personal.commandcenter.market-feed", device).map_err(|e| e.to_string())
+}
+#[tauri::command]
+pub fn remove_market_feed(state: State<AppState>) -> Result<()> {
+    state
+        .repo
+        .lock()
+        .map_err(|_| "Database unavailable")?
+        .set_integration_flag("app_market_enabled", false)?;
+    if let Some(c) = state
+        .jobs
+        .lock()
+        .map_err(|_| "Jobs unavailable")?
+        .get("market:refresh")
+    {
+        c.cancel();
+    }
+    match market_entry(&state)?.delete_credential() {
+        Ok(()) | Err(keyring::Error::NoEntry) => Ok(()),
+        Err(_) => Err("Feed disabled; OS credential removal failed".into()),
+    }
+}
+struct MarketJob<'a>(&'a AppState);
+impl Drop for MarketJob<'_> {
+    fn drop(&mut self) {
+        if let Ok(mut jobs) = self.0.jobs.lock() {
+            jobs.remove("market:refresh");
+        }
+    }
+}
+#[tauri::command]
+pub async fn refresh_market_feed(state: State<'_, AppState>, consent: bool) -> Result<Value> {
+    if !consent {
+        return Err("Approve this licensed snapshot request and local caching".into());
+    }
+    let (url, auth, epoch) = {
+        let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+        if repo.setting("app_market_enabled")?.as_deref() != Some("true") {
+            return Err("Configure a market feed on this device first".into());
+        }
+        (
+            repo.setting("app_market_feed")?
+                .ok_or("No market feed configured")?,
+            repo.setting("app_market_feed_auth")?.as_deref() == Some("true"),
+            state.data_epoch.load(std::sync::atomic::Ordering::SeqCst),
+        )
+    };
+    let cancel = tokio_util::sync::CancellationToken::new();
+    {
+        let mut jobs = state.jobs.lock().map_err(|_| "Jobs unavailable")?;
+        if jobs.contains_key("market:refresh") {
+            return Err("A market refresh is already running".into());
+        }
+        jobs.insert("market:refresh".into(), cancel.clone());
+    }
+    let _guard = MarketJob(&state);
+    let work = async {
+        let endpoint = reqwest::Url::parse(&url).map_err(|_| "Invalid market endpoint")?;
+        let client = crate::research::public_client(&endpoint).await?;
+        let mut request = client.get(endpoint).header("Accept", "application/json");
+        let token = if auth {
+            Some(zeroize::Zeroizing::new(
+                market_entry(&state)?
+                    .get_password()
+                    .map_err(|_| "Market credential unavailable")?,
+            ))
+        } else {
+            None
+        };
+        if let Some(token) = &token {
+            request = request.bearer_auth(token.as_str());
+        }
+        let mut response = request
+            .send()
+            .await
+            .map_err(|_| "Market feed request failed")?;
+        if !response.status().is_success() {
+            return Err(format!("Market feed returned HTTP {}", response.status()));
+        }
+        let mut bytes = vec![];
+        while let Some(c) = response
+            .chunk()
+            .await
+            .map_err(|_| "Market response interrupted")?
+        {
+            if bytes.len() + c.len() > 1048576 {
+                return Err("Market snapshot exceeds 1 MiB".into());
+            }
+            bytes.extend_from_slice(&c);
+        }
+        let snapshot: Snapshot = serde_json::from_slice(&bytes)
+            .map_err(|_| "Expected the documented schema-1 licensed market snapshot")?;
+        cache_snapshot(&state, snapshot, epoch, Some(&url))
+    };
+    tokio::select! {_=cancel.cancelled()=>Err("Market refresh cancelled".into()),r=work=>r}
 }

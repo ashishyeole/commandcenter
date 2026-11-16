@@ -610,3 +610,32 @@ pub async fn pull_extension_image(
     }
     result
 }
+
+#[tauri::command]
+pub fn validate_extension_manifest(manifest_json: String) -> Result<Value> {
+    if manifest_json.len() > 16000 {
+        return Err("Manifest exceeds 16 KB".into());
+    }
+    let manifest: Manifest =
+        serde_json::from_str(&manifest_json).map_err(|_| "Invalid declarative manifest")?;
+    validate(&manifest)?;
+    Ok(
+        json!({"valid":true,"sha256":format!("{:x}",Sha256::digest(manifest_json.as_bytes())),"kind":manifest.kind,"setup":if manifest.kind=="rest"{"Fixed public HTTPS endpoint; no local dependency installation"}else{"Preinstalled Docker and the declared immutable image. Image retrieval and every execution need separate approval."},"credential_policy":"Credentials are never embedded in this manifest; no renderer scripts, host shell, filesystem roots or automatic grants are accepted."}),
+    )
+}
+#[tauri::command]
+pub async fn export_extension_manifest(manifest_json: String) -> Result<Option<String>> {
+    validate_extension_manifest(manifest_json.clone())?;
+    let Some(file) = rfd::AsyncFileDialog::new()
+        .set_title("Export authored extension manifest")
+        .set_file_name("command-center-extension.json")
+        .save_file()
+        .await
+    else {
+        return Ok(None);
+    };
+    crate::atomic_write(file.path(), manifest_json.as_bytes())?;
+    Ok(Some(
+        "Manifest exported. Nothing was installed, enabled or executed.".into(),
+    ))
+}

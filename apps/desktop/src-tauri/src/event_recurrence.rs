@@ -113,6 +113,7 @@ struct Rule<'a> {
     bymonthday: Vec<i32>,
     bymonth: Vec<u32>,
     wkst: u32,
+    bysetpos: Vec<i32>,
 }
 impl<'a> Rule<'a> {
     fn parse(text: &'a str, start: &Value) -> Option<Self> {
@@ -128,6 +129,7 @@ impl<'a> Rule<'a> {
                 "BYMONTHDAY",
                 "BYMONTH",
                 "WKST",
+                "BYSETPOS",
             ]
             .contains(&k)
                 || v.is_empty()
@@ -177,7 +179,7 @@ impl<'a> Rule<'a> {
         } else {
             None
         };
-        if count.is_some() == until.is_some() {
+        if count.is_some() && until.is_some() {
             return None;
         }
         let mut byday = vec![];
@@ -242,6 +244,26 @@ impl<'a> Rule<'a> {
         if freq == "YEARLY" && bymonth.is_empty() && (!byday.is_empty() || !bymonthday.is_empty()) {
             return None;
         }
+        let bysetpos = p
+            .get("BYSETPOS")
+            .map(|v| {
+                v.split(',')
+                    .map(|v| {
+                        v.parse::<i32>()
+                            .ok()
+                            .filter(|n| *n != 0 && (-366..=366).contains(n))
+                    })
+                    .collect::<Option<Vec<_>>>()
+            })
+            .unwrap_or(Some(vec![]))?;
+        if bysetpos.len() > 366
+            || (!bysetpos.is_empty()
+                && byday.is_empty()
+                && bymonthday.is_empty()
+                && bymonth.is_empty())
+        {
+            return None;
+        }
         let wkst = p.get("WKST").map(|s| weekday(s)).unwrap_or(Some(0))?;
         Some(Self {
             freq,
@@ -252,9 +274,10 @@ impl<'a> Rule<'a> {
             bymonthday,
             bymonth,
             wkst,
+            bysetpos,
         })
     }
-    fn matches(&self, date: NaiveDate, start: NaiveDate) -> Option<bool> {
+    fn matches_base(&self, date: NaiveDate, start: NaiveDate) -> Option<bool> {
         let days = (date - start).num_days();
         let months = (date.year() - start.year()) * 12 + date.month() as i32 - start.month() as i32;
         let weekday = date.weekday().num_days_from_monday();
@@ -314,6 +337,39 @@ impl<'a> Rule<'a> {
         }
         Some(true)
     }
+    fn matches(&self, date: NaiveDate, start: NaiveDate) -> Option<bool> {
+        if !self.matches_base(date, start)? || self.bysetpos.is_empty() {
+            return self.matches_base(date, start);
+        }
+        let first = match self.freq {
+            "DAILY" => date,
+            "WEEKLY" => date.checked_sub_days(chrono::Days::new(
+                ((date.weekday().num_days_from_monday() + 7 - self.wkst) % 7) as u64,
+            ))?,
+            "MONTHLY" => date.with_day(1)?,
+            "YEARLY" => NaiveDate::from_ymd_opt(date.year(), 1, 1)?,
+            _ => return None,
+        };
+        let length = match self.freq {
+            "DAILY" => 1,
+            "WEEKLY" => 7,
+            "MONTHLY" => month_days(date)? as u64,
+            "YEARLY" => (NaiveDate::from_ymd_opt(date.year() + 1, 1, 1)? - first).num_days() as u64,
+            _ => 0,
+        };
+        let candidates = (0..length)
+            .filter_map(|n| first.checked_add_days(chrono::Days::new(n)))
+            .filter(|d| self.matches_base(*d, start) == Some(true))
+            .collect::<Vec<_>>();
+        Some(self.bysetpos.iter().any(|n| {
+            let i = if *n > 0 {
+                *n - 1
+            } else {
+                candidates.len() as i32 + n
+            };
+            i >= 0 && candidates.get(i as usize) == Some(&date)
+        }))
+    }
     fn after_until(&self, value: &Value) -> Option<bool> {
         let Some(until) = &self.until else {
             return Some(false);
@@ -333,13 +389,29 @@ pub(crate) fn expand(row: &Value) -> Option<Vec<Value>> {
     let base = local(start)?;
     let rule = Rule::parse(row["recurrence"].as_str()?, start)?;
     // RFC defines unsynchronized DTSTART/RRULE behavior as undefined; do not invent dates.
-    if !rule.matches(base.date(), base.date())? || rule.after_until(start)? {
+    if (row["exclusion_rule"] != true && !rule.matches(base.date(), base.date())?)
+        || rule.after_until(start)?
+    {
         return None;
     }
     if row["has_recurrence_exceptions"] == true && row.get("recurrence_exdates").is_none() {
         return None;
     }
+    let windowed = rule.count.is_none() && rule.until.is_none();
+    let window_start = chrono::Local::now().date_naive();
+    let window_end = window_start.checked_add_days(chrono::Days::new(365))?;
     let mut excluded = HashSet::new();
+    for exrule in row["recurrence_exrules"].as_array().into_iter().flatten() {
+        let mut excluded_row = row.clone();
+        excluded_row["exclusion_rule"] = json!(true);
+        excluded_row["recurrence"] = exrule.clone();
+        excluded_row["recurrence_exrules"] = json!([]);
+        excluded_row["recurrence_exdates"] = json!([]);
+        excluded_row["recurrence_rdates"] = json!([]);
+        for occurrence in expand(&excluded_row)? {
+            excluded.insert(key(&occurrence["start"])?);
+        }
+    }
     if let Some(exdates) = row["recurrence_exdates"].as_array() {
         for v in exdates {
             if !compatible(start, v) {
@@ -354,6 +426,10 @@ pub(crate) fn expand(row: &Value) -> Option<Vec<Value>> {
     let mut complete = false;
     for offset in 0..=SCAN_DAYS {
         let day = base.date().checked_add_days(chrono::Days::new(offset))?;
+        if windowed && day > window_end {
+            complete = true;
+            break;
+        }
         // A one-day cushion handles UTC UNTIL compared with IANA-local dates.
         if let Some(until) = &rule.until {
             if day
@@ -376,11 +452,11 @@ pub(crate) fn expand(row: &Value) -> Option<Vec<Value>> {
             break;
         }
         count += 1;
-        if count > LIMIT {
+        if !windowed && count > LIMIT {
             return None;
         }
         let id = key(&value)?;
-        if !excluded.contains(&id) && seen.insert(id) {
+        if (!windowed || day >= window_start) && !excluded.contains(&id) && seen.insert(id) {
             starts.push(value);
         }
         if rule.count == Some(count) {
@@ -415,11 +491,100 @@ pub(crate) fn expand(row: &Value) -> Option<Vec<Value>> {
             key(&start)?
         };
         v["id"] = json!(format!("{}:{id}", row["id"].as_str()?));
-        v["end"] = end_for(&start, &row["start"], &row["end"])?;
+        v["end"] = if let Some(duration) = row["duration"].as_str().filter(|v| !v.is_empty()) {
+            duration_end(&start, duration)?
+        } else {
+            end_for(&start, &row["start"], &row["end"])?
+        };
         v["start"] = start;
         v["recurrence_instance"] = json!(id);
         v["recurrence_expanded"] = json!(true);
+        if windowed {
+            v["recurrence_window_end"] = json!(window_end.to_string());
+        }
         out.push(v);
     }
     Some(out)
+}
+
+/// Positive RFC duration; calendar days preserve wall-clock time across DST.
+pub(crate) fn duration_end(start: &Value, raw: &str) -> Option<Value> {
+    let text = raw.strip_prefix('P')?;
+    if text.is_empty() || text.len() > 80 {
+        return None;
+    }
+    let (mut days, mut seconds, mut number, mut time, mut any) =
+        (0i64, 0i64, String::new(), false, false);
+    let mut seen = HashSet::new();
+    let mut last = 0;
+    for c in text.chars() {
+        if c.is_ascii_digit() {
+            number.push(c);
+            continue;
+        }
+        if c == 'T' && !time && number.is_empty() {
+            if start["all_day"] == true {
+                return None;
+            }
+            time = true;
+            continue;
+        }
+        let n = number.parse::<i64>().ok()?;
+        number.clear();
+        any = true;
+        let order = match (time, c) {
+            (false, 'W') => 1,
+            (false, 'D') => 2,
+            (true, 'H') => 3,
+            (true, 'M') => 4,
+            (true, 'S') => 5,
+            _ => return None,
+        };
+        if !seen.insert(c) || order <= last {
+            return None;
+        }
+        last = order;
+        if c == 'W' {
+            days = days.checked_add(n.checked_mul(7)?)?;
+        } else if c == 'D' {
+            days = days.checked_add(n)?;
+        } else {
+            seconds = seconds.checked_add(n.checked_mul(match c {
+                'H' => 3600,
+                'M' => 60,
+                _ => 1,
+            })?)?;
+        }
+    }
+    if raw.ends_with('T')
+        || !number.is_empty()
+        || !any
+        || days + seconds == 0
+        || days > 366
+        || seconds > 366 * 86400
+        || (seen.contains(&'W') && seen.len() != 1)
+        || (start["all_day"] == true && time)
+    {
+        return None;
+    }
+    let local = local(start)?.checked_add_signed(chrono::Duration::days(days))?;
+    let base = make(start, local)?;
+    if let Some(at) = instant(&base) {
+        let at = at.checked_add_signed(chrono::Duration::seconds(seconds))?;
+        let end = if start["raw"].as_str()?.ends_with('Z') {
+            at.naive_utc()
+        } else {
+            let zone: chrono_tz::Tz = start["timezone"].as_str()?.parse().ok()?;
+            at.with_timezone(&zone).naive_local()
+        };
+        make(start, end)
+    } else {
+        make(
+            start,
+            local.checked_add_signed(chrono::Duration::seconds(seconds))?,
+        )
+    }
+}
+pub(crate) fn occurrence_key(value: &Value) -> Option<String> {
+    key(value)
 }

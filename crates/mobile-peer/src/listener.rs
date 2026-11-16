@@ -188,7 +188,9 @@ fn repo(s: &Server) -> Result<Repository> {
 fn hello(s: &Server, scopes: Vec<String>, received: i64) -> Hello {
     Hello {
         mobile: true,
-        deliveries: vec![],
+        deliveries: repo(s)
+            .and_then(|r| r.recent_deliveries())
+            .unwrap_or_default(),
         device: s.device.clone(),
         label: s.label.clone(),
         scopes,
@@ -380,6 +382,7 @@ async fn receive(
         }
         live(s, &trust)?;
         let mut r = repo(s)?;
+        crate::mobile_reminders::save_peer(&r, &trust.device, &trust.scopes, &request.deliveries)?;
         let mut cursor = request.received;
         channel
             .send(&hello(

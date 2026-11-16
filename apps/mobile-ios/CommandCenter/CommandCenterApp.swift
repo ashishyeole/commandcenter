@@ -203,6 +203,7 @@ struct StoreError: LocalizedError { var message: String; var errorDescription: S
 @main struct CommandCenterApp: App { @UIApplicationDelegateAdaptor(PushAppDelegate.self) var pushDelegate; @StateObject private var store = LocalStore(); var body: some Scene { WindowGroup { HomeView().environmentObject(store) } } }
 struct HomeView: View {
     @EnvironmentObject var store: LocalStore
+    @Environment(\.scenePhase) private var reminderPhase
     @State private var filter = "all"
     @State private var search = ""
     @State private var editing: Item?
@@ -243,7 +244,7 @@ struct HomeView: View {
             .fileImporter(isPresented:$importing,allowedContentTypes:[.json]) { result in do { let url = try result.get(); let access = url.startAccessingSecurityScopedResource(); defer { if access {url.stopAccessingSecurityScopedResource()} }; pending = try Data(contentsOf:url) } catch { message = error.localizedDescription } }
             .confirmationDialog("Import this exchange? Existing IDs will be preserved.",isPresented:Binding(get:{pending != nil},set:{if !$0 {pending=nil}})) { Button("Import missing items") { if let data=pending { do {message="Imported \(try store.importMissing(data)) items"} catch {message=error.localizedDescription} };pending=nil };Button("Cancel",role:.cancel){pending=nil} }
             .alert("Command Center",isPresented:Binding(get:{message != nil || store.error != nil},set:{if !$0{message=nil;store.error=nil}})) { Button("OK"){message=nil;store.error=nil} } message: { Text(message ?? store.error ?? "") }
-        }.tint(Color(red:0.22,green:0.37,blue:0.26))
+        }.tint(Color(red:0.22,green:0.37,blue:0.26)).onChange(of:reminderPhase){_,phase in if phase == .active{store.reload()}}.onReceive(Timer.publish(every:60,on:.main,in:.common).autoconnect()){_ in MobileReminders.coordinate(store)}
     }
 }
 struct CaptureView: View {
@@ -379,6 +380,7 @@ struct MobileWorkspace:Codable,Identifiable {
     private func apply(_ value:[String:Any]) throws {
         guard let values=value["items"] else{return};items=try JSONDecoder().decode([Item].self,from:JSONSerialization.data(withJSONObject:values))
         MobileReminders.reconcile(items)
+        MobileReminders.coordinate(self)
         peerStatus=value["peer_status"] as? [[String:Any]] ?? [];records=try JSONDecoder().decode([MobileWorkspace].self,from:JSONSerialization.data(withJSONObject:value["records"] ?? []));conflicts=value["conflicts"] as? [[String:Any]] ?? [];verification=value["verification"] as? String ?? ""
         let feeds=value["feeds"] as? [[String:Any]] ?? [];discoveries=try feeds.flatMap{try JSONDecoder().decode([MobileDiscovery].self,from:JSONSerialization.data(withJSONObject:$0["items"] ?? []))}
     }
@@ -581,6 +583,24 @@ struct PrivateFilePreview:View {
 
 @MainActor enum MobileReminders {
     static let enabledKey="pcc-local-reminders-enabled"
+    static let coordinatedKey="pcc-coordinated-reminders"
+    private static var coordinating=false
+    static func coordinate(_ store:LocalStore) {
+        guard UserDefaults.standard.bool(forKey:enabledKey),UserDefaults.standard.bool(forKey:coordinatedKey),!coordinating,UIApplication.shared.applicationState == .active else{return}
+        let hour=Calendar.current.component(.hour,from:Date());guard hour>=8 && hour<22 else{return}
+        coordinating=true
+        Task { @MainActor in
+            defer{coordinating=false}
+            let center=UNUserNotificationCenter.current();let settings=await center.notificationSettings()
+            guard settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional else{return}
+            let formatter=DateFormatter();formatter.dateFormat="yyyy-MM-dd";formatter.locale=Locale(identifier:"en_US_POSIX");let today=formatter.string(from:Date())
+            do{let value=try store.call("reminder_candidates",["today":today]);let keys=value["keys"] as? [String] ?? [];guard !keys.isEmpty,UserDefaults.standard.bool(forKey:coordinatedKey) else{return}
+                let content=UNMutableNotificationContent();content.title="A task needs your attention";content.body="Open Command Center to review your due tasks.";content.sound = .default
+                try await center.add(UNNotificationRequest(identifier:"pcc-coordinated-task-review",content:content,trigger:nil))
+                _=try store.call("reminder_submitted",["today":today,"keys":Array(keys.prefix(128)),"consent":true])
+            }catch{UserDefaults.standard.set("Coordinated reminder needs retry: \(error.localizedDescription)",forKey:"pcc-reminder-error")}
+        }
+    }
     private static var scheduling:Task<Void,Never>?
     static func reconcile(_ items:[Item]) {
         scheduling?.cancel()
@@ -615,6 +635,8 @@ struct MobileReminderSettings:View {
             Text("System permission, Focus mode, battery settings and device availability affect delivery. Already scheduled alerts can become stale while the app is closed. These generic review reminders do not suppress alerts on other devices.").font(.caption)
             if enabled {Button("Disable & remove scheduled reminders"){UserDefaults.standard.set(false,forKey:MobileReminders.enabledKey);enabled=false;MobileReminders.reconcile([]);message="Scheduled reminders removed."}}
             else {Button("Request permission & enable local reminders"){UNUserNotificationCenter.current().requestAuthorization(options:[.alert,.sound]){granted,error in Task{@MainActor in if let error{message=error.localizedDescription}else if granted{UserDefaults.standard.set(true,forKey:MobileReminders.enabledKey);enabled=true;MobileReminders.reconcile(store.items);message="Upcoming local reminders scheduled."}else{message="Notifications were not allowed. You can change this in iOS Settings."}}}}}
+            Toggle("Coordinate foreground task alerts with paired devices",isOn:Binding(get:{UserDefaults.standard.bool(forKey:MobileReminders.coordinatedKey)},set:{value in UserDefaults.standard.set(value,forKey:MobileReminders.coordinatedKey);if value{MobileReminders.coordinate(store)}else{UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers:["pcc-coordinated-task-review"])}})).disabled(!enabled)
+            Text("After foreground sync, recent exact-occurrence receipts reduce duplicates. Alerts are generic and respect 10 PM–8 AM quiet hours. Disconnected devices and simultaneous submissions may duplicate; future scheduled digests stay independent. Foreground coordination stops when this app is closed.").font(.caption)
             Button("Refresh scheduled reminders"){MobileReminders.reconcile(store.items);message="Schedule refreshed from current local tasks."}.disabled(!enabled)
             if !message.isEmpty{Text(message)}
         }.navigationTitle("Task reminders")

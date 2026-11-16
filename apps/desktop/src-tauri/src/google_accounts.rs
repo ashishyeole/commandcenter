@@ -143,7 +143,7 @@ pub fn configure_google_account(
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting("google_enabled", "false")?;
+        .set_integration_flag("google_enabled", false)?;
     state
         .repo
         .lock()
@@ -347,7 +347,7 @@ pub async fn connect_google_account(
                 "false"
             },
         )?;
-        repo.set_setting("google_enabled", "true")?;
+        repo.set_integration_flag("google_enabled", true)?;
         Ok(json!({"connected":true,"scopes":c.scopes}))
     };
     tokio::select! {_=cancel.cancelled()=>Err("Google sign-in cancelled".into()),r=work=>r}
@@ -520,7 +520,7 @@ pub async fn disconnect_google_account(state: State<'_, AppState>, revoke: bool)
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting("google_enabled", "false")?;
+        .set_integration_flag("google_enabled", false)?;
     state
         .repo
         .lock()

@@ -114,6 +114,71 @@ pub(crate) fn defaults() -> Vec<Stream> {
         .for_each(|s| s.enabled = false);
     rows
 }
+#[tauri::command]
+pub fn add_research_starters(state: State<AppState>) -> Result<usize> {
+    let mut rows = list(&state)?;
+    let mut count = 0;
+    for mut s in [
+        stream(
+            "crossref-robotics",
+            "Crossref robotics research",
+            "robotics",
+            "crossref",
+            "robotics",
+            "papers",
+            "world",
+        ),
+        stream(
+            "epmc-agriculture",
+            "Europe PMC agricultural research",
+            "agriculture",
+            "europepmc",
+            "precision agriculture",
+            "papers",
+            "world",
+        ),
+        stream(
+            "patent-index",
+            "Patent index — historical coverage",
+            "robotics",
+            "patents",
+            "robot",
+            "papers",
+            "world",
+        ),
+        stream(
+            "india-schemes",
+            "Official India agriculture announcements",
+            "agriculture",
+            "schemes",
+            "",
+            "news",
+            "IN",
+        ),
+    ] {
+        if rows.iter().any(|r| r.id == s.id) {
+            continue;
+        }
+        if rows.len() >= 64 {
+            return Err("Remove a source before adding research starters".into());
+        }
+        s.enabled = !["patents", "schemes"].contains(&s.provider.as_str());
+        if s.provider != "patents" {
+            s.options.days = 90;
+        }
+        rows.push(s);
+        count += 1;
+    }
+    state
+        .repo
+        .lock()
+        .map_err(|_| "Database unavailable")?
+        .set_setting(
+            "discovery_hub_streams",
+            &serde_json::to_string(&rows).map_err(|e| e.to_string())?,
+        )?;
+    Ok(count)
+}
 fn validate(s: &Stream) -> Result<()> {
     if s.id.is_empty()
         || s.id.len() > 80
@@ -132,6 +197,10 @@ fn validate(s: &Stream) -> Result<()> {
         ]
         .contains(&s.topic.as_str())
         || ![
+            "crossref",
+            "europepmc",
+            "patents",
+            "schemes",
             "github",
             "models",
             "ollama",
@@ -279,6 +348,64 @@ pub fn remove_discovery_stream(state: State<AppState>, id: String) -> Result<()>
     )
 }
 
+fn event_observation(item: &Value) -> Value {
+    let mut v = serde_json::Map::new();
+    for key in [
+        "title",
+        "description",
+        "start_date",
+        "end_date",
+        "location",
+        "event_status",
+        "url",
+    ] {
+        v.insert(key.into(), item[key].clone());
+    }
+    Value::Object(v)
+}
+fn review_event_changes(
+    repo: &mut command_center_core::Repository,
+    stream: &str,
+    items: &[Value],
+) -> Result<()> {
+    for mut record in repo
+        .records("", false)?
+        .into_iter()
+        .filter(|r| r.fields.get("hub_watch_stream").map(String::as_str) == Some(stream))
+    {
+        let Some(item) = items
+            .iter()
+            .find(|i| i["id"].as_str() == record.fields.get("hub_watch_id").map(String::as_str))
+        else {
+            continue;
+        };
+        let next = event_observation(item);
+        let previous = record
+            .fields
+            .get("hub_watch_snapshot")
+            .and_then(|v| serde_json::from_str::<Value>(v).ok());
+        if previous.as_ref() == Some(&next) {
+            continue;
+        }
+        if previous.is_some() {
+            let title = format!("Publisher event details changed: {}", record.title);
+            let mut alert = command_center_core::workspace::Record::new(
+                "notifications",
+                &title.chars().take(500).collect::<String>(),
+                &repo.device_id,
+            );
+            alert.status = "needs_review".into();
+            alert.links.push(record.id.clone());
+            alert.summary=format!("Observed {}. Review dates, venue, registration and satellite details at {}. Saved plans were retained. A missing event in a bounded feed does not establish cancellation.",command_center_core::now(),item["url"].as_str().unwrap_or("the publisher"));
+            repo.save_record(alert)?;
+        }
+        record
+            .fields
+            .insert("hub_watch_snapshot".into(), next.to_string());
+        repo.save_record(record)?;
+    }
+    Ok(())
+}
 pub(crate) async fn refresh(state: &AppState, id: &str) -> Result<Value> {
     let s = list(state)?
         .into_iter()
@@ -331,6 +458,7 @@ pub(crate) async fn refresh(state: &AppState, id: &str) -> Result<Value> {
                 item["region"] = json!(s.region);
                 item["provider_rank"] = json!(rank + 1);
             }
+            review_event_changes(&mut repo, &s.id, &items)?;
             let feed = repo.cache_feed(&format!("hub:{}", s.id), &json!(items))?;
             repo.evaluate_watchlists()?;
             let health =
@@ -355,6 +483,7 @@ pub async fn refresh_discovery_stream(state: State<'_, AppState>, id: String) ->
 
 async fn fetch(state: &AppState, s: &Stream) -> Result<Vec<Value>> {
     match s.provider.as_str(){
+ "crossref"|"europepmc"|"patents"|"schemes"=>crate::scholarly_sources::fetch(state,&s.provider,&s.query,s.options.days).await,
  "rss"=>values(crate::research::fetch(state,"rss",&s.query).await?),
  "youtube_feed"|"reddit"=>{if s.provider=="reddit" {if let Some(rows)=reddit_authorized(state,s).await?{return Ok(rows);}let until=state.repo.lock().map_err(|_|"Database unavailable")?.setting("hub_reddit_next")?.and_then(|s|s.parse::<i64>().ok()).unwrap_or(0);let delay=until-chrono::Utc::now().timestamp();if delay>10{return Err(format!("Reddit public RSS is paused/rate-limited. Retry in {delay} seconds; existing results retained."));}if delay>0{tokio::time::sleep(std::time::Duration::from_secs(delay as u64+1)).await;}state.repo.lock().map_err(|_|"Database unavailable")?.set_setting("hub_reddit_next",&(chrono::Utc::now().timestamp()+6).to_string())?;}let url=if s.provider=="youtube_feed"{format!("https://www.youtube.com/feeds/videos.xml?channel_id={}",resolve_youtube(&s.query).await?)}else{let order=if ["hot","new","top"].contains(&s.options.sort.as_str()){s.options.sort.as_str()}else{"hot"};format!("https://www.reddit.com/r/{}/{order}/.rss?limit=10",s.query)};let fetched=crate::research::fetch(state,"rss",&url).await;if s.provider=="reddit"&&fetched.is_err(){state.repo.lock().map_err(|_|"Database unavailable")?.set_setting("hub_reddit_next",&(chrono::Utc::now().timestamp()+900).to_string())?;}let mut rows=values(fetched?)?;for r in &mut rows{r["source"]=json!(if s.provider=="youtube_feed"{"youtube"}else{"reddit"});r["metric"]=json!(if s.provider=="youtube_feed"{format!("{} · public channel feed",s.name)}else{format!("r/{} · {}",s.query,if s.options.sort.is_empty(){"hot"}else{&s.options.sort})});}Ok(rows)},
  "bluesky"|"mastodon"|"x"=>social(state,s).await,
@@ -923,7 +1052,7 @@ pub fn save_discovery_x_token(state: State<AppState>, value: String) -> Result<(
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting("discovery_x_configured", "true")
+        .set_integration_flag("discovery_x_configured", true)
 }
 #[tauri::command]
 pub fn remove_discovery_x_token(state: State<AppState>) -> Result<()> {
@@ -931,7 +1060,7 @@ pub fn remove_discovery_x_token(state: State<AppState>) -> Result<()> {
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting("discovery_x_configured", "false")?;
+        .set_integration_flag("discovery_x_configured", false)?;
     match keyring::Entry::new("com.personal.commandcenter.api", "discovery-x")
         .map_err(|e| e.to_string())?
         .delete_credential()
@@ -1447,7 +1576,7 @@ pub fn save_discovery_reddit_access(state: State<AppState>, access: RedditAccess
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting("discovery_reddit_configured", "true")
+        .set_integration_flag("discovery_reddit_configured", true)
 }
 #[tauri::command]
 pub fn remove_discovery_reddit_access(state: State<AppState>) -> Result<()> {
@@ -1455,7 +1584,7 @@ pub fn remove_discovery_reddit_access(state: State<AppState>) -> Result<()> {
         .repo
         .lock()
         .map_err(|_| "Database unavailable")?
-        .set_setting("discovery_reddit_configured", "false")?;
+        .set_integration_flag("discovery_reddit_configured", false)?;
     match keyring::Entry::new("com.personal.commandcenter.api", "discovery-reddit")
         .map_err(|e| e.to_string())?
         .delete_credential()
@@ -1700,9 +1829,9 @@ pub async fn choose_discovery_link_import(state: State<'_, AppState>) -> Result<
 }
 
 #[cfg(test)]
-mod failure_tests {
+pub(crate) mod failure_tests {
     use super::*;
-    fn state() -> AppState {
+    pub(crate) fn state() -> AppState {
         use std::{collections::HashMap, sync::Mutex};
         AppState {
             repo: Mutex::new(command_center_core::Repository::open(":memory:").unwrap()),
@@ -1796,5 +1925,47 @@ mod failure_tests {
         assert!(youtube_input("https://user:pass@youtube.com/@person").is_err());
         assert!(youtube_input("https://www.youtube.com/watch?v=video").is_err());
         assert_eq!(channel_from_html(r#"{"channelId":"UCrecommended000000000000","channelMetadataRenderer":{"externalId":"UCEBb1b_L6zDS3xTUrIALZOw"}}"#).unwrap(),"UCEBb1b_L6zDS3xTUrIALZOw");
+    }
+}
+
+#[cfg(test)]
+mod watched_event_tests {
+    use super::*;
+    #[test]
+    fn event_details_alert_once_and_keep_saved_plans() {
+        let mut repo = command_center_core::Repository::open(":memory:").unwrap();
+        let old = json!({"id":"fixture","title":"Tournament","start_date":"2026-12-01","description":"Registration soon","url":"https://example.com/tournament"});
+        let mut record = command_center_core::workspace::Record::new(
+            "poker",
+            "My tournament plan",
+            &repo.device_id,
+        );
+        record
+            .fields
+            .insert("hub_watch_stream".into(), "fixture-stream".into());
+        record
+            .fields
+            .insert("hub_watch_id".into(), "fixture".into());
+        record.fields.insert(
+            "hub_watch_snapshot".into(),
+            event_observation(&old).to_string(),
+        );
+        record.fields.insert("date".into(), "2026-12-01".into());
+        let saved = repo.save_record(record).unwrap();
+        let mut next = old.clone();
+        next["start_date"] = json!("2026-12-02");
+        next["description"] = json!("Registration open; satellite available");
+        review_event_changes(&mut repo, "fixture-stream", &[next.clone()]).unwrap();
+        review_event_changes(&mut repo, "fixture-stream", &[next]).unwrap();
+        review_event_changes(&mut repo, "fixture-stream", &[]).unwrap();
+        let rows = repo.records("", false).unwrap();
+        assert_eq!(
+            rows.iter().filter(|r| r.module == "notifications").count(),
+            1
+        );
+        assert_eq!(
+            rows.iter().find(|r| r.id == saved.id).unwrap().fields["date"],
+            "2026-12-01"
+        );
     }
 }
