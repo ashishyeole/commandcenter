@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-11-16T21:01:20.238007+00:00",
+  "credentials_used": false,
+  "sources": [
+    {
+      "count": 30,
+      "ok": true,
+      "provider": "crossref",
+      "sample_dates": [
+        "2026-11-16T00:00:00Z",
+        "2026-11-16T00:00:00Z"
+      ]
+    },
+    {
+      "count": 30,
+      "ok": true,
+      "provider": "europepmc",
+      "sample_dates": [
+        "2026-11-13T00:00:00Z",
+        "2026-11-12T00:00:00Z"
+      ]
+    },
+    {
+      "count": 30,
+      "ok": true,
+      "provider": "patents",
+      "sample_dates": [
+        "2012-01-04T00:00:00Z",
+        "2011-10-19T00:00:00Z"
+      ]
+    },
+    {
+      "error": "Feed DNS lookup failed",
+      "ok": false,
+      "provider": "schemes"
+    }
+  ]
+}

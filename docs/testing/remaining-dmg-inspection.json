@@ -1,0 +1,12 @@
+{
+  "source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
+  "version": "0.5.0",
+  "architecture": "arm64",
+  "ad_hoc_development_build": true,
+  "dmg_sha256": "991a7c74e9784bcab1d428463f00f8fb0d3019de72dce09b3819baba6f157ad3",
+  "checksum_verified": true,
+  "mounted_readonly": true,
+  "strict_deep_signature_verified": true,
+  "applications_shortcut": "/Applications",
+  "normal_profile_launched": false
+}

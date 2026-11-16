@@ -33,7 +33,7 @@
       "status": "Implemented in source",
       "implemented": "Five migrations, WAL, stable IDs, revisions and ordinary attachment storage.",
       "remaining": "No known source gap in this narrowly defined task; runtime migration verification remains outstanding.",
-      "notes": "Source reviewed and compiled where applicable. No tests, live provider calls or runtime acceptance performed in this pass.",
+      "notes": "Historical implementation note: Source reviewed and compiled where applicable. No tests, live provider calls or runtime acceptance performed in this pass. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "crates/core/src/lib.rs",
       "original_prd_percent": 100,
       "in_scope": true
@@ -120,7 +120,7 @@
       "status": "Implemented in source",
       "implemented": "Due tasks, workspace dates and notification records, local mission/approval review, and explicit read-only Gmail headers/calendar pages inside Inbox. Account results remain in memory and clear on hide or timeout.",
       "remaining": "No known source gap in this inbox task; broader provider support and runtime acceptance remain separately tracked.",
-      "notes": "Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed.",
+      "notes": "Historical implementation note: Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "apps/desktop/src/InboxSources.tsx",
       "original_prd_percent": 100,
       "in_scope": true
@@ -265,7 +265,7 @@
       "status": "Implemented in source",
       "implemented": "Opt-in scheduled refresh, retry delays, atomic source cooldown reservations, Retry-After/reset header enforcement, caches, read state and visible stale-cache warnings.",
       "remaining": "No known source gap in the bounded collector policy; provider quota/runtime acceptance remains unverified.",
-      "notes": "Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed.",
+      "notes": "Historical implementation note: Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 100,
       "in_scope": true
@@ -465,7 +465,7 @@
       "status": "Implemented in source",
       "implemented": "Company views, public contacts/deadlines, linked obligation tasks and project/company grouping.",
       "remaining": "User-entered dates still need source verification; this is not a legal filing service.",
-      "notes": "Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed.",
+      "notes": "Historical implementation note: Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "apps/desktop/src/CompanyOverview.tsx",
       "original_prd_percent": 75,
       "in_scope": true,
@@ -588,7 +588,7 @@
       "status": "Implemented in source",
       "implemented": "Daily/week/month/year/custom recurrence, selected weekdays, end dates and task-completion prerequisites with local cycle checks.",
       "remaining": "No known source gap in these scheduling rules; runtime and cross-device behavior unverified.",
-      "notes": "Source reviewed and compiled where applicable. No tests, live provider calls or runtime acceptance performed in this pass.",
+      "notes": "Historical implementation note: Source reviewed and compiled where applicable. No tests, live provider calls or runtime acceptance performed in this pass. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "apps/desktop/src/TaskSchedule.tsx",
       "original_prd_percent": 100,
       "in_scope": true
@@ -621,7 +621,7 @@
       "status": "Implemented in source",
       "implemented": "Personal SendGrid email, Twilio SMS/voice and authenticated ntfy push; consented destinations, generic content, quiet hours/snooze, optional daily policies and outcome history. Native APNs/FCM registration and token refresh/removal, encrypted host token storage, provider adapters, own-device checks, send limits and desktop manual/daily native-push channel.",
       "remaining": "Live push requires owner-supplied credentials, a reachable HTTPS host and a correctly signed iOS build. No live delivery verified. History distinguishes provider acceptance from delivery; no delivery callback claim.",
-      "notes": "Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction.",
+      "notes": "Historical implementation note: Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "docs/NATIVE-PUSH.md",
       "original_prd_percent": 100,
       "in_scope": true
@@ -808,7 +808,7 @@
       "status": "Implemented in source",
       "implemented": "Full-content/tag/field graph search, one-to-three-hop context, explicit links and reviewable lexical/tag suggestions.",
       "remaining": "Local semantic models are excluded. Relevance evaluation remains separate; suggested relationships require review.",
-      "notes": "Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed.",
+      "notes": "Historical implementation note: Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "apps/desktop/src/KnowledgeGraph.tsx",
       "original_prd_percent": 75,
       "in_scope": true,
@@ -1033,7 +1033,7 @@
       "status": "Implemented in source",
       "implemented": "Linked notes and original document attachments with versions, checksums, text indexing and portable exports. Bounded, cancellable PDF/PNG/JPEG text extraction with atomic index updates. Attachment originals/version metadata now replicate through scoped causal peer sync and can be exported on both companions.",
       "remaining": "Runtime verification outstanding. Processing remains bounded to supported sizes/formats; streaming large-file storage and byte-offset resume are future enhancements.",
-      "notes": "Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction.",
+      "notes": "Historical implementation note: Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "docs/ATTACHMENT-SYNC.md",
       "original_prd_percent": 100,
       "in_scope": true
@@ -1127,7 +1127,7 @@
       "status": "Partially implemented",
       "implemented": "Consent-based bounded ClamAV attachment scan adapter and dependency advisory audit; patched SQLite/ZIP vulnerabilities.",
       "remaining": "Independent security review and runtime adversarial acceptance remain; five transitive dependency warnings are documented.",
-      "notes": "Source implementation; compile/package checks only. No runtime tests, provider actions or publication performed.",
+      "notes": "Historical implementation note: Source implementation; compile/package checks only. No runtime tests, provider actions or publication performed. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "docs/security/DEPENDENCY-ADVISORIES.json",
       "original_prd_percent": 50,
       "in_scope": false,
@@ -1466,7 +1466,7 @@
       "status": "Partially implemented",
       "implemented": "Opt-in signed updater artifact configuration, unpublished manifest preparation, owner-provided Android release signing and documented store materials.",
       "remaining": "Owner credentials, actual signed/notarized distributions, platform screenshots/privacy declarations and store submissions remain.",
-      "notes": "Source implementation; compile/package checks only. No runtime tests, provider actions or publication performed.",
+      "notes": "Historical implementation note: Source implementation; compile/package checks only. No runtime tests, provider actions or publication performed. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "docs/release/RELEASE-PREPARATION.md",
       "original_prd_percent": 25,
       "in_scope": false,
@@ -1662,7 +1662,7 @@
       "status": "Partially implemented",
       "implemented": "Opt-in stateless hosted scheduler with CAS-backed state, encrypted archive relay, moderated public extension catalog, OCI files and unapplied Cloud Run/GCS/Scheduler Terraform. Optional native APNs/FCM provider adapters, encrypted token registry and bounded own-device send API.",
       "remaining": "Managed production deployment, live native-push delivery acceptance, large-scale marketplace operations and service acceptance remain.",
-      "notes": "Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction.",
+      "notes": "Historical implementation note: Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "services/optional-host/README.md",
       "original_prd_percent": 50,
       "in_scope": false,
@@ -1806,7 +1806,13 @@
       "title": "Source availability and optional datasets",
       "detail": "PIB RSS DNS failed and remains paused. The public patent index returned historical records. Proprietary app-market data needs an authorized schema-1 endpoint/import; custom prices need an approved public JSON endpoint. Live provider acceptance does not follow from source code completion.",
       "tasks": "T012, T014, T019, T047"
+    },
+    {
+      "title": "New native Mac UI checks",
+      "detail": "Mac remains locked after two final CUA attempts. Unlock is needed for the new statement/selected-field restore dialogs, rendered audit webview and permission/benchmark UI. Automated tests, app/DMG integrity and cross-platform CI pass; these UI flows are not claimed accepted.",
+      "tasks": "T005, T024, T029, T061, T070"
     }
   ],
-  "scope": "Personal local command center: discover, monitor, organize, compare and track. No local LLM/model downloads, robotics execution, prototype execution or production commercialization."
+  "scope": "Personal local command center: discover, monitor, organize, compare and track. No local LLM/model downloads, robotics execution, prototype execution or production commercialization.",
+  "desktop_source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c"
 }

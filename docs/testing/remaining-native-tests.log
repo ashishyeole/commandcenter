@@ -1,0 +1,63 @@
+   Compiling personal-command-center v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/desktop/src-tauri)
+warning: linker stderr: ld: duplicate -rpath '@executable_path/../Frameworks' ignored
+  |
+  = note: `#[warn(linker_messages)]` on by default
+
+warning: `personal-command-center` (bin "personal-command-center" test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.62s
+     Running unittests src/main.rs (target/debug/deps/personal_command_center-1a5604d699cf08dd)
+
+running 50 tests
+test discovery_hub::tests::live_public_aggregation ... ignored, Live internet test: explicitly run with --ignored; isolated temp database, no credentials
+test background_reminders::tests::launch_agent_escapes_paths_and_has_no_shell ... ok
+test event_sources::detail_tests::registration_and_satellite_changes_are_reviewed ... ok
+test backups::stream_schedule_tests::legacy_schedules_keep_standard_format ... ok
+test discovery_hub::tests::custom_sources_reject_credentials_and_invalid_channels ... ok
+test discovery_hub::failure_tests::youtube_handles_accept_only_channel_locations ... ok
+test discovery_hub::tests::publisher_date_ranges_are_strict ... ok
+test discovery_hub::tests::defaults_validate_and_public_events_are_not_fake_bookmarks ... ok
+test bank_accounts::enrollment_tests::hosted_url_and_completed_tokens_are_validated ... ok
+test bank_reconcile::tests::preview_requires_exact_account_amount_and_deduplicates ... ok
+test event_sources::expanded_calendar_tests::nonexistent_local_time_does_not_consume_count ... ok
+test event_sources::expanded_calendar_tests::weekly_days_respect_interval_and_week_start ... ok
+test event_sources::expanded_calendar_tests::monthly_invalid_month_days_are_skipped_instead_of_clamped ... ok
+test event_sources::recurrence_tests::until_between_weekly_dates_does_not_drop_supported_rule ... ok
+test event_sources::expanded_calendar_tests::individual_override_replaces_original_occurrence ... ok
+test google_accounts::message_tests::body_scope_does_not_follow_from_metadata_grant ... ok
+test google_background::tests::background_requires_saved_consent_and_matching_scopes ... ok
+test event_sources::recurrence_tests::weekly_all_day_instances_preserve_exclusive_duration ... ok
+test google_background::tests::expired_reset_revoked_and_replaced_snapshots_are_hidden ... ok
+test event_sources::expanded_calendar_tests::timezone_dst_preserves_wall_clock_and_duration_with_exceptions ... ok
+test large_archives::cancellation_tests::cancelled_io_never_forwards_new_data ... ok
+test google_accounts::message_tests::unnamed_attachment_subtrees_are_not_used_as_message_body ... ok
+test google_accounts::message_tests::mime_preview_prefers_plain_and_ignores_attachments ... ok
+test poker_search::tests::invalid_horizons_and_unbounded_input_fail ... ok
+test model_catalogue::tests::layout_failure_is_not_a_successful_empty_feed ... ok
+test event_sources::expanded_calendar_tests::exclusions_win_and_unknown_exception_syntax_prevents_expansion ... ok
+test event_sources::expanded_calendar_tests::positional_weekdays_duration_and_exrules_expand ... ok
+test price_watch::tests::currency_and_boolean_types_are_required ... ok
+test model_catalogue::tests::catalogue_only_accepts_model_links_and_plain_metadata ... ok
+test rendered_audit::tests::rendered_signals_have_bounded_explained_score ... ok
+test scholarly_sources::live_tests::live_remaining_sources ... ignored, Explicit public internet adapter verification
+test poker_search::tests::cross_provider_query_rolls_across_year_end_and_encodes_input ... ok
+test google_accounts::message_tests::html_is_inert_and_preview_is_utf8_bounded ... ok
+test discovery_hub::tests::event_markup_filters_ended_cancelled_and_preserves_source_dates ... ok
+test startup_config_tests::bundled_updater_configuration_deserializes_without_network_defaults ... ok
+test scholarly_sources::tests::partial_dates_and_patent_provenance_remain_explicit ... ok
+test research::aggregation_parser_tests::channel_media_titles_do_not_duplicate_and_markup_is_inert ... ok
+test event_sources::expanded_calendar_tests::ordinal_weekdays_negative_month_days_and_leap_years ... ok
+test sync_wire::transport_tests::wrong_pinned_peer_cannot_authenticate ... ok
+test event_sources::recurrence_tests::unsupported_rules_remain_unexpanded_and_unbounded_rules_are_windowed ... ok
+test event_sources::expanded_calendar_tests::utc_until_is_inclusive_and_unsupported_rules_stay_explicit ... ok
+test event_sources::expanded_calendar_tests::unbounded_series_has_explicit_finite_window ... ok
+test webdav_stream::tests::readback_and_download_reject_changed_sizes_and_honor_cancel ... ok
+test discovery_hub::failure_tests::failure_keeps_last_cache_and_reports_health ... ok
+test discovery_hub::watched_event_tests::event_details_alert_once_and_keep_saved_plans ... ok
+test discovery_hub::failure_tests::link_import_validates_whole_batch_before_writing ... ok
+test citation_review::tests::review_hash_changes_with_source_and_exclusions_block_review ... ok
+test performance::tests::synthetic_benchmark_reports_actual_latency ... ok
+test backups::stream_schedule_tests::scheduled_stream_is_verified_encrypted_and_restorable ... ok
+test sync_wire::transport_tests::authenticated_large_file_frames_roundtrip ... ok
+
+test result: ok. 48 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 2.65s
+

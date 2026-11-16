@@ -1,0 +1,23 @@
+{
+  "capture": {
+    "max_ms": 1.2013749999999999,
+    "p50_ms": 0.209417,
+    "p95_ms": 0.302833,
+    "samples": 100
+  },
+  "checked_at": "2026-11-16T21:33:01.066120+00:00",
+  "dashboard_snapshot": {
+    "max_ms": 1.153625,
+    "p50_ms": 0.989458,
+    "p95_ms": 1.010667,
+    "samples": 30
+  },
+  "keyword_search": {
+    "max_ms": 1.126625,
+    "p50_ms": 1.062,
+    "p95_ms": 1.0897089999999998,
+    "samples": 30
+  },
+  "scope": "Temporary SQLite database on this machine. Measures storage/API latency, not native render time, screen-reader usability, mobile performance or a production load guarantee. No personal records or account requests.",
+  "synthetic_records": 500
+}

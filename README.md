@@ -42,9 +42,9 @@ npm run package:windows   # Windows NSIS EXE, run on Windows
 ./scripts/package-mac-plain.sh  # DMG fallback without Finder automation, after debug app build
 ```
 
-A macOS `.app` is produced under `target/debug/bundle/macos/`. The current unsigned debug DMG is `target/debug/bundle/dmg/Personal Command Center_0.5.0_arm64.dmg`. Release signing/notarization and app-store submission need your certificates and are not configured. The repository includes desktop CI and an authorized packaging workflow. Current source revisions, checksums and verification boundaries are recorded in [BUILD-ARTIFACTS.json](docs/BUILD-ARTIFACTS.json).
+A macOS `.app` is produced under `target/debug/bundle/macos/`. The current ad-hoc-signed development DMG is `target/debug/bundle/dmg/Personal Command Center_0.5.0_arm64.dmg`. Release signing/notarization and app-store submission need your certificates and are not configured. The repository includes desktop CI and an authorized packaging workflow. Current source revisions, checksums and verification boundaries are recorded in [BUILD-ARTIFACTS.json](docs/BUILD-ARTIFACTS.json).
 
-Current checks: 79 workspace Rust executions (77 distinct tests), 56 UI assertions and 30/30 enabled public sources passed. Selected isolated native Mac workflows include save/document/file/workspace/event/filter/video/restart checks. Account-connected features and full platform feature acceptance remain unverified; see the [test report](docs/TEST-REPORT.html). Earlier skipped-test notes are historical.
+Current checks: 100 latest passing Rust target/test pairs (98 distinct), 68 frontend assertions, both mobile builds and Mac/Windows CI/installer packaging pass at source `7167bfa`. The Windows installer passed isolated install/native-window/uninstall smoke. Fresh local Mac DMG checksum/mounted version/signature/shortcut checks pass. Earlier 30/30 public aggregation and selected Mac workflows remain revision-specific; new native UI checks are blocked by the locked Mac. Current Crossref/Europe PMC/historical patent reads returned 30 each; PIB DNS failed and its starter stays paused. See the [test report](docs/TEST-REPORT.html) and [code-only delivery guide](docs/REMAINING-CODE-DELIVERY.md) for features, dependencies and precise limits.
 
 ## Mobile companions
 

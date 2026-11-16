@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-16T20:30:44.339915+00:00",
+  "generated_at": "2026-11-16T21:50:45.188199+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
-  "rust_test_executions": 79,
-  "rust_distinct_tests": 77,
+  "rust_test_executions": 100,
+  "rust_distinct_tests": 98,
   "python_tests": 10,
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
@@ -31,12 +31,12 @@
     {
       "status": "PASS",
       "area": "Frontend and native compilation",
-      "evidence": "Aggregation source dc1b077 passes TypeScript/Vite, 56 UI/analytics/image/feed assertions, workspace Rust tests and native compilation on macOS and Windows in CI (43947634210). Local Mac workspace: 79 executions / 77 distinct tests. Native public reads and selected Mac workflows are recorded separately."
+      "evidence": "Source 7167bfa TypeScript/Vite, 68 frontend assertions and Mac/Windows CI pass. Full local workspace 97 passed, then final desktop 48 passed including three additional cases (100 latest target/test pairs). Both mobile core/native builds compile. Prior UI evidence names its own revision."
     },
     {
       "status": "PASS",
       "area": "Mac DMG integrity/copy",
-      "evidence": "Aggregation source dc1b077: local 0.5.0 ARM64 development DMG passes hdiutil checksum, read-only mounted version/Applications-shortcut check and strict deep ad-hoc signature verification. Delivery copy matches packaged bytes. Normal real profile was not launched."
+      "evidence": "Source 7167bfa: fresh local 0.5.0 ARM64 development DMG passes hdiutil checksum, read-only mounted version/Applications shortcut and strict deep ad-hoc signature. Delivery copy matches SHA-256. Normal real profile was not launched. See remaining-dmg-inspection.json."
     },
     {
       "status": "FIXED",
@@ -56,12 +56,12 @@
     {
       "status": "PASS (selected workflows)",
       "area": "Mac native UI / launch workflows",
-      "evidence": "Separate com.personal.commandcenter.qa profile: launch, pinned Markdown note create/edit/search, original attachment import and safe preview, monthly Jan 31 → Feb 28 recurrence, quit/relaunch persistence, readable and encrypted archive export/duplicate-safe restore, wrong-password rejection. ZIP checksums and original attachment bytes independently match. This is a smoke test, not all-feature acceptance."
+      "evidence": "Separate com.personal.commandcenter.qa profile: launch, pinned Markdown note create/edit/search, original attachment import and safe preview, monthly Jan 31 \u2192 Feb 28 recurrence, quit/relaunch persistence, readable and encrypted archive export/duplicate-safe restore, wrong-password rejection. ZIP checksums and original attachment bytes independently match. This is a smoke test, not all-feature acceptance."
     },
     {
       "status": "PASS (installer smoke)",
       "area": "Windows build / installer / runtime",
-      "evidence": "Aggregation source dc1b077: Windows release packaging and workspace tests succeeded in CI (43947663885). Isolated runner: silent install exit 0, native Personal Command Center window stayed running 15 seconds, silent uninstall exit 0. Matching local artifact checksum verified separately. Full Windows feature UI and interactive dialogs remain unverified."
+      "evidence": "Source 7167bfa: Windows release packaging/workspace tests pass in 43961588059. Isolated runner: silent install exit 0, native window stayed running 15 seconds, silent uninstall exit 0. Downloaded local installer SHA-256 matches the smoke report. Full Windows feature UI/dialog acceptance remains unverified."
     },
     {
       "status": "NOT RUN",
@@ -131,7 +131,7 @@
     {
       "status": "PASS (compilation only)",
       "area": "Mobile private-file addition and preview",
-      "evidence": "Latest iOS Simulator app and Android ARM64 debug APK compile. Selected files ≤10 MiB attach to encrypted record drafts; text/image previews remain in memory and are bounded. No plaintext temp files or automatic uploads. Real file-provider/lifecycle/device workflows are unverified."
+      "evidence": "Latest iOS Simulator app and Android ARM64 debug APK compile. Selected files \u226410 MiB attach to encrypted record drafts; text/image previews remain in memory and are bounded. No plaintext temp files or automatic uploads. Real file-provider/lifecycle/device workflows are unverified."
     },
     {
       "status": "PASS (automated and selected QA)",
@@ -145,7 +145,7 @@
     },
     {
       "status": "PASS (selected isolated Mac workflows)",
-      "area": "Discover → saved item → documents/files → workspace",
+      "area": "Discover \u2192 saved item \u2192 documents/files \u2192 workspace",
       "evidence": "Native QA verified Save, cited document creation, one attachment panel, native selected-file import and safe preview, two-source project with persisted links, agriculture event tracking, India filtering/reset, public Stanford video playback/pause in separate reader, labeled LinkedIn link addition and restart persistence. Fixed stale workspace panels with keyed view container. See discovery-native-qa.json."
     },
     {
@@ -157,14 +157,56 @@
       "status": "ACCESS DEPENDENCY",
       "area": "X, LinkedIn, Reddit and broad YouTube search",
       "evidence": "User has no developer access and chose public YouTube feeds. X recent search needs approved API access/token. LinkedIn has no open personal home-feed API. Reddit public requests returned 403/rate limits, recorded in reddit-live-access.json, and starter feeds are paused. Optional Reddit OAuth/keyed YouTube credential paths are implemented but not live-tested. Saved-link/import support is available and labeled."
+    },
+    {
+      "status": "PASS",
+      "area": "Remaining code regressions",
+      "evidence": "Full workspace 97 pass, followed by final native 48 pass (100 latest target/test pairs, 98 distinct). Selected field restore/stale review/atomic checksum rollback, encrypted checked reconciliation, currency/stock gates, compaction, AI exclusions/lifecycle, recurrence/overrides/registration, changed evidence hashes, hub alert deduplication and WebDAV streamed size/hash/cancel checks. See remaining-workspace-tests.log and remaining-native-tests.log."
+    },
+    {
+      "status": "PASS",
+      "area": "Latest frontend/mobile compilation",
+      "evidence": "TypeScript/Vite, 68 UI logic assertions, both rebuilt Rust mobile libraries, iOS Simulator app and Android ARM64 debug APK compile at source 7167bfa. No real-device runtime acceptance."
+    },
+    {
+      "status": "PASS / SOURCE UNAVAILABLE",
+      "area": "Additional scholarly/official public reads",
+      "evidence": "Native pipeline returned 30 Crossref, 30 Europe PMC and 30 historical patent-index records; PIB DNS failed and its starter remains paused. Patent index is historical and paused. See remaining-live-sources.json."
+    },
+    {
+      "status": "PASS (synthetic storage metrics)",
+      "area": "Local benchmark",
+      "evidence": "500 temporary SQLite notes, 100 capture and 30 snapshot/search samples. Actual p50/p95/max in local-benchmark.json. Excludes native render/accessibility/device latency."
+    },
+    {
+      "status": "BLOCKED (Mac locked)",
+      "area": "New native UI acceptance",
+      "evidence": "Mac locked at final CUA attempt. Owner unlock requested asynchronously. New fields/statement dialogs, rendered website webview and permission/benchmark UI are compiled and selectively unit-tested, but new native UI flows are not yet accepted."
+    },
+    {
+      "status": "PASS",
+      "area": "Current Mac and Windows CI",
+      "evidence": "Source 7167bfa passed both Mac/Windows checks (43961556928) and both installer packaging jobs (43961588059). Windows installer/native-window/uninstall smoke passes; local Mac DMG integrity/version/signature/shortcut passes. New Mac UI, full Windows features and real mobile devices remain unverified."
     }
   ],
-  "ui_logic_assertions": 10,
-  "rust_workspace_executions": 79,
-  "rust_additional_targeted_executions": 12,
+  "ui_logic_assertions": 68,
+  "rust_workspace_executions": 97,
+  "rust_additional_targeted_executions": 48,
   "research_analytics_assertions": 13,
   "source_image_theme_assertions": 13,
-  "total_ui_assertions": 56,
-  "additional_targeted_note": "Seven hub tests, four watch tests and one explicitly requested native live test ran separately; overlapping tests are not added to workspace distinct counts.",
-  "discovery_feed_assertions": 20
+  "total_ui_assertions": 68,
+  "additional_targeted_note": "Full workspace passed 97 before three final desktop regressions. Final desktop rerun passed 48; latest per-target union is 100 passing target/test pairs, 98 distinct. Do not add overlapping runs. Native live source reads are separate; prior Python-provider results are historical.",
+  "discovery_feed_assertions": 20,
+  "source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
+  "counting_method": "Latest passing per-target results: 52 core/mobile target cases plus 48 desktop cases; shared transport tests execute in two targets. Full workspace log had 97 before three final desktop regressions; final native rerun has 48. 68 frontend assertions run separately. Existing Python checks remain historical.",
+  "remaining_code_assertions": 12,
+  "previous_aggregation_evidence": {
+    "source_revision": "dc1b077183130f0fabd2dbaece29cd96153b6f19",
+    "rust_workspace_executions": 79,
+    "rust_distinct_tests": 77,
+    "ui_assertions": 56,
+    "public_sources_success": 30,
+    "public_sources_total": 30,
+    "native_qa": "discovery-native-qa.json"
+  }
 }
