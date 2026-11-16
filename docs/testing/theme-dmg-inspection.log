@@ -1,0 +1,7 @@
+expected   CRC32 $F090E237
+/dev/disk29         	EF57347C-0000-11AA-AA11-0030654	
+/dev/disk29s1       	41504653-0000-11AA-AA11-0030654	/private/tmp/pcc-theme-dmg-b_jjd1ri
+/dev/disk4          	GUID_partition_scheme          	
+/dev/disk4s1        	Apple_APFS                     	
+"disk4" ejected.
+PASS: mounted read-only; version 0.5.0; Applications shortcut; strict deep development signature. No application launched.

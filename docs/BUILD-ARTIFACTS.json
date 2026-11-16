@@ -1,30 +1,33 @@
 {
   "version": "0.5.0",
-  "generated_at": "2026-11-16T02:08:42.952856+00:00",
+  "generated_at": "2026-11-16T17:26:01.861932+00:00",
   "runtime_tested": false,
   "isolated_mac_qa_smoke_tested": true,
   "production_signed": false,
   "artifacts": [
     {
       "platform": "macOS app",
+      "source_revision": "96c7403ce2cae88a23aadccfce93f79024c2cdc9",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app",
-      "bytes": 80114798,
-      "sha256": "845cb485ddfec15d3ceb8d9376af8dab0d3810e1212983e23825f57b464cc445",
+      "bytes": 80262974,
+      "sha256": "b54bbf6ef579ee8530392f61c1fcb7077f49a1b6e447bdfa144f7f4319a79270",
       "hash_method": "SHA-256 of compact UTF-8 JSON array sorted by relative path; each entry has path plus file sha256 or symlink target; object keys sorted",
       "files": 5
     },
     {
       "platform": "macOS DMG",
+      "source_revision": "96c7403ce2cae88a23aadccfce93f79024c2cdc9",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/dmg/Personal Command Center_0.5.0_arm64.dmg",
-      "bytes": 23338034,
-      "sha256": "875b9020a501760ea13a0fa2bbfccfe82cd88e85e3cd72ab2053f8ac9fe21d9b",
+      "bytes": 23493247,
+      "sha256": "d2250cb97d124eabf4aecada89a482edbb291696ab397d1ee4ba74bcbeb14a8e",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     },
     {
       "platform": "iOS Simulator app",
+      "source_revision": "ee5f972e42300420b23f2a0660b8e99ad99ab56e",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/mobile-ios-final/Build/Products/Debug-iphonesimulator/CommandCenter.app",
       "bytes": 36493869,
@@ -34,6 +37,7 @@
     },
     {
       "platform": "Android ARM64 debug APK",
+      "source_revision": "ee5f972e42300420b23f2a0660b8e99ad99ab56e",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/mobile-android/app/build/outputs/apk/debug/app-debug.apk",
       "bytes": 159041476,
@@ -43,10 +47,11 @@
     },
     {
       "platform": "Windows NSIS installer",
+      "source_revision": "96c7403ce2cae88a23aadccfce93f79024c2cdc9",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/windows-package/nsis/Personal Command Center_0.5.0_x64-setup.exe",
-      "bytes": 6918876,
-      "sha256": "fa1ac3397159d2ad078a0c5c7a28a9da6808835dd8013537a1ceb5eecd0d3389",
+      "bytes": 7072566,
+      "sha256": "2dd7159be134934feda0ec9c9f678ac92a8dfc3752c2c966cc938b91fc14c0b0",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     }
@@ -58,17 +63,17 @@
     "services/optional-host/requirements-push.lock": "41028b323e5c10b607a2ebbd362a925f2713767546bcf8a7e66fbbb2f1f522e3"
   },
   "packaging_notes": [
-    "macOS development app/DMG, iOS Simulator app and Android debug APK only.",
+    "Local Mac development app/DMG and mobile development binaries; Windows release NSIS installer from the identified CI source revision.",
     "Mobile UI binaries were rebuilt for private-file addition/preview; mobile Rust bindings are unchanged. Streaming backup and Google/radar UI are desktop-only.",
     "iOS shared Rust symbols are defined in the bundle; no developer libpcc dylib dependency.",
     "macOS voice bridge is bundled and referenced through @rpath.",
-    "Windows release installer passed CI silent install, native-window launch and silent uninstall. A separately identified macOS QA app passed earlier selected native workflows; the latest Google/radar UI checks await Mac unlock. Normal artifacts have not all received feature acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage."
+    "Windows release installer passed CI silent install, native-window launch and silent uninstall. A separately identified macOS QA app passed earlier selected native workflows; selected four-theme, section navigation, radar/draft and default-off Google checks also passed in isolated Mac QA. Normal artifacts have not all received feature acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage."
   ],
-  "desktop_source_revision": "ef1e9c3e06f836bd4f1afcfc9c4837fff70c4585",
+  "desktop_source_revision": "96c7403ce2cae88a23aadccfce93f79024c2cdc9",
   "windows_installer_smoke_verified": true,
   "mobile_ui_source_revision": "ee5f972e42300420b23f2a0660b8e99ad99ab56e",
   "runtime_coverage_by_platform": {
-    "macOS": "Earlier selected isolated QA workflows passed; newest Google/radar UI is blocked by the locked Mac.",
+    "macOS": "Selected isolated native QA workflows passed, including four themes, theme/launcher persistence, full-color thumbnail, section navigation, research drafts and default-off Google stop/clear. Full feature acceptance remains open.",
     "Windows": "Installer/native-window/uninstaller smoke passed",
     "iOS": "Compilation only",
     "Android": "Compilation only"

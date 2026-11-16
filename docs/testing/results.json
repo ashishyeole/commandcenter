@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T17:08:35.124214+00:00",
+  "generated_at": "2026-11-16T17:26:01.648526+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
   "rust_test_executions": 69,
@@ -31,12 +31,12 @@
     {
       "status": "PASS",
       "area": "Frontend and native compilation",
-      "evidence": "TypeScript/Vite build and native Rust test targets compile on this Mac."
+      "evidence": "Current appearance revision 96c7403 passed TypeScript/Vite, 35 UI logic/analytics/image/theme assertions, workspace Rust tests and native compilation on both macOS and Windows in CI. Local Mac build and 69 Rust executions (67 distinct tests) also pass."
     },
     {
       "status": "PASS",
       "area": "Mac DMG integrity/copy",
-      "evidence": "DMG checksum validation and read-only mount succeeded. Version 0.5.0 ARM64 app and Applications shortcut verified; copied to a temporary folder and signature rechecked."
+      "evidence": "96c7403 development DMG checksum verified, mounted read-only and packaged version 0.5.0 ARM64/Applications shortcut checked. Strict deep ad-hoc signature passes. Delivery copy hash matches packaged DMG; no real-profile launch."
     },
     {
       "status": "FIXED",
@@ -61,7 +61,7 @@
     {
       "status": "PASS (installer smoke)",
       "area": "Windows build / installer / runtime",
-      "evidence": "ef1e9c3 release packaging succeeded in CI. Windows runner: silent install exit 0; native Personal Command Center window stayed running 15 seconds; silent uninstall exit 0. Local installer SHA-256 matches CI evidence. All workspace tests/build passed in Windows. Full feature UI and interactive backup prompt acceptance are not claimed."
+      "evidence": "96c7403 release packaging and workspace tests succeeded in CI. Windows runner: silent install exit 0; native Personal Command Center window stayed running 15 seconds; silent uninstall exit 0. Local installer SHA-256 matches CI evidence. Theme UI received selected native Mac checks; full Windows feature UI and interactive backup prompts remain unverified."
     },
     {
       "status": "NOT RUN",
@@ -141,8 +141,9 @@
   ],
   "ui_logic_assertions": 10,
   "rust_workspace_executions": 69,
-  "rust_additional_targeted_executions": 0,
+  "rust_additional_targeted_executions": 1,
   "research_analytics_assertions": 13,
   "source_image_theme_assertions": 12,
-  "total_ui_assertions": 35
+  "total_ui_assertions": 35,
+  "additional_targeted_note": "One theme archive test was also run separately before the full workspace suite; it is included among the 67 distinct workspace tests."
 }
