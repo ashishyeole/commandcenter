@@ -25,6 +25,9 @@ while time.monotonic() < deadline:
                     return row[0] if row else None
                 streams = json.loads(setting('discovery_hub_streams') or '[]')
                 summary = json.loads(setting('discovery_hub_last_refresh') or 'null')
+                health = [{'id': source['id'], 'provider': source['provider'],
+                           'health': json.loads(setting('hub_health:' + source['id']) or 'null')}
+                          for source in streams if source.get('enabled')]
                 caches = db.execute("SELECT source,payload FROM feed_cache WHERE source LIKE 'hub:%'").fetchall()
                 ordinary = db.execute('SELECT COUNT(*) FROM items').fetchone()[0]
                 records = db.execute('SELECT COUNT(*) FROM records').fetchone()[0]
@@ -35,7 +38,8 @@ while time.monotonic() < deadline:
                               initialization_marker=setting('public_discovery_initialized'),
                               live_cache_count=len(caches), live_item_count=sum(len(json.loads(raw)) for _, raw in caches),
                               ordinary_item_count=ordinary, workspace_record_count=records,
-                              enabled_account_flags=[r[0] for r in flags], batch=summary)
+                              enabled_account_flags=[r[0] for r in flags], batch=summary, sources=health,
+                              failed_sources=[r for r in health if r['health'] and r['health'].get('status') == 'error'])
                 report['bootstrap_passed'] = bool(len(enabled) == 35 and report['live_item_count'] > 0
                     and ordinary == 0 and records == 0 and not flags
                     and report['auto_refresh_minutes'] == '30' and report['initialization_marker'])
