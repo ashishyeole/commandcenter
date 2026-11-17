@@ -1,0 +1,1146 @@
+{
+  "checked_at": "2026-11-17T01:40:41.711799+00:00",
+  "credentials_used": false,
+  "filter_checks": {
+    "github_language_license": 30,
+    "huggingface_task_library_license": 30
+  },
+  "isolated_temp_database": true,
+  "live_public_requests": true,
+  "result": {
+    "cancelled": false,
+    "failed": 0,
+    "refreshed": 35,
+    "results": [
+      {
+        "error": null,
+        "id": "agfunder-news",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "agritech-india",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "agri-videos",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "ai-videos",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "agritechnica",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "robotics-papers",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "robotics-bluesky",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "agri-bluesky",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "agdaily-news",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "crossref-robotics",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "epmc-agriculture",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "robotics-mastodon",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "mcp-public-registry",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "mit-lectures",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "mit-robotics-videos",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "app-charts-us",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "app-charts-india",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "agri-discussion",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "ai-news",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "ollama-catalogue",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "poker-all",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "poker-news",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "poker-stars",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "poker-videos",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "hf-trending",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "hf-downloads",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "robotics-models",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "poker-wpt",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "poker-wsop",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "robotics-news",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "stanford-lectures",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "github-top",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "github-new",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "robotics-repos",
+        "ok": true
+      },
+      {
+        "error": null,
+        "id": "world-ag-expo",
+        "ok": true
+      }
+    ]
+  },
+  "sources": [
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:22.897950+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "hf-trending",
+      "provider": "models",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+          "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "MiniMaxAI/MiniMax-H3-Image",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
+        }
+      ],
+      "topic": "ai"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:29.052169+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "hf-downloads",
+      "provider": "models",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "sentence-transformers/all-MiniLM-L6-v2",
+          "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "argmaxinc/whisperkit-coreml",
+          "url": "https://huggingface.co/argmaxinc/whisperkit-coreml"
+        }
+      ],
+      "topic": "ai"
+    },
+    {
+      "count": 20,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:31.169068+00:00",
+        "count": 20,
+        "status": "ok"
+      },
+      "id": "ollama-catalogue",
+      "provider": "ollama",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "deepseek-v4.1-flash",
+          "url": "https://ollama.com/library/deepseek-v4.1-flash"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "glm-5.3",
+          "url": "https://ollama.com/library/glm-5.3"
+        }
+      ],
+      "topic": "ai"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:22.196376+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "github-top",
+      "provider": "github",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "codecrafters-io/build-your-own-x",
+          "url": "https://github.com/codecrafters-io/build-your-own-x"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "sindresorhus/awesome",
+          "url": "https://github.com/sindresorhus/awesome"
+        }
+      ],
+      "topic": "code"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:28.244221+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "github-new",
+      "provider": "github",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "storytold/craft-anything",
+          "url": "https://github.com/storytold/craft-anything"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "ccch1mneyyy/dsh-Go",
+          "url": "https://github.com/ccch1mneyyy/dsh-Go"
+        }
+      ],
+      "topic": "code"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:34.763622+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "robotics-repos",
+      "provider": "github",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Developer-Y/cs-video-courses",
+          "url": "https://github.com/Developer-Y/cs-video-courses"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "commaai/openpilot",
+          "url": "https://github.com/commaai/openpilot"
+        }
+      ],
+      "topic": "robotics"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:18.245516+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "robotics-papers",
+      "provider": "arxiv",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Training Reasoning Models in Simulation to Natively Use Real Robots",
+          "url": "https://arxiv.org/abs/2611.18562v1"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Modeling the Frictional Contact of Continuum Robots with Environments through Linear Complementarity Problem",
+          "url": "https://arxiv.org/abs/2611.18546v1"
+        }
+      ],
+      "topic": "robotics"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:34.719366+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "robotics-news",
+      "provider": "rss",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Can Robots Bring Stroke Surgery to Remote Hospitals?",
+          "url": "https://spectrum.ieee.org/telesurgery-stroke"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "28 Zero-Day Findings in Under Two Days. Is Robotics Security Keeping Pace?",
+          "url": "https://spectrum.ieee.org/zero-day-robotics-vulnerabilities-vicone-security"
+        }
+      ],
+      "topic": "robotics"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:34.188158+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "robotics-models",
+      "provider": "models",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "pollen-robotics/microduck-policies",
+          "url": "https://huggingface.co/pollen-robotics/microduck-policies"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "robotics-diffusion-transformer/RDT2-VQ",
+          "url": "https://huggingface.co/robotics-diffusion-transformer/RDT2-VQ"
+        }
+      ],
+      "topic": "robotics"
+    },
+    {
+      "count": 0,
+      "enabled": false,
+      "health": null,
+      "id": "agri-news",
+      "provider": "rss",
+      "samples": [],
+      "topic": "agriculture"
+    },
+    {
+      "count": 0,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:24.709019+00:00",
+        "count": 0,
+        "status": "ok"
+      },
+      "id": "agri-discussion",
+      "provider": "news",
+      "samples": [],
+      "topic": "agriculture"
+    },
+    {
+      "count": 1,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:16.890198+00:00",
+        "count": 1,
+        "status": "ok"
+      },
+      "id": "agritech-india",
+      "provider": "events",
+      "samples": [
+        {
+          "end_date": "2027-08-22",
+          "start_date": "2027-08-20",
+          "title": "18th AgriTech India 2027",
+          "url": "https://agritechindia.com/"
+        }
+      ],
+      "topic": "agriculture"
+    },
+    {
+      "count": 1,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:18.098807+00:00",
+        "count": 1,
+        "status": "ok"
+      },
+      "id": "agritechnica",
+      "provider": "calendar",
+      "samples": [
+        {
+          "end_date": "2027-11-20",
+          "start_date": "2027-11-14",
+          "title": "AGRITECHNICA 2027_The world's leading trade fair for agricultural machinery",
+          "url": "https://www.agritechnica.com/fileadmin/redaktion/downloads/2027/AGRITECHNICA_2027_The_world_s_leading_trade_fair_for_agricultural_machinery.ics"
+        }
+      ],
+      "topic": "agriculture"
+    },
+    {
+      "count": 1,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:35.376243+00:00",
+        "count": 1,
+        "status": "ok"
+      },
+      "id": "world-ag-expo",
+      "provider": "events",
+      "samples": [
+        {
+          "end_date": "2027-02-11",
+          "start_date": "2027-02-09",
+          "title": "World Ag Expo",
+          "url": "https://www.worldagexpo.com/"
+        }
+      ],
+      "topic": "agriculture"
+    },
+    {
+      "count": 20,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:32.515021+00:00",
+        "count": 20,
+        "status": "ok"
+      },
+      "id": "poker-news",
+      "provider": "rss",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Loose Cannon Faces Big Bluffs from Doug Polk and Antonio Esfandiari",
+          "url": "https://www.pokernews.com/news/2026/11/loose-cannon-faces-big-bluffs-on-big-game-on-tour-52818.htm?utm_medium=feed&utm_campaign=homefeed&utm_source=rss"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Michael Benbrook Back in the Winner's Circle at Horseshoe Tunica",
+          "url": "https://www.pokernews.com/news/2026/11/michael-benbrook-wins-rgps-tunica-main-event-52815.htm?utm_medium=feed&utm_campaign=homefeed&utm_source=rss"
+        }
+      ],
+      "topic": "poker"
+    },
+    {
+      "count": 9,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:34.453490+00:00",
+        "count": 9,
+        "status": "ok"
+      },
+      "id": "poker-wpt",
+      "provider": "events",
+      "samples": [
+        {
+          "end_date": "2026-12-13T07:59:59.999Z",
+          "start_date": "2026-12-05T19:00:00.000Z",
+          "title": "WPT Prime Championship at Wynn Las Vegas",
+          "url": "https://www.worldpokertour.com/event/prime-wpt-prime-championship-at-wynn-las-vegas-season-2026"
+        },
+        {
+          "end_date": "2026-12-15T07:59:59.999Z",
+          "start_date": "2026-12-10T18:00:00.000Z",
+          "title": "Special Event: ClubWPT Gold Super Gold Million",
+          "url": "https://www.worldpokertour.com/event/special-events-special-event-clubwpt-gold-super-gold-million-season-2026"
+        }
+      ],
+      "topic": "poker"
+    },
+    {
+      "count": 7,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:34.546945+00:00",
+        "count": 7,
+        "status": "ok"
+      },
+      "id": "poker-wsop",
+      "provider": "events",
+      "samples": [
+        {
+          "end_date": "2026-11-17",
+          "start_date": "2026-11-02",
+          "title": "WSOP Circuit - Canada (Playground)",
+          "url": "https://www.wsop.com/tournaments/wsop-circuit-canada-playground/"
+        },
+        {
+          "end_date": "2026-11-16",
+          "start_date": "2026-11-05",
+          "title": "WSOP Circuit - Grand Victoria",
+          "url": "https://www.wsop.com/tournaments/wsop-circuit-grand-victoria/"
+        }
+      ],
+      "topic": "poker"
+    },
+    {
+      "count": 4,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:33.498031+00:00",
+        "count": 4,
+        "status": "ok"
+      },
+      "id": "poker-stars",
+      "provider": "events",
+      "samples": [
+        {
+          "end_date": "2026-12-13",
+          "start_date": "2026-12-02",
+          "title": "EPT Prague",
+          "url": "https://www.pokerstarslive.com/ept/prague/"
+        },
+        {
+          "end_date": "2027-01-17",
+          "start_date": "2027-01-08",
+          "title": "PokerStars Open Campione",
+          "url": "https://www.pokerstarslive.com/pokerstarsopen/campione/"
+        }
+      ],
+      "topic": "poker"
+    },
+    {
+      "count": 40,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:32.065555+00:00",
+        "count": 40,
+        "status": "ok"
+      },
+      "id": "poker-all",
+      "provider": "events",
+      "samples": [
+        {
+          "end_date": "2026-11-21",
+          "start_date": "2026-10-28",
+          "title": "2026 Fall Colorado Poker Championship",
+          "url": "https://www.cardplayer.com/poker-tournaments/1680617-2026-fall-colorado-poker-championship-2"
+        },
+        {
+          "end_date": "2026-11-16",
+          "start_date": "2026-11-02",
+          "title": "2026 WSOP International Circuit \u2013 Canada (Fall)",
+          "url": "https://www.cardplayer.com/poker-tournaments/1680772-2026-wsop-international-circuit-canada-fall"
+        }
+      ],
+      "topic": "poker"
+    },
+    {
+      "count": 15,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:34.741782+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "id": "stanford-lectures",
+      "provider": "youtube_feed",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "How AI Agents Work: Connectors, MCP&Agent Safety | Stanford CS193T Lecture 5 with Cynthia Bailey",
+          "url": "https://www.youtube.com/watch?v=ho00IesajkY"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Multi-Agent Systems: When More Agents Help or Hurt | Stanford CS329Z Lecture 8 with Michael Ryan",
+          "url": "https://www.youtube.com/watch?v=TlX_ft_PQIM"
+        }
+      ],
+      "topic": "learning"
+    },
+    {
+      "count": 15,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:22.737662+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "id": "mit-robotics-videos",
+      "provider": "youtube_feed",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Underwater Robotics: Physical AI's Toughest Test",
+          "url": "https://www.youtube.com/watch?v=i0O2URp0HpM"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "So... What Exactly is Physical AI?",
+          "url": "https://www.youtube.com/watch?v=L6bSqc5ccCw"
+        }
+      ],
+      "topic": "robotics"
+    },
+    {
+      "count": 15,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:17.100070+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "id": "agri-videos",
+      "provider": "youtube_feed",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "One meal, lots of memories | John Deere X @lodgecastiron",
+          "url": "https://www.youtube.com/shorts/-ZpkVR-qIoc"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Keep It Moving | John Deere Forestry",
+          "url": "https://www.youtube.com/shorts/xNBfHb-jwGg"
+        }
+      ],
+      "topic": "agriculture"
+    },
+    {
+      "count": 15,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:33.984410+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "id": "poker-videos",
+      "provider": "youtube_feed",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Such a Beautiful River Card",
+          "url": "https://www.youtube.com/shorts/-g5cfkImlj0"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "A Very WILD Table Gets PERSONAL! | Big Game On Tour | S3 E7",
+          "url": "https://www.youtube.com/watch?v=uLpuN3c1cIA"
+        }
+      ],
+      "topic": "poker"
+    },
+    {
+      "count": 15,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:17.807917+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "id": "ai-videos",
+      "provider": "youtube_feed",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Using Hugging Face Jobs to train a NanoGPT model",
+          "url": "https://www.youtube.com/watch?v=7Yx_7byZiFU"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Local AI 301: Quantization",
+          "url": "https://www.youtube.com/watch?v=il0dgxjpoC0"
+        }
+      ],
+      "topic": "ai"
+    },
+    {
+      "count": 15,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:22.560314+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "id": "mit-lectures",
+      "provider": "youtube_feed",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Optical Illusions!",
+          "url": "https://www.youtube.com/shorts/QMt6FEuXz0s"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Lecture 5 on Topic 5: Viscosity of Glass",
+          "url": "https://www.youtube.com/watch?v=8hiGWBQ94WU"
+        }
+      ],
+      "topic": "learning"
+    },
+    {
+      "count": 0,
+      "enabled": false,
+      "health": null,
+      "id": "robotics-reddit",
+      "provider": "reddit",
+      "samples": [],
+      "topic": "robotics"
+    },
+    {
+      "count": 0,
+      "enabled": false,
+      "health": null,
+      "id": "ai-reddit",
+      "provider": "reddit",
+      "samples": [],
+      "topic": "ai"
+    },
+    {
+      "count": 0,
+      "enabled": false,
+      "health": null,
+      "id": "poker-reddit",
+      "provider": "reddit",
+      "samples": [],
+      "topic": "poker"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:18.619157+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "robotics-bluesky",
+      "provider": "bluesky",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "\"The startup\u2019s staff is especially angry because Foundation\u2019s co-founder and CEO, Sankaet Pathak, supposedly borrowed $4.6 million in compan",
+          "url": "https://bsky.app/profile/lmacconn.bsky.social/post/3n2hvwexvrs2t"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "China is hosting the world's leaders in Schenzhen's AI wonderland. Here's what they won't see\n->BBC News | More on \"China's AI innovation in",
+          "url": "https://bsky.app/profile/bigearthdata.ai/post/3n2hvw5kxsr27"
+        }
+      ],
+      "topic": "robotics"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:18.956606+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "agri-bluesky",
+      "provider": "bluesky",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Kenyan Agritech Startup Farmerlifeline Technologies Wins $50,000 Innovate Africa Challenge Grant\n\n\ud83c\udf0d #OmniGaza #AfricanIntel",
+          "url": "https://bsky.app/profile/omnigaza.bsky.social/post/3n2hcyapayd2t"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "This week\u2019s agri events: 16 \u2013 20\u00a0November\n\nThere are exciting events taking place this week. Agritistics will host a webinar under the theme",
+          "url": "https://bsky.app/profile/foodformzansi.bsky.social/post/3n2fndbyto72y"
+        }
+      ],
+      "topic": "agriculture"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:22.062316+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "robotics-mastodon",
+      "provider": "mastodon",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Internet subcultures: digital nomads #negativepid #digitalInvestigations #OSINT #cybersecurity #AI #tech #onlineInvestigations #robotics #cy",
+          "url": "https://mastodon.social/@negativepid/117629214946104534"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "The Bengaluru Tech Summit opens today with a 50,000-square-foot AI and Robotics Pavilion: 101 startups showing humanoid robots, drones, and ",
+          "url": "https://mastodon.social/@cosmicotterstar/117629117873400425"
+        }
+      ],
+      "topic": "robotics"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:31.002088+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "ai-news",
+      "provider": "news",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Claude Mythos slashed software work to onboard AMD GPUs to around three days",
+          "url": "https://news.ycombinator.com/item?id=50526264"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "AWS: AI Gets Physical: The Global Startups Readiness Index [pdf]",
+          "url": "https://news.ycombinator.com/item?id=50522967"
+        }
+      ],
+      "topic": "ai"
+    },
+    {
+      "count": 0,
+      "enabled": false,
+      "health": null,
+      "id": "x-robotics",
+      "provider": "x",
+      "samples": [],
+      "topic": "robotics"
+    },
+    {
+      "count": 0,
+      "enabled": false,
+      "health": null,
+      "id": "linkedin",
+      "provider": "linkedin",
+      "samples": [],
+      "topic": "code"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:16.508707+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "agfunder-news",
+      "provider": "rss",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Exclusive: Zya raises $15m Series A to rethink sugar reduction, no reformulation required",
+          "url": "https://agfundernews.com/exclusive-zya-raises-15-5m-to-rethink-sugar-reduction-no-reformulation-required"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Trade tensions, El Ni\u00f1o and other forces could make or break agtech adoption in 2027",
+          "url": "https://agfundernews.com/trade-tensions-el-nino-and-other-forces-could-make-or-break-agtech-adoption-in-2027"
+        }
+      ],
+      "topic": "agriculture"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:20.018814+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "agdaily-news",
+      "provider": "rss",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "NRCS leadership shakeup follows major staffing cuts under Trump",
+          "url": "https://www.agdaily.com/news/nrcs-leadership-shakeup-follows-major-staffing-cuts-under-trump/"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Virginia Tech leads $1.15 million project to tailor dairy cow protein",
+          "url": "https://www.agdaily.com/news/virginia-tech-leads-project-to-tailor-dairy-cow-protein/"
+        }
+      ],
+      "topic": "agriculture"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:21.079123+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "crossref-robotics",
+      "provider": "crossref",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "AI and Assessment in Global South, Rural, and Resource-Constrained Higher Education Contexts",
+          "url": "https://doi.org/10.4018/979-8-3373-8939-4.ch013"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Redesigning Authentic Assessment and Feedback Practices in the Generative AI Era",
+          "url": "https://doi.org/10.4018/979-8-3373-8939-4.ch005"
+        }
+      ],
+      "topic": "robotics"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:21.467482+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "epmc-agriculture",
+      "provider": "europepmc",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Next-Generation Soybean Haplotype Map as a Genomic Resource for Enhanced Trait Discovery and Functional Analysis.",
+          "url": "https://europepmc.org/article//MED/43036943"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Spatially robust pixel-based mapping of biotic stress in Pinus nigra using unmanned aerial vehicle multispectral imagery and Random Forest.",
+          "url": "https://europepmc.org/article//MED/43035309"
+        }
+      ],
+      "topic": "agriculture"
+    },
+    {
+      "count": 0,
+      "enabled": false,
+      "health": null,
+      "id": "patent-index",
+      "provider": "patents",
+      "samples": [],
+      "topic": "robotics"
+    },
+    {
+      "count": 0,
+      "enabled": false,
+      "health": null,
+      "id": "india-schemes",
+      "provider": "schemes",
+      "samples": [],
+      "topic": "agriculture"
+    },
+    {
+      "count": 50,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:18.848699+00:00",
+        "count": 50,
+        "status": "ok"
+      },
+      "id": "app-charts-us",
+      "provider": "apps",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "TikTok Pro - Events",
+          "url": "https://apps.apple.com/us/app/tiktok-pro-events/id6741796873"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Muse from Meta",
+          "url": "https://apps.apple.com/us/app/muse-from-meta/id6760173601"
+        }
+      ],
+      "topic": "apps"
+    },
+    {
+      "count": 50,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:24.460598+00:00",
+        "count": 50,
+        "status": "ok"
+      },
+      "id": "app-charts-india",
+      "provider": "apps",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "ChatGPT",
+          "url": "https://apps.apple.com/in/app/chatgpt/id6448311069"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "Edits: Video Editor",
+          "url": "https://apps.apple.com/in/app/edits-video-editor/id6738967378"
+        }
+      ],
+      "topic": "apps"
+    },
+    {
+      "count": 30,
+      "enabled": true,
+      "health": {
+        "checked_at": "2026-11-17T01:40:22.271850+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "id": "mcp-public-registry",
+      "provider": "mcp",
+      "samples": [
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "ac.inference.sh/mcp",
+          "url": "https://registry.modelcontextprotocol.io/v0.1/servers?search=ac.inference.sh%2Fmcp&version=2.0.1&limit=30"
+        },
+        {
+          "end_date": null,
+          "start_date": null,
+          "title": "ac.mizan/registry",
+          "url": "https://registry.modelcontextprotocol.io/v0.1/servers?search=ac.mizan%2Fregistry&version=1.2.0&limit=30"
+        }
+      ],
+      "topic": "apps"
+    }
+  ],
+  "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc"
+}

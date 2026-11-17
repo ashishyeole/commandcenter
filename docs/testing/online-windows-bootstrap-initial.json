@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-11-17T01:56:41.602246+00:00",
+  "isolated_runner": true,
+  "app_login_used": false,
+  "api_keys_used": false,
+  "full_feature_acceptance": false,
+  "bootstrap_passed": true,
+  "configured_sources": 43,
+  "enabled_sources": 35,
+  "auto_refresh_minutes": "30",
+  "initialization_marker": "1",
+  "live_cache_count": 34,
+  "live_item_count": 749,
+  "ordinary_item_count": 0,
+  "workspace_record_count": 0,
+  "enabled_account_flags": [],
+  "batch": {
+    "at": "2026-11-17T01:57:07.346863200+00:00",
+    "cancelled": false,
+    "failed": 1,
+    "refreshed": 34
+  },
+  "all_public_sources_succeeded": false,
+  "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
+  "installer_sha256": "61f70732964b7697dc4e91e37f4faa840c5f815aee587f52b28a87e6f5911854",
+  "workflow": "https://github.com/ashishyeole/commandcenter/actions/runs/43999263692"
+}

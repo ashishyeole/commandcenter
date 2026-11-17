@@ -1,13 +1,33 @@
 {
-  "generated_at": "2026-11-16T23:35:21.798693+00:00",
+  "generated_at": "2026-11-17T02:03:12.027416+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
-  "rust_test_executions": 100,
-  "rust_distinct_tests": 98,
+  "rust_test_executions": 102,
+  "rust_distinct_tests": 100,
   "python_tests": 10,
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
   "results": [
+    {
+      "status": "PASS \u00b7 live public reads",
+      "area": "No-account public source integration",
+      "evidence": "Final 2cb141d native live audit: 35/35 enabled starters, 803 raw source entries; matching 30-record GitHub Python/MIT and Hugging Face task/library/license checks. MCP live assertions verify unique version identities, metric/metadata and source URL consistency. See online-live-sources.json."
+    },
+    {
+      "status": "PASS \u00b7 selected native workflows",
+      "area": "Fresh-install / native integration",
+      "evidence": "Isolated empty Mac profile connected without login or Load action. 791 combined entries after recovering one transient chart error; unified search returned 150 real results from five providers. Save/cited document/project/native attachment/preview/event/channel/research/task/FTS/restart checks and MCP UI correction recorded in online-native-qa.json. Every-use-case acceptance is not claimed."
+    },
+    {
+      "status": "UNAVAILABLE \u00b7 provider failure",
+      "area": "Live public business discovery",
+      "evidence": "Native Austin 1500m restaurant lookup failed. Diagnostic public GET timed out, POST returned HTTP 502; an alternate Overpass endpoint timed out. No sample listings substituted. Existing CRM remains usable; no account/key is needed, but service availability is external."
+    },
+    {
+      "status": "PASS \u00b7 installed Windows live data",
+      "area": "Windows no-account public bootstrap",
+      "evidence": "Actual installed final EXE: fresh SQLite profile, 43 configured / 35 enabled sources, 30-minute policy, 799 live items, 35 successful / 0 failed. No app login, API keys, seeded notes/workspaces or enabled account connections. Per-provider health and hash binding: online-windows-bootstrap.json. Not every-feature UI acceptance."
+    },
     {
       "status": "PASS",
       "area": "Rust storage/archive",
@@ -31,12 +51,12 @@
     {
       "status": "PASS",
       "area": "Frontend and native compilation",
-      "evidence": "Source 7167bfa TypeScript/Vite, 68 frontend assertions and Mac/Windows CI pass. Full local workspace 97 passed, then final desktop 48 passed including three additional cases (100 latest target/test pairs). Both mobile core/native builds compile. Prior UI evidence names its own revision."
+      "evidence": "Final source 2cb141d TypeScript/Vite and 74 frontend assertions pass. Mac/Windows checks 43997314188 pass. Workspace regression log records 102 passing target/test executions (100 distinct); shared-core mobile builds are at ceb64f3, unchanged by the desktop-only metadata fix."
     },
     {
       "status": "PASS",
       "area": "Mac DMG integrity/copy",
-      "evidence": "Source 7167bfa: fresh local 0.5.0 ARM64 development DMG passes hdiutil checksum, read-only mounted version/Applications shortcut and strict deep ad-hoc signature. Delivery copy matches SHA-256. Normal real profile was not launched. See remaining-dmg-inspection.json."
+      "evidence": "Final source 2cb141d: local 0.5.0 ARM64 development DMG checksum, read-only mounted version/Applications shortcut and strict deep ad-hoc signature pass. Delivery copy matches SHA-256; no normal profile launched. See online-dmg-inspection.json."
     },
     {
       "status": "FIXED",
@@ -61,7 +81,7 @@
     {
       "status": "PASS (installer smoke)",
       "area": "Windows build / installer / runtime",
-      "evidence": "Source 7167bfa: Windows release packaging/workspace tests pass in 43961588059. Isolated runner: silent install exit 0, native window stayed running 15 seconds, silent uninstall exit 0. Downloaded local installer SHA-256 matches the smoke report. Full Windows feature UI/dialog acceptance remains unverified."
+      "evidence": "Final source 2cb141d installer packaging 43997312953 passed. SHA-256-matched EXE silently installed, opened a native window and silently uninstalled (both exit 0). Separate fresh installed-app audit 43999649407 configured 35 enabled streams/30-minute refresh and fetched 799 real items from 35/35 sources without login, keys, seeded personal records or enabled account flags. Initial runner 34/35 is retained. Full Windows feature UI remains unverified."
     },
     {
       "status": "NOT RUN",
@@ -76,7 +96,7 @@
     {
       "status": "PASS (automated)",
       "area": "Discovery-only scope and model-free briefings",
-      "evidence": "Catalogue parser/briefing tests pass. Thirty enabled public sources now pass native live aggregation; provider metadata only, no model download or inference. See discovery-live-sources.json."
+      "evidence": "Catalogue parser/briefing tests pass. Final 2cb141d native public run passed 35/35; installed Windows audit also passed 35/35. Public metadata only, no weights/runtime/inference. See online-live-sources.json and online-windows-bootstrap.json."
     },
     {
       "status": "PASS (automated)",
@@ -160,7 +180,7 @@
     },
     {
       "status": "PASS",
-      "area": "Remaining code regressions",
+      "area": "Earlier code-closure regressions \u00b7 source 7167bfa",
       "evidence": "Full workspace 97 pass, followed by final native 48 pass (100 latest target/test pairs, 98 distinct). Selected field restore/stale review/atomic checksum rollback, encrypted checked reconciliation, currency/stock gates, compaction, AI exclusions/lifecycle, recurrence/overrides/registration, changed evidence hashes, hub alert deduplication and WebDAV streamed size/hash/cancel checks. See remaining-workspace-tests.log and remaining-native-tests.log."
     },
     {
@@ -180,13 +200,18 @@
     },
     {
       "status": "PASS (selected isolated Mac workflows)",
-      "area": "New native UI acceptance",
-      "evidence": "Unlocked Mac, current source 7167bfa QA identifier: benchmark, disabled provider inventory/pause history, excluded-context rejection, encrypted statement exact-match/create/duplicate skip, review clear/lock, native streaming export/title-only restore preserving local body, visible incognito rendered audit and reviewed-priority persistence. Quit/relaunch confirmed note, policy, ledger and audit/priority persistence. No real account, remote WebDAV or cloud AI request. See remaining-native-qa.json; full feature acceptance remains open."
+      "area": "Earlier isolated native QA \u00b7 source 7167bfa",
+      "evidence": "Unlocked Mac, earlier source 7167bfa QA identifier: benchmark, disabled provider inventory/pause history, excluded-context rejection, encrypted statement exact-match/create/duplicate skip, review clear/lock, native streaming export/title-only restore preserving local body, visible incognito rendered audit and reviewed-priority persistence. Quit/relaunch confirmed note, policy, ledger and audit/priority persistence. No real account, remote WebDAV or cloud AI request. See remaining-native-qa.json; full feature acceptance remains open."
     },
     {
       "status": "PASS",
-      "area": "Current Mac and Windows CI",
+      "area": "Earlier Mac and Windows CI \u00b7 source 7167bfa",
       "evidence": "Source 7167bfa passed both Mac/Windows checks (43961556928) and both installer packaging jobs (43961588059). Windows installer/native-window/uninstall smoke passes; local Mac DMG integrity/version/signature/shortcut passes. Selected new isolated Mac workflows now pass; full Windows features, configured providers and real mobile devices remain unverified."
+    },
+    {
+      "status": "PASS",
+      "area": "Final Mac/Windows CI and packages",
+      "evidence": "Functional source 2cb141d: checks 43997314188 and packaging 43997312953 completed successfully on both platforms. Final local Mac DMG has matching integrity evidence; Windows delivery copy matches its smoke-tested SHA-256."
     }
   ],
   "ui_logic_assertions": 68,
@@ -210,5 +235,7 @@
     "native_qa": "discovery-native-qa.json"
   },
   "isolated_mac_qa_smoke_tested": true,
-  "mac_native_qa": "remaining-native-qa.json"
+  "mac_native_qa": "remaining-native-qa.json",
+  "frontend_assertions": 74,
+  "desktop_source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc"
 }

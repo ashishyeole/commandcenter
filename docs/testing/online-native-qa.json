@@ -1,0 +1,124 @@
+{
+  "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
+  "checked_at": "2026-11-17T01:50:58.623577+00:00",
+  "initial_launch_source_revision": null,
+  "profile": "com.personal.commandcenter.firstlaunchqa20261116",
+  "product": "Command Center First Launch QA",
+  "isolated": true,
+  "normal_profile_accessed": false,
+  "real_accounts_used": false,
+  "credentials_entered": false,
+  "public_internet_requests": true,
+  "online_ai_requests": false,
+  "models_downloaded": false,
+  "mcp_tools_executed": false,
+  "native_launch_and_local_workflows_passed": true,
+  "all_use_cases_passed": false,
+  "checks": [
+    {
+      "id": "O01",
+      "status": "PASS",
+      "workflow": "Fresh profile / no app login",
+      "observed": "At ceb64f3, verified the identifier had no profile before launch. App opened Discover and began public requests automatically with no login, API key or Load action; actual AgFunder results appeared during loading.",
+      "build_reference": "Pre-ceb64f3 isolated working-tree QA build; first-launch/domain implementation subsequently committed in ceb64f3."
+    },
+    {
+      "id": "O02",
+      "status": "PASS",
+      "workflow": "Public batch / failure recovery",
+      "observed": "First GUI batch refreshed 34/35; Apple US transport failure stayed visible. Manual source refresh recovered 50 actual entries; GUI displayed 35/35 and 791 deduplicated records. Final code adds one bounded transient-public-read retry; synthetic retry tests pass.",
+      "build_reference": "Pre-ceb64f3 isolated working-tree QA build; first-launch/domain implementation subsequently committed in ceb64f3."
+    },
+    {
+      "id": "O03",
+      "status": "PASS",
+      "workflow": "Live project and poker panels",
+      "observed": "Projects showed actual public repositories despite no personal project records. Saved codecrafters/build-your-own-x and loaded its README in the separate in-app public reader. Poker showed current/upcoming organizer records. US filter yielded real events; India correctly returned no matching event.",
+      "build_reference": "Pre-ceb64f3 isolated working-tree QA build; first-launch/domain implementation subsequently committed in ceb64f3."
+    },
+    {
+      "id": "O04",
+      "status": "PASS",
+      "workflow": "Track a real tournament",
+      "observed": "Tracked WSOP Circuit Grand Victoria. Editor contained official wsop.com organizer URL, supplied date and Grand Victoria Casino / Elgin IL venue; one local poker record and source reference created.",
+      "build_reference": "Pre-ceb64f3 isolated working-tree QA build; first-launch/domain implementation subsequently committed in ceb64f3."
+    },
+    {
+      "id": "O05",
+      "status": "PASS",
+      "workflow": "Keyless YouTube and creator evidence",
+      "observed": "At ceb64f3, selected Public YouTube channel, entered @StanfordOnline, approved only that public read and refreshed 15 real uploads without key/sign-in. Research suggestions included these channel feeds; saved a sourced robotics idea and content drafts.",
+      "source_revision": "ceb64f376fdb7b6898c41752d75727ae0035c884"
+    },
+    {
+      "id": "O06",
+      "status": "PASS",
+      "workflow": "Cited document and multi-source workspace",
+      "observed": "Selected real repository plus AgriTech India event. Created/saved Research: 2 collected sources; displayed generated source/citation content. Created QA live public research workspace with both saved links selected.",
+      "source_revision": "ceb64f376fdb7b6898c41752d75727ae0035c884"
+    },
+    {
+      "id": "O07",
+      "status": "PASS",
+      "workflow": "Native upload / safe preview / task",
+      "observed": "Native Open picker selected only /private/tmp/pcc-online-qa.txt (85 bytes). Workspace showed attached file and safe preview with expected text. Created linked follow-up task and completed it; UI showed done/Reopen.",
+      "source_revision": "ceb64f376fdb7b6898c41752d75727ae0035c884"
+    },
+    {
+      "id": "O08",
+      "status": "PASS",
+      "workflow": "Unified public search",
+      "observed": "Searching robotics fetched 150 actual results across GitHub, Hugging Face, arXiv, Hacker News and Bluesky; 5 sources succeeded, 40/40 including starters showed healthy before cancellation test.",
+      "source_revision": "ceb64f376fdb7b6898c41752d75727ae0035c884"
+    },
+    {
+      "id": "O09",
+      "status": "FIXED / PASS",
+      "workflow": "MCP version and nested metadata",
+      "observed": "UI exposed Version 1.0.0 beside metadata 2.0.1 and [object Object] endpoints. At final 2cb141d, automatic refresh loaded 30 unique latest-version tools; ac.tandem/docs-mcp details showed matching Version 0.3.2 plus readable HTTPS remote and repository JSON. No tool executed.",
+      "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc"
+    },
+    {
+      "id": "O10",
+      "status": "PASS",
+      "workflow": "Restart / FTS / saved bytes",
+      "observed": "At 2cb141d after restart, command-palette QA live search returned actual task/project. Opened saved project: repository, event and task links remained selected. Reopened safe preview: exact synthetic text remained. Tasks showed done/Reopen; document also remained in local results.",
+      "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc"
+    },
+    {
+      "id": "O11",
+      "status": "PASS",
+      "workflow": "Assistant without credentials",
+      "observed": "Image-only floating button opened optional online assistant. Local AI explicitly dormant; question preview disabled until required input. No API key, selected context, AI request or local model runtime used.",
+      "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc"
+    },
+    {
+      "id": "O12",
+      "status": "PASS",
+      "workflow": "Stop retains cached results",
+      "observed": "At 2cb141d automatic refresh started when due. Stop returned; 876 cached results stayed browsable. Three interrupted requests were labelled cancelled/attention; a subsequent refresh was started to verify recovery. No cache was replaced with sample results.",
+      "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc"
+    },
+    {
+      "id": "O13",
+      "status": "PROVIDER UNAVAILABLE",
+      "workflow": "Public business lookup",
+      "observed": "Selected public Austin default coordinates (not device location), 1500m restaurants and explicit public-read consent. Native lookup failed. Diagnostic same-provider GET timed out; POST returned HTTP 502. Alternate official public-instance read timed out. Saved CRM data remains local; no fake listings or outreach.",
+      "source_revision": "ceb64f376fdb7b6898c41752d75727ae0035c884"
+    },
+    {
+      "id": "O14",
+      "status": "PASS",
+      "workflow": "Recover after Stop",
+      "observed": "Final 2cb141d native UI completed a subsequent full refresh: 40 sources succeeded, 40/40 healthy, 876 combined cached results including the five live robotics search sources. No account, API key or model download used.",
+      "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc"
+    }
+  ],
+  "limits": [
+    "Each check names its evidence; selected portions passed, not exhaustive PRD acceptance.",
+    "40/40 before Stop includes five synthetic-query configurations returning real public data; shipped defaults remain 35 enabled sources.",
+    "Public business lookup provider failure, restricted social feeds, private-account/AI/bank/MCP/WebDAV services, OS microphone/push/reminder delivery, physical device pairing, complete Windows feature UI and assistive technology remain unavailable or unverified.",
+    "Earlier vault/backup/video/theme QA evidence remains tied to its earlier source revision."
+  ],
+  "initial_launch_build": "Isolated working-tree build preceding ceb64f3; final retry/text/epoch changes were compiled and retested separately. Final native restart/recovery/MCP checks used exactly 2cb141d."
+}

@@ -28,7 +28,7 @@ overall=pct(tasks)
 metrics=f'''<article class="metric"><div class="metric-label">Local scope · code completion</div><div class="value">{overall}<small>%</small></div>{bar(overall)}<p>Weighted in-scope code coverage; excluded work has zero weight.</p></article>
 <article class="metric"><div class="metric-label">Source-implemented tasks</div><div class="value">{complete}<small> / {len(active_tasks)}</small></div><p>Narrow source scope complete; verification varies by task.</p></article>
 <article class="metric"><div class="metric-label">Tasks with remaining scope</div><div class="value">{remaining}</div><p>{partial} partial · {remaining-partial} not implemented, blocked or deferred.</p></article>
-<article class="metric"><div class="metric-label">Current-source acceptance workflows verified</div><div class="value">0<small> / 16</small></div><p>No complete end-to-end PRD acceptance; selected smoke tests pass.</p></article>'''
+<article class="metric"><div class="metric-label">Live public starters verified</div><div class="value">{data.get('online_readiness',{}).get('public_sources_passed',0)}<small> / {data.get('online_readiness',{}).get('public_sources_enabled',0)}</small></div><p>Native Mac and installed Windows reads; no app account. <a href="USE-CASE-AUDIT.html">Use-case acceptance and dependencies</a> are separate.</p></article>'''
 phases=''
 for phase,label in [('V1','Standalone product'),('V2','Optional device continuity'),('V3+','Personal customization retained')]:
     rows=[t for t in tasks if t['phase']==phase];value=pct(rows)

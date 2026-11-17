@@ -1,0 +1,289 @@
+{
+  "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
+  "generated_at": "2026-11-17T02:03:12.027416+00:00",
+  "all_use_cases_verified": false,
+  "overall_operational_percent": null,
+  "method": "Evidence-based statuses. Source completion percentages are separate; no aggregate operational percentage is invented for untested/external cases. Earlier UI evidence explicitly names its own revision.",
+  "cases": [
+    {
+      "id": "UC01",
+      "use_case": "Fresh installed Mac/Windows no-login startup",
+      "status": "PASS \u00b7 native + automated",
+      "dependencies": "None beyond internet",
+      "evidence_and_limits": "An empty isolated profile configured public sources and began fetching without Load, login, keys or seeded records. Existing off/custom/restored policies are preserved. Installed Windows EXE also populated a fresh profile with 799 live items from all 35 sources, no account/keys or seeded personal data."
+    },
+    {
+      "id": "UC02",
+      "use_case": "GitHub repositories and native filters",
+      "status": "PASS \u00b7 live + UI",
+      "dependencies": "Public GitHub API availability / anonymous quota",
+      "evidence_and_limits": "Top and recent repositories plus robotics Python/MIT filtering returned real records. Saving and in-app README reading passed."
+    },
+    {
+      "id": "UC03",
+      "use_case": "Hugging Face models and filters",
+      "status": "PASS \u00b7 live + UI",
+      "dependencies": "Public Hugging Face API",
+      "evidence_and_limits": "Trending/download metadata plus task/library/license filters passed; visible card license, task, library and metrics inspected. No weights downloaded."
+    },
+    {
+      "id": "UC04",
+      "use_case": "Ollama catalogue",
+      "status": "PASS \u00b7 live native",
+      "dependencies": "Public Ollama catalogue",
+      "evidence_and_limits": "20 real catalogue metadata entries. No local runtime or download is needed."
+    },
+    {
+      "id": "UC05",
+      "use_case": "Robotics news, papers, libraries and videos",
+      "status": "PASS \u00b7 live + UI",
+      "dependencies": "Public publishers / arXiv / GitHub / YouTube",
+      "evidence_and_limits": "Real topic panels, publisher papers/videos and research scoring used fetched caches; sourced research idea saved."
+    },
+    {
+      "id": "UC06",
+      "use_case": "Agriculture developments and India events",
+      "status": "PASS \u00b7 live + UI",
+      "dependencies": "Public publishers / organizers",
+      "evidence_and_limits": "Current publisher data and AgriTech India 2027 dates/venue/URL displayed. US/India filters use reported locations; unknown venues remain worldwide."
+    },
+    {
+      "id": "UC07",
+      "use_case": "Poker current/upcoming tournaments",
+      "status": "PASS \u00b7 live + UI",
+      "dependencies": "WPT, WSOP, PokerStars, CardPlayer availability",
+      "evidence_and_limits": "Four real organizer/schedule adapters passed. Fresh UI tracked Grand Victoria with official URL and venue. US filter yielded events; India had no matching upcoming listing. Coverage is not exhaustive."
+    },
+    {
+      "id": "UC08",
+      "use_case": "Keyless YouTube channel refresh",
+      "status": "PASS \u00b7 live + UI",
+      "dependencies": "Public channel feeds; no key",
+      "evidence_and_limits": "Final Mac build refreshed @StanfordOnline and displayed 15 current uploads without account or API key."
+    },
+    {
+      "id": "UC09",
+      "use_case": "Video playback in app",
+      "status": "PASS \u00b7 earlier isolated UI",
+      "dependencies": "YouTube embedding/playback availability",
+      "evidence_and_limits": "Earlier source dc1b077 QA played a public Stanford Short, paused and sought it without sign-in. Not repeated on every video/region in this pass."
+    },
+    {
+      "id": "UC10",
+      "use_case": "Public social feeds",
+      "status": "PASS \u00b7 live native",
+      "dependencies": "Bluesky/Mastodon public services",
+      "evidence_and_limits": "Both public source adapters returned records without account credentials. Social content remains attributed/unverified."
+    },
+    {
+      "id": "UC11",
+      "use_case": "X and LinkedIn personal/live feeds",
+      "status": "ACCESS UNAVAILABLE",
+      "dependencies": "Provider-approved access; owner has none",
+      "evidence_and_limits": "Saved-link and public JSON import support are implemented; these are labelled local references, not live home feeds. No signed-in scraping."
+    },
+    {
+      "id": "UC12",
+      "use_case": "Reddit feeds",
+      "status": "PAUSED \u00b7 provider restriction",
+      "dependencies": "Approved Reddit access / rate limits",
+      "evidence_and_limits": "Public starter reads were refused/rate-limited earlier. They remain disabled; not reported as functional live feeds."
+    },
+    {
+      "id": "UC13",
+      "use_case": "Crossref and Europe PMC research",
+      "status": "PASS \u00b7 live native",
+      "dependencies": "Public scholarly APIs",
+      "evidence_and_limits": "Both newly enabled paper feeds returned 30 actual metadata/abstract records."
+    },
+    {
+      "id": "UC14",
+      "use_case": "Current patents and India scheme announcements",
+      "status": "PAUSED \u00b7 data / provider",
+      "dependencies": "Current patent dataset and reachable official feed",
+      "evidence_and_limits": "Historical patent index and failed PIB RSS remain disabled. Publisher bookmarks are references, not proof of current schemes or eligibility."
+    },
+    {
+      "id": "UC15",
+      "use_case": "Public US/India app charts",
+      "status": "PASS \u00b7 live + UI",
+      "dependencies": "Apple public marketing RSS",
+      "evidence_and_limits": "50 results per market through native pipeline; actual ranks visible. One fresh-GUI transport failure recovered manually; final code retries a transient public-read failure once."
+    },
+    {
+      "id": "UC16",
+      "use_case": "Android/private competitor revenue datasets",
+      "status": "OPTIONAL \u00b7 setup required",
+      "dependencies": "Authorized dataset or schema-1 endpoint; optional bearer key",
+      "evidence_and_limits": "Manual snapshot adapter and reviewed comparison are implemented. No proprietary download/revenue estimates are fabricated. No live licensed dataset supplied/tested."
+    },
+    {
+      "id": "UC17",
+      "use_case": "MCP public catalogue and details",
+      "status": "PASS \u00b7 live + targeted regression",
+      "dependencies": "Public official registry; no key",
+      "evidence_and_limits": "Found version/metadata collision during UI QA; latest-version filtering, version-specific identities/source URLs and nested JSON details fix it. Final native live assertions require matching metric/version/source."
+    },
+    {
+      "id": "UC18",
+      "use_case": "MCP tool execution / extensions",
+      "status": "OPTIONAL \u00b7 unverified externally",
+      "dependencies": "Explicit approved endpoint/tool permissions; some keys / runtimes",
+      "evidence_and_limits": "Catalogue reads require no tool execution. No external MCP call, extension install or tool container was exercised."
+    },
+    {
+      "id": "UC19",
+      "use_case": "Unified public keyword search",
+      "status": "PASS \u00b7 native UI",
+      "dependencies": "Five public providers / anonymous quotas",
+      "evidence_and_limits": "Searching robotics created five real sources and returned 150 records across GitHub, Hugging Face, arXiv, Hacker News and Bluesky; all five refreshes succeeded."
+    },
+    {
+      "id": "UC20",
+      "use_case": "Filter, sort, read state and deduplication",
+      "status": "PASS \u00b7 automated + selected UI",
+      "dependencies": "None for cached data",
+      "evidence_and_limits": "23 feed assertions cover deduplication, video canonicalization, region/content/text/date/read filters, ended/cancelled events, citations and nested metadata. Selected region/content filters inspected natively; not every UI combination. Native Stop retained cached results; a subsequent full refresh recovered all 40/40 sources (876 combined entries, including five added search sources)."
+    },
+    {
+      "id": "UC21",
+      "use_case": "Save source / create cited document",
+      "status": "PASS \u00b7 native UI",
+      "dependencies": "None",
+      "evidence_and_limits": "Saved live repository and event. Created and saved a research document from two sources with original URLs, observations, fetch times and provenance."
+    },
+    {
+      "id": "UC22",
+      "use_case": "Create linked research workspace",
+      "status": "PASS \u00b7 native UI",
+      "dependencies": "None",
+      "evidence_and_limits": "Created QA live public research workspace; selected repository and event remained linked. Saved a linked follow-up task and completed it."
+    },
+    {
+      "id": "UC23",
+      "use_case": "Attach files and safe preview",
+      "status": "PASS \u00b7 native UI + automated",
+      "dependencies": "Only file selected by owner; PDF/OCR tools optional",
+      "evidence_and_limits": "Native picker attached an 85-byte synthetic text file to the isolated workspace; safe preview showed expected content. Peer/backup byte-integrity tests pass. No private files scanned."
+    },
+    {
+      "id": "UC24",
+      "use_case": "Ordinary notes, FTS, tasks, recurrence and persistence",
+      "status": "PASS \u00b7 automated + selected UI",
+      "dependencies": "None",
+      "evidence_and_limits": "Storage tests cover persistence/search/recurrence/stale edits. Current UI saved document and task; earlier isolated UI verified pin/search/restart and month-end recurrence. OS reminder delivery is separately unverified."
+    },
+    {
+      "id": "UC25",
+      "use_case": "Local briefs, research drafts and watchlists",
+      "status": "PASS \u00b7 automated / selected UI",
+      "dependencies": "Saved records or fetched data; optional custom price endpoint",
+      "evidence_and_limits": "Tests verify bounded selected-record briefings, threshold currency/stock, current source observations and once-per-observation alerts. Sourced idea/content draft creation inspected; every automation UI path not exercised."
+    },
+    {
+      "id": "UC26",
+      "use_case": "Authorized Git observation and sessions",
+      "status": "COMPILED \u00b7 native UI unverified",
+      "dependencies": "Owner selects one local Git root",
+      "evidence_and_limits": "No repository selected in this profile. Code reads bounded metadata/manifests; it does not infer actual IDE/model activity or upload source."
+    },
+    {
+      "id": "UC27",
+      "use_case": "Public Austin business lookup",
+      "status": "BLOCKED \u00b7 live provider",
+      "dependencies": "Reachable public Overpass instance",
+      "evidence_and_limits": "Native default lookup failed. Independent same-query diagnosis: default GET timed out, POST returned HTTP 502; listed alternate timed out. No fake listings substituted. Existing saved CRM records remain usable."
+    },
+    {
+      "id": "UC28",
+      "use_case": "Website audit, reviewed priority and outreach drafts",
+      "status": "PASS \u00b7 earlier isolated UI",
+      "dependencies": "Public page availability; owner review",
+      "evidence_and_limits": "Prior 7167bfa QA opened isolated example.com rendered audit, saved explained 20/100 signal and reviewed 33/100 priority, and confirmed restart persistence. No outreach sent."
+    },
+    {
+      "id": "UC29",
+      "use_case": "Vault and AI exclusions",
+      "status": "PASS \u00b7 automated + earlier UI",
+      "dependencies": "Local vault password chosen by owner",
+      "evidence_and_limits": "Synthetic reconciliation, lock/restart and AI exclusion rejection passed at 7167bfa; current regression suite covers encryption/import/exclusion rules. No live financial account or AI call used."
+    },
+    {
+      "id": "UC30",
+      "use_case": "Portable and encrypted backups / selective restore",
+      "status": "PASS \u00b7 automated + earlier UI",
+      "dependencies": "Local destination / recovery password",
+      "evidence_and_limits": "ZIP, encrypted and streaming archives, wrong passwords, tampering, conflicts, field-only restores and original attachments covered. Prior native title-only restore preserved edited body across restart."
+    },
+    {
+      "id": "UC31",
+      "use_case": "Scheduled remote WebDAV backups",
+      "status": "AUTOMATED \u00b7 real endpoint unverified",
+      "dependencies": "Owner WebDAV URL/account and explicit upload approval",
+      "evidence_and_limits": "Local scheduling/readback/cancel tests pass. No real remote server credentials or upload used."
+    },
+    {
+      "id": "UC32",
+      "use_case": "Peer and attachment synchronization",
+      "status": "AUTOMATED \u00b7 devices unverified",
+      "dependencies": "A second installed device, explicit pairing and category grants",
+      "evidence_and_limits": "Real localhost Noise transport, wrong peer key, concurrent edits, attachment hashes/scope/idempotence and 10 MiB files pass. Physical cross-device interoperability not exercised."
+    },
+    {
+      "id": "UC33",
+      "use_case": "Google mail/calendar and private GitHub",
+      "status": "OPTIONAL \u00b7 credentials required",
+      "dependencies": "Google OAuth/sign-in or private GitHub token",
+      "evidence_and_limits": "No command-center login is needed. Private provider content cannot be available without that provider authorization. No live owner account used."
+    },
+    {
+      "id": "UC34",
+      "use_case": "Online floating AI assistant",
+      "status": "OPTIONAL \u00b7 API key required",
+      "dependencies": "Owner AI provider key/model and reviewed outbound request",
+      "evidence_and_limits": "Current local inference code remains dormant. No-key interface/preview controls and exclusion guard are implemented; no live model response verified without a key."
+    },
+    {
+      "id": "UC35",
+      "use_case": "Bank feeds and enrollment",
+      "status": "OPTIONAL \u00b7 account required",
+      "dependencies": "Provider enrollment/consent and credentials",
+      "evidence_and_limits": "Local encrypted manual ledger/reconciliation works separately. Synthetic parsing/enrollment guards pass; live Plaid enrollment not performed."
+    },
+    {
+      "id": "UC36",
+      "use_case": "Native speech, notifications and push",
+      "status": "COMPILED / AUTOMATED \u00b7 device acceptance open",
+      "dependencies": "OS permissions; remote push needs configured APNs/FCM service",
+      "evidence_and_limits": "Speech/notification bridges compile. Reminder leases/recurrence tests pass; Python push tests mock providers. No microphone, real OS delivery or push-provider delivery claim."
+    },
+    {
+      "id": "UC37",
+      "use_case": "Themes, keyboard navigation and accessibility",
+      "status": "PARTIAL \u00b7 UI + automated",
+      "dependencies": "None; assistive-technology verification still required",
+      "evidence_and_limits": "Four themes, image-only draggable assistant, keyboard tabs and stored display preferences are implemented. Automated theme/position tests and selected native screenshots pass; complete screen-reader/contrast acceptance not established."
+    },
+    {
+      "id": "UC38",
+      "use_case": "Mac DMG / Windows installer",
+      "status": "PASS \u00b7 package / installed startup",
+      "dependencies": "Target OS; Mac development package is ad-hoc signed",
+      "evidence_and_limits": "Mac checksum/read-only mount/resource-seal/version/Applications shortcut checked. Windows CI install/window/uninstall evidence is tied to downloaded artifact source/hash. Full Windows feature UI remains unverified. Final Windows installed startup audit passed 35/35 sources (799 items); the earlier 34/35 run is retained. Full feature UI still not claimed."
+    },
+    {
+      "id": "UC39",
+      "use_case": "iOS / Android companions",
+      "status": "COMPILED \u00b7 device runtime unverified",
+      "dependencies": "Target mobile device; platform permissions",
+      "evidence_and_limits": "Shared Rust libraries plus iOS simulator app and Android ARM64 APK rebuilt after shared-core change. No physical device acceptance performed."
+    },
+    {
+      "id": "UC40",
+      "use_case": "Production release and commercial onboarding",
+      "status": "EXCLUDED",
+      "dependencies": "Not needed for current personal scope",
+      "evidence_and_limits": "Store submission, production infrastructure, Developer ID/notarization and commercial identities are outside the active user scope. A local development build does not gain platform trust from compilation."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
+  "checked_at": "2026-11-17T01:46:58.861447+00:00",
+  "version": "0.5.0",
+  "hdiutil_checksum_verified": true,
+  "read_only_mount_verified": true,
+  "strict_deep_ad_hoc_signature_verified": true,
+  "applications_shortcut": "/Applications",
+  "production_signed": false,
+  "normal_profile_launched": false,
+  "sha256": "f77e7c228efc6a54f21521482dd95fd6bb8005f8a82a3851095f7b5f9cf8159f",
+  "delivery_sha256": "f77e7c228efc6a54f21521482dd95fd6bb8005f8a82a3851095f7b5f9cf8159f",
+  "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/dist/installers/Personal Command Center_0.5.0_arm64.dmg"
+}

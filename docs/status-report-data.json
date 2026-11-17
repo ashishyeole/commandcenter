@@ -15,12 +15,13 @@
       "percent": 100,
       "weight": 2,
       "status": "Implemented in source",
-      "implemented": "React/TypeScript desktop UI and native Rust commands.",
-      "remaining": "No known scope gap in this narrowly defined task; runtime verification remains outstanding.",
+      "implemented": "React/TypeScript desktop UI and native Rust commands. New profiles atomically configure 35 enabled public streams and 30-minute automatic refresh; no app account or API key required. Existing disabled/custom refresh policies are preserved.",
+      "remaining": "No identified code gap in this bounded task. Complete task-wide/platform acceptance remains open; selected current native scenarios passed as recorded.",
       "notes": "Mac/Windows builds and Windows installer/native-window/uninstaller smoke passed at the recorded revision. Selected isolated Mac UI workflows pass; full acceptance remains open.",
       "evidence": "crates/core/src/lib.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Fresh isolated Mac UI launch/public data and installed Windows EXE startup with 35/35 real source caches pass at 2cb141d. Native IPC/build/regression checks pass. Complete platform UI acceptance remains separate."
     },
     {
       "id": "T002",
@@ -32,11 +33,12 @@
       "weight": 3,
       "status": "Implemented in source",
       "implemented": "Five migrations, WAL, stable IDs, revisions and ordinary attachment storage.",
-      "remaining": "No known source gap in this narrowly defined task; runtime migration verification remains outstanding.",
-      "notes": "Historical implementation note: Source reviewed and compiled where applicable. No tests, live provider calls or runtime acceptance performed in this pass. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
+      "remaining": "No identified code gap in this bounded task. Complete task-wide/platform acceptance remains open; selected current native scenarios passed as recorded.",
+      "notes": "Historical implementation note: Source reviewed and compiled where applicable. No tests, live provider calls or runtime acceptance performed in this pass. Earlier source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "crates/core/src/lib.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Fresh SQLite profile and automatic public initialization verified on Mac and installed Windows. Transactional/import/stale-edit tests pass. Every legacy upgrade path is not independently exercised."
     },
     {
       "id": "T003",
@@ -53,7 +55,7 @@
       "evidence": "crates/core/src/lib.rs",
       "original_prd_percent": 75,
       "in_scope": true,
-      "verification": "Repository tests and frontend/native compilation recorded in TEST-REPORT.html. New UI paths have not received native acceptance."
+      "verification": "Native project source/event/task cross-links survive restart. Automated owner/cycle/history/import rules pass. All relationship UI combinations remain unverified."
     },
     {
       "id": "T004",
@@ -65,11 +67,12 @@
       "weight": 2,
       "status": "Implemented in source",
       "implemented": "Local persistence and FTS5 across ordinary records.",
-      "remaining": "No known scope gap in this narrowly defined task; runtime verification remains outstanding.",
+      "remaining": "No identified code gap in this bounded task. Complete task-wide/platform acceptance remains open; selected current native scenarios passed as recorded.",
       "notes": "Offline end-to-end restart workflow is not verified for the expanded version.",
       "evidence": "crates/core/src/lib.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Current Mac command-palette keyword search found persisted actual project/task; attachment text survived restart. Core persistence/FTS tests pass. No full offline OS/device acceptance claim."
     },
     {
       "id": "T005",
@@ -108,7 +111,8 @@
       "notes": "v0.3 behavior has not been runtime-tested.",
       "evidence": "apps/desktop/src/main.tsx",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T007",
@@ -121,10 +125,11 @@
       "status": "Implemented in source",
       "implemented": "Due tasks, workspace dates and notification records, local mission/approval review, and explicit read-only Gmail headers/calendar pages inside Inbox. Account results remain in memory and clear on hide or timeout.",
       "remaining": "No known source gap in this inbox task; broader provider support and runtime acceptance remain separately tracked.",
-      "notes": "Historical implementation note: Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
+      "notes": "Historical implementation note: Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed. Earlier source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "apps/desktop/src/InboxSources.tsx",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T008",
@@ -137,10 +142,11 @@
       "status": "Implemented in source",
       "implemented": "Daily/weekly selected-record due-work, waiting/blocked and next-action summaries with record IDs. No AI or key required.",
       "remaining": "No known gap in deterministic selected-record briefings. AI synthesis remains optional via separately approved cloud requests.",
-      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
+      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src/Automations.tsx",
       "original_prd_percent": 75,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T009",
@@ -170,11 +176,11 @@
       "status": "Implemented in source",
       "implemented": "Public GitHub aggregation for top repositories and recent repositories, query operators, language/license/creation-window/ranking filters, source metadata and linked saved/project actions.",
       "remaining": "Unauthenticated public API quotas apply; private repositories remain separately authorized.",
-      "notes": "Live native API checks passed, including 30 repositories matching Python/MIT filters. Total-star ranking and recent-creation ranking are distinct from independently measured trend velocity.",
+      "notes": "Live native API checks passed, including 30 repositories matching Python/MIT filters. Total-star ranking and recent-creation ranking are distinct from independently measured trend velocity. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 100,
       "in_scope": true,
-      "verification": "Live public source checks and selected isolated Mac workflows are recorded in DISCOVERY-AGGREGATION.md and TEST-REPORT.html."
+      "verification": "Public GitHub adapters and Python/MIT filters pass native live reads; top/recent/robotics caches also populated in installed Windows. Mac save/in-app README/project linking and unified keyword search pass."
     },
     {
       "id": "T011",
@@ -187,10 +193,11 @@
       "status": "Implemented in source",
       "implemented": "Hugging Face download-ranked metadata, observed count changes, license/benchmark evidence comparison and bounded Ollama public catalogue feed.",
       "remaining": "No model installation or inference required. Live provider availability and catalogue layout changes remain external operational dependencies.",
-      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
+      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src/ModelIntelligence.tsx",
       "original_prd_percent": 75,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Hugging Face and Ollama metadata pass native public reads on Mac/Windows; model task/library/license filters pass. Selected metadata displayed natively. No weights downloaded or local inference tested."
     },
     {
       "id": "T012",
@@ -212,7 +219,8 @@
         "Internet and public provider availability; current patent metadata needs an appropriate external source"
       ],
       "owner_actions": [],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "arXiv, publisher RSS, Crossref and Europe PMC return actual native live data; installed Windows also populated them. Historical patents and failed PIB announcements remain paused."
     },
     {
       "id": "T013",
@@ -225,11 +233,11 @@
       "status": "Implemented in source",
       "implemented": "Keyless public YouTube channel aggregation by handle/URL/ID, recent uploads and full-color thumbnails, plus optional keyed keyword/channel-statistics search and existing research comparisons.",
       "remaining": "Public channel feeds need no key. Broad keyword search and subscriber statistics need an optional YouTube Data API key; personalized account home feeds are not claimed.",
-      "notes": "Synthetic analytics tests cover metric isolation, stale samples, cache deduplication and multi-creator evidence. Suggested topics are lexical research leads, not verified audience demand.",
+      "notes": "Synthetic analytics tests cover metric isolation, stale samples, cache deduplication and multi-creator evidence. Suggested topics are lexical research leads, not verified audience demand. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 75,
       "in_scope": true,
-      "verification": "Live public source checks and selected isolated Mac workflows are recorded in DISCOVERY-AGGREGATION.md and TEST-REPORT.html."
+      "verification": "Six starter public channels and @StanfordOnline direct refresh work without key; 15 uploads displayed. Creator research now consumes public RSS IDs. Earlier Stanford playback QA is revision-specific. Optional API keyword search needs a key and remains unverified."
     },
     {
       "id": "T014",
@@ -253,7 +261,8 @@
       "owner_actions": [
         "Provide licensed data only if this optional feature is wanted"
       ],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "Public US/India Apple charts returned 50 entries each and displayed real ranks; both populated on installed Windows. Licensed/Android revenue/download datasets require supplied data and remain unconnected."
     },
     {
       "id": "T015",
@@ -266,10 +275,11 @@
       "status": "Implemented in source",
       "implemented": "Opt-in scheduled refresh, retry delays, atomic source cooldown reservations, Retry-After/reset header enforcement, caches, read state and visible stale-cache warnings.",
       "remaining": "No known source gap in the bounded collector policy; provider quota/runtime acceptance remains unverified.",
-      "notes": "Historical implementation note: Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
+      "notes": "Historical implementation note: Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed. Earlier source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Fresh auto-refresh and a due automatic cycle observed. Transient retry, quotas/cache-failure rules tested. Stop retained cache; subsequent current Mac refresh recovered 40/40 sources including five added searches. Every scheduling/race condition is not verified."
     },
     {
       "id": "T016",
@@ -282,10 +292,11 @@
       "status": "Implemented in source",
       "implemented": "Research records for capabilities, published technology, public demonstrations and source evidence. Existing stored fields are preserved.",
       "remaining": "No local robot, simulator or build setup in scope.",
-      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
+      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src/modules.ts",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Native live robotics papers/repos/videos/news panel and sourced idea creation pass. No hardware/simulator or local execution in scope."
     },
     {
       "id": "T017",
@@ -298,11 +309,11 @@
       "status": "Implemented in source",
       "implemented": "Live robotics feed combining libraries, models, papers, IEEE news, videos and public social posts, plus source-based comparisons, research radar and evidence-linked workspace/document creation.",
       "remaining": "Provider availability remains external; no model, robot, simulator or hardware setup is required.",
-      "notes": "Topic scores describe the local cached sample and expose their formula. Raw stars/downloads/subscribers are never added together; no hardware or local execution.",
+      "notes": "Topic scores describe the local cached sample and expose their formula. Raw stars/downloads/subscribers are never added together; no hardware or local execution. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src/WorkspaceTools.tsx",
       "original_prd_percent": 50,
       "in_scope": true,
-      "verification": "Live public source checks and selected isolated Mac workflows are recorded in DISCOVERY-AGGREGATION.md and TEST-REPORT.html."
+      "verification": "Native research cards show explained counts/windows/provider coverage; frontend trend/percentile tests pass. Rankings are cache-relative observations, not validated market or factual quality."
     },
     {
       "id": "T018",
@@ -315,10 +326,11 @@
       "status": "Implemented in source",
       "implemented": "Region/crop, supplier, budget, scheme references and seasonal dates.",
       "remaining": "No known scope gap in this narrowly defined task; runtime verification remains outstanding.",
-      "notes": "v0.3 behavior has not been runtime-tested.",
+      "notes": "v0.3 behavior has not been runtime-tested. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src/modules.ts",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Public agriculture and official India event data displayed. Real project/event links saved. Personal seasonal/crop record workflows are implemented but not exhaustively UI-tested."
     },
     {
       "id": "T019",
@@ -331,7 +343,7 @@
       "status": "Implemented in source",
       "implemented": "Commodity observations, provider attribution, expo feeds and source-linked research records. Added irrigation, precision-farming, orchard/farm-robotics, solar-pump and scheme research queries; USDA ARS/NASS sources and official India myScheme/PM-KUSUM bookmarks, with topic attention windows and sourced ideas. Added live AgFunderNews/AGDAILY aggregation and dated India/US/global agriculture event sources. Added official India announcement RSS ingestion with agriculture and optional state-keyword filtering, source attribution and safe paused starters, alongside public agriculture news/events/queries.",
       "remaining": "PIB DNS resolution failed during live checks, so its starter stays paused. A state-filtered announcement is not a complete state scheme register or eligibility determination. Official source availability remains required.",
-      "notes": "Local monitoring source scope completed in this pass. Source completion is distinct from current data, account configuration and acceptance. See the remaining-code delivery and test report.",
+      "notes": "Local monitoring source scope completed in this pass. Source completion is distinct from current data, account configuration and acceptance. See the remaining-code delivery and test report. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src-tauri/src/scholarly_sources.rs",
       "original_prd_percent": 50,
       "in_scope": true,
@@ -340,7 +352,8 @@
         "Reachable official publisher feed; eligibility/deadline verification at source"
       ],
       "owner_actions": [],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "Public agriculture publishers/scholarly feeds pass. PIB DNS and current-patent coverage are unavailable; bookmarks do not establish eligibility or current programs."
     },
     {
       "id": "T020",
@@ -356,7 +369,8 @@
       "notes": "Schedules are manually entered and require verification.",
       "evidence": "apps/desktop/src/Workspaces.tsx",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Current native UI tracked actual Grand Victoria tournament with source URL/date/venue; US region results and honest empty India state pass. Manual bankroll/results workflows are not implied by this check."
     },
     {
       "id": "T021",
@@ -373,7 +387,7 @@
       "evidence": "apps/desktop/src-tauri/src/event_sources.rs",
       "original_prd_percent": 50,
       "in_scope": true,
-      "verification": "Native query preparation verified; two Rust planner tests plus UI-logic assertions cover query bounds/year rollover and past/ongoing date filters. No exhaustive live aggregator claimed.",
+      "verification": "Four live tournament adapters and three agriculture organizers pass native reads on both platforms. Synthetic tests cover event changes/alert deduplication and preserved plans. Dates/guarantees remain provider-reported.",
       "dependency_type": "Public source",
       "external_dependencies": [
         "Publisher schedule/announcement availability"
@@ -397,7 +411,8 @@
       "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
       "evidence": "apps/desktop/src/TravelPlanner.tsx",
       "original_prd_percent": 75,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T023",
@@ -413,7 +428,8 @@
       "notes": "v0.3 behavior has not been runtime-tested.",
       "evidence": "apps/desktop/src/Workspaces.tsx",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T024",
@@ -426,19 +442,17 @@
       "status": "Implemented in source",
       "implemented": "Bounded OpenStreetMap business discovery with attribution, duplicate prevention and consented static website audit. Added explicit visible incognito rendered-DOM inspection, nine explained weighted signals and a reviewed local prospect-priority breakdown using site evidence and manually confirmed fit/need/budget.",
       "remaining": "Website permission and availability apply. Scores are research heuristics, not full accessibility/security audits or verified conversion/revenue predictions. No outreach is sent.",
-      "notes": "Local monitoring source scope completed in this pass. Source completion is distinct from current data, account configuration and acceptance. See the remaining-code delivery and test report.",
+      "notes": "Local monitoring source scope completed in this pass. Source completion is distinct from current data, account configuration and acceptance. See the remaining-code delivery and test report. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src-tauri/src/rendered_audit.rs",
       "original_prd_percent": 75,
       "in_scope": true,
-      "dependency_type": "User review / public site",
+      "dependency_type": "External public service availability / optional owner-selected URL",
       "external_dependencies": [
-        "Public site availability and inspection permission"
+        "A reachable public Overpass endpoint; public website availability for chosen audits"
       ],
-      "owner_actions": [
-        "Confirm lead fit/need/budget where known"
-      ],
+      "owner_actions": [],
       "coding_remaining": [],
-      "verification": "Selected unlocked Mac QA checks pass at functional source 7167bfa; see testing/remaining-native-qa.json for exact workflows and limitations. Automated regression/build evidence is retained. Real accounts, WebDAV, full Windows/device and assistive-technology acceptance remain unverified where applicable."
+      "verification": "Current native OSM lookup failed; same-provider GET timed out/POST 502 and alternate public read timed out. Prior source 7167bfa verified a rendered example.com audit and saved priority. No live owner leads/outreach used."
     },
     {
       "id": "T025",
@@ -454,7 +468,8 @@
       "notes": "Source implementation; no runtime tests performed at user request. Account-dependent features require user configuration.",
       "evidence": "apps/desktop/src-tauri/src/invoices.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T026",
@@ -467,7 +482,7 @@
       "status": "Implemented in source",
       "implemented": "Company views, public contacts/deadlines, linked obligation tasks and project/company grouping.",
       "remaining": "User-entered dates still need source verification; this is not a legal filing service.",
-      "notes": "Historical implementation note: Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
+      "notes": "Historical implementation note: Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed. Earlier source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "apps/desktop/src/CompanyOverview.tsx",
       "original_prd_percent": 75,
       "in_scope": true,
@@ -487,7 +502,8 @@
       "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
       "evidence": "apps/desktop/src/FinanceLedger.tsx",
       "original_prd_percent": 75,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T028",
@@ -545,7 +561,8 @@
       "notes": "v0.3 behavior has not been runtime-tested.",
       "evidence": "apps/desktop/src/main.tsx",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Current real public source saves, two-source document and task creation persist. Earlier isolated pin/checklist/search evidence remains recorded; not all editing combinations tested."
     },
     {
       "id": "T031",
@@ -562,7 +579,7 @@
       "evidence": "crates/core/src/sync.rs",
       "original_prd_percent": 100,
       "in_scope": true,
-      "verification": "Live public source checks and selected isolated Mac workflows are recorded in DISCOVERY-AGGREGATION.md and TEST-REPORT.html."
+      "verification": "Current native document creation/save plus workspace selected-file attachment/safe preview and exact-byte restart checks pass. Rich Markdown/attachment boundaries have separate earlier/automated evidence."
     },
     {
       "id": "T032",
@@ -578,7 +595,8 @@
       "notes": "v0.3 behavior has not been runtime-tested.",
       "evidence": "apps/desktop/src/main.tsx",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Current native linked follow-up task completed and stayed done after restart. Core state/stale-edit tests pass."
     },
     {
       "id": "T033",
@@ -591,10 +609,11 @@
       "status": "Implemented in source",
       "implemented": "Daily/week/month/year/custom recurrence, selected weekdays, end dates and task-completion prerequisites with local cycle checks.",
       "remaining": "No known source gap in these scheduling rules; runtime and cross-device behavior unverified.",
-      "notes": "Historical implementation note: Source reviewed and compiled where applicable. No tests, live provider calls or runtime acceptance performed in this pass. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
+      "notes": "Historical implementation note: Source reviewed and compiled where applicable. No tests, live provider calls or runtime acceptance performed in this pass. Earlier source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "apps/desktop/src/TaskSchedule.tsx",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Current recurrence regression suite passes including recurrence/date exceptions. Earlier native month-end recurrence passed. Real OS notification delivery is separate."
     },
     {
       "id": "T034",
@@ -624,10 +643,11 @@
       "status": "Implemented in source",
       "implemented": "Personal SendGrid email, Twilio SMS/voice and authenticated ntfy push; consented destinations, generic content, quiet hours/snooze, optional daily policies and outcome history. Native APNs/FCM registration and token refresh/removal, encrypted host token storage, provider adapters, own-device checks, send limits and desktop manual/daily native-push channel.",
       "remaining": "Live push requires owner-supplied credentials, a reachable HTTPS host and a correctly signed iOS build. No live delivery verified. History distinguishes provider acceptance from delivery; no delivery callback claim.",
-      "notes": "Historical implementation note: Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
+      "notes": "Historical implementation note: Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction. Earlier source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "docs/NATIVE-PUSH.md",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T036",
@@ -643,7 +663,8 @@
       "notes": "v0.3 behavior has not been runtime-tested.",
       "evidence": "apps/desktop/src/main.tsx",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T037",
@@ -659,7 +680,8 @@
       "notes": "Global shortcut registration may conflict with other apps; runtime unverified.",
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Current native global keyword palette found and opened real persisted workspace/task. Intent/date/route assertions pass."
     },
     {
       "id": "T038",
@@ -676,7 +698,8 @@
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 100,
       "in_scope": false,
-      "scope_note": "Local model inference is outside the clarified scope."
+      "scope_note": "Local model inference is outside the clarified scope.",
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T039",
@@ -693,7 +716,8 @@
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 100,
       "in_scope": false,
-      "scope_note": "Local-model embedding runtime is outside scope; keyword search and lexical graph remain."
+      "scope_note": "Local-model embedding runtime is outside scope; keyword search and lexical graph remain.",
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T040",
@@ -717,7 +741,8 @@
       "owner_actions": [
         "Enter an API key in-app later if desired; review generated factual claims"
       ],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T041",
@@ -733,7 +758,8 @@
       "notes": "Source implementation; no runtime tests performed at user request. Account-dependent features require user configuration.",
       "evidence": "apps/desktop/src-tauri/src/voice.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T042",
@@ -766,7 +792,8 @@
       "notes": "v0.3 behavior has not been runtime-tested.",
       "evidence": "apps/desktop/src/modules.ts",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T044",
@@ -779,10 +806,11 @@
       "status": "Implemented in source",
       "implemented": "Feasibility/competition records, project tracking, editable PRD templates and linked task plans.",
       "remaining": "Prototype code generation/execution is outside scope.",
-      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
+      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src/WorkspaceTools.tsx",
       "original_prd_percent": 75,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Current cached real robotics research saved as an evidence-linked local idea. Generated cited document and project links passed; no code/prototype executed."
     },
     {
       "id": "T045",
@@ -795,10 +823,11 @@
       "status": "Implemented in source",
       "implemented": "Topics, audiences, source references, editable scripts/outlines, calendar dates and published links.",
       "remaining": "Automatic publishing and production execution are excluded; optional generated drafts can use reviewed cloud AI.",
-      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
+      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src/modules.ts",
       "original_prd_percent": 50,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Current public-channel caches produce sourced cross-channel content drafts without AI key. No claim of audience-demand forecasting or publishing."
     },
     {
       "id": "T046",
@@ -811,7 +840,7 @@
       "status": "Implemented in source",
       "implemented": "Full-content/tag/field graph search, one-to-three-hop context, explicit links and reviewable lexical/tag suggestions.",
       "remaining": "Local semantic models are excluded. Relevance evaluation remains separate; suggested relationships require review.",
-      "notes": "Historical implementation note: Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
+      "notes": "Historical implementation note: Rust/TypeScript compile checks only. No tests, account reads, dataset imports, image downloads, container executions or live provider calls performed. Earlier source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "apps/desktop/src/KnowledgeGraph.tsx",
       "original_prd_percent": 75,
       "in_scope": true,
@@ -853,11 +882,11 @@
       "status": "Implemented in source",
       "implemented": "Registry retrieval and publisher/license/setup notes, signed extension publisher-key pinning, catalog version comparison and field-level installed/proposed manifest review. MCP health summaries show the last reviewed request status/time/operation without network probes. Registry/publisher/license metadata, exact manifest update comparisons, pinned signatures and reviewed connection health remain implemented. Extension manifests now have authoring validation/export and a local SDK guide.",
       "remaining": "Publisher identity and claims need independent verification. Valid signatures establish integrity and key continuity, not trustworthiness.",
-      "notes": "Local monitoring source scope completed in this pass. Source completion is distinct from current data, account configuration and acceptance. See the remaining-code delivery and test report.",
+      "notes": "Local monitoring source scope completed in this pass. Source completion is distinct from current data, account configuration and acceptance. See the remaining-code delivery and test report. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "docs/EXTENSION-AUTHORING.md",
       "original_prd_percent": 75,
       "in_scope": true,
-      "verification": "Repository tests and frontend/native compilation recorded in TEST-REPORT.html. New UI paths have not received native acceptance.",
+      "verification": "Final native live MCP checks verify latest versions, unique identities and matching metadata/source URLs; native details show actual repository/remotes JSON. No external tools executed.",
       "dependency_type": "External verification",
       "external_dependencies": [
         "Publisher/registry provenance"
@@ -878,7 +907,7 @@
       "status": "Implemented in source",
       "implemented": "Reviewed remote MCP, isolated Docker CLI and stdio MCP, fixed REST extensions, exact approvals, cancellation, bounded output/audits and paginated MCP discovery up to five pages per isolated session. Reviewed remote MCP information, existing isolated optional container/stdio tools, exact allowlists, cancellation, bounded output and audit history are implemented. No additional IDE/runtime is installed for the monitoring workflow.",
       "remaining": "Endpoint/tool consent and provider-specific credentials may be required. Independent sandbox/runtime acceptance remains open; broader IDE/host execution is outside the clarified monitoring scope.",
-      "notes": "Local monitoring source scope completed in this pass. Source completion is distinct from current data, account configuration and acceptance. See the remaining-code delivery and test report.",
+      "notes": "Local monitoring source scope completed in this pass. Source completion is distinct from current data, account configuration and acceptance. See the remaining-code delivery and test report. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src-tauri/src/mcp_stdio.rs",
       "original_prd_percent": 75,
       "in_scope": true,
@@ -889,7 +918,8 @@
       "owner_actions": [
         "Choose/approve information sources if desired"
       ],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T050",
@@ -902,10 +932,11 @@
       "status": "Implemented in source",
       "implemented": "Saved research plan results and step states, cancellation, source evidence and optional cloud request cancellation.",
       "remaining": "No local inference required; previous results remain stored.",
-      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
+      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src-tauri/src/agent_plans.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Current native Stop retained 876 cached results; subsequent full refresh recovered 40/40. Bounded transport retry/cancellation and previous-cache tests pass. Not all asynchronous races accepted."
     },
     {
       "id": "T051",
@@ -918,10 +949,11 @@
       "status": "Implemented in source",
       "implemented": "Approved public-feed steps and deterministic selected-record briefing steps, per-step evidence, cancellation and recurring schedules.",
       "remaining": "Research questions are retained as review prompts; briefings do not pretend to answer them with generated analysis.",
-      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
+      "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src-tauri/src/agent_schedules.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T052",
@@ -943,7 +975,8 @@
         "Optional approved endpoints or independently installed container runtime"
       ],
       "owner_actions": [],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T053",
@@ -959,7 +992,8 @@
       "notes": "v0.3 behavior has not been runtime-tested.",
       "evidence": "apps/desktop/src-tauri/src/projects.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Created actual two-source project, attached file, linked task and confirmed selected links after restart. Manual lifecycle fields remain editable; complete lifecycle UI not exhaustively tested."
     },
     {
       "id": "T054",
@@ -975,7 +1009,8 @@
       "notes": "No repository was authorized or scanned during this implementation pass.",
       "evidence": "apps/desktop/src-tauri/src/projects.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T055",
@@ -991,7 +1026,8 @@
       "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
       "evidence": "apps/desktop/src-tauri/src/projects.rs",
       "original_prd_percent": 75,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T056",
@@ -1007,7 +1043,8 @@
       "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
       "evidence": "apps/desktop/src-tauri/src/projects.rs",
       "original_prd_percent": 75,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T057",
@@ -1023,7 +1060,8 @@
       "notes": "Reassessed against the user\u2019s monitoring/organization scope; no local model, simulator or prototype setup required.",
       "evidence": "apps/desktop/src-tauri/src/github_accounts.rs",
       "original_prd_percent": 75,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T058",
@@ -1036,10 +1074,11 @@
       "status": "Implemented in source",
       "implemented": "Linked notes and original document attachments with versions, checksums, text indexing and portable exports. Bounded, cancellable PDF/PNG/JPEG text extraction with atomic index updates. Attachment originals/version metadata now replicate through scoped causal peer sync and can be exported on both companions.",
       "remaining": "Runtime verification outstanding. Processing remains bounded to supported sizes/formats; streaming large-file storage and byte-offset resume are future enhancements.",
-      "notes": "Historical implementation note: Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
+      "notes": "Historical implementation note: Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction. Earlier source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "docs/ATTACHMENT-SYNC.md",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Native selected-file upload and safe text preview (85-byte isolated fixture) pass and exact text survives restart. Automated attachment hashes/version/scope/backup tests pass. External PDF/OCR tools remain optional."
     },
     {
       "id": "T059",
@@ -1055,7 +1094,8 @@
       "notes": "Implementation is not a substitute for independent threat review.",
       "evidence": "apps/desktop/src-tauri/src/vault.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T060",
@@ -1071,7 +1111,8 @@
       "notes": "Vault unlocking, expiry and recovery were not runtime-tested; no separate biometric challenge.",
       "evidence": "apps/desktop/src-tauri/src/vault.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T061",
@@ -1132,11 +1173,12 @@
       "status": "Partially implemented",
       "implemented": "Consent-based bounded ClamAV attachment scan adapter and dependency advisory audit; patched SQLite/ZIP vulnerabilities.",
       "remaining": "Independent security review and runtime adversarial acceptance remain; five transitive dependency warnings are documented.",
-      "notes": "Historical implementation note: Source implementation; compile/package checks only. No runtime tests, provider actions or publication performed. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
+      "notes": "Historical implementation note: Source implementation; compile/package checks only. No runtime tests, provider actions or publication performed. Earlier source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "docs/security/DEPENDENCY-ADVISORIES.json",
       "original_prd_percent": 50,
       "in_scope": false,
-      "scope_note": "Independent review is verification, not functionality coding."
+      "scope_note": "Independent review is verification, not functionality coding.",
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T064",
@@ -1153,7 +1195,8 @@
       "evidence": "apps/desktop/src-tauri/src/updates.rs",
       "original_prd_percent": 75,
       "in_scope": false,
-      "scope_note": "Signed automatic distribution is not required for local personal builds."
+      "scope_note": "Signed automatic distribution is not required for local personal builds.",
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T065",
@@ -1169,7 +1212,8 @@
       "notes": "Preferences, source caches and complete ownership metadata are not included.",
       "evidence": "crates/core/src/archive.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T066",
@@ -1185,7 +1229,8 @@
       "notes": "Forgotten password and lost device key have no recovery without another valid backup.",
       "evidence": "crates/core/src/archive.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T067",
@@ -1218,7 +1263,8 @@
       "notes": "No silent local overwrite; copy-conflict behavior not runtime-tested.",
       "evidence": "crates/core/src/archive.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T069",
@@ -1234,7 +1280,8 @@
       "notes": "Recorded verification is at export time; it does not confirm the file still exists.",
       "evidence": "crates/core/src/archive.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T070",
@@ -1275,7 +1322,8 @@
       "notes": "v0.3 behavior has not been runtime-tested.",
       "evidence": "apps/desktop/src/DataPrivacy.tsx",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T072",
@@ -1291,7 +1339,8 @@
       "notes": "Not executed; does not erase original files, exports, OS credentials or other devices.",
       "evidence": "apps/desktop/src/DataPrivacy.tsx",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T073",
@@ -1307,7 +1356,8 @@
       "notes": "Reminder implementation and NSIS backup-before-uninstall hook are in source. The hook compiled into the successful Windows installer; silent install/launch/uninstall passed. Silent uninstall intentionally preserves data and skips the interactive prompt.",
       "evidence": "apps/desktop/src-tauri/windows/hooks.nsh",
       "original_prd_percent": 75,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T074",
@@ -1323,7 +1373,8 @@
       "notes": "iOS Simulator build completed; no simulator runtime testing.",
       "evidence": "apps/mobile-ios/CommandCenter/CommandCenterApp.swift",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T075",
@@ -1339,7 +1390,8 @@
       "notes": "v0.3 macOS app/DMG, iOS Simulator bundle and Android debug APK compile/package records exist. No runtime testing was performed.",
       "evidence": "apps/mobile-ios/CommandCenter/CommandCenterApp.swift",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T076",
@@ -1355,7 +1407,8 @@
       "notes": "v0.3 macOS app/DMG, iOS Simulator bundle and Android debug APK compile/package records exist. No runtime testing was performed.",
       "evidence": "apps/mobile-ios/CommandCenter/CommandCenterApp.swift",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T077",
@@ -1371,7 +1424,8 @@
       "notes": "v0.3 macOS app/DMG, iOS Simulator bundle and Android debug APK compile/package records exist. No runtime testing was performed.",
       "evidence": "apps/mobile-ios/CommandCenter/CommandCenterApp.swift",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T078",
@@ -1387,7 +1441,8 @@
       "notes": "v0.4 source implementation. Compile checks only; no runtime tests or live connections.",
       "evidence": "apps/mobile-ios/CommandCenter/CommandCenterApp.swift",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T079",
@@ -1411,7 +1466,8 @@
       "owner_actions": [
         "Optional real-device testing; signing entitlement/host credentials only for native remote push"
       ],
-      "coding_remaining": []
+      "coding_remaining": [],
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T080",
@@ -1427,7 +1483,8 @@
       "notes": "v0.3 macOS app/DMG, iOS Simulator bundle and Android debug APK compile/package records exist. No runtime testing was performed.",
       "evidence": "docs/ACCEPTANCE.md",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Final local ARM64 DMG checksum, read-only mounted app/version/Applications shortcut, strict deep ad-hoc resource seal and delivery-copy hash pass. Selected isolated native functional workflows pass. No Developer ID/notarization."
     },
     {
       "id": "T081",
@@ -1443,7 +1500,8 @@
       "notes": "Unsigned personal-use release installer, version 0.5.0 x64. Full feature acceptance is not claimed. Evidence: testing/windows-package-qa.json and testing/package-ci-ef1e9c3.json.",
       "evidence": "apps/desktop/src-tauri/windows/hooks.nsh",
       "original_prd_percent": 50,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Final Windows NSIS install/native-window/uninstall passed twice with matching installer SHA. Installed fresh profile fetched 799 items from 35/35 sources without account or keys; no seeded personal records. Complete Windows feature UI not established."
     },
     {
       "id": "T082",
@@ -1459,7 +1517,8 @@
       "notes": "v0.3 source and relevant compile checks completed; runtime behavior remains unverified. No live account or provider was exercised.",
       "evidence": "apps/mobile-android/app/build/outputs/apk/debug/app-debug.apk",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T083",
@@ -1472,11 +1531,12 @@
       "status": "Partially implemented",
       "implemented": "Opt-in signed updater artifact configuration, unpublished manifest preparation, owner-provided Android release signing and documented store materials.",
       "remaining": "Owner credentials, actual signed/notarized distributions, platform screenshots/privacy declarations and store submissions remain.",
-      "notes": "Historical implementation note: Source implementation; compile/package checks only. No runtime tests, provider actions or publication performed. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
+      "notes": "Historical implementation note: Source implementation; compile/package checks only. No runtime tests, provider actions or publication performed. Earlier source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "docs/release/RELEASE-PREPARATION.md",
       "original_prd_percent": 25,
       "in_scope": false,
-      "scope_note": "Production signing, notarization and stores are excluded."
+      "scope_note": "Production signing, notarization and stores are excluded.",
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T084",
@@ -1493,7 +1553,8 @@
       "evidence": "docs/TEST-REPORT.html",
       "original_prd_percent": 50,
       "in_scope": false,
-      "scope_note": "Acceptance testing is tracked separately from code completion."
+      "scope_note": "Acceptance testing is tracked separately from code completion.",
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T085",
@@ -1509,7 +1570,8 @@
       "notes": "v0.4 source implementation. Compile checks only; no runtime tests or live connections.",
       "evidence": "crates/core/src/sync.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T086",
@@ -1522,10 +1584,11 @@
       "status": "Implemented in source",
       "implemented": "Desktop mDNS, mobile Bonjour/NSD, manual address fallback, one-time Noise pairing, comparison approval and OS-protected pinned identities.",
       "remaining": "Runtime interoperability and adversarial verification remain outstanding.",
-      "notes": "v0.4 source implementation. Compile checks only; no runtime tests or live connections.",
+      "notes": "v0.4 source implementation. Compile checks only; no runtime tests or live connections. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
       "evidence": "apps/desktop/src-tauri/src/peer_sync.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T087",
@@ -1541,7 +1604,8 @@
       "notes": "v0.4 source implementation. Compile checks only; no runtime tests or live connections.",
       "evidence": "crates/core/src/sync.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T088",
@@ -1557,7 +1621,8 @@
       "notes": "v0.4 source implementation. Compile checks only; no runtime tests or live connections.",
       "evidence": "apps/desktop/src/DeviceSync.tsx",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T089",
@@ -1573,7 +1638,8 @@
       "notes": "Receiving stops on screen exit/app background. Desktop notification receipts prevent repeats after sync; simultaneous/offline delivery can still duplicate. Mobile plan approval does not execute tools.",
       "evidence": "crates/mobile-peer/src/listener.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T090",
@@ -1589,7 +1655,8 @@
       "notes": "v0.4 source implementation. Compile checks only; no runtime tests or live connections.",
       "evidence": "apps/desktop/src-tauri/src/backups.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T091",
@@ -1605,7 +1672,8 @@
       "notes": "v0.4 source implementation. Compile checks only; no runtime tests or live connections.",
       "evidence": "apps/desktop/src-tauri/src/webdav_backup.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T092",
@@ -1621,7 +1689,8 @@
       "notes": "No VPN, account, router rule or relay was installed or provisioned. Original scope was optional internet relay / mesh; the implemented option is existing private mesh connectivity.",
       "evidence": "apps/desktop/src-tauri/src/peer_sync.rs",
       "original_prd_percent": 100,
-      "in_scope": true
+      "in_scope": true,
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T093",
@@ -1655,7 +1724,8 @@
       "evidence": "services/optional-host/server.py",
       "original_prd_percent": 50,
       "in_scope": false,
-      "scope_note": "Commercial multi-user onboarding/licensing is excluded for personal use."
+      "scope_note": "Commercial multi-user onboarding/licensing is excluded for personal use.",
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     },
     {
       "id": "T095",
@@ -1668,25 +1738,26 @@
       "status": "Partially implemented",
       "implemented": "Opt-in stateless hosted scheduler with CAS-backed state, encrypted archive relay, moderated public extension catalog, OCI files and unapplied Cloud Run/GCS/Scheduler Terraform. Optional native APNs/FCM provider adapters, encrypted token registry and bounded own-device send API.",
       "remaining": "Managed production deployment, live native-push delivery acceptance, large-scale marketplace operations and service acceptance remain.",
-      "notes": "Historical implementation note: Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction. Current source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
+      "notes": "Historical implementation note: Source compiled for macOS, shared Rust, iOS Simulator and Android. Python syntax and push dependency compatibility checked. No tests, account connections, host deployment or live sends. Commercial onboarding excluded from this implementation pass by user direction. Earlier source 7167bfa passes Mac/Windows CI, local regression suites and mobile compilation; full feature acceptance is separately tracked in TEST-REPORT.html.",
       "evidence": "services/optional-host/README.md",
       "original_prd_percent": 50,
       "in_scope": false,
-      "scope_note": "Managed hosting/public marketplace operation is excluded; optional integration source remains."
+      "scope_note": "Managed hosting/public marketplace operation is excluded; optional integration source remains.",
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
     }
   ],
   "acceptance": [
     {
       "id": "A01",
       "workflow": "Sourced robotics discovery under a budget",
-      "notes": "Partial source coverage; automatic domain/budget research is missing.",
-      "verification": "Not verified in current source"
+      "notes": "Clarified monitoring scope: real robotics papers, repositories, publisher news, public videos and sourced idea creation pass live/native checks. Hardware setup and automatic procurement are excluded. Arbitrary budget-specific research is a prepared search/record filter, not autonomous verification.",
+      "verification": "Partial live/native verification"
     },
     {
       "id": "A02",
       "workflow": "Start a project from a GitHub discovery",
-      "notes": "Source workflow implemented; not runtime verified.",
-      "verification": "Not verified in current source"
+      "notes": "At ceb64f3, selected a live GitHub repository plus an agriculture event, created a cited document and a project linked to both saved sources; uploaded and safely previewed an isolated text fixture. Earlier source and current restart evidence are recorded separately.",
+      "verification": "Selected native workflow verified"
     },
     {
       "id": "A03",
@@ -1715,20 +1786,20 @@
     {
       "id": "A07",
       "workflow": "Find uncontacted Austin website leads",
-      "notes": "Public business discovery, static website audits and uncontacted CRM filters implemented; no actual source request or outreach performed.",
+      "notes": "Public OSM lookup and website audit are implemented. Prior isolated QA verified a rendered example.com audit and saved reviewed priority; current public OSM lookup is recorded in online-native-qa.json. No outreach sent.",
       "verification": "Not verified in current source"
     },
     {
       "id": "A08",
       "workflow": "Find verified poker tournaments by guarantee",
-      "notes": "Saved guarantee filters plus publisher-configured event feed ingestion/change alerts implemented; verified tournament-specific provider coverage remains partial.",
-      "verification": "Not verified in current source"
+      "notes": "Live WPT, WSOP, PokerStars and CardPlayer schedules passed. Fresh GUI displayed upcoming US events and tracked WSOP Grand Victoria with actual organizer URL and venue. India filter correctly had no matching upcoming event. Guarantees are provider-reported; exhaustive worldwide coverage and independent verification are not established.",
+      "verification": "Partial live/native verification"
     },
     {
       "id": "A09",
       "workflow": "Find and review Unity MCP options",
-      "notes": "Registry discovery, approved remote MCP and containerized stdio MCP list/call plus signed declarative extensions implemented. Dependencies are installed separately; runtime sandbox/tool acceptance remains unverified.",
-      "verification": "Not verified in current source"
+      "notes": "Live public MCP registry metadata passed without login; unique registry entries retain repository, version, package and remote endpoint metadata. No MCP server installed or tool executed. Unity-specific completeness and approved external-tool execution remain unverified.",
+      "verification": "Public catalogue verified; tools unverified"
     },
     {
       "id": "A10",
@@ -1739,8 +1810,8 @@
     {
       "id": "A11",
       "workflow": "Protect sensitive records from generic search/AI",
-      "notes": "Vault and exclusion source implemented; no current security acceptance verification.",
-      "verification": "Not verified in current source"
+      "notes": "Prior source 7167bfa native QA rejected outbound preview for an AI-excluded synthetic note and verified locked vault/reconciliation persistence. Current automated storage/vault/exclusion tests pass. No real private data or online AI request used.",
+      "verification": "Partial isolated verification"
     },
     {
       "id": "A12",
@@ -1795,7 +1866,7 @@
     },
     {
       "title": "Windows and mobile device verification",
-      "detail": "Windows compiler/tests, NSIS package and isolated install/native-window/uninstall smoke passed. Full Windows feature UI and real mobile device testing still need target devices. Production signing/store release is excluded.",
+      "detail": "Final Windows installer install/native-window/uninstall and actual no-account public bootstrap passed (35/35 sources, 799 live items). Complete Windows feature UI and physical mobile-device testing remain open. Production signing/store release is excluded.",
       "tasks": "T079, T081"
     },
     {
@@ -1812,16 +1883,43 @@
       "title": "Source availability and optional datasets",
       "detail": "PIB RSS DNS failed and remains paused. The public patent index returned historical records. Proprietary app-market data needs an authorized schema-1 endpoint/import; custom prices need an approved public JSON endpoint. Live provider acceptance does not follow from source code completion.",
       "tasks": "T012, T014, T019, T047"
+    },
+    {
+      "title": "Public business provider outage",
+      "detail": "OSM lookup failed in the native app. The same public Austin fixture timed out on GET and received HTTP 502 on POST; alternate public Overpass reads timed out. Existing CRM records remain available. No account or key is needed, but a reachable provider is.",
+      "tasks": "A07 / public business discovery"
     }
   ],
   "scope": "Personal local command center: discover, monitor, organize, compare and track. No local LLM/model downloads, robotics execution, prototype execution or production commercialization.",
-  "desktop_source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
+  "desktop_source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
   "resolved_blockers": [
     {
       "title": "New native Mac UI checks",
       "resolved_at": "2026-11-16T23:35:21.798693+00:00",
       "evidence": "testing/remaining-native-qa.json",
       "scope": "Selected isolated benchmark/permission/AI-policy/statement/field-restore/rendered-audit/restart checks passed. Full feature/device/provider acceptance remains separate."
+    },
+    {
+      "title": "First-launch and workspace live-feed integration",
+      "detail": "Fixed manual-only first load, empty domain feed views, missing keyless channel refresh/creator evidence, absent default app/MCP/paper sources and shared MCP URL collapse. Native live audit passes 35/35; fresh UI displayed 791 unique results."
     }
-  ]
+  ],
+  "online_readiness": {
+    "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
+    "public_sources_passed": 35,
+    "public_sources_enabled": 35,
+    "raw_live_results": 803,
+    "fresh_gui_unique_results": 791,
+    "app_login_required": false,
+    "automatic_first_launch_refresh": true,
+    "all_features_verified": false,
+    "evidence": "testing/online-live-sources.json",
+    "notes": "Fresh isolated Mac startup connected immediately. One Apple US transport failure recovered on manual refresh; final code retries one transient public-read failure. Optional private/account services remain separate. MCP version collisions found in UI were corrected and the final native live run asserts matching version labels, metadata and URLs.",
+    "windows_installed_sources_passed": 35,
+    "windows_installed_sources_enabled": 35,
+    "windows_live_items": 799,
+    "windows_evidence": "testing/online-windows-bootstrap.json",
+    "windows_public_sources_passed": 35,
+    "windows_bootstrap_evidence": "testing/online-windows-bootstrap.json"
+  }
 }

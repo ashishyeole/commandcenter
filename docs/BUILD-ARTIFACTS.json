@@ -1,57 +1,57 @@
 {
   "version": "0.5.0",
-  "generated_at": "2026-11-16T23:35:41.230689+00:00",
+  "generated_at": "2026-11-17T02:07:17.983086+00:00",
   "runtime_tested": false,
   "isolated_mac_qa_smoke_tested": true,
   "production_signed": false,
   "artifacts": [
     {
       "platform": "macOS app",
-      "source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
+      "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app",
-      "bytes": 83607038,
-      "sha256": "08359dac1d15259824475052a32e1f14ab610cbeba3b490e96b67f04ecdf6a58",
+      "bytes": 83686462,
+      "sha256": "6f625d7b72ff1ef0296600344d46dcdb2ec3cc2d154747d52565525284898450",
       "hash_method": "SHA-256 of compact UTF-8 JSON array sorted by relative path; each entry has path plus file sha256 or symlink target; object keys sorted",
       "files": 5
     },
     {
       "platform": "macOS DMG",
-      "source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
+      "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/dmg/Personal Command Center_0.5.0_arm64.dmg",
-      "bytes": 24310218,
-      "sha256": "991a7c74e9784bcab1d428463f00f8fb0d3019de72dce09b3819baba6f157ad3",
+      "bytes": 24325406,
+      "sha256": "f77e7c228efc6a54f21521482dd95fd6bb8005f8a82a3851095f7b5f9cf8159f",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     },
     {
       "platform": "iOS Simulator app",
-      "source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
+      "source_revision": "ceb64f376fdb7b6898c41752d75727ae0035c884",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/mobile-ios-final/Build/Products/Debug-iphonesimulator/CommandCenter.app",
-      "bytes": 37298861,
-      "sha256": "0ac5dfc003035414fc4e9ceb3b7ce0420bc379590c6445966f5b185c41bd0583",
+      "bytes": 37318333,
+      "sha256": "474c5a6825368a71006c5ee2838359f7981e1b4141a0568ee8d6f79ce48752b5",
       "hash_method": "SHA-256 of compact UTF-8 JSON array sorted by relative path; each entry has path plus file sha256 or symlink target; object keys sorted",
       "files": 5
     },
     {
       "platform": "Android ARM64 debug APK",
-      "source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
+      "source_revision": "ceb64f376fdb7b6898c41752d75727ae0035c884",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/apps/mobile-android/app/build/outputs/apk/debug/app-debug.apk",
-      "bytes": 160292948,
-      "sha256": "4a50a0aeb1ed10fbfe01ff82ae3ef866aa4500f539e956f0bdbf6f5200c3a1dc",
+      "bytes": 160301196,
+      "sha256": "9b30c27e5fc9e350816ce5909dca1d75852559a5648ca251ab5c0afcd5783528",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     },
     {
       "platform": "Windows NSIS installer",
-      "source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
+      "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/windows-package/nsis/Personal Command Center_0.5.0_x64-setup.exe",
-      "bytes": 7580136,
-      "sha256": "86f7512319aba682f4e342a37b89ab71c6037e9143314be2666eaaaa1af3961a",
+      "bytes": 7665460,
+      "sha256": "61f70732964b7697dc4e91e37f4faa840c5f815aee587f52b28a87e6f5911854",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     }
@@ -64,19 +64,21 @@
   },
   "packaging_notes": [
     "Local Mac development app/DMG and mobile development binaries; Windows release NSIS installer from the identified CI source revision.",
-    "Mobile UI and shared Rust libraries were rebuilt for exact-occurrence task reminder receipt coordination. Desktop-only field restore, WebDAV, scholarly sources and account controls are not claimed as a mobile redesign.",
+    "Mobile UI and shared Rust libraries were rebuilt after public feed configuration validation changed in the shared core. Desktop-only field restore, WebDAV, scholarly sources and account controls are not claimed as a mobile redesign.",
     "iOS shared Rust symbols are defined in the bundle; no developer libpcc dylib dependency.",
     "macOS voice bridge is bundled and referenced through @rpath.",
-    "Windows release installer passed CI silent install, native-window launch and silent uninstall. Earlier source dc1b077 isolated macOS Discovery QA passed selected aggregation/document/workspace workflows. Current-source isolated native QA covers benchmark, provider permissions, AI exclusions, encrypted statement reconciliation, selected-title restore, rendered public audit and restart persistence when matching evidence is recorded. Full feature/provider/device acceptance remains separate. Normal artifacts have not all received feature acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage."
+    "Windows release installer passed CI silent install, native-window launch and silent uninstall. Earlier source dc1b077 isolated macOS Discovery QA passed selected aggregation/document/workspace workflows. Current-source isolated native QA covers fresh public-feed initialization, selected source/document/workspace/attachment/event/channel/research/task/search/restart paths and corrected MCP metadata; provider business lookup failure is explicitly recorded. Earlier vault/backup/audit QA remains revision-specific. Full feature/provider/device acceptance remains separate. Normal artifacts have not all received feature acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage."
   ],
-  "desktop_source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
-  "mac_native_qa_evidence": "testing/remaining-native-qa.json",
+  "desktop_source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
+  "mac_native_qa_evidence": "testing/online-native-qa.json",
   "windows_installer_smoke_verified": true,
-  "mobile_ui_source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
+  "mobile_ui_source_revision": "ceb64f376fdb7b6898c41752d75727ae0035c884",
   "runtime_coverage_by_platform": {
-    "macOS": "Matching current-source isolated native QA passed benchmark, permission inventory/pause, AI exclusion enforcement, encrypted statement reconcile/create/duplicate checks, title-only restore preserving body, rendered audit/priority and restart persistence; see remaining-native-qa.json. Full feature/provider/accessibility acceptance remains open.",
-    "Windows": "Installer/native-window/uninstaller smoke passed",
+    "macOS": "Matching final-source isolated native QA passed selected no-account public feed, save/document/workspace/upload/event/task/channel/research/search/restart paths and corrected MCP details. Public business lookup failed at its providers. See online-native-qa.json; full feature/provider/accessibility acceptance remains open.",
+    "Windows": "Matching installer silently installed, launched and uninstalled; fresh no-account startup fetched 799 real items from 35/35 successful public sources, 0 failed. No seeded personal records or account keys. Full feature UI remains unverified.",
     "iOS": "Compilation only",
     "Android": "Compilation only"
-  }
+  },
+  "windows_public_bootstrap_verified": true,
+  "windows_public_bootstrap_evidence": "testing/online-windows-bootstrap.json"
 }
