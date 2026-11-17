@@ -1,13 +1,23 @@
 {
-  "generated_at": "2026-11-17T02:03:12.027416+00:00",
+  "generated_at": "2026-11-17T07:01:04.836470+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
-  "rust_test_executions": 102,
-  "rust_distinct_tests": 100,
+  "rust_test_executions": 112,
+  "rust_distinct_tests": 110,
   "python_tests": 10,
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
   "results": [
+    {
+      "status": "PASS",
+      "area": "No-account business lookup repair",
+      "evidence": "Final 50bffb5: regional Overpass + public Photon global category/radius search. Native live test returned 50 Austin and 50 Bengaluru listings in 2.10 seconds total, with no credentials. Ten native regressions pass; actual final global UI success is recorded in business-native-qa.json."
+    },
+    {
+      "status": "PASS \u00b7 selected native workflows",
+      "area": "Business native Mac UI",
+      "evidence": "Final global Photon UI returned 50 actual Bengaluru listings, saved The Merak Brewhouse, retained prior 24 Diner lead (2 CRM records), showed 49 untracked India records and reused the same cache/fetch time. Default Austin UI/lead/cache/restart and Stop recovery also pass at their recorded revisions. Earlier global Overpass failures were resolved by Photon, not hidden. No account/key/outreach."
+    },
     {
       "status": "PASS \u00b7 live public reads",
       "area": "No-account public source integration",
@@ -19,14 +29,14 @@
       "evidence": "Isolated empty Mac profile connected without login or Load action. 791 combined entries after recovering one transient chart error; unified search returned 150 real results from five providers. Save/cited document/project/native attachment/preview/event/channel/research/task/FTS/restart checks and MCP UI correction recorded in online-native-qa.json. Every-use-case acceptance is not claimed."
     },
     {
-      "status": "UNAVAILABLE \u00b7 provider failure",
+      "status": "FIXED / PASS \u00b7 live native + UI",
       "area": "Live public business discovery",
-      "evidence": "Native Austin 1500m restaurant lookup failed. Diagnostic public GET timed out, POST returned HTTP 502; an alternate Overpass endpoint timed out. No sample listings substituted. Existing CRM remains usable; no account/key is needed, but service availability is external."
+      "evidence": "Source 50bffb5 native live queries and final Mac UI prove keyless public business discovery with regional Overpass and global Photon. Query scope, OSM identity, category, local distance, cache, cancellation, fallback and quota rules have ten regressions. Full public coverage/independent business verification is not implied."
     },
     {
       "status": "PASS \u00b7 installed Windows live data",
       "area": "Windows no-account public bootstrap",
-      "evidence": "Actual installed final EXE: fresh SQLite profile, 43 configured / 35 enabled sources, 30-minute policy, 799 live items, 35 successful / 0 failed. No app login, API keys, seeded notes/workspaces or enabled account connections. Per-provider health and hash binding: online-windows-bootstrap.json. Not every-feature UI acceptance."
+      "evidence": "Exact source 50bffb5 installer: fresh SQLite profile, 43 configured / 35 enabled sources, 30-minute policy, 750 live items, 34 successful / 1 failed. No app login, API keys, seeded notes/workspaces or enabled account connections. Installer SHA-256 binding and actual provider health: online-windows-bootstrap.json; workflow 44035302110. Full Windows feature UI remains unverified. The failed source was Apple US top-free charts (transport); no example/cache substitution. Earlier 35/35 result is retained with its original source revision."
     },
     {
       "status": "PASS",
@@ -51,12 +61,12 @@
     {
       "status": "PASS",
       "area": "Frontend and native compilation",
-      "evidence": "Final source 2cb141d TypeScript/Vite and 74 frontend assertions pass. Mac/Windows checks 43997314188 pass. Workspace regression log records 102 passing target/test executions (100 distinct); shared-core mobile builds are at ceb64f3, unchanged by the desktop-only metadata fix."
+      "evidence": "Final 50bffb5 TypeScript/Vite and 74 frontend assertions pass. Full local workspace has 112 passing target/test executions (110 distinct); business live test explicitly run and passed. Three live tests remain excluded from default runs. Exact CI/package and artifact checks are recorded separately."
     },
     {
       "status": "PASS",
       "area": "Mac DMG integrity/copy",
-      "evidence": "Final source 2cb141d: local 0.5.0 ARM64 development DMG checksum, read-only mounted version/Applications shortcut and strict deep ad-hoc signature pass. Delivery copy matches SHA-256; no normal profile launched. See online-dmg-inspection.json."
+      "evidence": "Final source 50bffb5: local 0.5.0 ARM64 development DMG checksum, read-only mounted version/Applications shortcut and strict deep ad-hoc signature pass. Delivery copy matches SHA-256 50e55edc5762ffd49be8eec22935db9e31bf0994a98da9fdd57d0332a3b14f4c; no normal profile launched. See business-dmg-inspection.json."
     },
     {
       "status": "FIXED",
@@ -81,7 +91,7 @@
     {
       "status": "PASS (installer smoke)",
       "area": "Windows build / installer / runtime",
-      "evidence": "Final source 2cb141d installer packaging 43997312953 passed. SHA-256-matched EXE silently installed, opened a native window and silently uninstalled (both exit 0). Separate fresh installed-app audit 43999649407 configured 35 enabled streams/30-minute refresh and fetched 799 real items from 35/35 sources without login, keys, seeded personal records or enabled account flags. Initial runner 34/35 is retained. Full Windows feature UI remains unverified."
+      "evidence": "Final source 50bffb5 packaging 44033173286 passed. SHA-256-matched EXE silently installed, opened a native window and silently uninstalled (both exit 0). Matching fresh no-account public bootstrap is recorded separately. Full Windows feature UI remains unverified."
     },
     {
       "status": "NOT RUN",
@@ -96,7 +106,7 @@
     {
       "status": "PASS (automated)",
       "area": "Discovery-only scope and model-free briefings",
-      "evidence": "Catalogue parser/briefing tests pass. Final 2cb141d native public run passed 35/35; installed Windows audit also passed 35/35. Public metadata only, no weights/runtime/inference. See online-live-sources.json and online-windows-bootstrap.json."
+      "evidence": "Catalogue parser/briefing tests pass. Earlier 2cb141d native public run passed 35/35. Final source 50bffb5 installed Windows audit returned 750 real entries from 34/35 successful sources, 1 failed. Public metadata only; no weights/runtime/inference. See online-live-sources.json and online-windows-bootstrap.json."
     },
     {
       "status": "PASS (automated)",
@@ -211,16 +221,16 @@
     {
       "status": "PASS",
       "area": "Final Mac/Windows CI and packages",
-      "evidence": "Functional source 2cb141d: checks 43997314188 and packaging 43997312953 completed successfully on both platforms. Final local Mac DMG has matching integrity evidence; Windows delivery copy matches its smoke-tested SHA-256."
+      "evidence": "Functional source 50bffb5: checks 44033175296 and packaging 44033173286 completed successfully on both platforms. Final local Mac DMG has matching integrity evidence; Windows delivery copy matches its smoke-tested SHA-256."
     }
   ],
-  "ui_logic_assertions": 68,
-  "rust_workspace_executions": 97,
-  "rust_additional_targeted_executions": 48,
+  "ui_logic_assertions": 74,
+  "rust_workspace_executions": 112,
+  "rust_additional_targeted_executions": 0,
   "research_analytics_assertions": 13,
   "source_image_theme_assertions": 13,
-  "total_ui_assertions": 68,
-  "additional_targeted_note": "Full workspace passed 97 before three final desktop regressions. Final desktop rerun passed 48; latest per-target union is 100 passing target/test pairs, 98 distinct. Do not add overlapping runs. Native live source reads are separate; prior Python-provider results are historical.",
+  "total_ui_assertions": 74,
+  "additional_targeted_note": "Final full workspace: 112 passing target/test executions (110 distinct). Live business test explicitly run separately. Earlier targeted run counts are historical, not added to the final total.",
   "discovery_feed_assertions": 20,
   "source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
   "counting_method": "Latest passing per-target results: 52 core/mobile target cases plus 48 desktop cases; shared transport tests execute in two targets. Full workspace log had 97 before three final desktop regressions; final native rerun has 48. 68 frontend assertions run separately. Existing Python checks remain historical.",
@@ -237,5 +247,5 @@
   "isolated_mac_qa_smoke_tested": true,
   "mac_native_qa": "remaining-native-qa.json",
   "frontend_assertions": 74,
-  "desktop_source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc"
+  "desktop_source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45"
 }

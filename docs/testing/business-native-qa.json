@@ -1,0 +1,77 @@
+{
+  "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
+  "checked_at": "2026-11-17T06:48:54.560723+00:00",
+  "profile": "com.personal.commandcenter.businessqa20261116",
+  "normal_profile_accessed": false,
+  "accounts_used": false,
+  "api_keys_used": false,
+  "private_coordinates_used": false,
+  "device_location_read": false,
+  "outreach_sent": false,
+  "native_launch_and_local_workflows_passed": true,
+  "all_use_cases_passed": false,
+  "checks": [
+    {
+      "id": "B01",
+      "status": "PASS",
+      "workflow": "No-login startup",
+      "observed": "Isolated QA profile opened Discover without sign-in and automatically fetched all 35 public starters. UI displayed 800 combined results; no seeded workspace records existed initially. Initial build 061b3b9.",
+      "source_revision": "061b3b9bc31502fac439a2667a35b6901154b35d"
+    },
+    {
+      "id": "B02",
+      "status": "PASS",
+      "workflow": "Public Austin business lookup",
+      "observed": "Initial 061b3b9 UI approved the prefilled public Austin coordinates, 1500m restaurants, automatic public providers. Returned 50 named actual listings, including 24 Diner and III Forks, addresses/websites when supplied, original OSM provenance and approximate radius distances. Provider disclosure identified Dresel North America.",
+      "source_revision": "061b3b9bc31502fac439a2667a35b6901154b35d"
+    },
+    {
+      "id": "B03",
+      "status": "PASS",
+      "workflow": "Save lead and hide tracked listing",
+      "observed": "Saved 24 Diner to the isolated CRM. Domain count became 1; untracked results became 49; saved record contained OSM node/919419079, original fetch time and attribution. No website request or outreach sent.",
+      "source_revision": "061b3b9bc31502fac439a2667a35b6901154b35d"
+    },
+    {
+      "id": "B04",
+      "status": "PASS",
+      "workflow": "Cache reuse and restart",
+      "observed": "Repeated identical search reused the same 50-result cache/fetch time. After quit/relaunch in final 6442ed4, CRM count remained 1 and 24 Diner plus 49 untracked listings were present. No account credentials entered.",
+      "source_revision": "6442ed4714f7e5a300c1ecbb8a54644db3623942"
+    },
+    {
+      "id": "B05",
+      "status": "EARLIER FAILURE \u00b7 superseded by B07",
+      "workflow": "Global India lookup in UI",
+      "observed": "Earlier global Overpass GUI requests received VK Maps 504 / Private.coffee failures even when native backend reads sometimes worked. Correctly retained labelled Austin cache. Source 50bffb5 replaces the global primary with public Photon; final actual UI success is recorded in B07/B08.",
+      "source_revision": "6442ed4714f7e5a300c1ecbb8a54644db3623942"
+    },
+    {
+      "id": "B06",
+      "status": "PASS",
+      "workflow": "Cancel and recover cached search",
+      "observed": "At final 6442ed4, started a public India lookup, clicked Stop lookup, and saw Public business lookup stopped; previous results retained. Changed back to Austin and approved Search: matching cached results remained usable during the cooldown, 49 untracked plus the one saved lead, with the original fetch time.",
+      "source_revision": "6442ed4714f7e5a300c1ecbb8a54644db3623942"
+    },
+    {
+      "id": "B07",
+      "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
+      "status": "PASS",
+      "workflow": "Global India UI via Photon",
+      "observed": "Final 50bffb5 native app approved public Bengaluru 12.9716/77.5946, 1500m restaurants. Returned 50 actual Photon OSM listings, including The Merak Brewhouse, Madras Kitchen and The Bar, Farzi Cafe and Cafe Noir, with addresses, original OSM IDs, approximate distances and an explicit index-may-omit-website label. Provider disclosure showed https://photon.komoot.io/reverse and 50 listings. No sign-in or API key."
+    },
+    {
+      "id": "B08",
+      "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
+      "status": "PASS",
+      "workflow": "Global save/cache with earlier lead preserved",
+      "observed": "Saved The Merak Brewhouse as a researching lead with source https://www.openstreetmap.org/node/10051816948 and actual fetched time. CRM count became 2, preserving the earlier Austin 24 Diner lead. Untracked India count became 49. Repeated exact search reused the same cache/fetch time; source disclosure still identified Photon. No website request or outreach was sent."
+    }
+  ],
+  "limits": [
+    "Selected isolated native workflows only; full Windows feature UI, physical devices and assistive-technology acceptance remain separate.",
+    "Public map indexes and replicas can lag/fail; current default/global queries now have actual working UI evidence. Earlier provider failures are retained with their revisions.",
+    "Photon may omit website tags; no website value is explicitly unknown, not proof of absence. No fake listings, credentials, device-location read, private folder scan or outreach."
+  ],
+  "final_source_selected_workflows_passed": true
+}

@@ -1,27 +1,27 @@
 {
   "version": "0.5.0",
-  "generated_at": "2026-11-17T02:07:17.983086+00:00",
+  "generated_at": "2026-11-17T07:03:08.330609+00:00",
   "runtime_tested": false,
   "isolated_mac_qa_smoke_tested": true,
   "production_signed": false,
   "artifacts": [
     {
       "platform": "macOS app",
-      "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
+      "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app",
-      "bytes": 83686462,
-      "sha256": "6f625d7b72ff1ef0296600344d46dcdb2ec3cc2d154747d52565525284898450",
+      "bytes": 83772062,
+      "sha256": "8c14052def1b5326ba0520f022e43f648c392992fa678e637898f78cbfe1acb9",
       "hash_method": "SHA-256 of compact UTF-8 JSON array sorted by relative path; each entry has path plus file sha256 or symlink target; object keys sorted",
       "files": 5
     },
     {
       "platform": "macOS DMG",
-      "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
+      "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/dmg/Personal Command Center_0.5.0_arm64.dmg",
-      "bytes": 24325406,
-      "sha256": "f77e7c228efc6a54f21521482dd95fd6bb8005f8a82a3851095f7b5f9cf8159f",
+      "bytes": 24410709,
+      "sha256": "50e55edc5762ffd49be8eec22935db9e31bf0994a98da9fdd57d0332a3b14f4c",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     },
@@ -47,11 +47,11 @@
     },
     {
       "platform": "Windows NSIS installer",
-      "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
+      "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/windows-package/nsis/Personal Command Center_0.5.0_x64-setup.exe",
-      "bytes": 7665460,
-      "sha256": "61f70732964b7697dc4e91e37f4faa840c5f815aee587f52b28a87e6f5911854",
+      "bytes": 7666130,
+      "sha256": "94e37a93f8392c61d89d00acc2083eec45a7a0316db285786c9d1420f95c2050",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     }
@@ -67,15 +67,15 @@
     "Mobile UI and shared Rust libraries were rebuilt after public feed configuration validation changed in the shared core. Desktop-only field restore, WebDAV, scholarly sources and account controls are not claimed as a mobile redesign.",
     "iOS shared Rust symbols are defined in the bundle; no developer libpcc dylib dependency.",
     "macOS voice bridge is bundled and referenced through @rpath.",
-    "Windows release installer passed CI silent install, native-window launch and silent uninstall. Earlier source dc1b077 isolated macOS Discovery QA passed selected aggregation/document/workspace workflows. Current-source isolated native QA covers fresh public-feed initialization, selected source/document/workspace/attachment/event/channel/research/task/search/restart paths and corrected MCP metadata; provider business lookup failure is explicitly recorded. Earlier vault/backup/audit QA remains revision-specific. Full feature/provider/device acceptance remains separate. Normal artifacts have not all received feature acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage."
+    "Windows release installer passed CI silent install, native-window launch and silent uninstall. Earlier source dc1b077 isolated macOS Discovery QA passed selected aggregation/document/workspace workflows. Final-source isolated native QA covers global Photon business lookup, CRM save and cache reuse. Earlier isolated source-specific QA covers fresh public-feed initialization, source/document/workspace/attachment/event/channel/research/task/search/restart paths, corrected MCP metadata, default US business lookup and Stop recovery; see each evidence revision. Earlier vault/backup/audit QA remains revision-specific. Full feature/provider/device acceptance remains separate. Normal artifacts have not all received feature acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage."
   ],
-  "desktop_source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
-  "mac_native_qa_evidence": "testing/online-native-qa.json",
+  "desktop_source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
+  "mac_native_qa_evidence": "testing/business-native-qa.json",
   "windows_installer_smoke_verified": true,
   "mobile_ui_source_revision": "ceb64f376fdb7b6898c41752d75727ae0035c884",
   "runtime_coverage_by_platform": {
-    "macOS": "Matching final-source isolated native QA passed selected no-account public feed, save/document/workspace/upload/event/task/channel/research/search/restart paths and corrected MCP details. Public business lookup failed at its providers. See online-native-qa.json; full feature/provider/accessibility acceptance remains open.",
-    "Windows": "Matching installer silently installed, launched and uninstalled; fresh no-account startup fetched 799 real items from 35/35 successful public sources, 0 failed. No seeded personal records or account keys. Full feature UI remains unverified.",
+    "macOS": "Matching final-source isolated native QA passed no-account global public business lookup, India CRM save and cache reuse, preserving the prior US lead. Earlier source-specific isolated Mac checks passed public-feed initialization, save/document/workspace/upload/event/task/channel/research/search/restart paths, corrected MCP details and US business save/cache. Prior lead/restart/Stop evidence is revision-specific; final Photon global path resolves earlier Overpass GUI failures. See business-native-qa.json; full feature/provider/accessibility acceptance remains open.",
+    "Windows": "Matching installer silently installed, launched and uninstalled; fresh no-account startup fetched 750 real items from 34/35 successful public sources, 1 failed. No seeded personal records or account keys. Full feature UI remains unverified.",
     "iOS": "Compilation only",
     "Android": "Compilation only"
   },

@@ -1,0 +1,1055 @@
+{
+  "accounts_used": false,
+  "austin": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "count": 50,
+        "endpoint": "https://ovp.dresel.systems/api-na/interpreter",
+        "status": "ok"
+      }
+    ],
+    "attribution": "\u00a9 OpenStreetMap contributors \u00b7 Open Database License (ODbL)",
+    "category": "restaurants",
+    "endpoint": "https://ovp.dresel.systems/api-na/interpreter",
+    "fetched_at": "2026-11-17T06:40:03.575834+00:00",
+    "latitude": 30.2672,
+    "license_url": "https://www.openstreetmap.org/copyright",
+    "limits": "At most 50 community listings in source order; not exhaustive or independently verified. Coordinates or way centres are filtered to the requested radius; unlocated listings are skipped. Public map indexes/replicas may lag or omit website tags. No device location, account, crawling or outreach.",
+    "longitude": -97.7431,
+    "provider_mode": "auto",
+    "query_hash": "f28e51df9b8dcc51bc1e7e9c85b512161d99e95e96d048525a9f1d1a3cf9cd66",
+    "radius_metres": 1500,
+    "rows": [
+      {
+        "address": "600 North Lamar Boulevard Austin 78703",
+        "category": "restaurants",
+        "distance_metres": 1190,
+        "id": "node/919419079",
+        "name": "24 Diner",
+        "source_url": "https://www.openstreetmap.org/node/919419079",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.24diner.com/"
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 484,
+        "id": "node/1481364381",
+        "name": "III Forks",
+        "source_url": "https://www.openstreetmap.org/node/1481364381",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.3forks.com/austin/"
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 650,
+        "id": "node/1481420725",
+        "name": "Jaimes Spanish Village",
+        "source_url": "https://www.openstreetmap.org/node/1481420725",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 424,
+        "id": "node/1481633310",
+        "name": "Roppolo's Pizza",
+        "source_url": "https://www.openstreetmap.org/node/1481633310",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 347,
+        "id": "node/1481633321",
+        "name": "Iron Cactus",
+        "source_url": "https://www.openstreetmap.org/node/1481633321",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://ironcactus.com/austin-downtown"
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 307,
+        "id": "node/1481633336",
+        "name": "Old Pecan Street Cafe",
+        "source_url": "https://www.openstreetmap.org/node/1481633336",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "http://oldpecanstcafe.com/"
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 239,
+        "id": "node/1481633344",
+        "name": "Bikinis Sports Bar & Grill",
+        "source_url": "https://www.openstreetmap.org/node/1481633344",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.bikinissportsbarandgrill.com/Locations/austin-tx-6th-st/"
+      },
+      {
+        "address": "214 East 6th Street Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 228,
+        "id": "node/1481633361",
+        "name": "Happy Chicks",
+        "source_url": "https://www.openstreetmap.org/node/1481633361",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 203,
+        "id": "node/1481633362",
+        "name": "Marisco Grill",
+        "source_url": "https://www.openstreetmap.org/node/1481633362",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "Austin",
+        "category": "restaurants",
+        "distance_metres": 188,
+        "id": "node/1481633376",
+        "name": "Eureka",
+        "source_url": "https://www.openstreetmap.org/node/1481633376",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "http://eurekarestaurantgroup.com/blog/locations/austin/"
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 282,
+        "id": "node/1481633389",
+        "name": "Belmont",
+        "source_url": "https://www.openstreetmap.org/node/1481633389",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 1498,
+        "id": "node/1481721310",
+        "name": "Juanita's Tacos",
+        "source_url": "https://www.openstreetmap.org/node/1481721310",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 268,
+        "id": "node/1481721332",
+        "name": "Eddie V's",
+        "source_url": "https://www.openstreetmap.org/node/1481721332",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "207 San Jacinto Boulevard Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 375,
+        "id": "node/1483653753",
+        "name": "Maiko Sushi",
+        "source_url": "https://www.openstreetmap.org/node/1483653753",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.maikoaustin.com/"
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 436,
+        "id": "node/1483653929",
+        "name": "Gus' Fried Chicken",
+        "source_url": "https://www.openstreetmap.org/node/1483653929",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "http://gusfriedchicken.com/austin-texas-location/"
+      },
+      {
+        "address": "900 West 12th Street 78703",
+        "category": "restaurants",
+        "distance_metres": 1272,
+        "id": "node/1483931045",
+        "name": "House Park Bar-B-Que",
+        "source_url": "https://www.openstreetmap.org/node/1483931045",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.houseparkbbq.net/"
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 255,
+        "id": "node/1483931073",
+        "name": "Perry's Steakhouse",
+        "source_url": "https://www.openstreetmap.org/node/1483931073",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 471,
+        "id": "node/1483931096",
+        "name": "Quattro Gatti Ristorante",
+        "source_url": "https://www.openstreetmap.org/node/1483931096",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "http://www.quattrogattiaustin.com/"
+      },
+      {
+        "address": "701 Crongress Avenue 78701",
+        "category": "restaurants",
+        "distance_metres": 225,
+        "id": "node/1483931115",
+        "name": "Roaring Fork",
+        "source_url": "https://www.openstreetmap.org/node/1483931115",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 247,
+        "id": "node/1483931163",
+        "name": "Congress Avenue Grocery",
+        "source_url": "https://www.openstreetmap.org/node/1483931163",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 269,
+        "id": "node/2332626583",
+        "name": "parkside",
+        "source_url": "https://www.openstreetmap.org/node/2332626583",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "300 East 4th Street Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 346,
+        "id": "node/2333118811",
+        "name": "Champions",
+        "source_url": "https://www.openstreetmap.org/node/2333118811",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "207 San Jacinto Boulevard Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 364,
+        "id": "node/2334038870",
+        "name": "Mai Thai",
+        "source_url": "https://www.openstreetmap.org/node/2334038870",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "http://maithaionline.com/"
+      },
+      {
+        "address": "1601 Guadalupe Street Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 1318,
+        "id": "node/2727205684",
+        "name": "Clay Pit",
+        "source_url": "https://www.openstreetmap.org/node/2727205684",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 323,
+        "id": "node/3197335004",
+        "name": "Vince Young Steakhouse",
+        "source_url": "https://www.openstreetmap.org/node/3197335004",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "206 Colorado Street 78701",
+        "category": "restaurants",
+        "distance_metres": 318,
+        "id": "node/3245051647",
+        "name": "Bar Chi Sushi",
+        "source_url": "https://www.openstreetmap.org/node/3245051647",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "http://www.barchisushi.com/"
+      },
+      {
+        "address": "258 West 2nd Street Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 391,
+        "id": "node/3245054363",
+        "name": "Taverna",
+        "source_url": "https://www.openstreetmap.org/node/3245054363",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.tavernabylombardi.com/"
+      },
+      {
+        "address": "205 West 3rd Street Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 300,
+        "id": "node/3245054371",
+        "name": "Bill's Oyster",
+        "source_url": "https://www.openstreetmap.org/node/3245054371",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.billsoyster.com/"
+      },
+      {
+        "address": "452 West 2nd Street",
+        "category": "restaurants",
+        "distance_metres": 541,
+        "id": "node/3248316799",
+        "name": "Numbero28",
+        "source_url": "https://www.openstreetmap.org/node/3248316799",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 515,
+        "id": "node/3248316800",
+        "name": "Lamberts",
+        "source_url": "https://www.openstreetmap.org/node/3248316800",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "http://www.lambertsaustin.com/"
+      },
+      {
+        "address": "400 West 2nd Street",
+        "category": "restaurants",
+        "distance_metres": 483,
+        "id": "node/3248316807",
+        "name": "La Condesa",
+        "source_url": "https://www.openstreetmap.org/node/3248316807",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "401 West 3rd Street Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 450,
+        "id": "node/3248363281",
+        "name": "Restaurant Fran\u00e7ois",
+        "source_url": "https://www.openstreetmap.org/node/3248363281",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.restaurantfrancois.com/"
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 380,
+        "id": "node/3353621862",
+        "name": "Chupacabra Cantina",
+        "source_url": "https://www.openstreetmap.org/node/3353621862",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.chupacabracantina.com/"
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 338,
+        "id": "node/3354471239",
+        "name": "Rio Grande Mexican",
+        "source_url": "https://www.openstreetmap.org/node/3354471239",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 646,
+        "id": "node/3355462799",
+        "name": "Geisha Sushi & Grill",
+        "source_url": "https://www.openstreetmap.org/node/3355462799",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "http://www.geisha6th.com/"
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 844,
+        "id": "node/3670757852",
+        "name": "The Grove",
+        "source_url": "https://www.openstreetmap.org/node/3670757852",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "200 Congress Avenue Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 323,
+        "id": "node/3764035157",
+        "name": "Fogo de Ch\u00e3o",
+        "source_url": "https://www.openstreetmap.org/node/3764035157",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://fogodechao.com/"
+      },
+      {
+        "address": "1211 East 5th Street Austin 78702",
+        "category": "restaurants",
+        "distance_metres": 1254,
+        "id": "node/3825322832",
+        "name": "Gyu-Kaku",
+        "source_url": "https://www.openstreetmap.org/node/3825322832",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "304 East Cesar Chavez Street Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 544,
+        "id": "node/3849775790",
+        "name": "Corinne",
+        "source_url": "https://www.openstreetmap.org/node/3849775790",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.corinneatx.com/"
+      },
+      {
+        "address": "200 Congress Avenue Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 327,
+        "id": "node/3849775798",
+        "name": "Mason's Famous Lobster Rolls",
+        "source_url": "https://www.openstreetmap.org/node/3849775798",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.masonslobster.com/"
+      },
+      {
+        "address": "201 West 3rd Street Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 287,
+        "id": "node/3849776337",
+        "name": "Red Farm",
+        "source_url": "https://www.openstreetmap.org/node/3849776337",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.redfarmnyc.com/location/Austin/"
+      },
+      {
+        "address": "238 West 2nd Street Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 371,
+        "id": "node/3849776832",
+        "name": "Van Horn's",
+        "source_url": "https://www.openstreetmap.org/node/3849776832",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://vanhornsatx.com/"
+      },
+      {
+        "address": "310 Colorado Street 78701",
+        "category": "restaurants",
+        "distance_metres": 232,
+        "id": "node/3849777216",
+        "name": "TraphouseATX",
+        "source_url": "https://www.openstreetmap.org/node/3849777216",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "454 West 2nd Street 78701",
+        "category": "restaurants",
+        "distance_metres": 546,
+        "id": "node/3849778276",
+        "name": "Local Foods",
+        "source_url": "https://www.openstreetmap.org/node/3849778276",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.localfoodstexas.com/"
+      },
+      {
+        "address": "500 West 5th Street 78701",
+        "category": "restaurants",
+        "distance_metres": 487,
+        "id": "node/3849778288",
+        "name": "Wu Chow",
+        "source_url": "https://www.openstreetmap.org/node/3849778288",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://wuchowaustin.com/"
+      },
+      {
+        "address": "603 Sabine Street 78701",
+        "category": "restaurants",
+        "distance_metres": 700,
+        "id": "node/3849778812",
+        "name": "Vaquero Taquero",
+        "source_url": "https://www.openstreetmap.org/node/3849778812",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "http://www.vaquerotaquero.com/"
+      },
+      {
+        "address": "360 Nueces Street Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 667,
+        "id": "node/4027267068",
+        "name": "Polvo's",
+        "source_url": "https://www.openstreetmap.org/node/4027267068",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "110 East 2nd Street Austin 78701",
+        "category": "restaurants",
+        "distance_metres": 289,
+        "id": "node/4304618025",
+        "name": "Burger Bar",
+        "source_url": "https://www.openstreetmap.org/node/4304618025",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": "https://www.burgerbaraustin.com/"
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 319,
+        "id": "node/4304618029",
+        "name": "Corner Restaurant",
+        "source_url": "https://www.openstreetmap.org/node/4304618029",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      },
+      {
+        "address": "",
+        "category": "restaurants",
+        "distance_metres": 888,
+        "id": "node/4389511242",
+        "name": "True Food Kitchen",
+        "source_url": "https://www.openstreetmap.org/node/4389511242",
+        "verification": "Community map listing; verify operation, ownership and digital presence. Missing website tag does not establish that no website exists.",
+        "website": null
+      }
+    ]
+  },
+  "checked_at": "2026-11-17T06:40:04.437998+00:00",
+  "duplicate_lead_kept_same_id": true,
+  "india": {
+    "Ok": {
+      "attempts": [
+        {
+          "attempt": 1,
+          "count": 50,
+          "endpoint": "https://photon.komoot.io/reverse",
+          "status": "ok"
+        }
+      ],
+      "attribution": "\u00a9 OpenStreetMap contributors \u00b7 Open Database License (ODbL)",
+      "category": "restaurants",
+      "endpoint": "https://photon.komoot.io/reverse",
+      "fetched_at": "2026-11-17T06:40:04.436355+00:00",
+      "latitude": 12.9716,
+      "license_url": "https://www.openstreetmap.org/copyright",
+      "limits": "At most 50 community listings in source order; not exhaustive or independently verified. Coordinates or way centres are filtered to the requested radius; unlocated listings are skipped. Public map indexes/replicas may lag or omit website tags. No device location, account, crawling or outreach.",
+      "longitude": 77.5946,
+      "provider_mode": "auto",
+      "query_hash": "a29d1eef740dace93d2c6bd4d49fd97ab6989d835a2797896ae314125c13cc90",
+      "radius_metres": 1500,
+      "rows": [
+        {
+          "address": "Vittal Mallya Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 84,
+          "id": "node/10051816948",
+          "name": "The Merak Brewhouse",
+          "source_url": "https://www.openstreetmap.org/node/10051816948",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Vittal Mallya Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 95,
+          "id": "node/13288585567",
+          "name": "Madras Kitchen and The Bar",
+          "source_url": "https://www.openstreetmap.org/node/13288585567",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "24 Vittal Mallya Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 123,
+          "id": "node/7037768785",
+          "name": "Farzi Cafe",
+          "source_url": "https://www.openstreetmap.org/node/7037768785",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "24 Vittal Mallya Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 143,
+          "id": "node/1851613420",
+          "name": "Cafe Noir",
+          "source_url": "https://www.openstreetmap.org/node/1851613420",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "24 Vittal Mallya Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 155,
+          "id": "node/10865280923",
+          "name": "\u00d6z by Kebap\u00e7i",
+          "source_url": "https://www.openstreetmap.org/node/10865280923",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "24 Vittal Mallya Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 160,
+          "id": "node/13013588749",
+          "name": "Riko",
+          "source_url": "https://www.openstreetmap.org/node/13013588749",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "24 Vittal Mallya Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 179,
+          "id": "node/1851612837",
+          "name": "Toscano",
+          "source_url": "https://www.openstreetmap.org/node/1851612837",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Vittal Mallya Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 187,
+          "id": "node/6898530486",
+          "name": "Le Bistro",
+          "source_url": "https://www.openstreetmap.org/node/6898530486",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "24 Vittal Mallya Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 190,
+          "id": "node/12461052143",
+          "name": "Sanchez",
+          "source_url": "https://www.openstreetmap.org/node/12461052143",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "24 Vittal Mallya Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 194,
+          "id": "node/12461052144",
+          "name": "Badmaash",
+          "source_url": "https://www.openstreetmap.org/node/12461052144",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Vittal Mallaya Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 198,
+          "id": "node/638168606",
+          "name": "Shiro",
+          "source_url": "https://www.openstreetmap.org/node/638168606",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "24 Vittal Mallya Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 201,
+          "id": "node/10290842821",
+          "name": "One Night in Bangkok",
+          "source_url": "https://www.openstreetmap.org/node/10290842821",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "24 Vittal Mallya Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 213,
+          "id": "node/13168786891",
+          "name": "Royal China",
+          "source_url": "https://www.openstreetmap.org/node/13168786891",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Kasturba Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 327,
+          "id": "way/370418975",
+          "name": "Konark Kanteerava",
+          "source_url": "https://www.openstreetmap.org/way/370418975",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "20/2 Vittal Mallaya Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 329,
+          "id": "node/12545885467",
+          "name": "PartTwo",
+          "source_url": "https://www.openstreetmap.org/node/12545885467",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "25/4 Lavelle Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 335,
+          "id": "node/4038158089",
+          "name": "SodaBottleOpenerWala",
+          "source_url": "https://www.openstreetmap.org/node/4038158089",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Lavelle Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 335,
+          "id": "node/10236025477",
+          "name": "Cantan",
+          "source_url": "https://www.openstreetmap.org/node/10236025477",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Kasturba Cross Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 399,
+          "id": "node/11107546220",
+          "name": "Cumulus",
+          "source_url": "https://www.openstreetmap.org/node/11107546220",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Lavelle Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 404,
+          "id": "node/3458333999",
+          "name": "Smoke House Deli",
+          "source_url": "https://www.openstreetmap.org/node/3458333999",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "25 Lavelle Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 408,
+          "id": "node/7949885732",
+          "name": "Go Native",
+          "source_url": "https://www.openstreetmap.org/node/7949885732",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Lavelle Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 430,
+          "id": "way/332394765",
+          "name": "Sunnys",
+          "source_url": "https://www.openstreetmap.org/way/332394765",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Kasturba Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 432,
+          "id": "node/12129019647",
+          "name": "Botany Brew and Kitchen",
+          "source_url": "https://www.openstreetmap.org/node/12129019647",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Kasturba Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 435,
+          "id": "node/11921199878",
+          "name": "Sozo Skyline",
+          "source_url": "https://www.openstreetmap.org/node/11921199878",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "68 Lavelle Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 502,
+          "id": "node/2600844368",
+          "name": "Shezan",
+          "source_url": "https://www.openstreetmap.org/node/2600844368",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Rajaram Mohan Roy Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 536,
+          "id": "node/12531970254",
+          "name": "Cajsa",
+          "source_url": "https://www.openstreetmap.org/node/12531970254",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Bengaluru 560027",
+          "category": "restaurants",
+          "distance_metres": 538,
+          "id": "node/13189703465",
+          "name": "Zion Food Corner",
+          "source_url": "https://www.openstreetmap.org/node/13189703465",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Papanna Street Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 556,
+          "id": "node/1809842716",
+          "name": "F & B",
+          "source_url": "https://www.openstreetmap.org/node/1809842716",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "6th Cross Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 569,
+          "id": "node/1536592062",
+          "name": "Airlines",
+          "source_url": "https://www.openstreetmap.org/node/1536592062",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "16 Rajaram Mohan Roy Road Bengaluru 560025",
+          "category": "restaurants",
+          "distance_metres": 595,
+          "id": "node/13389960369",
+          "name": "Kudla",
+          "source_url": "https://www.openstreetmap.org/node/13389960369",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Sri Ram Mandir Road Bengaluru 560027",
+          "category": "restaurants",
+          "distance_metres": 623,
+          "id": "node/8205055155",
+          "name": "IDC Idli Dosa Coffee Central Kitchen",
+          "source_url": "https://www.openstreetmap.org/node/8205055155",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "4 St. Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 625,
+          "id": "node/11803799804",
+          "name": "Bastian",
+          "source_url": "https://www.openstreetmap.org/node/11803799804",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "40/2 Lavelle Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 627,
+          "id": "node/11277885706",
+          "name": "ZEST",
+          "source_url": "https://www.openstreetmap.org/node/11277885706",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Lavelle Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 635,
+          "id": "node/1548748296",
+          "name": "Rice Bowl",
+          "source_url": "https://www.openstreetmap.org/node/1548748296",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Lavelle Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 636,
+          "id": "node/12473779779",
+          "name": "Tree Tops",
+          "source_url": "https://www.openstreetmap.org/node/12473779779",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Saint Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 643,
+          "id": "node/12988151786",
+          "name": "4/1 Kitchen",
+          "source_url": "https://www.openstreetmap.org/node/12988151786",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Papanna Street Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 654,
+          "id": "node/10295411715",
+          "name": "Jaisalmer",
+          "source_url": "https://www.openstreetmap.org/node/10295411715",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Saint Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 658,
+          "id": "node/12988151785",
+          "name": "Kohinoor",
+          "source_url": "https://www.openstreetmap.org/node/12988151785",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Rajaram Mohan Roy Road Bengaluru 560027",
+          "category": "restaurants",
+          "distance_metres": 661,
+          "id": "node/11476370293",
+          "name": "New Mohan Restaurant & Bar",
+          "source_url": "https://www.openstreetmap.org/node/11476370293",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Saint Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 665,
+          "id": "node/10294519333",
+          "name": "Misu",
+          "source_url": "https://www.openstreetmap.org/node/10294519333",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Saint Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 665,
+          "id": "node/9532858999",
+          "name": "Brassa",
+          "source_url": "https://www.openstreetmap.org/node/9532858999",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Saint Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 665,
+          "id": "node/10294575489",
+          "name": "No. 10 Fort Cochin",
+          "source_url": "https://www.openstreetmap.org/node/10294575489",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Saint Mark's Road Bangalore 560001",
+          "category": "restaurants",
+          "distance_metres": 671,
+          "id": "node/677286843",
+          "name": "Amruth Vegetarian Restaurant",
+          "source_url": "https://www.openstreetmap.org/node/677286843",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Saint Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 672,
+          "id": "node/12988151784",
+          "name": "Luscious",
+          "source_url": "https://www.openstreetmap.org/node/12988151784",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "16/1 St. Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 677,
+          "id": "node/13013588715",
+          "name": "Beyondburg Inc.",
+          "source_url": "https://www.openstreetmap.org/node/13013588715",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "8th Cross Road Bengaluru 560027",
+          "category": "restaurants",
+          "distance_metres": 677,
+          "id": "node/2577055910",
+          "name": "Woody's",
+          "source_url": "https://www.openstreetmap.org/node/2577055910",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Saint Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 682,
+          "id": "node/13195256250",
+          "name": "Nandhini Delux",
+          "source_url": "https://www.openstreetmap.org/node/13195256250",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Saint Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 682,
+          "id": "node/10295397888",
+          "name": "Nandhini Deluxe",
+          "source_url": "https://www.openstreetmap.org/node/10295397888",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Saint Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 683,
+          "id": "node/10753340333",
+          "name": "Karims",
+          "source_url": "https://www.openstreetmap.org/node/10753340333",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Saint Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 688,
+          "id": "node/13450039301",
+          "name": "MTR 1924",
+          "source_url": "https://www.openstreetmap.org/node/13450039301",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        },
+        {
+          "address": "Saint Mark's Road Bengaluru 560001",
+          "category": "restaurants",
+          "distance_metres": 691,
+          "id": "node/1675540997",
+          "name": "Mavalli Tiffin Rooms",
+          "source_url": "https://www.openstreetmap.org/node/1675540997",
+          "verification": "Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.",
+          "website": null
+        }
+      ]
+    }
+  },
+  "isolated": true,
+  "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45"
+}

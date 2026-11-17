@@ -1,0 +1,13 @@
+warning: linker stderr: ld: duplicate -rpath '@executable_path/../Frameworks' ignored
+  |
+  = note: `#[warn(linker_messages)]` on by default
+
+warning: `personal-command-center` (bin "personal-command-center" test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.37s
+     Running unittests src/main.rs (target/debug/deps/personal_command_center-1a5604d699cf08dd)
+
+running 1 test
+test business_discovery::tests::live_public_business_lookup ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 62 filtered out; finished in 2.10s
+

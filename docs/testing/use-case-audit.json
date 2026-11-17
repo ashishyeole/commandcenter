@@ -1,6 +1,6 @@
 {
-  "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
-  "generated_at": "2026-11-17T02:03:12.027416+00:00",
+  "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
+  "generated_at": "2026-11-17T06:48:54.560723+00:00",
   "all_use_cases_verified": false,
   "overall_operational_percent": null,
   "method": "Evidence-based statuses. Source completion percentages are separate; no aggregate operational percentage is invented for untested/external cases. Earlier UI evidence explicitly names its own revision.",
@@ -190,9 +190,9 @@
     {
       "id": "UC27",
       "use_case": "Public Austin business lookup",
-      "status": "BLOCKED \u00b7 live provider",
-      "dependencies": "Reachable public Overpass instance",
-      "evidence_and_limits": "Native default lookup failed. Independent same-query diagnosis: default GET timed out, POST returned HTTP 502; listed alternate timed out. No fake listings substituted. Existing saved CRM records remain usable."
+      "status": "PASS \u00b7 live native + Mac UI",
+      "dependencies": "Public regional Overpass / Photon availability; no account, key or local setup",
+      "evidence_and_limits": "Final 50bffb5 native test returned 50 actual Austin + 50 Bengaluru listings. Mac UI default/global search, actual source disclosure, US/India CRM saves, untracked counts, cache reuse and retained earlier lead passed; earlier-source restart/Stop recovery is recorded. Photon OSM IDs/category/radius are validated; missing website tags remain unknown. Earlier global Overpass failures are superseded by the working Photon path. Providers can still lag or fail temporarily."
     },
     {
       "id": "UC28",

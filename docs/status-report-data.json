@@ -2,7 +2,7 @@
   "project": "Personal AI Command Center",
   "version": "0.5.0",
   "prd": "1.2",
-  "assessed_on": "2026-11-16",
+  "assessed_on": "2026-11-17",
   "timezone": "America/Chicago",
   "method": "Weighted manually assessed code coverage for the clarified local monitoring scope: sum(in-scope task score \u00d7 weight) / sum(in-scope weights). This pass closes the bounded code-only backlog; original PRD scores remain recorded. 100% source scope does not mean every provider is connected, current patent/scheme data exists, factual claims are proven, or all platform/device/assistive-technology workflows passed. External data/access, owner setup and independent verification remain visible per task. Production release, local inference/hardware execution and universal/exactly-once guarantees are excluded.",
   "tasks": [
@@ -440,10 +440,10 @@
       "percent": 100,
       "weight": 3,
       "status": "Implemented in source",
-      "implemented": "Bounded OpenStreetMap business discovery with attribution, duplicate prevention and consented static website audit. Added explicit visible incognito rendered-DOM inspection, nine explained weighted signals and a reviewed local prospect-priority breakdown using site evidence and manually confirmed fit/need/budget.",
-      "remaining": "Website permission and availability apply. Scores are research heuristics, not full accessibility/security audits or verified conversion/revenue predictions. No outreach is sent.",
-      "notes": "Local monitoring source scope completed in this pass. Source completion is distinct from current data, account configuration and acceptance. See the remaining-code delivery and test report. Online integration audit at ceb64f3: 35/35 enabled public source reads passed through native commands. Projects, robotics, agriculture, poker, learning, MCP, content and ideas now show matching live caches as well as personal records. This does not verify every optional provider or tool.",
-      "evidence": "apps/desktop/src-tauri/src/rendered_audit.rs",
+      "implemented": "No-account public business search uses regional Overpass and global public Photon POI providers, bounded bbox queries with local circular-distance filtering, up to 50 named listings, attribution, explicit cached-query scope, 24-hour reuse, duplicate-safe CRM saves, stop/cancel and bounded transient retry/fallback. Existing static/rendered website audits and reviewed priority remain available.",
+      "remaining": "No identified code-only gap in this bounded search flow. Public replicas can lag or become unavailable; community listings are not independently verified. Full target-platform/assistive-technology acceptance is separate.",
+      "notes": "Final source 50bffb5: native no-key reads returned 50 actual Austin and 50 Bengaluru listings in about two seconds total. Mac UI returned actual lists, saved US/India leads, preserved the earlier lead, reused labelled caches and passed restart/Stop recovery. Ten native regressions cover parser/Photon identity/category/distance, fallback/retry, access/429 stop, cache/throttle, reset/cancel and duplicate saves.",
+      "evidence": "apps/desktop/src-tauri/src/business_discovery.rs",
       "original_prd_percent": 75,
       "in_scope": true,
       "dependency_type": "External public service availability / optional owner-selected URL",
@@ -452,7 +452,7 @@
       ],
       "owner_actions": [],
       "coding_remaining": [],
-      "verification": "Current native OSM lookup failed; same-provider GET timed out/POST 502 and alternate public read timed out. Prior source 7167bfa verified a rendered example.com audit and saved priority. No live owner leads/outreach used."
+      "verification": "See testing/business-live-sources.json and testing/business-native-qa.json: actual no-account local/public native workflows pass. Earlier global Overpass UI failures are explicitly superseded by the final Photon UI pass. Prior website-audit/priority evidence remains revision-specific."
     },
     {
       "id": "T025",
@@ -1495,13 +1495,13 @@
       "percent": 100,
       "weight": 2,
       "status": "Implemented in source",
-      "implemented": "Windows NSIS installer built in CI from ef1e9c3. Isolated Windows runner successfully installed, opened a native window for 15 seconds and uninstalled it; installer downloaded locally and SHA-256 matched the CI report.",
+      "implemented": "Windows NSIS installer built at final desktop source 50bffb5. Isolated Windows runner installed it, opened a native window for 15 seconds and uninstalled it; local delivery SHA-256 matches the CI report.",
       "remaining": "No known code gap in the installer-delivery task. Broader feature/interactive-hook acceptance remains verification work; commercial signing is excluded from current scope.",
-      "notes": "Unsigned personal-use release installer, version 0.5.0 x64. Full feature acceptance is not claimed. Evidence: testing/windows-package-qa.json and testing/package-ci-ef1e9c3.json.",
+      "notes": "Unsigned personal-use release installer, version 0.5.0 x64. Evidence: testing/windows-package-qa.json and testing/business-package-ci.json. Full feature acceptance is tracked separately.",
       "evidence": "apps/desktop/src-tauri/windows/hooks.nsh",
       "original_prd_percent": 50,
       "in_scope": true,
-      "verification": "Final Windows NSIS install/native-window/uninstall passed twice with matching installer SHA. Installed fresh profile fetched 799 items from 35/35 sources without account or keys; no seeded personal records. Complete Windows feature UI not established."
+      "verification": "Final source 50bffb5 Windows NSIS install/native-window/uninstall passed with matching SHA. Fresh installed profile fetched 750 items from 34/35 sources (1 failed) without accounts or keys; no seeded personal records. Complete Windows feature UI remains unverified."
     },
     {
       "id": "T082",
@@ -1547,9 +1547,9 @@
       "percent": 50,
       "weight": 5,
       "status": "Partially implemented",
-      "implemented": "Current v0.5: 23 Rust executions (21 distinct cases), 10 mocked-provider Python tests, frontend/native builds and Mac DMG checks pass. Isolated Mac UI smoke covers notes/search, attachments, recurrence, restart persistence, plain/encrypted backups and wrong-password rejection.",
-      "remaining": "Windows build CI pending; interactive Windows installer/runtime acceptance needs a PC/VM. Broad domain, live integration, clean-install restore, performance and security acceptance remain.",
-      "notes": "User authorized testing. Startup crash and development signature repaired; Gatekeeper still requires production signing/notarization.",
+      "implemented": "112 Rust target/test executions (110 distinct), 74 frontend assertions and TypeScript/Vite pass. Mac/Windows checks and packaging passed at 50bffb5. Native Mac business lookup, CRM save/cache and earlier source-specific note/document/workspace/backup/attachment/restart workflows have evidence.",
+      "remaining": "Complete Windows feature UI, physical mobile devices, real private account integrations, scheduled OS delivery, assistive technology and broader performance/security acceptance remain unverified. No code-only gap is asserted by this acceptance row.",
+      "notes": "Isolated tests only; no real account or normal profile used. Development signing remains distinct from excluded production release work.",
       "evidence": "docs/TEST-REPORT.html",
       "original_prd_percent": 50,
       "in_scope": false,
@@ -1786,8 +1786,8 @@
     {
       "id": "A07",
       "workflow": "Find uncontacted Austin website leads",
-      "notes": "Public OSM lookup and website audit are implemented. Prior isolated QA verified a rendered example.com audit and saved reviewed priority; current public OSM lookup is recorded in online-native-qa.json. No outreach sent.",
-      "verification": "Not verified in current source"
+      "notes": "Public no-account Austin and Bengaluru searches return real businesses. Native and final Mac UI lists/saves/cache/untracked behavior pass; original source IDs/provenance and prior lead are retained. Existing website-audit/priority checks have earlier source-specific evidence. No outreach sent.",
+      "verification": "Selected live/native workflow verified"
     },
     {
       "id": "A08",
@@ -1866,7 +1866,7 @@
     },
     {
       "title": "Windows and mobile device verification",
-      "detail": "Final Windows installer install/native-window/uninstall and actual no-account public bootstrap passed (35/35 sources, 799 live items). Complete Windows feature UI and physical mobile-device testing remain open. Production signing/store release is excluded.",
+      "detail": "Final source 50bffb5 Windows install/native-window/uninstall and no-account public bootstrap passed (34/35 successful sources, 1 failed, 750 real entries). Complete Windows feature UI and physical mobile-device testing remain open. Production signing/store release is excluded.",
       "tasks": "T079, T081"
     },
     {
@@ -1881,17 +1881,12 @@
     },
     {
       "title": "Source availability and optional datasets",
-      "detail": "PIB RSS DNS failed and remains paused. The public patent index returned historical records. Proprietary app-market data needs an authorized schema-1 endpoint/import; custom prices need an approved public JSON endpoint. Live provider acceptance does not follow from source code completion.",
+      "detail": "Final installed Windows run: Apple US chart request had a transport failure; 34/35 other starter reads completed with 750 real entries. Earlier exact-revision runs passed 35/35. PIB RSS DNS failed and remains paused. The public patent index returned historical records. Proprietary app-market data needs authorized import/endpoint; custom prices need an approved public JSON endpoint. Source code completion does not guarantee provider uptime.",
       "tasks": "T012, T014, T019, T047"
-    },
-    {
-      "title": "Public business provider outage",
-      "detail": "OSM lookup failed in the native app. The same public Austin fixture timed out on GET and received HTTP 502 on POST; alternate public Overpass reads timed out. Existing CRM records remain available. No account or key is needed, but a reachable provider is.",
-      "tasks": "A07 / public business discovery"
     }
   ],
   "scope": "Personal local command center: discover, monitor, organize, compare and track. No local LLM/model downloads, robotics execution, prototype execution or production commercialization.",
-  "desktop_source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
+  "desktop_source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
   "resolved_blockers": [
     {
       "title": "New native Mac UI checks",
@@ -1902,6 +1897,10 @@
     {
       "title": "First-launch and workspace live-feed integration",
       "detail": "Fixed manual-only first load, empty domain feed views, missing keyless channel refresh/creator evidence, absent default app/MCP/paper sources and shared MCP URL collapse. Native live audit passes 35/35; fresh UI displayed 791 unique results."
+    },
+    {
+      "title": "Public business lookup restored without accounts",
+      "detail": "Source 50bffb5 restores default Austin and global search with regional Overpass plus public Photon POI search. Both native live cities returned 50 real records; final Mac global UI returned 50, saved a lead and reused its cache. Earlier global Overpass failures were resolved by adding the supported Photon path. No account, key, local setup or example data required."
     }
   ],
   "online_readiness": {
@@ -1915,11 +1914,28 @@
     "all_features_verified": false,
     "evidence": "testing/online-live-sources.json",
     "notes": "Fresh isolated Mac startup connected immediately. One Apple US transport failure recovered on manual refresh; final code retries one transient public-read failure. Optional private/account services remain separate. MCP version collisions found in UI were corrected and the final native live run asserts matching version labels, metadata and URLs.",
-    "windows_installed_sources_passed": 35,
+    "windows_installed_sources_passed": 34,
     "windows_installed_sources_enabled": 35,
-    "windows_live_items": 799,
+    "windows_live_items": 750,
     "windows_evidence": "testing/online-windows-bootstrap.json",
-    "windows_public_sources_passed": 35,
-    "windows_bootstrap_evidence": "testing/online-windows-bootstrap.json"
+    "windows_public_sources_passed": 34,
+    "windows_bootstrap_evidence": "testing/online-windows-bootstrap.json",
+    "windows_source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
+    "windows_failed_sources": 1,
+    "windows_failure_detail": "Apple US chart transport failure in final installed run; batch completed 34/35. Prior 35/35 evidence retained at online-windows-bootstrap-2cb141d.json."
+  },
+  "business_lookup": {
+    "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
+    "account_required": false,
+    "api_key_required": false,
+    "austin_live_results": 50,
+    "bengaluru_live_results": 50,
+    "known_code_only_gaps": [],
+    "evidence": "testing/business-live-sources.json",
+    "limits": "Public provider availability and map freshness; maximum 50 community listings, no independent business verification or outreach.",
+    "mac_ui_default_lookup_passed": true,
+    "global_ui_status": "PASS: final Photon path returned 50 real Bengaluru listings; saved lead and reused cache",
+    "native_ui_evidence": "testing/business-native-qa.json",
+    "global_provider": "https://photon.komoot.io/reverse"
   }
 }

@@ -5,12 +5,15 @@ This is report generation, not feature verification or automated source assessme
 from pathlib import Path
 from collections import Counter
 import json
+from datetime import date
 from html import escape
 
 ROOT=Path(__file__).resolve().parents[1]
 source=ROOT/'docs/status-report-data.json'
 data=json.loads(source.read_text())
 tasks=data['tasks']
+assessed=date.fromisoformat(data['assessed_on'])
+assessed_label=f'{assessed:%B} {assessed.day}, {assessed.year}'
 def e(value): return escape(str(value),quote=True)
 def pct(rows):
     rows=[t for t in rows if t.get('in_scope',True)]
@@ -43,7 +46,7 @@ for t in tasks:
     score=t['percent']; scope_label=str(score)+'%' if t.get('in_scope',True) else 'Excluded'; rows_html+=f'''<tr><td class="task-id">{t['id']}</td><td><div class="task-title">{e(t['task'])}</div><div class="task-area">{e(t['area'])} · PRD {e(t['prd'])}</div><div class="muted">Scope weight: {t['weight']}</div></td><td><span class="badge">{e(t['phase'])}</span></td><td class="progress-cell"><div class="progress-number">{scope_label}</div>{bar(score) if t.get("in_scope",True) else ""}<span class="badge {style(t['status'])}">{e(t['status'])}</span></td><td><div class="remaining">{e(t['remaining'])}</div><details class="row-detail"><summary>Evidence & notes</summary><p><strong>Implemented:</strong> {e(t['implemented'])}</p><p><strong>Notes:</strong> {e(t['notes'])} {e(t.get('scope_note',''))}</p><p><strong>Evidence:</strong> <a href="../{e(t['evidence'])}">{e(t['evidence'])}</a></p><p><strong>Dependencies:</strong> {e(t.get("dependency_type","Local functionality / optional source access"))}. {e("; ".join(t.get("external_dependencies",[])))}</p><p><strong>Owner actions:</strong> {e("; ".join(t.get("owner_actions",[])) or "None for local coding; optional provider setup is listed where applicable.")}</p><p><strong>Verification:</strong> {e(t.get('verification','Full feature acceptance not established; see the test report for selected checks.'))}</p></details></td></tr>'''
 acceptance=''.join(f'<details><summary><span class="task-id">{a["id"]}</span><strong>{e(a["workflow"])}</strong><span class="badge deferred">{e(a["verification"])}</span></summary><p>{e(a["notes"])}</p></details>' for a in data['acceptance'])
 blockers=''.join(f'<article class="next-card"><h3>{e(b["title"])}</h3><p>{e(b["detail"])}</p><small>{e(b["tasks"])}</small></article>' for b in data.get('blockers',[]))
-replacements={'__BLOCKERS__':blockers,'__VERSION__':e(data['version']),'__METRICS__':metrics,'__PHASES__':phases,'__METHOD__':e(data['method']),'__AREAS__':areas,'__AREA_OPTIONS__':''.join(f'<option>{e(n)}</option>' for n in area_names),'__STATUS_OPTIONS__':''.join(f'<option>{e(n)}</option>' for n in counts),'__COUNT__':str(len(tasks)),'__ROWS__':rows_html,'__ACCEPTANCE__':acceptance,'__DATA__':json.dumps(data,ensure_ascii=False).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')}
+replacements={'__ASSESSED_DATE__':assessed_label,'__ASSESSED_ISO__':data['assessed_on'],'__BLOCKERS__':blockers,'__VERSION__':e(data['version']),'__METRICS__':metrics,'__PHASES__':phases,'__METHOD__':e(data['method']),'__AREAS__':areas,'__AREA_OPTIONS__':''.join(f'<option>{e(n)}</option>' for n in area_names),'__STATUS_OPTIONS__':''.join(f'<option>{e(n)}</option>' for n in counts),'__COUNT__':str(len(tasks)),'__ROWS__':rows_html,'__ACCEPTANCE__':acceptance,'__DATA__':json.dumps(data,ensure_ascii=False).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')}
 html=(ROOT/'docs/status-report-template.html').read_text()
 for token,value in replacements.items():html=html.replace(token,value)
 out=ROOT/'docs/STATUS-REPORT.html';out.write_text(html)

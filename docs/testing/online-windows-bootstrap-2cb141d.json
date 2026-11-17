@@ -1,0 +1,347 @@
+{
+  "checked_at": "2026-11-17T02:00:00.650570+00:00",
+  "isolated_runner": true,
+  "app_login_used": false,
+  "api_keys_used": false,
+  "full_feature_acceptance": false,
+  "bootstrap_passed": true,
+  "configured_sources": 43,
+  "enabled_sources": 35,
+  "auto_refresh_minutes": "30",
+  "initialization_marker": "1",
+  "live_cache_count": 35,
+  "live_item_count": 799,
+  "ordinary_item_count": 0,
+  "workspace_record_count": 0,
+  "enabled_account_flags": [],
+  "batch": {
+    "at": "2026-11-17T02:00:04.561405700+00:00",
+    "cancelled": false,
+    "failed": 0,
+    "refreshed": 35
+  },
+  "sources": [
+    {
+      "id": "hf-trending",
+      "provider": "models",
+      "health": {
+        "checked_at": "2026-11-17T01:59:51.936951200+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "hf-downloads",
+      "provider": "models",
+      "health": {
+        "checked_at": "2026-11-17T01:59:58.092847700+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "ollama-catalogue",
+      "provider": "ollama",
+      "health": {
+        "checked_at": "2026-11-17T02:00:03.271723+00:00",
+        "count": 20,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "github-top",
+      "provider": "github",
+      "health": {
+        "checked_at": "2026-11-17T01:59:50.889119400+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "github-new",
+      "provider": "github",
+      "health": {
+        "checked_at": "2026-11-17T01:59:57.560842400+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-repos",
+      "provider": "github",
+      "health": {
+        "checked_at": "2026-11-17T02:00:03.366190700+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-papers",
+      "provider": "arxiv",
+      "health": {
+        "checked_at": "2026-11-17T01:59:48.454307500+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-news",
+      "provider": "rss",
+      "health": {
+        "checked_at": "2026-11-17T02:00:04.353271700+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-models",
+      "provider": "models",
+      "health": {
+        "checked_at": "2026-11-17T02:00:03.161203+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agri-discussion",
+      "provider": "news",
+      "health": {
+        "checked_at": "2026-11-17T01:59:55.462058+00:00",
+        "count": 0,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agritech-india",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T01:59:47.397288+00:00",
+        "count": 1,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agritechnica",
+      "provider": "calendar",
+      "health": {
+        "checked_at": "2026-11-17T01:59:48.293469500+00:00",
+        "count": 1,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "world-ag-expo",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T02:00:04.557952700+00:00",
+        "count": 1,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-news",
+      "provider": "rss",
+      "health": {
+        "checked_at": "2026-11-17T02:00:03.718415+00:00",
+        "count": 20,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-wpt",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T02:00:04.053500800+00:00",
+        "count": 9,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-wsop",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T02:00:04.079353100+00:00",
+        "count": 6,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-stars",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T02:00:03.793473800+00:00",
+        "count": 4,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-all",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T02:00:03.666679800+00:00",
+        "count": 37,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "stanford-lectures",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T02:00:04.120889100+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "mit-robotics-videos",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T01:59:51.872110700+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agri-videos",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T01:59:47.626553900+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-videos",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T02:00:04.198975900+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "ai-videos",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T01:59:48.115852600+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "mit-lectures",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T01:59:51.755767400+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-bluesky",
+      "provider": "bluesky",
+      "health": {
+        "checked_at": "2026-11-17T01:59:48.719329100+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agri-bluesky",
+      "provider": "bluesky",
+      "health": {
+        "checked_at": "2026-11-17T01:59:48.943853100+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-mastodon",
+      "provider": "mastodon",
+      "health": {
+        "checked_at": "2026-11-17T01:59:51.318898500+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "ai-news",
+      "provider": "news",
+      "health": {
+        "checked_at": "2026-11-17T02:00:03.401984400+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agfunder-news",
+      "provider": "rss",
+      "health": {
+        "checked_at": "2026-11-17T01:59:47.241349100+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agdaily-news",
+      "provider": "rss",
+      "health": {
+        "checked_at": "2026-11-17T01:59:50.229449300+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "crossref-robotics",
+      "provider": "crossref",
+      "health": {
+        "checked_at": "2026-11-17T01:59:49.288155900+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "epmc-agriculture",
+      "provider": "europepmc",
+      "health": {
+        "checked_at": "2026-11-17T01:59:50.936572100+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "app-charts-us",
+      "provider": "apps",
+      "health": {
+        "checked_at": "2026-11-17T01:59:49.463627900+00:00",
+        "count": 50,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "app-charts-india",
+      "provider": "apps",
+      "health": {
+        "checked_at": "2026-11-17T01:59:55.193919100+00:00",
+        "count": 50,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "mcp-public-registry",
+      "provider": "mcp",
+      "health": {
+        "checked_at": "2026-11-17T01:59:51.455788300+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    }
+  ],
+  "failed_sources": [],
+  "all_public_sources_succeeded": true,
+  "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
+  "installer_sha256": "61f70732964b7697dc4e91e37f4faa840c5f815aee587f52b28a87e6f5911854",
+  "workflow": "https://github.com/ashishyeole/commandcenter/actions/runs/43999649407",
+  "earlier_run": "online-windows-bootstrap-initial.json",
+  "limits": "Fresh installed Windows no-account startup/data population plus installer/window/uninstaller verification. Not full Windows feature UI acceptance. Initial separate runner refreshed 34/35; final diagnostic repeat refreshed 35/35. Both runs are retained."
+}
