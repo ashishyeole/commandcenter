@@ -690,39 +690,43 @@ async fn social(state: &AppState, s: &Stream) -> Result<Vec<Value>> {
             if handle.is_empty() || key.is_empty() {
                 continue;
             }
-            let text = p["record"]["text"].as_str().unwrap_or("");
-            rows.push(row(
+            let (title, description, metadata) = social_content(p, "bluesky", handle);
+            let mut item = row(
                 "bluesky",
-                &text.chars().take(140).collect::<String>(),
+                &title,
                 &format!("https://bsky.app/profile/{handle}/post/{key}"),
-                text,
+                &description,
                 &format!(
                     "@{handle} · {} likes · {} reposts",
                     p["likeCount"].as_u64().unwrap_or(0),
                     p["repostCount"].as_u64().unwrap_or(0)
                 ),
                 p["record"]["createdAt"].as_str(),
-            ));
+            );
+            item["metadata"] = metadata;
+            rows.push(item);
         }
     } else if s.provider == "mastodon" {
         for p in v.as_array().ok_or("Mastodon response has no posts array")? {
-            let text = clean(p["content"].as_str().unwrap_or(""), 3000);
+            let (title, description, metadata) = social_content(p, "mastodon", p["account"]["acct"].as_str().unwrap_or("unknown"));
             let url = p["url"].as_str().unwrap_or("");
             if !valid_public_link(url) {
                 continue;
             }
-            rows.push(row(
+            let mut item = row(
                 "mastodon",
-                &text.chars().take(140).collect::<String>(),
+                &title,
                 url,
-                &text,
+                &description,
                 &format!(
                     "@{} · {} favourites",
                     p["account"]["acct"].as_str().unwrap_or(""),
                     p["favourites_count"].as_u64().unwrap_or(0)
                 ),
                 p["created_at"].as_str(),
-            ));
+            );
+            item["metadata"] = metadata;
+            rows.push(item);
         }
     } else {
         for p in v["data"].as_array().unwrap_or(&vec![]) {
@@ -745,6 +749,37 @@ async fn social(state: &AppState, s: &Stream) -> Result<Vec<Value>> {
         }
     }
     Ok(rows)
+}
+// Public social posts may legitimately contain only attached articles, images,
+// videos or quotes. Preserve those details and give every card a saveable title.
+fn social_content(post: &Value, provider: &str, handle: &str) -> (String, String, Value) {
+    let bluesky = provider == "bluesky";
+    let text = clean(if bluesky { post["record"]["text"].as_str() } else { post["content"].as_str() }.unwrap_or(""), 3000);
+    let embed = if post["embed"].is_object() { &post["embed"] } else { &post["record"]["embed"] };
+    let external = if bluesky {
+        if embed["external"].is_object() { &embed["external"] } else { &embed["media"]["external"] }
+    } else { &post["card"] };
+    let article_title = clean(external["title"].as_str().unwrap_or(""), 500);
+    let article_description = clean(external["description"].as_str().unwrap_or(""), 1800);
+    let external_url = external[if bluesky { "uri" } else { "url" }].as_str().filter(|u| valid_public_link(u));
+    let images = if bluesky {
+        embed["images"].as_array().or_else(|| embed["media"]["images"].as_array())
+    } else { post["media_attachments"].as_array() };
+    let alts = images.into_iter().flatten().take(10).filter_map(|image| image[if bluesky { "alt" } else { "description" }].as_str()).map(|s| clean(s, 1000)).filter(|s| !s.is_empty()).collect::<Vec<_>>();
+    let quote = if embed["record"]["value"]["text"].is_string() { &embed["record"]["value"]["text"] } else { &embed["record"]["record"]["value"]["text"] };
+    let quoted_text = clean(quote.as_str().unwrap_or(""), 1800);
+    let title = if !text.is_empty() { text.chars().take(140).collect() }
+        else if !article_title.is_empty() { article_title.clone() }
+        else { format!("Post by @{handle} (no text supplied)") };
+    let mut descriptions = vec![];
+    if !text.is_empty() { descriptions.push(text.clone()); }
+    if !article_title.is_empty() { descriptions.push(format!("Attached article: {article_title}")); }
+    if !article_description.is_empty() { descriptions.push(article_description.clone()); }
+    if !alts.is_empty() { descriptions.push(format!("Source-provided media descriptions: {}", alts.join(" · "))); }
+    if !quoted_text.is_empty() { descriptions.push(format!("Quoted post: {quoted_text}")); }
+    if descriptions.is_empty() { descriptions.push("This public post has no text. Open the original to view its content.".into()); }
+    let metadata = json!({"original_text_supplied":!text.is_empty(),"attached_title":article_title,"attached_description":article_description,"attached_url":external_url,"media_descriptions":alts,"quoted_text":quoted_text,"embed_type":embed["$type"].as_str()});
+    (title, descriptions.join("\n\n").chars().take(6000).collect(), metadata)
 }
 fn valid_public_link(raw: &str) -> bool {
     reqwest::Url::parse(raw).is_ok_and(|u| {
@@ -2189,5 +2224,43 @@ mod public_retry_tests {
         .await;
         assert!(result.is_err());
         assert_eq!(calls.load(Ordering::SeqCst), 1);
+    }
+}
+
+#[cfg(test)]
+mod media_post_tests {
+    use super::*;
+    #[test]
+    fn article_only_bluesky_posts_remain_named_savable_and_source_attributed() {
+        let p = json!({"record":{"text":"","embed":{"external":{"title":"Real publisher headline","description":"Publisher abstract","uri":"https://publisher.example/article"}}}});
+        let (title, description, meta) = social_content(&p, "bluesky", "publisher.example");
+        assert_eq!(title, "Real publisher headline");
+        assert!(description.contains("Publisher abstract"));
+        assert_eq!(meta["attached_url"], "https://publisher.example/article");
+        assert_eq!(meta["original_text_supplied"], false);
+        let item = row("bluesky", &title, "https://bsky.app/profile/publisher.example/post/abc", &description, "0 likes", None);
+        let dir = tempfile::tempdir().unwrap();
+        let mut repo = command_center_core::Repository::open(dir.path().join("qa.db")).unwrap();
+        let now = command_center_core::now();
+        let saved = repo.save(command_center_core::Item {
+            id: uuid::Uuid::new_v4().to_string(), kind: "saved".into(),
+            title: item["title"].as_str().unwrap().into(), body: description,
+            pinned: false, priority: "normal".into(), status: "active".into(),
+            due: None, recurrence: "none".into(), url: item["url"].as_str().map(str::to_owned),
+            created_at: now.clone(), updated_at: now, device_id: repo.device_id.clone(),
+            revision: 1, deleted_at: None,
+        }).unwrap();
+        assert_eq!(saved.title, "Real publisher headline");
+        assert_eq!(repo.list("Real publisher", false).unwrap().len(), 1);
+    }
+    #[test]
+    fn media_and_quote_posts_do_not_invent_body_or_blank_titles() {
+        let p=json!({"record":{"text":""},"embed":{"images":[{"alt":"Field robot inspecting crops"}],"record":{"value":{"text":"Source quoted text"}}}});
+        let (title,description,meta)=social_content(&p,"bluesky","robot.example");
+        assert!(title.contains("no text supplied"));assert!(description.contains("Field robot inspecting crops"));assert!(description.contains("Quoted post: Source quoted text"));assert_eq!(meta["original_text_supplied"],false);
+        let p=json!({"content":"<p></p>","media_attachments":[{"description":"Source photo description"}]});
+        let (title,description,_)=social_content(&p,"mastodon","farmer@example.social");
+        assert!(!title.is_empty());assert!(description.contains("Source photo description"));
+        let (title,description,_)=social_content(&json!({}),"bluesky","unknown.example");assert!(!title.is_empty());assert!(description.contains("no text"));
     }
 }
