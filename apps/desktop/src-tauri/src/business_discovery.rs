@@ -189,6 +189,7 @@ struct ProviderFailure {
     message: String,
     stop: bool,
     pause_seconds: i64,
+    retryable: bool,
 }
 impl ProviderFailure {
     fn unavailable(message: impl Into<String>) -> Self {
@@ -196,6 +197,13 @@ impl ProviderFailure {
             message: message.into(),
             stop: false,
             pause_seconds: 0,
+            retryable: false,
+        }
+    }
+    fn transient(message: impl Into<String>) -> Self {
+        Self {
+            retryable: true,
+            ..Self::unavailable(message)
         }
     }
 }
@@ -219,6 +227,7 @@ fn status_failure(status: reqwest::StatusCode, retry_after: Option<&str>) -> Pro
             }
         ),
         stop,
+        retryable: !stop && (status.is_server_error() || status.as_u16() == 408),
         pause_seconds: if status.as_u16() == 429 {
             pause.unwrap_or(60).clamp(60, 86400)
         } else {
@@ -249,7 +258,7 @@ async fn read_provider(
         .send()
         .await
         .map_err(|e| {
-            ProviderFailure::unavailable(format!(
+            ProviderFailure::transient(format!(
                 "Public provider connection failed: {}",
                 e.without_url()
             ))
@@ -294,22 +303,29 @@ where
 {
     let mut attempts = vec![];
     for endpoint in urls {
-        match read(endpoint.clone()).await {
-            Ok(rows) => {
-                attempts.push(json!({"endpoint":endpoint,"status":"ok","count":rows.len()}));
-                return Ok(Lookup {
-                    rows,
-                    endpoint,
-                    attempts,
-                });
-            }
-            Err(e) => {
-                attempts.push(json!({"endpoint":endpoint,"status":"error","error":e.message}));
-                if e.stop {
-                    return Err(LookupFailure {
+        for attempt in 0..2 {
+            match read(endpoint.clone()).await {
+                Ok(rows) => {
+                    attempts.push(json!({"endpoint":endpoint,"attempt":attempt+1,"status":"ok","count":rows.len()}));
+                    return Ok(Lookup {
+                        rows,
+                        endpoint,
                         attempts,
-                        pause_seconds: e.pause_seconds,
                     });
+                }
+                Err(e) => {
+                    attempts.push(json!({"endpoint":endpoint,"attempt":attempt+1,"status":"error","error":e.message}));
+                    if e.stop {
+                        return Err(LookupFailure {
+                            attempts,
+                            pause_seconds: e.pause_seconds,
+                        });
+                    }
+                    if e.retryable && attempt == 0 {
+                        tokio::time::sleep(Duration::from_secs(2)).await;
+                    } else {
+                        break;
+                    }
                 }
             }
         }
@@ -636,6 +652,28 @@ mod tests {
         .unwrap();
         assert!(empty.rows.is_empty());
         assert_eq!(empty.attempts.len(), 1);
+    }
+    #[tokio::test]
+    async fn transient_failure_retries_once_on_the_same_provider() {
+        let calls = AtomicUsize::new(0);
+        let found = run_plan(vec!["first".into(), "second".into()], |_| {
+            std::future::ready(if calls.fetch_add(1, Ordering::SeqCst) == 0 {
+                Err(status_failure(reqwest::StatusCode::GATEWAY_TIMEOUT, None))
+            } else {
+                Ok(fixture())
+            })
+        })
+        .await
+        .unwrap();
+        assert_eq!(calls.load(Ordering::SeqCst), 2);
+        assert_eq!(found.endpoint, "first");
+        assert_eq!(found.attempts[1]["attempt"], 2);
+        let failed = run_plan(vec!["first".into()], |_| {
+            std::future::ready(Err(ProviderFailure::transient("offline")))
+        })
+        .await
+        .unwrap_err();
+        assert_eq!(failed.attempts.len(), 2);
     }
     #[tokio::test]
     async fn permission_and_quota_refusals_do_not_rotate_providers() {
