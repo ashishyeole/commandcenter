@@ -78,6 +78,7 @@ def run():
         executable = Path('Contents/MacOS') / info['CFBundleExecutable']
         original_hash = sha(bundle / executable)
         subprocess.run(['ditto', str(bundle), str(copied)], check=True)
+        subprocess.run(['codesign', '--verify', '--deep', '--strict', str(copied)], check=True, stdout=logfile, stderr=subprocess.STDOUT)
         assert original_hash == sha(copied / executable)
         assert (mount / 'Applications').readlink() == Path('/Applications')
         report.update(executable_sha256=original_hash, copied_executable_matches_dmg=True,
