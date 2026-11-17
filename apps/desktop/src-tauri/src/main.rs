@@ -9,6 +9,7 @@ mod bank_accounts;
 mod bank_reconcile;
 mod business_demo;
 mod business_discovery;
+mod apple_charts;
 mod citation_review;
 mod cloud_ai;
 mod connectors;

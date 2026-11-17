@@ -560,27 +560,11 @@ pub(crate) async fn refresh_cached(
             if country.len() != 2 || !country.bytes().all(|b| b.is_ascii_lowercase()) {
                 return Err("Enter a two-letter storefront code, such as us or in".into());
             }
-            let v=source_json(&state, &source, epoch, c.get(format!("https://rss.marketingtools.apple.com/api/v2/{country}/apps/top-free/50/apps.json")).send().await.map_err(|e|e.to_string())?).await?;
-            for (rank, r) in v["feed"]["results"]
-                .as_array()
-                .ok_or("Apple returned no chart results")?
-                .iter()
-                .enumerate()
-            {
-                out.push(Discovery {
-                    id: format!("apple:{}", text(r, "id")),
-                    title: text(r, "name"),
-                    description: text(r, "artistName"),
-                    url: text(r, "url"),
-                    source: source.clone(),
-                    metric: format!("#{} · top free · {}", rank + 1, country.to_uppercase()),
-                    published_at: r["releaseDate"].as_str().map(str::to_owned),
-                    fetched_at: timestamp.clone(),
-                    verification:
-                        "Apple chart snapshot · rank, not download estimate or growth velocity"
-                            .into(),
-                });
+            let chart = crate::apple_charts::fetch(state, &country, &timestamp).await?;
+            for row in &chart.items {
+                attributes.insert(row.id.clone(), chart.metadata.clone());
             }
+            out = chart.items;
         }
         _ => return Err("Unsupported public source".into()),
     }

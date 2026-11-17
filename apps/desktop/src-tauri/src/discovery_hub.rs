@@ -504,7 +504,8 @@ pub(crate) async fn refresh(state: &AppState, id: &str) -> Result<Value> {
         }
         jobs.insert(request.clone(), cancel.clone());
     }
-    let result = tokio::select! {_=cancel.cancelled()=>Err("Refresh cancelled; previous cache retained".into()),r=tokio::time::timeout(std::time::Duration::from_secs(65),retry_public_read(!["x","reddit","youtube","linkedin"].contains(&s.provider.as_str()),||fetch(state,&s)))=>r.unwrap_or_else(|_|Err("Source timed out; previous cache retained".into()))};
+    // Apple charts have their own bounded official-feed fallback; do not multiply requests.
+    let result = tokio::select! {_=cancel.cancelled()=>Err("Refresh cancelled; previous cache retained".into()),r=tokio::time::timeout(std::time::Duration::from_secs(65),retry_public_read(!["x","reddit","youtube","linkedin","apps"].contains(&s.provider.as_str()),||fetch(state,&s)))=>r.unwrap_or_else(|_|Err("Source timed out; previous cache retained".into()))};
     state
         .jobs
         .lock()

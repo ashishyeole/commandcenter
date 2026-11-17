@@ -29,6 +29,18 @@ while time.monotonic() < deadline:
                            'health': json.loads(setting('hub_health:' + source['id']) or 'null')}
                           for source in streams if source.get('enabled')]
                 caches = db.execute("SELECT source,payload FROM feed_cache WHERE source LIKE 'hub:%'").fetchall()
+                by_source = {source: json.loads(raw) for source, raw in caches}
+                charts = []
+                for chart_id, region in [('app-charts-us', 'US'), ('app-charts-india', 'IN')]:
+                    rows = by_source.get('hub:' + chart_id, [])
+                    valid = len(rows) == 50 and all(
+                        r.get('metric') == f'#{index + 1} · top free · {region}'
+                        and r.get('metadata', {}).get('storefront') == region
+                        and r.get('metadata', {}).get('feed_url', '').startswith('https://')
+                        for index, r in enumerate(rows))
+                    charts.append({'id': chart_id, 'count': len(rows), 'passed': valid,
+                                   'metadata': rows[0].get('metadata') if rows else None,
+                                   'samples': rows[:3]})
                 ordinary = db.execute('SELECT COUNT(*) FROM items').fetchone()[0]
                 records = db.execute('SELECT COUNT(*) FROM records').fetchone()[0]
                 enabled = [s for s in streams if s.get('enabled')]
@@ -39,6 +51,7 @@ while time.monotonic() < deadline:
                               live_cache_count=len(caches), live_item_count=sum(len(json.loads(raw)) for _, raw in caches),
                               ordinary_item_count=ordinary, workspace_record_count=records,
                               enabled_account_flags=[r[0] for r in flags], batch=summary, sources=health,
+                              apple_charts=charts, apple_charts_passed=all(c['passed'] for c in charts),
                               failed_sources=[r for r in health if r['health'] and r['health'].get('status') == 'error'])
                 report['bootstrap_passed'] = bool(len(enabled) == 35 and report['live_item_count'] > 0
                     and ordinary == 0 and records == 0 and not flags
@@ -54,3 +67,5 @@ out.write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps(report, indent=2))
 if not report['bootstrap_passed']:
     raise SystemExit('No verified no-account live bootstrap within 90 seconds')
+if not report.get('apple_charts_passed'):
+    raise SystemExit('Installed app did not load 50 correctly ranked US and India Apple chart entries')
