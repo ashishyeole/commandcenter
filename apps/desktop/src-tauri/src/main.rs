@@ -39,6 +39,7 @@ mod price_watch;
 mod private_transfer;
 mod productivity;
 mod projects;
+mod qa_profile;
 mod rendered_audit;
 mod research;
 mod retention;
@@ -795,6 +796,16 @@ fn poll_reminders(app: &tauri::AppHandle) -> Result<()> {
 fn main() {
     let background = std::env::args().any(|a| a == "--reminder-check");
     let mut context = tauri::generate_context!();
+    match qa_profile::identifier(&std::env::args().collect::<Vec<_>>(), cfg!(debug_assertions)) {
+        Ok(Some(identifier)) => {
+            context.config_mut().identifier = identifier;
+            for window in &mut context.config_mut().app.windows {
+                window.title = "Personal Command Center — Isolated QA".into();
+            }
+        }
+        Ok(None) => {}
+        Err(error) => { eprintln!("{error}"); std::process::exit(2); }
+    }
     if background {
         for window in &mut context.config_mut().app.windows {
             window.visible = false;
@@ -1034,6 +1045,11 @@ fn main() {
         )
         .setup(move |app| {
             let dir = app.path().app_data_dir()?;
+            if let Some(expected) = qa_profile::identifier(&std::env::args().collect::<Vec<_>>(), cfg!(debug_assertions)).map_err(std::io::Error::other)? {
+                if dir.file_name().and_then(|v| v.to_str()) != Some(expected.as_str()) {
+                    return Err(std::io::Error::other("QA profile path mismatch; refusing to open any database").into());
+                }
+            }
             std::fs::create_dir_all(&dir)?;
             let repo =
                 Repository::open(dir.join("command-center.db")).map_err(std::io::Error::other)?;

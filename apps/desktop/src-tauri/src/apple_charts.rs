@@ -175,7 +175,7 @@ fn parse(v: &Value, country: &str, fetched_at: &str, endpoint: &str) -> Result<C
             return Err("Apple returned a mismatched or duplicate app listing".into());
         }
         items.push(Discovery {
-            id: format!("apple:{id}"),
+            id: format!("apple:{country}:{id}"),
             title: title.into(),
             description: artist.unwrap_or("").into(),
             url: url.to_string(),
@@ -216,7 +216,7 @@ mod tests {
                 (modern(country), endpoints(country).unwrap()[1].clone()),
             ] {
                 let chart = parse(&v, country, "fetched", &url).unwrap();
-                assert_eq!(chart.items[0].id, "apple:123");
+                assert_eq!(chart.items[0].id, format!("apple:{country}:123"));
                 assert_eq!(
                     chart.items[0].metric,
                     format!("#1 · top free · {}", country.to_uppercase())
@@ -328,7 +328,7 @@ mod tests {
         let chart = fetch_from(&client, "us", "now", &[a, b.clone()], None)
             .await
             .unwrap();
-        assert_eq!(chart.items[0].id, "apple:123");
+        assert_eq!(chart.items[0].id, "apple:us:123");
         assert_eq!(chart.metadata["feed_url"], b);
         assert_eq!(chart.metadata["fallback_used"], true);
         assert_eq!(
