@@ -1,0 +1,521 @@
+{
+  "checked_at": "2026-11-17T07:29:37.846898+00:00",
+  "isolated_runner": true,
+  "app_login_used": false,
+  "api_keys_used": false,
+  "full_feature_acceptance": false,
+  "bootstrap_passed": true,
+  "configured_sources": 43,
+  "enabled_sources": 35,
+  "auto_refresh_minutes": "30",
+  "initialization_marker": "1",
+  "live_cache_count": 35,
+  "live_item_count": 800,
+  "ordinary_item_count": 0,
+  "workspace_record_count": 0,
+  "enabled_account_flags": [],
+  "batch": {
+    "at": "2026-11-17T07:29:45.690638900+00:00",
+    "cancelled": false,
+    "failed": 0,
+    "refreshed": 35
+  },
+  "sources": [
+    {
+      "id": "hf-trending",
+      "provider": "models",
+      "health": {
+        "checked_at": "2026-11-17T07:29:33.501448500+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "hf-downloads",
+      "provider": "models",
+      "health": {
+        "checked_at": "2026-11-17T07:29:39.571595400+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "ollama-catalogue",
+      "provider": "ollama",
+      "health": {
+        "checked_at": "2026-11-17T07:29:39.420077600+00:00",
+        "count": 20,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "github-top",
+      "provider": "github",
+      "health": {
+        "checked_at": "2026-11-17T07:29:30.806472+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "github-new",
+      "provider": "github",
+      "health": {
+        "checked_at": "2026-11-17T07:29:36.576287200+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-repos",
+      "provider": "github",
+      "health": {
+        "checked_at": "2026-11-17T07:29:42.874490100+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-papers",
+      "provider": "arxiv",
+      "health": {
+        "checked_at": "2026-11-17T07:29:26.391028500+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-news",
+      "provider": "rss",
+      "health": {
+        "checked_at": "2026-11-17T07:29:42.120467500+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-models",
+      "provider": "models",
+      "health": {
+        "checked_at": "2026-11-17T07:29:45.650635300+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agri-discussion",
+      "provider": "news",
+      "health": {
+        "checked_at": "2026-11-17T07:29:34.067884300+00:00",
+        "count": 0,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agritech-india",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T07:29:25.334393900+00:00",
+        "count": 1,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agritechnica",
+      "provider": "calendar",
+      "health": {
+        "checked_at": "2026-11-17T07:29:26.239576100+00:00",
+        "count": 1,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "world-ag-expo",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T07:29:42.726786200+00:00",
+        "count": 1,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-news",
+      "provider": "rss",
+      "health": {
+        "checked_at": "2026-11-17T07:29:40.426092500+00:00",
+        "count": 20,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-wpt",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T07:29:41.506419900+00:00",
+        "count": 9,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-wsop",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T07:29:41.755940600+00:00",
+        "count": 6,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-stars",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T07:29:40.755341+00:00",
+        "count": 4,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-all",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T07:29:40.051970200+00:00",
+        "count": 38,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "stanford-lectures",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T07:29:42.214959600+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "mit-robotics-videos",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T07:29:33.429776600+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agri-videos",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T07:29:25.235986500+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-videos",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T07:29:41.174109600+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "ai-videos",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T07:29:25.834846900+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "mit-lectures",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T07:29:33.281861900+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-bluesky",
+      "provider": "bluesky",
+      "health": {
+        "checked_at": "2026-11-17T07:29:26.793989100+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agri-bluesky",
+      "provider": "bluesky",
+      "health": {
+        "checked_at": "2026-11-17T07:29:27.043350100+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-mastodon",
+      "provider": "mastodon",
+      "health": {
+        "checked_at": "2026-11-17T07:29:33.837108500+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "ai-news",
+      "provider": "news",
+      "health": {
+        "checked_at": "2026-11-17T07:29:39.347141200+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agfunder-news",
+      "provider": "rss",
+      "health": {
+        "checked_at": "2026-11-17T07:29:24.944675300+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agdaily-news",
+      "provider": "rss",
+      "health": {
+        "checked_at": "2026-11-17T07:29:26.891061200+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "crossref-robotics",
+      "provider": "crossref",
+      "health": {
+        "checked_at": "2026-11-17T07:29:29.905369600+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "epmc-agriculture",
+      "provider": "europepmc",
+      "health": {
+        "checked_at": "2026-11-17T07:29:32.970294800+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "app-charts-us",
+      "provider": "apps",
+      "health": {
+        "checked_at": "2026-11-17T07:29:26.823156500+00:00",
+        "count": 50,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "app-charts-india",
+      "provider": "apps",
+      "health": {
+        "checked_at": "2026-11-17T07:29:32.812694+00:00",
+        "count": 50,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "mcp-public-registry",
+      "provider": "mcp",
+      "health": {
+        "checked_at": "2026-11-17T07:29:33.140153400+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    }
+  ],
+  "apple_charts": [
+    {
+      "id": "app-charts-us",
+      "count": 50,
+      "passed": true,
+      "metadata": {
+        "chart": "top-free",
+        "fallback_used": false,
+        "feed_updated": "2026-11-16T23:29:26-07:00",
+        "feed_url": "https://itunes.apple.com/us/rss/topfreeapplications/limit=50/json",
+        "storefront": "US"
+      },
+      "samples": [
+        {
+          "description": "TikTok Ltd.",
+          "fetched_at": "2026-11-17T07:29:25.841117800+00:00",
+          "id": "apple:6741796873",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:29:26-07:00",
+            "feed_url": "https://itunes.apple.com/us/rss/topfreeapplications/limit=50/json",
+            "storefront": "US"
+          },
+          "metric": "#1 \u00b7 top free \u00b7 US",
+          "provider_rank": 1,
+          "published_at": "2026-06-03T00:00:00-07:00",
+          "region": "US",
+          "source": "apps",
+          "stream_id": "app-charts-us",
+          "stream_name": "Top free iPhone apps \u00b7 US",
+          "title": "TikTok Pro - Events",
+          "topic": "apps",
+          "url": "https://apps.apple.com/us/app/tiktok-pro-events/id6741796873?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "Meta Platforms, Inc.",
+          "fetched_at": "2026-11-17T07:29:25.841117800+00:00",
+          "id": "apple:6760173601",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:29:26-07:00",
+            "feed_url": "https://itunes.apple.com/us/rss/topfreeapplications/limit=50/json",
+            "storefront": "US"
+          },
+          "metric": "#2 \u00b7 top free \u00b7 US",
+          "provider_rank": 2,
+          "published_at": "2026-09-08T00:00:00-07:00",
+          "region": "US",
+          "source": "apps",
+          "stream_id": "app-charts-us",
+          "stream_name": "Top free iPhone apps \u00b7 US",
+          "title": "Muse from Meta",
+          "topic": "apps",
+          "url": "https://apps.apple.com/us/app/muse-from-meta/id6760173601?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "Vinted Limited",
+          "fetched_at": "2026-11-17T07:29:25.841117800+00:00",
+          "id": "apple:632064380",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:29:26-07:00",
+            "feed_url": "https://itunes.apple.com/us/rss/topfreeapplications/limit=50/json",
+            "storefront": "US"
+          },
+          "metric": "#3 \u00b7 top free \u00b7 US",
+          "provider_rank": 3,
+          "published_at": "2013-04-11T10:12:20-07:00",
+          "region": "US",
+          "source": "apps",
+          "stream_id": "app-charts-us",
+          "stream_name": "Top free iPhone apps \u00b7 US",
+          "title": "Vinted: Pre-loved marketplace",
+          "topic": "apps",
+          "url": "https://apps.apple.com/us/app/vinted-pre-loved-marketplace/id632064380?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        }
+      ]
+    },
+    {
+      "id": "app-charts-india",
+      "count": 50,
+      "passed": true,
+      "metadata": {
+        "chart": "top-free",
+        "fallback_used": false,
+        "feed_updated": "2026-11-16T23:29:31-07:00",
+        "feed_url": "https://itunes.apple.com/in/rss/topfreeapplications/limit=50/json",
+        "storefront": "IN"
+      },
+      "samples": [
+        {
+          "description": "OpenAI OpCo, LLC",
+          "fetched_at": "2026-11-17T07:29:31.843576600+00:00",
+          "id": "apple:6448311069",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:29:31-07:00",
+            "feed_url": "https://itunes.apple.com/in/rss/topfreeapplications/limit=50/json",
+            "storefront": "IN"
+          },
+          "metric": "#1 \u00b7 top free \u00b7 IN",
+          "provider_rank": 1,
+          "published_at": "2023-05-25T00:00:00-07:00",
+          "region": "IN",
+          "source": "apps",
+          "stream_id": "app-charts-india",
+          "stream_name": "Top free iPhone apps \u00b7 India",
+          "title": "ChatGPT",
+          "topic": "apps",
+          "url": "https://apps.apple.com/in/app/chatgpt/id6448311069?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "Instagram, Inc.",
+          "fetched_at": "2026-11-17T07:29:31.843576600+00:00",
+          "id": "apple:6738967378",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:29:31-07:00",
+            "feed_url": "https://itunes.apple.com/in/rss/topfreeapplications/limit=50/json",
+            "storefront": "IN"
+          },
+          "metric": "#2 \u00b7 top free \u00b7 IN",
+          "provider_rank": 2,
+          "published_at": "2025-04-22T00:00:00-07:00",
+          "region": "IN",
+          "source": "apps",
+          "stream_id": "app-charts-india",
+          "stream_name": "Top free iPhone apps \u00b7 India",
+          "title": "Edits: Video Editor",
+          "topic": "apps",
+          "url": "https://apps.apple.com/in/app/edits-video-editor/id6738967378?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "Roppen Transportation Services Private Limited",
+          "fetched_at": "2026-11-17T07:29:31.843576600+00:00",
+          "id": "apple:1198464606",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:29:31-07:00",
+            "feed_url": "https://itunes.apple.com/in/rss/topfreeapplications/limit=50/json",
+            "storefront": "IN"
+          },
+          "metric": "#3 \u00b7 top free \u00b7 IN",
+          "provider_rank": 3,
+          "published_at": "2017-02-10T06:33:43-07:00",
+          "region": "IN",
+          "source": "apps",
+          "stream_id": "app-charts-india",
+          "stream_name": "Top free iPhone apps \u00b7 India",
+          "title": "Rapido: Bike-Taxi, Auto & Cabs",
+          "topic": "apps",
+          "url": "https://apps.apple.com/in/app/rapido-bike-taxi-auto-cabs/id1198464606?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        }
+      ]
+    }
+  ],
+  "apple_charts_passed": true,
+  "failed_sources": [],
+  "all_public_sources_succeeded": true,
+  "source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
+  "installer_sha256": "fb892ebd5354f8332fe898a545a98d3e650d2887832fa97f384b8854079e2cdf",
+  "workflow": "https://github.com/ashishyeole/commandcenter/actions/runs/44039054861",
+  "package_workflow": "https://github.com/ashishyeole/commandcenter/actions/runs/44037013075"
+}

@@ -1,0 +1,287 @@
+{
+  "app_login_used": false,
+  "checked_at": "2026-11-17T07:10:32.872439+00:00",
+  "credentials_used": false,
+  "isolated_temp_database": true,
+  "runs": [
+    {
+      "cache_matches_live_response": true,
+      "count": 50,
+      "health": {
+        "checked_at": "2026-11-17T07:10:27.166839+00:00",
+        "count": 50,
+        "status": "ok"
+      },
+      "id": "app-charts-us",
+      "metadata": {
+        "chart": "top-free",
+        "fallback_used": false,
+        "feed_updated": "2026-11-16T23:05:35-07:00",
+        "feed_url": "https://itunes.apple.com/us/rss/topfreeapplications/limit=50/json",
+        "storefront": "US"
+      },
+      "samples": [
+        {
+          "description": "TikTok Ltd.",
+          "fetched_at": "2026-11-17T07:10:27.016910+00:00",
+          "id": "apple:6741796873",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:05:35-07:00",
+            "feed_url": "https://itunes.apple.com/us/rss/topfreeapplications/limit=50/json",
+            "storefront": "US"
+          },
+          "metric": "#1 \u00b7 top free \u00b7 US",
+          "provider_rank": 1,
+          "published_at": "2026-06-03T00:00:00-07:00",
+          "region": "US",
+          "source": "apps",
+          "stream_id": "app-charts-us",
+          "stream_name": "Top free iPhone apps \u00b7 US",
+          "title": "TikTok Pro - Events",
+          "topic": "apps",
+          "url": "https://apps.apple.com/us/app/tiktok-pro-events/id6741796873?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "Meta Platforms, Inc.",
+          "fetched_at": "2026-11-17T07:10:27.016910+00:00",
+          "id": "apple:6760173601",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:05:35-07:00",
+            "feed_url": "https://itunes.apple.com/us/rss/topfreeapplications/limit=50/json",
+            "storefront": "US"
+          },
+          "metric": "#2 \u00b7 top free \u00b7 US",
+          "provider_rank": 2,
+          "published_at": "2026-09-08T00:00:00-07:00",
+          "region": "US",
+          "source": "apps",
+          "stream_id": "app-charts-us",
+          "stream_name": "Top free iPhone apps \u00b7 US",
+          "title": "Muse from Meta",
+          "topic": "apps",
+          "url": "https://apps.apple.com/us/app/muse-from-meta/id6760173601?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "Vinted Limited",
+          "fetched_at": "2026-11-17T07:10:27.016910+00:00",
+          "id": "apple:632064380",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:05:35-07:00",
+            "feed_url": "https://itunes.apple.com/us/rss/topfreeapplications/limit=50/json",
+            "storefront": "US"
+          },
+          "metric": "#3 \u00b7 top free \u00b7 US",
+          "provider_rank": 3,
+          "published_at": "2013-04-11T10:12:20-07:00",
+          "region": "US",
+          "source": "apps",
+          "stream_id": "app-charts-us",
+          "stream_name": "Top free iPhone apps \u00b7 US",
+          "title": "Vinted: Pre-loved marketplace",
+          "topic": "apps",
+          "url": "https://apps.apple.com/us/app/vinted-pre-loved-marketplace/id632064380?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "OpenAI OpCo, LLC",
+          "fetched_at": "2026-11-17T07:10:27.016910+00:00",
+          "id": "apple:6448311069",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:05:35-07:00",
+            "feed_url": "https://itunes.apple.com/us/rss/topfreeapplications/limit=50/json",
+            "storefront": "US"
+          },
+          "metric": "#4 \u00b7 top free \u00b7 US",
+          "provider_rank": 4,
+          "published_at": "2023-05-18T00:00:00-07:00",
+          "region": "US",
+          "source": "apps",
+          "stream_id": "app-charts-us",
+          "stream_name": "Top free iPhone apps \u00b7 US",
+          "title": "ChatGPT",
+          "topic": "apps",
+          "url": "https://apps.apple.com/us/app/chatgpt/id6448311069?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "Onskeskyen ApS",
+          "fetched_at": "2026-11-17T07:10:27.016910+00:00",
+          "id": "apple:1605170923",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:05:35-07:00",
+            "feed_url": "https://itunes.apple.com/us/rss/topfreeapplications/limit=50/json",
+            "storefront": "US"
+          },
+          "metric": "#5 \u00b7 top free \u00b7 US",
+          "provider_rank": 5,
+          "published_at": "2023-04-03T00:00:00-07:00",
+          "region": "US",
+          "source": "apps",
+          "stream_id": "app-charts-us",
+          "stream_name": "Top free iPhone apps \u00b7 US",
+          "title": "GoWish - Your Digital Wishlist",
+          "topic": "apps",
+          "url": "https://apps.apple.com/us/app/gowish-your-digital-wishlist/id1605170923?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        }
+      ]
+    },
+    {
+      "cache_matches_live_response": true,
+      "count": 50,
+      "health": {
+        "checked_at": "2026-11-17T07:10:32.868564+00:00",
+        "count": 50,
+        "status": "ok"
+      },
+      "id": "app-charts-india",
+      "metadata": {
+        "chart": "top-free",
+        "fallback_used": false,
+        "feed_updated": "2026-11-16T23:10:32-07:00",
+        "feed_url": "https://itunes.apple.com/in/rss/topfreeapplications/limit=50/json",
+        "storefront": "IN"
+      },
+      "samples": [
+        {
+          "description": "OpenAI OpCo, LLC",
+          "fetched_at": "2026-11-17T07:10:32.173147+00:00",
+          "id": "apple:6448311069",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:10:32-07:00",
+            "feed_url": "https://itunes.apple.com/in/rss/topfreeapplications/limit=50/json",
+            "storefront": "IN"
+          },
+          "metric": "#1 \u00b7 top free \u00b7 IN",
+          "provider_rank": 1,
+          "published_at": "2023-05-25T00:00:00-07:00",
+          "region": "IN",
+          "source": "apps",
+          "stream_id": "app-charts-india",
+          "stream_name": "Top free iPhone apps \u00b7 India",
+          "title": "ChatGPT",
+          "topic": "apps",
+          "url": "https://apps.apple.com/in/app/chatgpt/id6448311069?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "Instagram, Inc.",
+          "fetched_at": "2026-11-17T07:10:32.173147+00:00",
+          "id": "apple:6738967378",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:10:32-07:00",
+            "feed_url": "https://itunes.apple.com/in/rss/topfreeapplications/limit=50/json",
+            "storefront": "IN"
+          },
+          "metric": "#2 \u00b7 top free \u00b7 IN",
+          "provider_rank": 2,
+          "published_at": "2025-04-22T00:00:00-07:00",
+          "region": "IN",
+          "source": "apps",
+          "stream_id": "app-charts-india",
+          "stream_name": "Top free iPhone apps \u00b7 India",
+          "title": "Edits: Video Editor",
+          "topic": "apps",
+          "url": "https://apps.apple.com/in/app/edits-video-editor/id6738967378?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "Roppen Transportation Services Private Limited",
+          "fetched_at": "2026-11-17T07:10:32.173147+00:00",
+          "id": "apple:1198464606",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:10:32-07:00",
+            "feed_url": "https://itunes.apple.com/in/rss/topfreeapplications/limit=50/json",
+            "storefront": "IN"
+          },
+          "metric": "#3 \u00b7 top free \u00b7 IN",
+          "provider_rank": 3,
+          "published_at": "2017-02-10T06:33:43-07:00",
+          "region": "IN",
+          "source": "apps",
+          "stream_id": "app-charts-india",
+          "stream_name": "Top free iPhone apps \u00b7 India",
+          "title": "Rapido: Bike-Taxi, Auto & Cabs",
+          "topic": "apps",
+          "url": "https://apps.apple.com/in/app/rapido-bike-taxi-auto-cabs/id1198464606?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "Google",
+          "fetched_at": "2026-11-17T07:10:32.173147+00:00",
+          "id": "apple:6477489729",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:10:32-07:00",
+            "feed_url": "https://itunes.apple.com/in/rss/topfreeapplications/limit=50/json",
+            "storefront": "IN"
+          },
+          "metric": "#4 \u00b7 top free \u00b7 IN",
+          "provider_rank": 4,
+          "published_at": "2024-11-13T00:00:00-07:00",
+          "region": "IN",
+          "source": "apps",
+          "stream_id": "app-charts-india",
+          "stream_name": "Top free iPhone apps \u00b7 India",
+          "title": "Google Gemini",
+          "topic": "apps",
+          "url": "https://apps.apple.com/in/app/google-gemini/id6477489729?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "BLINK COMMERCE PRIVATE LIMITED",
+          "fetched_at": "2026-11-17T07:10:32.173147+00:00",
+          "id": "apple:960335206",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-16T23:10:32-07:00",
+            "feed_url": "https://itunes.apple.com/in/rss/topfreeapplications/limit=50/json",
+            "storefront": "IN"
+          },
+          "metric": "#5 \u00b7 top free \u00b7 IN",
+          "provider_rank": 5,
+          "published_at": "2015-03-03T21:39:34-07:00",
+          "region": "IN",
+          "source": "apps",
+          "stream_id": "app-charts-india",
+          "stream_name": "Top free iPhone apps \u00b7 India",
+          "title": "Blinkit: Groceries & more",
+          "topic": "apps",
+          "url": "https://apps.apple.com/in/app/blinkit-groceries-more/id960335206?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot \u00b7 rank, not download estimate or growth velocity"
+        }
+      ]
+    }
+  ],
+  "source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e"
+}

@@ -1,0 +1,18 @@
+warning: linker stderr: ld: duplicate -rpath '@executable_path/../Frameworks' ignored
+  |
+  = note: `#[warn(linker_messages)]` on by default
+
+warning: `personal-command-center` (bin "personal-command-center" test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.15s
+     Running unittests src/main.rs (target/debug/deps/personal_command_center-1a5604d699cf08dd)
+
+running 6 tests
+test apple_charts::tests::live_apple_charts ... ignored, Live Apple public feed reads through isolated native hub; no account/key
+test apple_charts::tests::fallback_never_rotates_on_access_limits_or_retry_after ... ok
+test apple_charts::tests::both_official_schemas_preserve_identity_rank_storefront_and_provenance ... ok
+test apple_charts::tests::rejects_wrong_storefront_duplicates_invalid_urls_and_partial_rows ... ok
+test apple_charts::tests::actual_gateway_failure_uses_one_fallback_and_labels_it ... ok
+test apple_charts::tests::actual_refusals_stop_and_quota_pause_is_persisted ... ok
+
+test result: ok. 5 passed; 0 failed; 1 ignored; 0 measured; 63 filtered out; finished in 0.01s
+

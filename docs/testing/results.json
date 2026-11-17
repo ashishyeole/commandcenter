@@ -1,13 +1,23 @@
 {
-  "generated_at": "2026-11-17T07:01:04.836470+00:00",
+  "generated_at": "2026-11-17T07:32:20.086359+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
-  "rust_test_executions": 112,
-  "rust_distinct_tests": 110,
+  "rust_test_executions": 117,
+  "rust_distinct_tests": 115,
   "python_tests": 10,
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
   "results": [
+    {
+      "status": "PASS \u00b7 live native + fresh Mac UI",
+      "area": "Apple US/India chart repair",
+      "evidence": "Source 36350b0: direct old-host read reproduced 502; native hub refresh returned 50 actual ranked entries per storefront with exact cached content. Fresh isolated Mac startup fetched 35/35 public sources; actual US/India cards rendered and US details exposed Apple iTunes feed URL/storefront/update time. Five parser/fallback/HTTP/refusal/quota regressions pass. No login/key or normal profile used. See apple-live-sources.json and apple-native-qa.json."
+    },
+    {
+      "status": "PASS \u00b7 installed Windows live charts",
+      "area": "Final Windows public feeds and Apple charts",
+      "evidence": "Source 36350b0 package 44037013075; exact SHA-matched EXE passed install/native-window/uninstall. Fresh installed audit 44039054861 fetched 800 real entries from 35/35 sources, no failures; both US and India charts contain 50 correctly ranked entries with actual iTunes source metadata. No login/key, seeded personal records or enabled account flags. See apple-windows-bootstrap.json. Full Windows feature UI remains unverified."
+    },
     {
       "status": "PASS",
       "area": "No-account business lookup repair",
@@ -35,7 +45,7 @@
     },
     {
       "status": "PASS \u00b7 installed Windows live data",
-      "area": "Windows no-account public bootstrap",
+      "area": "Earlier Windows no-account bootstrap \u00b7 source 50bffb5",
       "evidence": "Exact source 50bffb5 installer: fresh SQLite profile, 43 configured / 35 enabled sources, 30-minute policy, 750 live items, 34 successful / 1 failed. No app login, API keys, seeded notes/workspaces or enabled account connections. Installer SHA-256 binding and actual provider health: online-windows-bootstrap.json; workflow 44035302110. Full Windows feature UI remains unverified. The failed source was Apple US top-free charts (transport); no example/cache substitution. Earlier 35/35 result is retained with its original source revision."
     },
     {
@@ -61,12 +71,12 @@
     {
       "status": "PASS",
       "area": "Frontend and native compilation",
-      "evidence": "Final 50bffb5 TypeScript/Vite and 74 frontend assertions pass. Full local workspace has 112 passing target/test executions (110 distinct); business live test explicitly run and passed. Three live tests remain excluded from default runs. Exact CI/package and artifact checks are recorded separately."
+      "evidence": "Final 36350b0 full workspace passed 117 target/test executions (115 distinct), including five Apple regressions. Both Mac/Windows CI checks 44037013263 passed TypeScript/Vite, all five frontend assertion scripts (74 assertions) and native build/tests. Four live tests are excluded from default runs; the Apple live test explicitly returned 50 US/50 India entries. Exact package/runtime evidence is separate."
     },
     {
       "status": "PASS",
       "area": "Mac DMG integrity/copy",
-      "evidence": "Final source 50bffb5: local 0.5.0 ARM64 development DMG checksum, read-only mounted version/Applications shortcut and strict deep ad-hoc signature pass. Delivery copy matches SHA-256 50e55edc5762ffd49be8eec22935db9e31bf0994a98da9fdd57d0332a3b14f4c; no normal profile launched. See business-dmg-inspection.json."
+      "evidence": "Source 36350b0: rebuilt local ARM64 DMG passed checksum, read-only mounted signature, version and Applications symlink checks; delivery copy hash matches. See apple-dmg-inspection.json. Development/ad-hoc signing, not production notarization."
     },
     {
       "status": "FIXED",
@@ -90,7 +100,7 @@
     },
     {
       "status": "PASS (installer smoke)",
-      "area": "Windows build / installer / runtime",
+      "area": "Earlier Windows installer smoke \u00b7 source 50bffb5",
       "evidence": "Final source 50bffb5 packaging 44033173286 passed. SHA-256-matched EXE silently installed, opened a native window and silently uninstalled (both exit 0). Matching fresh no-account public bootstrap is recorded separately. Full Windows feature UI remains unverified."
     },
     {
@@ -220,12 +230,17 @@
     },
     {
       "status": "PASS",
-      "area": "Final Mac/Windows CI and packages",
+      "area": "Earlier Mac/Windows CI and packages \u00b7 source 50bffb5",
       "evidence": "Functional source 50bffb5: checks 44033175296 and packaging 44033173286 completed successfully on both platforms. Final local Mac DMG has matching integrity evidence; Windows delivery copy matches its smoke-tested SHA-256."
+    },
+    {
+      "status": "PASS",
+      "area": "Final Mac/Windows CI and packages",
+      "evidence": "Source 36350b0: both desktop checks 44037013263 and both packaging jobs 44037013075 passed; exact Windows installed chart audit 44039054861 passed. Local Mac DMG checksum/mount/version/strict ad-hoc signature/delivery hash pass. See apple-*-ci.json and apple-dmg-inspection.json."
     }
   ],
   "ui_logic_assertions": 74,
-  "rust_workspace_executions": 112,
+  "rust_workspace_executions": 117,
   "rust_additional_targeted_executions": 0,
   "research_analytics_assertions": 13,
   "source_image_theme_assertions": 13,

@@ -1,0 +1,223 @@
+{
+  "conclusion": "success",
+  "databaseId": 44037013075,
+  "headSha": "36350b078e8df67fa3899af9edc77373bf10bc2e",
+  "jobs": [
+    {
+      "completedAt": "2026-11-17T07:28:56Z",
+      "conclusion": "success",
+      "databaseId": 133882223117,
+      "name": "package (windows-latest, nsis)",
+      "startedAt": "2026-11-17T07:13:23Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-17T07:13:26Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-17T07:13:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:13:31Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-11-17T07:13:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:13:39Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-11-17T07:13:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:14:05Z",
+          "conclusion": "success",
+          "name": "Run dtolnay/rust-toolchain@stable",
+          "number": 4,
+          "startedAt": "2026-11-17T07:13:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:14:16Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 5,
+          "startedAt": "2026-11-17T07:14:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:20:08Z",
+          "conclusion": "success",
+          "name": "Run cargo test --workspace --locked",
+          "number": 6,
+          "startedAt": "2026-11-17T07:14:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:28:31Z",
+          "conclusion": "success",
+          "name": "Run npm run tauri -w apps/desktop -- build --bundles nsis",
+          "number": 7,
+          "startedAt": "2026-11-17T07:20:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:28:49Z",
+          "conclusion": "success",
+          "name": "Install, launch and uninstall on isolated Windows runner",
+          "number": 8,
+          "startedAt": "2026-11-17T07:28:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:28:52Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 9,
+          "startedAt": "2026-11-17T07:28:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:28:52Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 17,
+          "startedAt": "2026-11-17T07:28:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:28:54Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 18,
+          "startedAt": "2026-11-17T07:28:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:28:54Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-11-17T07:28:54Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/ashishyeole/commandcenter/actions/runs/44037013075/job/133882223117"
+    },
+    {
+      "completedAt": "2026-11-17T07:25:41Z",
+      "conclusion": "success",
+      "databaseId": 133882223387,
+      "name": "package (macos-latest, dmg)",
+      "startedAt": "2026-11-17T07:13:23Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-17T07:13:25Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-17T07:13:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:13:27Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-11-17T07:13:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:13:29Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-11-17T07:13:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:13:40Z",
+          "conclusion": "success",
+          "name": "Run dtolnay/rust-toolchain@stable",
+          "number": 4,
+          "startedAt": "2026-11-17T07:13:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:13:46Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 5,
+          "startedAt": "2026-11-17T07:13:40Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:19:25Z",
+          "conclusion": "success",
+          "name": "Run cargo test --workspace --locked",
+          "number": 6,
+          "startedAt": "2026-11-17T07:13:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:25:29Z",
+          "conclusion": "success",
+          "name": "Run npm run tauri -w apps/desktop -- build --bundles dmg",
+          "number": 7,
+          "startedAt": "2026-11-17T07:19:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:25:29Z",
+          "conclusion": "skipped",
+          "name": "Install, launch and uninstall on isolated Windows runner",
+          "number": 8,
+          "startedAt": "2026-11-17T07:25:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:25:31Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 9,
+          "startedAt": "2026-11-17T07:25:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:25:32Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 17,
+          "startedAt": "2026-11-17T07:25:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:25:32Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 18,
+          "startedAt": "2026-11-17T07:25:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-17T07:25:40Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-11-17T07:25:32Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/ashishyeole/commandcenter/actions/runs/44037013075/job/133882223387"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/ashishyeole/commandcenter/actions/runs/44037013075"
+}

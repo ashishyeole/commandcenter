@@ -1,9 +1,9 @@
 {
-  "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
-  "generated_at": "2026-11-17T06:48:54.560723+00:00",
+  "source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
+  "generated_at": "2026-11-17T07:32:20.086359+00:00",
   "all_use_cases_verified": false,
   "overall_operational_percent": null,
-  "method": "Evidence-based statuses. Source completion percentages are separate; no aggregate operational percentage is invented for untested/external cases. Earlier UI evidence explicitly names its own revision.",
+  "method": "Evidence-based statuses. Source completion percentages are separate; no aggregate operational percentage is invented for untested/external cases. Earlier UI evidence explicitly names its own revision. Apple chart rows were rechecked at 36350b0; other cases retain their recorded earlier evidence and limits.",
   "cases": [
     {
       "id": "UC01",
@@ -106,9 +106,9 @@
     {
       "id": "UC15",
       "use_case": "Public US/India app charts",
-      "status": "PASS \u00b7 live + UI",
-      "dependencies": "Apple public marketing RSS",
-      "evidence_and_limits": "50 results per market through native pipeline; actual ranks visible. One fresh-GUI transport failure recovered manually; final code retries a transient public-read failure once."
+      "status": "PASS \u00b7 live native + Mac UI + installed Windows",
+      "dependencies": "Public Apple iTunes RSS; Marketing Tools fallback. No login/key.",
+      "evidence_and_limits": "Source 36350b0: 50 actual US and 50 India results through native hub/cache; fresh Mac startup rendered real ranked chart cards and source metadata. Five regressions cover gateway fallback, refusals/quota pauses and strict parser/identity. Prior Marketing Tools transport failure is resolved by primary endpoint change; provider uptime remains external. See apple-live-sources.json and apple-native-qa.json. Exact installed Windows 36350b0 also returned 50 per storefront and passed 35/35 public reads (800 entries, zero failures), no login/key. See apple-windows-bootstrap.json."
     },
     {
       "id": "UC16",

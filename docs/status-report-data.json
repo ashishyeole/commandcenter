@@ -248,10 +248,10 @@
       "percent": 100,
       "weight": 3,
       "status": "Implemented in source",
-      "implemented": "Apple charts plus explicitly imported licensed iOS/Android snapshots with provider/basis labels, same-period metric comparisons, feature patterns, monetization/UX observations and reviewed saved analysis. Added an optional fixed-HTTPS schema-1 licensed market-feed connector with OS-secure bearer credentials, consent, cancellation, strict validation and last-moment permission checks; file imports remain available.",
+      "implemented": "Apple charts plus explicitly imported licensed iOS/Android snapshots with provider/basis labels, same-period metric comparisons, feature patterns, monetization/UX observations and reviewed saved analysis. Added an optional fixed-HTTPS schema-1 licensed market-feed connector with OS-secure bearer credentials, consent, cancellation, strict validation and last-moment permission checks; file imports remain available. Public Top Free charts now use validated Apple iTunes RSS with bounded Marketing Tools fallback; identity/order/storefront/source-update metadata retained.",
       "remaining": "Live proprietary data needs an authorized canonical-schema endpoint or dataset and any provider key. Native proprietary formats need a separately supplied transformation; no paid data is bundled or independently verified.",
-      "notes": "Local monitoring source scope completed in this pass. Source completion is distinct from current data, account configuration and acceptance. See the remaining-code delivery and test report.",
-      "evidence": "apps/desktop/src-tauri/src/app_market.rs",
+      "notes": "Local monitoring source scope completed in this pass. Source completion is distinct from current data, account configuration and acceptance. See the remaining-code delivery and test report. Optional proprietary imports remain implemented separately in apps/desktop/src-tauri/src/app_market.rs.",
+      "evidence": "apps/desktop/src-tauri/src/apple_charts.rs",
       "original_prd_percent": 75,
       "in_scope": true,
       "dependency_type": "Optional account / data",
@@ -262,7 +262,7 @@
         "Provide licensed data only if this optional feature is wanted"
       ],
       "coding_remaining": [],
-      "verification": "Public US/India Apple charts returned 50 entries each and displayed real ranks; both populated on installed Windows. Licensed/Android revenue/download datasets require supplied data and remain unconnected."
+      "verification": "Source 36350b0 native live pipeline returned 50 ranked US and 50 India entries with matching caches. Fresh isolated Mac startup passed 35/35 public reads; actual chart cards and correct source/storefront metadata rendered. Five Apple regressions passed. See testing/apple-live-sources.json and testing/apple-native-qa.json. Licensed app-market datasets remain optional. Exact installed Windows audit 44039054861 also passed both 50-entry charts and all 35 public reads (800 real entries, zero failures), with matching installer hash."
     },
     {
       "id": "T015",
@@ -1495,13 +1495,13 @@
       "percent": 100,
       "weight": 2,
       "status": "Implemented in source",
-      "implemented": "Windows NSIS installer built at final desktop source 50bffb5. Isolated Windows runner installed it, opened a native window for 15 seconds and uninstalled it; local delivery SHA-256 matches the CI report.",
+      "implemented": "Windows NSIS installer built at final source 36350b0. SHA-matched EXE silently installed, created a native window, loaded live public feeds and uninstalled (exit 0).",
       "remaining": "No known code gap in the installer-delivery task. Broader feature/interactive-hook acceptance remains verification work; commercial signing is excluded from current scope.",
-      "notes": "Unsigned personal-use release installer, version 0.5.0 x64. Evidence: testing/windows-package-qa.json and testing/business-package-ci.json. Full feature acceptance is tracked separately.",
+      "notes": "Unsigned personal-use release installer, version 0.5.0 x64. Current evidence: testing/windows-package-qa.json, testing/apple-package-ci.json and testing/apple-windows-bootstrap.json. Full feature acceptance is tracked separately.",
       "evidence": "apps/desktop/src-tauri/windows/hooks.nsh",
       "original_prd_percent": 50,
       "in_scope": true,
-      "verification": "Final source 50bffb5 Windows NSIS install/native-window/uninstall passed with matching SHA. Fresh installed profile fetched 750 items from 34/35 sources (1 failed) without accounts or keys; no seeded personal records. Complete Windows feature UI remains unverified."
+      "verification": "Exact-source installed audit: 35/35 public streams, 800 real entries, 50 correctly ranked US/India chart entries each, no login/keys or seeded personal records. Full Windows feature UI remains unverified."
     },
     {
       "id": "T082",
@@ -1547,7 +1547,7 @@
       "percent": 50,
       "weight": 5,
       "status": "Partially implemented",
-      "implemented": "112 Rust target/test executions (110 distinct), 74 frontend assertions and TypeScript/Vite pass. Mac/Windows checks and packaging passed at 50bffb5. Native Mac business lookup, CRM save/cache and earlier source-specific note/document/workspace/backup/attachment/restart workflows have evidence.",
+      "implemented": "117 Rust target/test executions (115 distinct) pass at 36350b0, including five Apple regressions; live US/India chart pipeline and actual fresh isolated Mac chart display/cache pass. Installer and CI evidence is recorded separately. Both Mac/Windows checks and packaging passed; installed Windows no-account charts and 35/35 live sources passed with matching installer SHA.",
       "remaining": "Complete Windows feature UI, physical mobile devices, real private account integrations, scheduled OS delivery, assistive technology and broader performance/security acceptance remain unverified. No code-only gap is asserted by this acceptance row.",
       "notes": "Isolated tests only; no real account or normal profile used. Development signing remains distinct from excluded production release work.",
       "evidence": "docs/TEST-REPORT.html",
@@ -1866,7 +1866,7 @@
     },
     {
       "title": "Windows and mobile device verification",
-      "detail": "Final source 50bffb5 Windows install/native-window/uninstall and no-account public bootstrap passed (34/35 successful sources, 1 failed, 750 real entries). Complete Windows feature UI and physical mobile-device testing remain open. Production signing/store release is excluded.",
+      "detail": "Final source 36350b0 Windows install/native-window/uninstall and no-account public bootstrap passed: 35/35 sources, 800 real entries, 50 US and 50 India chart rows each. Complete Windows feature UI and physical mobile-device testing remain open; production signing/store release is excluded.",
       "tasks": "T079, T081"
     },
     {
@@ -1881,12 +1881,12 @@
     },
     {
       "title": "Source availability and optional datasets",
-      "detail": "Final installed Windows run: Apple US chart request had a transport failure; 34/35 other starter reads completed with 750 real entries. Earlier exact-revision runs passed 35/35. PIB RSS DNS failed and remains paused. The public patent index returned historical records. Proprietary app-market data needs authorized import/endpoint; custom prices need an approved public JSON endpoint. Source code completion does not guarantee provider uptime.",
+      "detail": "Apple US/India chart transport path is repaired: native/Mac and exact installed Windows checks have 50 ranked entries each; both fresh desktop startups passed 35/35 public reads. Earlier old-host 502/transport failure is retained as history. PIB RSS remains paused after DNS failure; patent index is historical. Proprietary market/custom price datasets need authorized sources. Provider uptime remains external.",
       "tasks": "T012, T014, T019, T047"
     }
   ],
   "scope": "Personal local command center: discover, monitor, organize, compare and track. No local LLM/model downloads, robotics execution, prototype execution or production commercialization.",
-  "desktop_source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
+  "desktop_source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
   "resolved_blockers": [
     {
       "title": "New native Mac UI checks",
@@ -1901,6 +1901,11 @@
     {
       "title": "Public business lookup restored without accounts",
       "detail": "Source 50bffb5 restores default Austin and global search with regional Overpass plus public Photon POI search. Both native live cities returned 50 real records; final Mac global UI returned 50, saved a lead and reused its cache. Earlier global Overpass failures were resolved by adding the supported Photon path. No account, key, local setup or example data required."
+    },
+    {
+      "title": "Apple US charts transport failure",
+      "detail": "Source 36350b0 replaces the unreliable primary with Apple-owned iTunes RSS plus bounded official fallback. Live native and fresh Mac UI/cache checks returned 50 US and 50 India ranked entries without login/key. Prior failed source 50bffb5 is preserved in the evidence.",
+      "evidence": "testing/apple-live-sources.json"
     }
   ],
   "online_readiness": {
@@ -1913,16 +1918,20 @@
     "automatic_first_launch_refresh": true,
     "all_features_verified": false,
     "evidence": "testing/online-live-sources.json",
-    "notes": "Fresh isolated Mac startup connected immediately. One Apple US transport failure recovered on manual refresh; final code retries one transient public-read failure. Optional private/account services remain separate. MCP version collisions found in UI were corrected and the final native live run asserts matching version labels, metadata and URLs.",
-    "windows_installed_sources_passed": 34,
+    "notes": "Historical native-source/MCP audit at 2cb141d is retained with its original evidence. Current chart-specific source 36350b0 uses iTunes RSS plus bounded official fallback; fresh Mac startup passed 35/35 without login/key. Optional private services remain separate.",
+    "windows_installed_sources_passed": 35,
     "windows_installed_sources_enabled": 35,
-    "windows_live_items": 750,
+    "windows_live_items": 800,
     "windows_evidence": "testing/online-windows-bootstrap.json",
-    "windows_public_sources_passed": 34,
+    "windows_public_sources_passed": 35,
     "windows_bootstrap_evidence": "testing/online-windows-bootstrap.json",
-    "windows_source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
-    "windows_failed_sources": 1,
-    "windows_failure_detail": "Apple US chart transport failure in final installed run; batch completed 34/35. Prior 35/35 evidence retained at online-windows-bootstrap-2cb141d.json."
+    "windows_source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
+    "windows_failed_sources": 0,
+    "windows_failure_detail": "Resolved in 36350b0: installed app loads 50 US and 50 India chart entries; all 35 starter reads succeeded. Earlier failed Windows run retained at online-windows-bootstrap-50bffb5.json.",
+    "mac_source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
+    "mac_public_sources_passed": 35,
+    "mac_live_items": 800,
+    "mac_evidence": "testing/apple-native-qa.json"
   },
   "business_lookup": {
     "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
@@ -1937,5 +1946,20 @@
     "global_ui_status": "PASS: final Photon path returned 50 real Bengaluru listings; saved lead and reused cache",
     "native_ui_evidence": "testing/business-native-qa.json",
     "global_provider": "https://photon.komoot.io/reverse"
+  },
+  "apple_charts": {
+    "source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
+    "account_required": false,
+    "api_key_required": false,
+    "us_live_results": 50,
+    "india_live_results": 50,
+    "mac_ui_passed": true,
+    "native_live_evidence": "testing/apple-live-sources.json",
+    "mac_evidence": "testing/apple-native-qa.json",
+    "known_code_only_gaps": [],
+    "provider_limits": "Two Apple-owned public endpoints, maximum 50 per storefront; provider uptime remains external.",
+    "windows_installed_passed": true,
+    "windows_evidence": "testing/apple-windows-bootstrap.json",
+    "windows_installer_sha256": "fb892ebd5354f8332fe898a545a98d3e650d2887832fa97f384b8854079e2cdf"
   }
 }

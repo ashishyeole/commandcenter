@@ -1,27 +1,27 @@
 {
   "version": "0.5.0",
-  "generated_at": "2026-11-17T07:03:08.330609+00:00",
+  "generated_at": "2026-11-17T07:32:20.330796+00:00",
   "runtime_tested": false,
   "isolated_mac_qa_smoke_tested": true,
   "production_signed": false,
   "artifacts": [
     {
       "platform": "macOS app",
-      "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
+      "source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app",
-      "bytes": 83772062,
-      "sha256": "8c14052def1b5326ba0520f022e43f648c392992fa678e637898f78cbfe1acb9",
+      "bytes": 83819534,
+      "sha256": "3d1159d74d58eaabb9af7fb7d0e05187be5a1bbf0502196229d4ed560e26f2f7",
       "hash_method": "SHA-256 of compact UTF-8 JSON array sorted by relative path; each entry has path plus file sha256 or symlink target; object keys sorted",
       "files": 5
     },
     {
       "platform": "macOS DMG",
-      "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
+      "source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/dmg/Personal Command Center_0.5.0_arm64.dmg",
-      "bytes": 24410709,
-      "sha256": "50e55edc5762ffd49be8eec22935db9e31bf0994a98da9fdd57d0332a3b14f4c",
+      "bytes": 24348589,
+      "sha256": "5943a444e611d18b366ddfbb9dd40682ad6f81fa6b78c40e19b415c300196d9b",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     },
@@ -47,11 +47,11 @@
     },
     {
       "platform": "Windows NSIS installer",
-      "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
+      "source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/windows-package/nsis/Personal Command Center_0.5.0_x64-setup.exe",
-      "bytes": 7666130,
-      "sha256": "94e37a93f8392c61d89d00acc2083eec45a7a0316db285786c9d1420f95c2050",
+      "bytes": 7679418,
+      "sha256": "fb892ebd5354f8332fe898a545a98d3e650d2887832fa97f384b8854079e2cdf",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     }
@@ -67,18 +67,19 @@
     "Mobile UI and shared Rust libraries were rebuilt after public feed configuration validation changed in the shared core. Desktop-only field restore, WebDAV, scholarly sources and account controls are not claimed as a mobile redesign.",
     "iOS shared Rust symbols are defined in the bundle; no developer libpcc dylib dependency.",
     "macOS voice bridge is bundled and referenced through @rpath.",
-    "Windows release installer passed CI silent install, native-window launch and silent uninstall. Earlier source dc1b077 isolated macOS Discovery QA passed selected aggregation/document/workspace workflows. Final-source isolated native QA covers global Photon business lookup, CRM save and cache reuse. Earlier isolated source-specific QA covers fresh public-feed initialization, source/document/workspace/attachment/event/channel/research/task/search/restart paths, corrected MCP metadata, default US business lookup and Stop recovery; see each evidence revision. Earlier vault/backup/audit QA remains revision-specific. Full feature/provider/device acceptance remains separate. Normal artifacts have not all received feature acceptance. No tool container or hosted service was launched. See docs/testing/results.json for exact coverage."
+    "Installer smoke and selected isolated native workflows are revision-specific. The matching Mac evidence is identified below; earlier business, document/workspace, backup, vault and sync evidence remains at its original source revision. Full feature/provider/device acceptance remains separate. No normal user profile, real account, tool container or hosted service was used. See docs/testing/results.json for exact coverage."
   ],
-  "desktop_source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
-  "mac_native_qa_evidence": "testing/business-native-qa.json",
+  "desktop_source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
+  "mac_native_qa_evidence": "testing/apple-native-qa.json",
   "windows_installer_smoke_verified": true,
   "mobile_ui_source_revision": "ceb64f376fdb7b6898c41752d75727ae0035c884",
   "runtime_coverage_by_platform": {
-    "macOS": "Matching final-source isolated native QA passed no-account global public business lookup, India CRM save and cache reuse, preserving the prior US lead. Earlier source-specific isolated Mac checks passed public-feed initialization, save/document/workspace/upload/event/task/channel/research/search/restart paths, corrected MCP details and US business save/cache. Prior lead/restart/Stop evidence is revision-specific; final Photon global path resolves earlier Overpass GUI failures. See business-native-qa.json; full feature/provider/accessibility acceptance remains open.",
-    "Windows": "Matching installer silently installed, launched and uninstalled; fresh no-account startup fetched 750 real items from 34/35 successful public sources, 1 failed. No seeded personal records or account keys. Full feature UI remains unverified.",
+    "macOS": "Matching source 36350b0 isolated Mac startup automatically fetched 35/35 public starters with no login/key or seeded personal records. Actual US/India ranked cards rendered; US details showed iTunes feed URL/storefront/update time. Isolated persisted caches each contain 50 ranked entries. Earlier business/document/workspace/backup workflows retain their own revisions; full feature/device acceptance is not claimed.",
+    "Windows": "Matching installer silently installed, launched and uninstalled; fresh no-account startup fetched 800 real items from 35/35 successful public sources, 0 failed. No seeded personal records or account keys. Full feature UI remains unverified.",
     "iOS": "Compilation only",
     "Android": "Compilation only"
   },
   "windows_public_bootstrap_verified": true,
+  "windows_apple_charts_verified": true,
   "windows_public_bootstrap_evidence": "testing/online-windows-bootstrap.json"
 }

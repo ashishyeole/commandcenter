@@ -1,0 +1,356 @@
+{
+  "checked_at": "2026-11-17T07:00:30.142707+00:00",
+  "isolated_runner": true,
+  "app_login_used": false,
+  "api_keys_used": false,
+  "full_feature_acceptance": false,
+  "bootstrap_passed": true,
+  "configured_sources": 43,
+  "enabled_sources": 35,
+  "auto_refresh_minutes": "30",
+  "initialization_marker": "1",
+  "live_cache_count": 34,
+  "live_item_count": 750,
+  "ordinary_item_count": 0,
+  "workspace_record_count": 0,
+  "enabled_account_flags": [],
+  "batch": {
+    "at": "2026-11-17T07:01:12.046450700+00:00",
+    "cancelled": false,
+    "failed": 1,
+    "refreshed": 34
+  },
+  "sources": [
+    {
+      "id": "hf-trending",
+      "provider": "models",
+      "health": {
+        "checked_at": "2026-11-17T07:00:28.237922600+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "hf-downloads",
+      "provider": "models",
+      "health": {
+        "checked_at": "2026-11-17T07:00:34.421541700+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "ollama-catalogue",
+      "provider": "ollama",
+      "health": {
+        "checked_at": "2026-11-17T07:00:40.833757700+00:00",
+        "count": 20,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "github-top",
+      "provider": "github",
+      "health": {
+        "checked_at": "2026-11-17T07:00:23.162708700+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "github-new",
+      "provider": "github",
+      "health": {
+        "checked_at": "2026-11-17T07:00:29.163128700+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-repos",
+      "provider": "github",
+      "health": {
+        "checked_at": "2026-11-17T07:00:35.283011+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-papers",
+      "provider": "arxiv",
+      "health": {
+        "checked_at": "2026-11-17T07:00:19.447464700+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-news",
+      "provider": "rss",
+      "health": {
+        "checked_at": "2026-11-17T07:00:44.808780400+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-models",
+      "provider": "models",
+      "health": {
+        "checked_at": "2026-11-17T07:00:40.589047800+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agri-discussion",
+      "provider": "news",
+      "health": {
+        "checked_at": "2026-11-17T07:00:40.411873900+00:00",
+        "count": 0,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agritech-india",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T07:00:18.287288400+00:00",
+        "count": 1,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agritechnica",
+      "provider": "calendar",
+      "health": {
+        "checked_at": "2026-11-17T07:00:19.288828700+00:00",
+        "count": 1,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "world-ag-expo",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T07:00:45.549657100+00:00",
+        "count": 1,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-news",
+      "provider": "rss",
+      "health": {
+        "checked_at": "2026-11-17T07:00:42.226356900+00:00",
+        "count": 20,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-wpt",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T07:00:43.797586400+00:00",
+        "count": 9,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-wsop",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T07:00:44.540719300+00:00",
+        "count": 6,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-stars",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T07:00:42.693920800+00:00",
+        "count": 4,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-all",
+      "provider": "events",
+      "health": {
+        "checked_at": "2026-11-17T07:00:41.719358200+00:00",
+        "count": 38,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "stanford-lectures",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T07:00:45.021544200+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "mit-robotics-videos",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T07:00:28.043034400+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agri-videos",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T07:00:18.439537200+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "poker-videos",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T07:00:43.303963100+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "ai-videos",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T07:00:19.040649900+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "mit-lectures",
+      "provider": "youtube_feed",
+      "health": {
+        "checked_at": "2026-11-17T07:00:27.017846600+00:00",
+        "count": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-bluesky",
+      "provider": "bluesky",
+      "health": {
+        "checked_at": "2026-11-17T07:00:19.922216100+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agri-bluesky",
+      "provider": "bluesky",
+      "health": {
+        "checked_at": "2026-11-17T07:00:20.346940800+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "robotics-mastodon",
+      "provider": "mastodon",
+      "health": {
+        "checked_at": "2026-11-17T07:00:25.681568200+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "ai-news",
+      "provider": "news",
+      "health": {
+        "checked_at": "2026-11-17T07:00:45.299237200+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agfunder-news",
+      "provider": "rss",
+      "health": {
+        "checked_at": "2026-11-17T07:00:17.877033200+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "agdaily-news",
+      "provider": "rss",
+      "health": {
+        "checked_at": "2026-11-17T07:00:19.898067700+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "crossref-robotics",
+      "provider": "crossref",
+      "health": {
+        "checked_at": "2026-11-17T07:00:24.203861700+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "epmc-agriculture",
+      "provider": "europepmc",
+      "health": {
+        "checked_at": "2026-11-17T07:00:22.150228800+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "app-charts-us",
+      "provider": "apps",
+      "health": {
+        "checked_at": "2026-11-17T07:01:11.087019700+00:00",
+        "error": "error sending request for url (https://rss.marketingtools.apple.com/api/v2/us/apps/top-free/50/apps.json)",
+        "status": "error"
+      }
+    },
+    {
+      "id": "app-charts-india",
+      "provider": "apps",
+      "health": {
+        "checked_at": "2026-11-17T07:01:12.040991500+00:00",
+        "count": 50,
+        "status": "ok"
+      }
+    },
+    {
+      "id": "mcp-public-registry",
+      "provider": "mcp",
+      "health": {
+        "checked_at": "2026-11-17T07:00:25.952790600+00:00",
+        "count": 30,
+        "status": "ok"
+      }
+    }
+  ],
+  "failed_sources": [
+    {
+      "id": "app-charts-us",
+      "provider": "apps",
+      "health": {
+        "checked_at": "2026-11-17T07:01:11.087019700+00:00",
+        "error": "error sending request for url (https://rss.marketingtools.apple.com/api/v2/us/apps/top-free/50/apps.json)",
+        "status": "error"
+      }
+    }
+  ],
+  "all_public_sources_succeeded": false,
+  "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
+  "installer_sha256": "94e37a93f8392c61d89d00acc2083eec45a7a0316db285786c9d1420f95c2050",
+  "workflow": "https://github.com/ashishyeole/commandcenter/actions/runs/44035302110",
+  "package_workflow": "https://github.com/ashishyeole/commandcenter/actions/runs/44033173286"
+}
