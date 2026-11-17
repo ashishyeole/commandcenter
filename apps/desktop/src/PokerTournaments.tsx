@@ -24,7 +24,7 @@ export function PokerTournaments(){
    <p className="tournament-count">{loaded?`${current} current · ${all.length-current} upcoming`:'Loading schedules…'}</p>
    <div className="item-bottom"><small>Worldwide · no login</small><button className="text-button" onClick={()=>setExpanded(true)}>View tournament list <ArrowUpRight size={13}/></button></div>
   </article>
-  {expanded&&<Modal label="Current poker tournaments" onClose={()=>setExpanded(false)}>
+  {expanded&&<Modal label="Current poker tournaments" className="poker-tournament-dialog" onClose={()=>setExpanded(false)}>
    <div className="modal-heading"><h2>Current & upcoming tournaments</h2><button className="icon" aria-label="Close tournament list" onClick={()=>setExpanded(false)}><X/></button></div>
    <p>Public tournament schedules, ordered by start date. Ended and cancelled events are hidden. Schedule links open the publisher directly in the app.</p>
    <div className="feed-filters">

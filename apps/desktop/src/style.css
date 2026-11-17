@@ -1745,10 +1745,17 @@ button:disabled {
 .poker-tournaments-tile .pill { display:inline-flex;align-items:center;gap:6px }
 .poker-tournaments-tile p { color:var(--muted);font-size:12px }
 .poker-tournaments-tile .tournament-count { color:var(--ink);font-variant-numeric:tabular-nums }
+dialog.poker-tournament-dialog { width:1040px;max-width:92vw }
+.poker-tournament-dialog .feed-filters { grid-template-columns:minmax(220px,2fr) minmax(100px,1fr) minmax(180px,1.4fr) }
+.poker-tournament-dialog .feed-filters label { min-width:0;font-size:11px }
+.poker-tournament-dialog .feed-filters input,.poker-tournament-dialog .feed-filters select { width:100%;min-width:0;margin-top:6px;font-size:12px }
 .tournament-table-wrap { overflow:auto;margin:16px 0 }
-.tournament-table { width:100%;min-width:580px;border-collapse:collapse;text-align:left;font-size:12px }
+.tournament-table { width:100%;min-width:780px;border-collapse:collapse;text-align:left;font-size:12px }
 .tournament-table th,.tournament-table td { padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top }
 .tournament-table th { color:var(--muted);font-weight:500 }
 .tournament-table td:first-child { width:36% }
+.tournament-table td:nth-child(2) { min-width:145px }
+.tournament-table td:last-child { min-width:145px }
 .tournament-table small { display:block;color:var(--muted);font-size:10px;margin:6px 0 }
 .tournament-table a { display:inline-flex;align-items:center;gap:4px }
+@media(max-width:760px){.poker-tournament-dialog .feed-filters { grid-template-columns:repeat(2,minmax(0,1fr)) }.poker-tournament-dialog .feed-filters label:first-child { grid-column:1/-1 }}
