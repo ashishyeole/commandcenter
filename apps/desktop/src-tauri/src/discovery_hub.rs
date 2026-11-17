@@ -569,7 +569,7 @@ async fn fetch(state: &AppState, s: &Stream) -> Result<Vec<Value>> {
  "reddit"=>{if s.provider=="reddit" {if let Some(rows)=reddit_authorized(state,s).await?{return Ok(rows);}let until=state.repo.lock().map_err(|_|"Database unavailable")?.setting("hub_reddit_next")?.and_then(|s|s.parse::<i64>().ok()).unwrap_or(0);let delay=until-chrono::Utc::now().timestamp();if delay>10{return Err(format!("Reddit public RSS is paused/rate-limited. Retry in {delay} seconds; existing results retained."));}if delay>0{tokio::time::sleep(std::time::Duration::from_secs(delay as u64+1)).await;}state.repo.lock().map_err(|_|"Database unavailable")?.set_setting("hub_reddit_next",&(chrono::Utc::now().timestamp()+6).to_string())?;}let url=if s.provider=="youtube_feed"{format!("https://www.youtube.com/feeds/videos.xml?channel_id={}",resolve_youtube(&s.query).await?)}else{let order=if ["hot","new","top"].contains(&s.options.sort.as_str()){s.options.sort.as_str()}else{"hot"};format!("https://www.reddit.com/r/{}/{order}/.rss?limit=10",s.query)};let fetched=crate::research::fetch(state,"rss",&url).await;if s.provider=="reddit"&&fetched.is_err(){state.repo.lock().map_err(|_|"Database unavailable")?.set_setting("hub_reddit_next",&(chrono::Utc::now().timestamp()+900).to_string())?;}let mut rows=values(fetched?)?;for r in &mut rows{r["source"]=json!(if s.provider=="youtube_feed"{"youtube"}else{"reddit"});r["metric"]=json!(if s.provider=="youtube_feed"{format!("{} · public channel feed",s.name)}else{format!("r/{} · {}",s.query,if s.options.sort.is_empty(){"hot"}else{&s.options.sort})});}Ok(rows)},
  "bluesky"|"mastodon"|"x"=>social(state,s).await,
  "linkedin"=>Err("LinkedIn does not provide an open personal home-feed API. Use an authorized RSS source or save individual post URLs; approved LinkedIn API access is a separate dependency.".into()),
- "events"|"calendar"=>events(s).await,
+ "events"|"calendar"=>events(state,s).await,
  _=>{
  // Respect shared provider reservations across topic streams, rather than failing the second topic.
  let until=state.repo.lock().map_err(|_|"Database unavailable")?.setting(&format!("source_next:{}",s.provider))?.and_then(|v|v.parse::<i64>().ok()).unwrap_or(0);
@@ -825,7 +825,7 @@ async fn public_bytes(raw: &str) -> Result<Vec<u8>> {
     }
     Err("Too many publisher redirects".into())
 }
-async fn events(s: &Stream) -> Result<Vec<Value>> {
+async fn events(state: &AppState, s: &Stream) -> Result<Vec<Value>> {
     let bytes = public_bytes(&s.query).await?;
     if s.provider == "calendar" {
         let source = crate::event_sources::Source {
@@ -874,9 +874,11 @@ async fn events(s: &Stream) -> Result<Vec<Value>> {
     }
     let html = String::from_utf8(bytes).map_err(|_| "Publisher page must be UTF-8")?;
     let s = s.clone();
-    tokio::task::spawn_blocking(move || parse_events(&html, &s))
+    let enrich_poker=s.topic=="poker" && s.query=="https://www.cardplayer.com/poker-tournaments";
+    let rows=tokio::task::spawn_blocking(move || parse_events(&html, &s))
         .await
-        .map_err(|_| "Event parser interrupted")?
+        .map_err(|_| "Event parser interrupted")??;
+    Ok(if enrich_poker {crate::poker_locations::enrich(state,rows).await} else {rows})
 }
 fn event_row(
     publisher: &str,
@@ -902,6 +904,7 @@ fn event_row(
     r["start_date"] = json!(start);
     r["end_date"] = json!(end);
     r["location"] = json!(location);
+    if let Some(country)=crate::poker_locations::location_country(location){r["country_code"]=json!(country);}
     r
 }
 fn upcoming(rows: Vec<Value>) -> Vec<Value> {
@@ -992,6 +995,7 @@ fn parse_events(html: &str, s: &Stream) -> Result<Vec<Value>> {
                                 &location,
                             );
                             r["event_status"] = v["eventStatus"].clone();
+                            if let Some(country)=crate::poker_locations::country(&v["location"]["address"]["addressCountry"]) {r["country_code"]=json!(country);}
                             rows.push(r);
                         }
                     }
@@ -1432,6 +1436,7 @@ mod tests {
         assert_eq!(rows.len(), 1);
         assert_eq!(rows[0]["end_date"], "2099-03-05");
         assert!(rows[0]["location"].as_str().unwrap().contains("IN"));
+        assert_eq!(rows[0]["country_code"],"IN");
         assert!(parse_events("<h1>No dated events</h1>", &s).is_err());
     }
     #[test]
@@ -2262,5 +2267,28 @@ mod media_post_tests {
         let (title,description,_)=social_content(&p,"mastodon","farmer@example.social");
         assert!(!title.is_empty());assert!(description.contains("Source photo description"));
         let (title,description,_)=social_content(&json!({}),"bluesky","unknown.example");assert!(!title.is_empty());assert!(description.contains("no text"));
+    }
+}
+
+#[cfg(test)]
+mod poker_live_audit {
+    use super::*;
+    #[tokio::test]
+    #[ignore = "Explicit live public poker schedule audit; isolated memory database, no account/key"]
+    async fn live_poker_schedules() {
+        let state=crate::discovery_hub::failure_tests::state();
+        let mut sources=vec![];
+        for id in ["poker-wpt","poker-wsop","poker-stars","poker-all"] {
+            let source=list(&state).unwrap().into_iter().find(|s|s.id==id).unwrap();
+            let result=refresh(&state,id).await;
+            sources.push(match result {
+                Ok(value)=>json!({"stream":source,"health":value["health"],"cache":value["feed"]}),
+                Err(error)=>json!({"stream":source,"error":error,"cache":null}),
+            });
+        }
+        let out=std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../target/poker-live");
+        std::fs::create_dir_all(&out).unwrap();
+        std::fs::write(out.join("native-schedules.json"),serde_json::to_string_pretty(&json!({"checked_at":command_center_core::now(),"isolated_database":true,"accounts_used":false,"api_keys_used":false,"streams":sources,"active":[],"auto_refresh_minutes":0})).unwrap()).unwrap();
+        for source in &sources {assert!(source.get("error").is_none(),"{}: {}",source["stream"]["id"],source["error"]);assert!(source["cache"]["items"].as_array().unwrap().len()>0);}
     }
 }

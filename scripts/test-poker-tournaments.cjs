@@ -16,4 +16,7 @@ check(()=>assert.equal(tournamentList(hub,'world','',now)[0].url,'https://organi
 const timed=event('later-today','2026-11-17T20:00:00Z','2026-11-17T23:00:00Z');
 check(()=>assert.equal(tournamentRunning(timed,now),false));
 check(()=>assert.equal(tournamentList({streams:[source('timed',[timed,event('ended-today','2026-11-17T09:00:00Z','2026-11-17T17:00:00Z')])]},'world','',now).length,1));
+check(()=>{const h={streams:[source('country',[event('US Open in India','2026-12-01','2026-12-04',{location:'Deltin Royale',country_code:'IN'}),event('India Championship USA','2026-12-01','2026-12-04',{location:'Borgata',country_code:'US'})])]};assert.equal(tournamentList(h,'IN','',now)[0].country_code,'IN');assert.equal(tournamentList(h,'US','',now)[0].country_code,'US');});
+check(()=>{const h={streams:[source('foreign',[event('US Masters','2026-12-01','2026-12-04',{location:"Chinese Texas Hold'em Association, Taipei, Taiwan"})])]};assert.equal(tournamentList(h,'US','',now).length,0);assert.equal(tournamentList(h,'world','',now).length,1);});
+check(()=>{const h={streams:[source('unknown',[event('unknown','2026-12-01','2026-12-04',{location:'Venue not reported'})])]};assert.equal(tournamentList(h,'US','',now).length,0);assert.equal(tournamentList(h,'IN','',now).length,0);assert.equal(tournamentList(h,'world','',now).length,1);});
 console.log(`${checks} poker tournament assertions passed: ongoing/upcoming dates, ended/cancelled/paused exclusion, region/search, original schedule links and timed starts.`);

@@ -35,6 +35,7 @@ mod notification_channels;
 mod peer_sync;
 mod performance;
 mod poker_search;
+mod poker_locations;
 mod price_watch;
 mod private_transfer;
 mod productivity;
