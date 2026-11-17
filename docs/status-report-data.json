@@ -370,7 +370,7 @@
       "evidence": "apps/desktop/src/Workspaces.tsx",
       "original_prd_percent": 100,
       "in_scope": true,
-      "verification": "Current native UI tracked actual Grand Victoria tournament with source URL/date/venue; US region results and honest empty India state pass. Manual bankroll/results workflows are not implied by this check."
+      "verification": "Source 50c55de: four native public schedules returned 58 current/upcoming tournaments, 29 US and 0 India. All 62/62 event/provider HTTPS schedule links passed live reads with no reader-origin changes. Venue/address evidence fixes missed US cities and foreign Texas Hold\u2019em false positives; India positive-case regression passes. No live India matches: enabled-provider coverage is not exhaustive. Unknown countries remain Worldwide. No account/key. 123 workspace test executions (121 distinct), 91 frontend assertions and TypeScript/Vite pass. Interactive UI automation unavailable; no click/player acceptance claimed. See testing/poker-live-native-schedules.json, poker-live-link-results.json and poker-live-dmg-qa.json."
     },
     {
       "id": "T021",
@@ -387,7 +387,7 @@
       "evidence": "apps/desktop/src-tauri/src/event_sources.rs",
       "original_prd_percent": 50,
       "in_scope": true,
-      "verification": "Four live tournament adapters and three agriculture organizers pass native reads on both platforms. Synthetic tests cover event changes/alert deduplication and preserved plans. Dates/guarantees remain provider-reported.",
+      "verification": "Source 50c55de: four native public schedules returned 58 current/upcoming tournaments, 29 US and 0 India. All 62/62 event/provider HTTPS schedule links passed live reads with no reader-origin changes. Venue/address evidence fixes missed US cities and foreign Texas Hold\u2019em false positives; India positive-case regression passes. No live India matches: enabled-provider coverage is not exhaustive. Unknown countries remain Worldwide. No account/key. 123 workspace test executions (121 distinct), 91 frontend assertions and TypeScript/Vite pass. Interactive UI automation unavailable; no click/player acceptance claimed. See testing/poker-live-native-schedules.json, poker-live-link-results.json and poker-live-dmg-qa.json.",
       "dependency_type": "Public source",
       "external_dependencies": [
         "Publisher schedule/announcement availability"
@@ -412,7 +412,7 @@
       "evidence": "apps/desktop/src/TravelPlanner.tsx",
       "original_prd_percent": 75,
       "in_scope": true,
-      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
+      "verification": "Source 50c55de: four native public schedules returned 58 current/upcoming tournaments, 29 US and 0 India. All 62/62 event/provider HTTPS schedule links passed live reads with no reader-origin changes. Venue/address evidence fixes missed US cities and foreign Texas Hold\u2019em false positives; India positive-case regression passes. No live India matches: enabled-provider coverage is not exhaustive. Unknown countries remain Worldwide. No account/key. 123 workspace test executions (121 distinct), 91 frontend assertions and TypeScript/Vite pass. Interactive UI automation unavailable; no click/player acceptance claimed. See testing/poker-live-native-schedules.json, poker-live-link-results.json and poker-live-dmg-qa.json."
     },
     {
       "id": "T023",
@@ -1892,7 +1892,7 @@
     }
   ],
   "scope": "Personal local command center: discover, monitor, organize, compare and track. No local LLM/model downloads, robotics execution, prototype execution or production commercialization.",
-  "desktop_source_revision": "0cf4e1db5043925f787d0f9e0bccdaf6828d8901",
+  "desktop_source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
   "resolved_blockers": [
     {
       "title": "New native Mac UI checks",
@@ -1920,15 +1920,15 @@
     }
   ],
   "online_readiness": {
-    "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+    "source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
     "public_sources_passed": 35,
     "public_sources_enabled": 35,
-    "raw_live_results": 798,
+    "raw_live_results": 801,
     "fresh_gui_unique_results": null,
     "app_login_required": false,
     "automatic_first_launch_refresh": true,
     "all_features_verified": false,
-    "evidence": "testing/final-dmg-native-qa.json",
+    "evidence": "testing/poker-live-dmg-qa.json",
     "notes": "Exact current DMG process fetched 35/35 sources without login/key, validated card data and preserved caches/off policy after restart. Data and native-core workflows passed separately. Interactive UI automation unavailable; old UI evidence is historical, not a current all-feature claim.",
     "windows_installed_sources_passed": 35,
     "windows_installed_sources_enabled": 35,
@@ -1939,10 +1939,10 @@
     "windows_source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
     "windows_failed_sources": 0,
     "windows_failure_detail": "Final exact installed Windows package passed 35/35 sources with zero failures; earlier failed transport run remains historical.",
-    "mac_source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+    "mac_source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
     "mac_public_sources_passed": 35,
-    "mac_live_items": 798,
-    "mac_evidence": "testing/final-dmg-native-qa.json"
+    "mac_live_items": 801,
+    "mac_evidence": "testing/poker-live-dmg-qa.json"
   },
   "business_lookup": {
     "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
@@ -1976,11 +1976,11 @@
     "notes": "50 US/50 India ranked entries in actual DMG; frontend/native identity, storefront and saved-link fixes pass. Earlier source 36350b0 had selected UI evidence; UI not repeated here."
   },
   "packaged_mac_audit": {
-    "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
-    "dmg_sha256": "47b6fb0cb7e97a1637fc78f240c95a72bc7d619d56ea7c112ef9699f3796bf0a",
+    "source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
+    "dmg_sha256": "14ed1ab80ba7f38b7d7a95cff05573e239db464e21f115de8fb360ce57e08202",
     "public_sources_passed": 35,
     "public_sources_enabled": 35,
-    "real_entries": 798,
+    "real_entries": 801,
     "normal_profile_accessed": false,
     "app_login_required": false,
     "api_key_required": false,
@@ -1989,10 +1989,10 @@
     "native_public_workflows_passed": true,
     "interactive_ui_retested": false,
     "ui_limit": "Native UI automation unavailable in current session; earlier UI acceptance remains tied to its own revision.",
-    "evidence": "testing/final-dmg-native-qa.json"
+    "evidence": "testing/poker-live-dmg-qa.json"
   },
   "poker_tournament_tile": {
-    "source_revision": "0cf4e1db5043925f787d0f9e0bccdaf6828d8901",
+    "source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
     "implemented": true,
     "entry": "Poker Hub \u2192 Current tournaments \u2192 View tournament list",
     "account_required": false,
@@ -2004,7 +2004,13 @@
       "Original tournament and provider schedule links",
       "Refresh enabled public tournament sources"
     ],
-    "verification": "TypeScript/Vite, nine focused assertions, and existing real cache check (57 current/upcoming entries at check time). Interactive UI not repeated.",
-    "evidence": "testing/poker-tournament-tile.json"
+    "verification": "Source 50c55de: four native public schedules returned 58 current/upcoming tournaments, 29 US and 0 India. All 62/62 event/provider HTTPS schedule links passed live reads with no reader-origin changes. Venue/address evidence fixes missed US cities and foreign Texas Hold\u2019em false positives; India positive-case regression passes. No live India matches: enabled-provider coverage is not exhaustive. Unknown countries remain Worldwide. No account/key. 123 workspace test executions (121 distinct), 91 frontend assertions and TypeScript/Vite pass. Interactive UI automation unavailable; no click/player acceptance claimed.",
+    "evidence": "testing/poker-live-filter-results.json",
+    "live_schedule_links_verified": 62,
+    "live_worldwide": 58,
+    "live_us": 29,
+    "live_india": 0,
+    "india_coverage_note": "No India events were published by the enabled schedules; this is not exhaustive India coverage.",
+    "interactive_ui_tested": false
   }
 }

@@ -1,0 +1,532 @@
+{
+  "checked_at": "2026-11-17T18:39:28.694741+00:00",
+  "accounts_used": false,
+  "api_keys_used": false,
+  "links": [
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1680617-2026-fall-colorado-poker-championship-2",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1636425-2026-fall-poker-open",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1776623-2026-l-a-poker-open",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1760439-2026-fall-classic-2",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1737338-2026-caribbean-poker-tour-st-maarten-2",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1766940-2026-the-pokeratlas-tour-austin",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1659743-2026-wsop-circuit-new-orleans-fall",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1728407-2026-rungood-graton",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1760071-2026-cnp-winamax-madrid",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1767028-2026-fall-showdown",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1737339-2026-apt-championship",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1748947-2026-masters-classics-of-poker",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1776392-2026-bsop-millions",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1737340-2026-triton-super-high-roller-series-northern-cyprus",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1753168-2026-deepstack-extravaganza-iv",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1638987-2026-rock-n-roll-poker-open",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1728408-2026-rungood-council-bluffs",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1728409-2026-rungood-jamul",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1728410-2026-rungood-og-clubhouse",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1760072-2026-circus-poker-series",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1737341-2026-grosvenor-uk-poker-tour-grand-final",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1741478-2026-pure-poker-tour-edmonton-2",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1748948-2026-capt-million-baden",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1749283-2026-dakota-jim-dandy-poker-festival",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1659746-2026-wsop-international-circuit-italy",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1737342-2026-the-festival-series-tallinn",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1748949-2026-poker-dream-27-jeju",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1737343-2026-vamos-poker-tour-grand-final",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1760073-2026-novibet-poker-series-thessaloniki",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1773626-2026-pure-grind-series-november",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1659747-2026-wsop-circuit-cherokee-winter-2",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1773611-2026-playlive-summer-championship",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1728411-2026-rungood-dream-factory-thunder-valley",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1747476-2026-wpt-world-championship",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1766795-2026-superstacks-series",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1766809-2026-orleans-winter-open",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1773612-2026-smart-poker-tour-sofia-3",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1776883-2026-aria-poker-open",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments/1773613-2026-the-partypoker-tour-murcia",
+      "kind": "event",
+      "verified": true,
+      "status": 200,
+      "evidence": "Native public-client detail GET during this live refresh",
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.wsop.com/tournaments/wsop-circuit-canada-playground/",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.wsop.com/tournaments/wsop-circuit-canada-playground/",
+      "page_title": "WSOP Circuit - Canada (Playground) | WSOP.com",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.wsop.com/tournaments/wsop-circuit-caesars-new-orleans/",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.wsop.com/tournaments/wsop-circuit-caesars-new-orleans/",
+      "page_title": "WSOP Circuit - Caesars New Orleans | WSOP.com",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.wsop.com/tournaments/wsop-circuit-casino-sanremo/",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.wsop.com/tournaments/wsop-circuit-casino-sanremo/",
+      "page_title": "WSOP Circuit - Casino Sanremo | WSOP.com",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.wsop.com/tournaments/wsop-circuit-harrah-s-cherokee-november-2026/",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.wsop.com/tournaments/wsop-circuit-harrah-s-cherokee-november-2026/",
+      "page_title": "WSOP Circuit - Harrah's Cherokee | WSOP.com",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.wsop.com/tournaments/2026-wsop-paradise/",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.wsop.com/tournaments/2026-wsop-paradise/",
+      "page_title": "2026 WSOP Paradise | WSOP.com",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.wsop.com/tournaments/wsop-super-circuit-latam/",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.wsop.com/tournaments/wsop-super-circuit-latam/",
+      "page_title": "WSOP Super Circuit LATAM | WSOP.com",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.wsop.com/schedule/",
+      "kind": "provider",
+      "status": 200,
+      "final_url": "https://www.wsop.com/schedule/",
+      "page_title": "WSOP Tournament Schedule | Upcoming WSOP Events | WSOP.com",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.pokerstarslive.com/ept/prague/",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.pokerstarslive.com/ept/prague/",
+      "page_title": "EPT Prague",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.pokerstarslive.com/pokerstarsopen/campione/",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.pokerstarslive.com/pokerstarsopen/campione/",
+      "page_title": "PokerStars Open Campione – PokerStars Open",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.pokerstarslive.com/ept/paris/",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.pokerstarslive.com/ept/paris/",
+      "page_title": "European Poker Tour – EPT Paris",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.pokerstarslive.com/irishopen/",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.pokerstarslive.com/irishopen/",
+      "page_title": "Irish Open",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.pokerstarslive.com/",
+      "kind": "provider",
+      "status": 200,
+      "final_url": "https://www.pokerstarslive.com/",
+      "page_title": "Live Poker International Tournaments – PokerStars™ Live",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.worldpokertour.com/event/prime-wpt-prime-championship-at-wynn-las-vegas-season-2026",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.worldpokertour.com/event/prime-wpt-prime-championship-at-wynn-las-vegas-season-2026",
+      "page_title": "WPT Prime Championship at Wynn Las Vegas - World Poker Tour",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.worldpokertour.com/event/special-events-special-event-clubwpt-gold-super-gold-million-season-2026",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.worldpokertour.com/event/special-events-special-event-clubwpt-gold-super-gold-million-season-2026",
+      "page_title": "Special Event: ClubWPT Gold Super Gold Million - World Poker Tour",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026",
+      "page_title": "WPT World Championship at Wynn Las Vegas - World Poker Tour",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.worldpokertour.com/event/special-events-special-event-wpt-ladies-championship-season-2026",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.worldpokertour.com/event/special-events-special-event-wpt-ladies-championship-season-2026",
+      "page_title": "Special Event: WPT Ladies Championship - World Poker Tour",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.worldpokertour.com/event/special-events-special-event-wpt-prime-taiwan-season-2027",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.worldpokertour.com/event/special-events-special-event-wpt-prime-taiwan-season-2027",
+      "page_title": "Special Event: WPT Prime Taiwan - World Poker Tour",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.worldpokertour.com/event/prime-wpt-prime-cambodia-championship-season-2027",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.worldpokertour.com/event/prime-wpt-prime-cambodia-championship-season-2027",
+      "page_title": "WPT Prime Cambodia Championship - World Poker Tour",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.worldpokertour.com/event/main-tour-wpt-seminole-hard-rock-poker-showdown-championship-season-2027",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.worldpokertour.com/event/main-tour-wpt-seminole-hard-rock-poker-showdown-championship-season-2027",
+      "page_title": "WPT Seminole Hard Rock Poker Showdown Championship - World Poker Tour",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.worldpokertour.com/event/main-tour-wpt-cambodia-championship-season-2027",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.worldpokertour.com/event/main-tour-wpt-cambodia-championship-season-2027",
+      "page_title": "WPT Cambodia Championship - World Poker Tour",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.worldpokertour.com/event/main-tour-wpt-lapc-championship-season-2027",
+      "kind": "event",
+      "status": 200,
+      "final_url": "https://www.worldpokertour.com/event/main-tour-wpt-lapc-championship-season-2027",
+      "page_title": "WPT LAPC Championship - World Poker Tour",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.worldpokertour.com/event/schedule",
+      "kind": "provider",
+      "status": 200,
+      "final_url": "https://www.worldpokertour.com/event/schedule",
+      "page_title": "Event Schedule - World Poker Tour",
+      "verified": true,
+      "reader_origin_compatible": true
+    },
+    {
+      "url": "https://www.cardplayer.com/poker-tournaments",
+      "kind": "provider",
+      "status": 200,
+      "final_url": "https://www.cardplayer.com/poker-tournaments",
+      "page_title": "Poker Tournaments - Schedules and Results",
+      "verified": true,
+      "reader_origin_compatible": true
+    }
+  ],
+  "checked": 62,
+  "verified": 62,
+  "failed": [],
+  "reader_origin_changes": [],
+  "interactive_ui_tested": false,
+  "source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98"
+}

@@ -1,6 +1,6 @@
 {
-  "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
-  "generated_at": "2026-11-17T14:19:50.396360+00:00",
+  "source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
+  "generated_at": "2026-11-17T18:39:28.747946+00:00",
   "all_use_cases_verified": false,
   "overall_operational_percent": null,
   "method": "Current pass tested the exact DMG process/caches/restart and automated native-core/frontend workflows, with no accounts/keys or real profile. Interactive UI automation unavailable, so prior UI evidence remains historical and revision-specific. 35 enabled public starters passed; eight paused/access-limited sources and optional private services are not presented as working no-key integrations.",
@@ -8,9 +8,9 @@
     {
       "id": "UC01",
       "use_case": "Fresh installed Mac/Windows no-login startup",
-      "status": "PASS \u00b7 exact Mac DMG process/cache/restart",
+      "status": "PASS \u00b7 latest exact Mac DMG; Windows historical",
       "dependencies": "None beyond internet",
-      "evidence_and_limits": "Exact 5bde681 DMG mounted, signature/hash verified and copied unchanged. Fresh isolated app profile fetched 35/35 public streams and 798 real entries, no login/key/seeded records. Termination/relaunch preserved caches and explicit off policy. No new interactive UI acceptance. final-dmg-native-qa.json."
+      "evidence_and_limits": "Exact 50c55de DMG mounted, strict signature/hash/shortcut verified and copied unchanged. Fresh isolated process fetched 35/35 public sources (801 real entries), no login/key/personal seed/account flag. Valid card IDs/titles/links and 50 US/50 India app chart ranks. Restart retained caches and off policy; owner profile untouched. Interactive UI not retested. Windows remains at its separately recorded installer source."
     },
     {
       "id": "UC02",
@@ -50,9 +50,9 @@
     {
       "id": "UC07",
       "use_case": "Poker current/upcoming tournaments",
-      "status": "PASS \u00b7 live + UI",
+      "status": "PASS \u00b7 live schedules, HTTP links and actual filter logic",
       "dependencies": "WPT, WSOP, PokerStars, CardPlayer availability",
-      "evidence_and_limits": "Four real organizer/schedule adapters passed. Fresh UI tracked Grand Victoria with official URL and venue. US filter yielded events; India had no matching upcoming listing. Coverage is not exhaustive. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session. Source 0cf4e1d adds Poker Hub \u2192 Current tournaments tile with its own date-sorted list, provider/event schedule links and region/current/upcoming/search filters. Build plus nine targeted assertions and real-cache logic checks pass; new UI not repeated."
+      "evidence_and_limits": "Source 50c55de: four native public schedules returned 58 current/upcoming tournaments, 29 US and 0 India. All 62/62 event/provider HTTPS schedule links passed live reads with no reader-origin changes. Venue/address evidence fixes missed US cities and foreign Texas Hold\u2019em false positives; India positive-case regression passes. No live India matches: enabled-provider coverage is not exhaustive. Unknown countries remain Worldwide. No account/key. 123 workspace test executions (121 distinct), 91 frontend assertions and TypeScript/Vite pass. Interactive UI automation unavailable; no click/player acceptance claimed. See poker-live-*.json. Current/upcoming/search/date exclusions covered; modal clicks not retested."
     },
     {
       "id": "UC08",

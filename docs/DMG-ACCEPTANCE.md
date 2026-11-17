@@ -28,3 +28,8 @@ The second script uses existing Node/Rust dependencies offline and temporary dat
 See [HTML status](STATUS-REPORT.html), [use cases](USE-CASE-AUDIT.html), [test report](TEST-REPORT.html), [artifact provenance](BUILD-ARTIFACTS.json) and `testing/final-dmg-native-qa.json`.
 
 Subsequent Poker tile delivery at `0cf4e1d`: frontend build, nine tournament assertions, existing public-cache behavior and installer checksum/mounted-signature checks pass. This newer UI addition has not repeated the full interactive/runtime acceptance above. See `testing/poker-tile-dmg.json`.
+
+
+Latest poker repair at `50c55de`: Source 50c55de: four native public schedules returned 58 current/upcoming tournaments, 29 US and 0 India. All 62/62 event/provider HTTPS schedule links passed live reads with no reader-origin changes. Venue/address evidence fixes missed US cities and foreign Texas Hold’em false positives; India positive-case regression passes. No live India matches: enabled-provider coverage is not exhaustive. Unknown countries remain Worldwide. No account/key. 123 workspace test executions (121 distinct), 91 frontend assertions and TypeScript/Vite pass. Interactive UI automation unavailable; no click/player acceptance claimed.
+
+Exact 50c55de DMG mounted, strict signature/hash/shortcut verified and copied unchanged. Fresh isolated process fetched 35/35 public sources (801 real entries), no login/key/personal seed/account flag. Valid card IDs/titles/links and 50 US/50 India app chart ranks. Restart retained caches and off policy; owner profile untouched. Interactive UI not retested. SHA-256: `14ed1ab80ba7f38b7d7a95cff05573e239db464e21f115de8fb360ce57e08202`. See `testing/poker-live-dmg-qa.json`; prior audit records retain original revisions.

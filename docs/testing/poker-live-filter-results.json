@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-11-17T18:39:23.367Z",
+  "native_fetch_at": "2026-11-17T18:38:45.215204+00:00",
+  "live_provider_count": 4,
+  "worldwide": 58,
+  "us": 29,
+  "india": 0,
+  "current": 22,
+  "upcoming": 36,
+  "india_coverage_note": "No India events were published by the enabled schedules; this is not exhaustive India coverage.",
+  "countries_from_publisher": [
+    "US",
+    "CA",
+    "IT",
+    "BS",
+    "TW",
+    "KH",
+    "DO"
+  ],
+  "filters_passed": true,
+  "accounts_used": false,
+  "api_keys_used": false,
+  "interactive_ui_tested": false,
+  "source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98"
+}

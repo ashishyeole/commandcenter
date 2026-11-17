@@ -1,13 +1,23 @@
 {
-  "generated_at": "2026-11-17T15:24:08.215738+00:00",
+  "generated_at": "2026-11-17T18:39:28.747946+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
-  "rust_test_executions": 120,
-  "rust_distinct_tests": 118,
+  "rust_test_executions": 123,
+  "rust_distinct_tests": 121,
   "python_tests": 10,
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
   "results": [
+    {
+      "status": "PASS \u00b7 live native/HTTP/filter logic",
+      "area": "Poker tournament live schedules and US/India filters \u00b7 50c55de",
+      "evidence": "Source 50c55de: four native public schedules returned 58 current/upcoming tournaments, 29 US and 0 India. All 62/62 event/provider HTTPS schedule links passed live reads with no reader-origin changes. Venue/address evidence fixes missed US cities and foreign Texas Hold\u2019em false positives; India positive-case regression passes. No live India matches: enabled-provider coverage is not exhaustive. Unknown countries remain Worldwide. No account/key. 123 workspace test executions (121 distinct), 91 frontend assertions and TypeScript/Vite pass. Interactive UI automation unavailable; no click/player acceptance claimed. See poker-live-native-schedules.json, poker-live-filter-results.json, poker-live-link-results.json."
+    },
+    {
+      "status": "PASS \u00b7 exact packaged process/data/restart",
+      "area": "Latest Mac DMG \u00b7 50c55de",
+      "evidence": "Exact 50c55de DMG mounted, strict signature/hash/shortcut verified and copied unchanged. Fresh isolated process fetched 35/35 public sources (801 real entries), no login/key/personal seed/account flag. Valid card IDs/titles/links and 50 US/50 India app chart ranks. Restart retained caches and off policy; owner profile untouched. Interactive UI not retested. See poker-live-dmg-qa.json."
+    },
     {
       "status": "PASS \u00b7 build/logic/cache; UI not repeated",
       "area": "Poker Hub tournament-list tile \u00b7 source 0cf4e1d",
@@ -275,15 +285,15 @@
     }
   ],
   "ui_logic_assertions": 10,
-  "rust_workspace_executions": 120,
+  "rust_workspace_executions": 123,
   "rust_additional_targeted_executions": 0,
   "research_analytics_assertions": 14,
   "source_image_theme_assertions": 13,
-  "total_ui_assertions": 79,
-  "additional_targeted_note": "New regressions cover QA isolation, media/article-only social saves, apps/tools editing, strict storefront filters, per-storefront read/selection state and App Store saved-link deduplication. Historical UI/provider evidence keeps its original revision.",
+  "total_ui_assertions": 91,
+  "additional_targeted_note": "Three new native regressions cover published venue/address classification, URL boundaries and cached/pause behavior. Structured India country data preserved; frontend cases reject title-based country false positives and retain unknown countries in Worldwide. Earlier UI/provider evidence remains revision-specific.",
   "discovery_feed_assertions": 28,
-  "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
-  "counting_method": "Latest full workspace: 120 target/test executions, 118 distinct cases (shared transport tests execute in two targets). Five frontend scripts total 79 assertions (10+14+13+28+14). Four live native checks explicitly run separately; public-data workflow acceptance is separate, not added to unit counts.",
+  "source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
+  "counting_method": "Latest workspace: 123 target/test executions, 121 distinct cases (two shared transport cases run in two targets). Six frontend scripts: 91 assertions (10+14+13+28+12+14). Ignored live provider tests run explicitly and are separate from unit counts; exact packaged process and HTTP audits are separate evidence.",
   "remaining_code_assertions": 14,
   "previous_aggregation_evidence": {
     "source_revision": "dc1b077183130f0fabd2dbaece29cd96153b6f19",
@@ -295,10 +305,11 @@
     "native_qa": "discovery-native-qa.json"
   },
   "isolated_mac_qa_smoke_tested": true,
-  "mac_native_qa": "final-dmg-native-qa.json",
-  "frontend_assertions": 79,
-  "desktop_source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+  "mac_native_qa": "poker-live-dmg-qa.json",
+  "frontend_assertions": 91,
+  "desktop_source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
   "python_evidence_status": "10 historical mocked-provider tests; not rerun in this public Mac audit",
-  "latest_frontend_source_revision": "0cf4e1db5043925f787d0f9e0bccdaf6828d8901",
-  "latest_frontend_assertions": 88
+  "latest_frontend_source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
+  "latest_frontend_assertions": 91,
+  "poker_tournament_assertions": 12
 }

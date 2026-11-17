@@ -1,0 +1,2815 @@
+{
+  "checked_at": "2026-11-17T18:38:15.614636+00:00",
+  "source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
+  "dmg_sha256": "14ed1ab80ba7f38b7d7a95cff05573e239db464e21f115de8fb360ce57e08202",
+  "profile": "com.personal.commandcenter.qa.dmg-1edf9af1ba",
+  "normal_profile_accessed": false,
+  "app_login_used": false,
+  "api_keys_used": false,
+  "interactive_ui_automation_available": false,
+  "all_use_cases_passed": false,
+  "mounted": true,
+  "version": "0.5.0",
+  "executable_sha256": "c9c4bab3ef8a6dd839df27afe22d420b93447fc05e90f9d333ffef5d86f0b09f",
+  "copied_executable_matches_dmg": true,
+  "signature_verified": true,
+  "applications_shortcut_verified": true,
+  "bootstrap": {
+    "batch": {
+      "at": "2026-11-17T18:38:45.215204+00:00",
+      "cancelled": false,
+      "failed": 0,
+      "refreshed": 35
+    },
+    "configured_sources": 43,
+    "auto_refresh_minutes": "30",
+    "live_item_count": 801,
+    "ordinary_item_count": 0,
+    "workspace_record_count": 0,
+    "enabled_account_flags": []
+  },
+  "sources": [
+    {
+      "stream": {
+        "enabled": true,
+        "id": "hf-trending",
+        "kind": "models",
+        "name": "Trending models",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "trendingScore",
+          "task": ""
+        },
+        "provider": "models",
+        "query": "",
+        "region": "world",
+        "topic": "ai"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:27.763988+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "text-to-image",
+          "fetched_at": "2026-11-17T18:38:27.603195+00:00",
+          "id": "hf:MiniMaxAI/MiniMax-H3-Image",
+          "kind": "models",
+          "metadata": {
+            "downloads": 727110,
+            "library": "minimax-h3",
+            "license": "other",
+            "likes": 1412,
+            "provider_order": "trendingScore",
+            "tags": [
+              "minimax-h3",
+              "diffusers",
+              "safetensors",
+              "text-to-image",
+              "image-to-image",
+              "image-editing",
+              "image-generation",
+              "en",
+              "base_model:MiniMaxAI/MiniMax-H3",
+              "base_model:finetune:MiniMaxAI/MiniMax-H3",
+              "license:other",
+              "region:us"
+            ],
+            "task": "text-to-image"
+          },
+          "metric": "727110 downloads · 1412 likes",
+          "provider_rank": 1,
+          "published_at": "2026-11-16T10:00:08.000Z",
+          "region": "world",
+          "source": "models",
+          "stream_id": "hf-trending",
+          "stream_name": "Trending models",
+          "title": "MiniMaxAI/MiniMax-H3-Image",
+          "topic": "ai",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+          "verification": "Hugging Face API · provider rank: trendingScore; metadata only, no model download or inference"
+        },
+        {
+          "description": "image-text-to-text",
+          "fetched_at": "2026-11-17T18:38:27.603195+00:00",
+          "id": "hf:Qwen/Qwen3.8-27B",
+          "kind": "models",
+          "metadata": {
+            "downloads": 6942530,
+            "library": "transformers",
+            "license": "apache-2.0",
+            "likes": 20385,
+            "provider_order": "trendingScore",
+            "tags": [
+              "transformers",
+              "safetensors",
+              "qwen3_5",
+              "image-text-to-text",
+              "conversational",
+              "license:apache-2.0",
+              "eval-results",
+              "endpoints_compatible",
+              "deploy:azure",
+              "deploy:sagemaker",
+              "region:us"
+            ],
+            "task": "image-text-to-text"
+          },
+          "metric": "6942530 downloads · 20385 likes",
+          "provider_rank": 2,
+          "published_at": "2026-11-07T04:42:17.000Z",
+          "region": "world",
+          "source": "models",
+          "stream_id": "hf-trending",
+          "stream_name": "Trending models",
+          "title": "Qwen/Qwen3.8-27B",
+          "topic": "ai",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+          "verification": "Hugging Face API · provider rank: trendingScore; metadata only, no model download or inference"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "hf-downloads",
+        "kind": "models",
+        "name": "Most downloaded models",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "downloads",
+          "task": ""
+        },
+        "provider": "models",
+        "query": "",
+        "region": "world",
+        "topic": "ai"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:33.922079+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "sentence-similarity",
+          "fetched_at": "2026-11-17T18:38:33.767323+00:00",
+          "id": "hf:sentence-transformers/all-MiniLM-L6-v2",
+          "kind": "models",
+          "metadata": {
+            "downloads": 169858605,
+            "library": "sentence-transformers",
+            "license": "apache-2.0",
+            "likes": 6142,
+            "provider_order": "downloads",
+            "tags": [
+              "sentence-transformers",
+              "pytorch",
+              "tf",
+              "rust",
+              "onnx",
+              "safetensors",
+              "openvino",
+              "bert",
+              "feature-extraction",
+              "sentence-similarity",
+              "transformers",
+              "en",
+              "dataset:s2orc",
+              "dataset:flax-sentence-embeddings/stackexchange_xml",
+              "dataset:ms_marco",
+              "dataset:gooaq",
+              "dataset:yahoo_answers_topics",
+              "dataset:code_search_net",
+              "dataset:search_qa",
+              "dataset:eli5",
+              "dataset:snli",
+              "dataset:multi_nli",
+              "dataset:wikihow",
+              "dataset:natural_questions",
+              "dataset:trivia_qa",
+              "dataset:embedding-data/sentence-compression",
+              "dataset:embedding-data/flickr30k-captions",
+              "dataset:embedding-data/altlex",
+              "dataset:embedding-data/simple-wiki",
+              "dataset:embedding-data/QQP",
+              "dataset:embedding-data/SPECTER",
+              "dataset:embedding-data/PAQ_pairs",
+              "dataset:embedding-data/WikiAnswers",
+              "arxiv:1904.06472",
+              "arxiv:2102.07033",
+              "arxiv:2104.08727",
+              "arxiv:1704.05179",
+              "arxiv:1810.09305",
+              "base_model:nreimers/MiniLM-L6-H384-uncased",
+              "base_model:quantized:nreimers/MiniLM-L6-H384-uncased",
+              "license:apache-2.0",
+              "eval-results",
+              "text-embeddings-inference",
+              "endpoints_compatible",
+              "deploy:sagemaker",
+              "deploy:azure",
+              "region:us"
+            ],
+            "task": "sentence-similarity"
+          },
+          "metric": "169858605 downloads · 6142 likes",
+          "provider_rank": 1,
+          "published_at": "2026-06-01T06:29:13.000Z",
+          "region": "world",
+          "source": "models",
+          "stream_id": "hf-downloads",
+          "stream_name": "Most downloaded models",
+          "title": "sentence-transformers/all-MiniLM-L6-v2",
+          "topic": "ai",
+          "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+          "verification": "Hugging Face API · provider rank: downloads; metadata only, no model download or inference"
+        },
+        {
+          "description": "automatic-speech-recognition",
+          "fetched_at": "2026-11-17T18:38:33.767323+00:00",
+          "id": "hf:argmaxinc/whisperkit-coreml",
+          "kind": "models",
+          "metadata": {
+            "downloads": 77897989,
+            "library": "whisperkit",
+            "license": "mit",
+            "likes": 271,
+            "provider_order": "downloads",
+            "tags": [
+              "whisperkit",
+              "coreml",
+              "whisper",
+              "asr",
+              "quantized",
+              "automatic-speech-recognition",
+              "license:mit",
+              "region:us"
+            ],
+            "task": "automatic-speech-recognition"
+          },
+          "metric": "77897989 downloads · 271 likes",
+          "provider_rank": 2,
+          "published_at": "2026-08-19T16:57:48.000Z",
+          "region": "world",
+          "source": "models",
+          "stream_id": "hf-downloads",
+          "stream_name": "Most downloaded models",
+          "title": "argmaxinc/whisperkit-coreml",
+          "topic": "ai",
+          "url": "https://huggingface.co/argmaxinc/whisperkit-coreml",
+          "verification": "Hugging Face API · provider rank: downloads; metadata only, no model download or inference"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "ollama-catalogue",
+        "kind": "models",
+        "name": "Ollama model catalogue",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "ollama",
+        "query": "",
+        "region": "world",
+        "topic": "ai"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:36.300282+00:00",
+        "count": 20,
+        "status": "ok"
+      },
+      "count": 20,
+      "samples": [
+        {
+          "description": "Designed for greater capability, faster inference, higher throughput, and scaling to larger models.",
+          "fetched_at": "2026-11-17T18:38:36.121533+00:00",
+          "id": "ollama:deepseek-v4.1-flash",
+          "kind": "models",
+          "metric": "Catalogue position 1 in this response",
+          "provider_rank": 1,
+          "published_at": null,
+          "region": "world",
+          "source": "ollama",
+          "stream_id": "ollama-catalogue",
+          "stream_name": "Ollama model catalogue",
+          "title": "deepseek-v4.1-flash",
+          "topic": "ai",
+          "url": "https://ollama.com/library/deepseek-v4.1-flash",
+          "verification": "Ollama public catalogue snapshot; provider order, not independently measured quality or growth. Metadata only; no model downloaded."
+        },
+        {
+          "description": "Z.ai's flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks.",
+          "fetched_at": "2026-11-17T18:38:36.121533+00:00",
+          "id": "ollama:glm-5.3",
+          "kind": "models",
+          "metric": "Catalogue position 2 in this response",
+          "provider_rank": 2,
+          "published_at": null,
+          "region": "world",
+          "source": "ollama",
+          "stream_id": "ollama-catalogue",
+          "stream_name": "Ollama model catalogue",
+          "title": "glm-5.3",
+          "topic": "ai",
+          "url": "https://ollama.com/library/glm-5.3",
+          "verification": "Ollama public catalogue snapshot; provider order, not independently measured quality or growth. Metadata only; no model downloaded."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "github-top",
+        "kind": "repos",
+        "name": "Top public repositories",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "stars",
+          "task": ""
+        },
+        "provider": "github",
+        "query": "stars:>1000 archived:false",
+        "region": "world",
+        "topic": "code"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:25.152064+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "Master programming by recreating your favorite technologies from scratch.",
+          "fetched_at": "2026-11-17T18:38:23.992586+00:00",
+          "id": "github:132750724",
+          "kind": "repos",
+          "metadata": {
+            "forks": 52710,
+            "language": "Markdown",
+            "license": null,
+            "provider_order": "stars",
+            "stars": 563396,
+            "topics": [
+              "awesome-list",
+              "free",
+              "programming",
+              "tutorial-code",
+              "tutorial-exercises",
+              "tutorials"
+            ],
+            "updated_at": "2026-11-17T18:36:40Z"
+          },
+          "metric": "563396 stars · Markdown",
+          "provider_rank": 1,
+          "published_at": "2018-05-09T12:03:18Z",
+          "region": "world",
+          "source": "github",
+          "stream_id": "github-top",
+          "stream_name": "Top public repositories",
+          "title": "codecrafters-io/build-your-own-x",
+          "topic": "code",
+          "url": "https://github.com/codecrafters-io/build-your-own-x",
+          "verification": "GitHub API · star count, not growth velocity"
+        },
+        {
+          "description": "😎 Awesome lists about all kinds of interesting topics [NOTE: Pull requests are temporarily disabled until I have a chance to catch up with the existing ones]",
+          "fetched_at": "2026-11-17T18:38:23.992586+00:00",
+          "id": "github:21737465",
+          "kind": "repos",
+          "metadata": {
+            "forks": 38494,
+            "language": null,
+            "license": "CC0-1.0",
+            "provider_order": "stars",
+            "stars": 538421,
+            "topics": [
+              "awesome",
+              "awesome-list",
+              "lists",
+              "resources",
+              "unicorns"
+            ],
+            "updated_at": "2026-11-17T18:37:22Z"
+          },
+          "metric": "538421 stars · ",
+          "provider_rank": 2,
+          "published_at": "2014-07-11T13:42:37Z",
+          "region": "world",
+          "source": "github",
+          "stream_id": "github-top",
+          "stream_name": "Top public repositories",
+          "title": "sindresorhus/awesome",
+          "topic": "code",
+          "url": "https://github.com/sindresorhus/awesome",
+          "verification": "GitHub API · star count, not growth velocity"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "github-new",
+        "kind": "repos",
+        "name": "New repositories this month",
+        "options": {
+          "days": 30,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "github",
+        "query": "stars:>20 archived:false",
+        "region": "world",
+        "topic": "code"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:30.426008+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "Craft Anything: understand how any software works, and craft your own.",
+          "fetched_at": "2026-11-17T18:38:29.155813+00:00",
+          "id": "github:1440956372",
+          "kind": "repos",
+          "metadata": {
+            "forks": 7172,
+            "language": "Rust",
+            "license": "Apache-2.0",
+            "provider_order": "stars",
+            "stars": 35577,
+            "topics": [],
+            "updated_at": "2026-11-17T18:35:12Z"
+          },
+          "metric": "35577 stars · Rust",
+          "provider_rank": 1,
+          "published_at": "2026-10-31T14:50:00Z",
+          "region": "world",
+          "source": "github",
+          "stream_id": "github-new",
+          "stream_name": "New repositories this month",
+          "title": "storytold/craft-anything",
+          "topic": "code",
+          "url": "https://github.com/storytold/craft-anything",
+          "verification": "GitHub API · star count, not growth velocity"
+        },
+        {
+          "description": "dsh-go — DeepSeek Harness 装进口袋：手机本机运行，也能遥控你的电脑。",
+          "fetched_at": "2026-11-17T18:38:29.155813+00:00",
+          "id": "github:1432967563",
+          "kind": "repos",
+          "metadata": {
+            "forks": 1240,
+            "language": "Dart",
+            "license": "AGPL-3.0",
+            "provider_order": "stars",
+            "stars": 25914,
+            "topics": [
+              "ai-agent",
+              "android",
+              "android-app",
+              "coding-agent",
+              "deepseek",
+              "deepseek-harness",
+              "dsh",
+              "dsh-plugin",
+              "dsh-tui",
+              "flutter",
+              "llm"
+            ],
+            "updated_at": "2026-11-17T18:36:02Z"
+          },
+          "metric": "25914 stars · Dart",
+          "provider_rank": 2,
+          "published_at": "2026-10-25T08:09:52Z",
+          "region": "world",
+          "source": "github",
+          "stream_id": "github-new",
+          "stream_name": "New repositories this month",
+          "title": "ccch1mneyyy/dsh-Go",
+          "topic": "code",
+          "url": "https://github.com/ccch1mneyyy/dsh-Go",
+          "verification": "GitHub API · star count, not growth velocity"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "robotics-repos",
+        "kind": "repos",
+        "name": "Robotics libraries",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "github",
+        "query": "topic:robotics archived:false",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:37.235781+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "List of Computer Science courses with video lectures.",
+          "fetched_at": "2026-11-17T18:38:35.430216+00:00",
+          "id": "github:71583602",
+          "kind": "repos",
+          "metadata": {
+            "forks": 11663,
+            "language": null,
+            "license": null,
+            "provider_order": "stars",
+            "stars": 84876,
+            "topics": [
+              "algorithms",
+              "bioinformatics",
+              "computational-biology",
+              "computational-physics",
+              "computer-architecture",
+              "computer-science",
+              "computer-vision",
+              "database-systems",
+              "databases",
+              "deep-learning",
+              "embedded-systems",
+              "machine-learning",
+              "quantum-computing",
+              "reinforcement-learning",
+              "robotics",
+              "security",
+              "systems",
+              "web-development"
+            ],
+            "updated_at": "2026-11-17T16:07:02Z"
+          },
+          "metric": "84876 stars · ",
+          "provider_rank": 1,
+          "published_at": "2016-10-21T17:02:11Z",
+          "region": "world",
+          "source": "github",
+          "stream_id": "robotics-repos",
+          "stream_name": "Robotics libraries",
+          "title": "Developer-Y/cs-video-courses",
+          "topic": "robotics",
+          "url": "https://github.com/Developer-Y/cs-video-courses",
+          "verification": "GitHub API · star count, not growth velocity"
+        },
+        {
+          "description": "openpilot is an operating system for robotics. Currently, it upgrades the driver assistance system on 300+ supported cars.",
+          "fetched_at": "2026-11-17T18:38:35.430216+00:00",
+          "id": "github:74627617",
+          "kind": "repos",
+          "metadata": {
+            "forks": 11409,
+            "language": "Python",
+            "license": "MIT",
+            "provider_order": "stars",
+            "stars": 64159,
+            "topics": [
+              "advanced-driver-assistance-systems",
+              "driver-assistance-systems",
+              "robotics"
+            ],
+            "updated_at": "2026-11-17T18:38:12Z"
+          },
+          "metric": "64159 stars · Python",
+          "provider_rank": 2,
+          "published_at": "2016-11-24T01:33:30Z",
+          "region": "world",
+          "source": "github",
+          "stream_id": "robotics-repos",
+          "stream_name": "Robotics libraries",
+          "title": "commaai/openpilot",
+          "topic": "robotics",
+          "url": "https://github.com/commaai/openpilot",
+          "verification": "GitHub API · star count, not growth velocity"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "robotics-papers",
+        "kind": "papers",
+        "name": "Robotics papers",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "arxiv",
+        "query": "cat:cs.RO",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:22.662232+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "Frontier Vision-Language Models (VLMs) such as GPT-6 Astra have demonstrated remarkable capabilities in robot control, suggesting that broad pretraining provides knowledge valuable for physical action. Yet most Vision-Language-Action (VLA) policies still rely on much smaller VLM backbones, leaving this potential largely untapped. We ask whether frontier-scale representations can provide a stronger foundation for robot learning. We introduce ScaleVLA, which connects a 552B DeepSeek-V4.1-Flash backbone to a trainable action DiT, and systematically compare VLMs from 2B to 552B under a shared training setup. We evaluate three fundamental capabilities of robot foundation models. In sample efficiency, just 10 demonstrations outperform a 2B backbone trained with 50 (87.8% vs. 85.6%). In generalization, LIBERO-PRO success reaches 45.1%, compared with at most 31.3% for smaller backbones. In precise manipulation, real-world charger insertion improves from 4/10 to 9/10 successes, with gains concentrated in contact-sensitive alignment. Despite its scale, ScaleVLA achieves 216 ms median latency per action chunk. Our findings suggest that frontier VLMs can serve not only as reasoning agents, but also as powerful representational foundations for efficient and generalizable robot policies.",
+          "fetched_at": "2026-11-17T18:38:22.646044+00:00",
+          "id": "arxiv:0e2d60a299163a9750d10cfa5abb7ceb54a3b208d60fa5f11738e5840f380ec9",
+          "kind": "papers",
+          "metric": "Research preprint · review methods and evidence",
+          "provider_rank": 1,
+          "published_at": "2026-11-16T18:59:37+00:00",
+          "region": "world",
+          "source": "arxiv",
+          "stream_id": "robotics-papers",
+          "stream_name": "Robotics papers",
+          "title": "ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters",
+          "topic": "robotics",
+          "url": "https://arxiv.org/abs/2611.21607v1",
+          "verification": "Fetched from export.arxiv.org · publisher statements, not independently verified"
+        },
+        {
+          "description": "In Joint-Embedding Predictive Architectures (JEPAs), a well-constrained projector output does not by itself prevent representation collapse. We find that, from initialization, the encoder representation is dominated by a component shared by different inputs. A batch-normalized projector removes this component, so regularization after the projector cannot correct it, and the differences between representations shrink until they collapse. We propose SADL (Supply And Demand Loss), which keeps the original training objective and constrains the encoder directly when needed. SADL compares the representation differences that the projector output demands with the differences the encoder can retain and pass on to the projector, and adds a constraint on the encoder only when supply falls short of demand. It works with different Demand Regularizers and introduces no auxiliary networks, additional trainable parameters, or architectural changes. In single-task and jointly trained four-task LeWorldModel (LeWM) and INTACT experiments, SADL lowers the collapse rate over ten random seeds from 50% to 0%. After one epoch of training, encoder effective rank is 3.4-6.4 times that of the corresponding baseline without SADL, and latent prediction error falls to 1/20-1/303 of it. Without additional tuning, SADL stays robust as its loss weight spans orders of magnitude, and with several Demand Regularizers INTACT exceeds 95% mean search-free control success. On four image datasets, SADL also consistently improves accuracy and stability across random seeds. These results show that matching the representation differences a regularizer demands with the differences the encoder can supply leads to faster and more stable representation learning in control and image classification.",
+          "fetched_at": "2026-11-17T18:38:22.646044+00:00",
+          "id": "arxiv:87dd6d60d2954bd8fc7c394c22341edb7d679f97256a2e053099869460b5c4e0",
+          "kind": "papers",
+          "metric": "Research preprint · review methods and evidence",
+          "provider_rank": 2,
+          "published_at": "2026-11-16T18:58:03+00:00",
+          "region": "world",
+          "source": "arxiv",
+          "stream_id": "robotics-papers",
+          "stream_name": "Robotics papers",
+          "title": "SADL: On the Demand-Supply Geometry of Representation Collapse",
+          "topic": "robotics",
+          "url": "https://arxiv.org/abs/2611.21596v1",
+          "verification": "Fetched from export.arxiv.org · publisher statements, not independently verified"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "robotics-news",
+        "kind": "news",
+        "name": "IEEE robotics news",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "rss",
+        "query": "https://spectrum.ieee.org/feeds/topic/robotics.rss",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:39.939220+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "I am practicing brain surgery on a patient lying 6 meters away, out of my sight and reach. I press a foot pedal, activating the controller in my hand, and carefully steer a thin flexible tube called a catheter up through the patient’s blood vessels. I head for what I believe to be the brain, tracking my progress on the live X-ray feed. As I imagine finding a blood clot, David Bell, the surgeon seated to my right, helpfully reminds me that every minute a stroke goes untreated, millions of brain cells suffocate, swell, and die.The patient under the X-ray in Bell’s office is not flesh and blood, but a plastic container holding long branches of silicone tubing. The controller I hold comes from an Xbox. But the surgical robot is real. The Remedy N1 is designed for emergency operations, including thrombectomies, the standard brain operation for acute ischemic strokes caused by blood clots. Ischemia, a restriction of blood flow, is the most common cause of stroke.“We want it to feel a bit like a video game—a bit easy,” Bell says. “But we don’t want to dehumanize it as if there’s just another ‘game over.’ ” Bell, a clinician and former cardiac-surgery trainee from Australia, cofounded Remedy Robotics, based in San Francisco. With a team of engineers, he developed this robotic catheter and its related software to help ischemic stroke patients in remote and rural places, who lose crucial hours while being transferred away from hospitals incapable of providing care. According to 2025 data, at least 5 million people around the world suffer ischemic strokes every year. In the United States, stroke is the fourth leading cause of death. When Remedy Robotics cofounders Jake Sganga [left] and David Bell initially met, they matched each other’s energy right away.Christie Hemm KlokThe scr",
+          "fetched_at": "2026-11-17T18:38:39.882642+00:00",
+          "id": "rss:5f4244f5edf262b44d921ba9e74f8c2d122e5e5a5b5e360b72ac4fa95e3e4338",
+          "kind": "news",
+          "metric": "Publisher feed · no independent verification",
+          "provider_rank": 1,
+          "published_at": "2026-11-16T14:00:02+00:00",
+          "region": "world",
+          "source": "rss",
+          "stream_id": "robotics-news",
+          "stream_name": "IEEE robotics news",
+          "title": "Can Robots Bring Stroke Surgery to Remote Hospitals?",
+          "topic": "robotics",
+          "url": "https://spectrum.ieee.org/telesurgery-stroke",
+          "verification": "Fetched from spectrum.ieee.org · publisher statements, not independently verified"
+        },
+        {
+          "description": "This article is brought to you by VicOne.VicOne identified an initial set of 28 zero-day findings in less than two days using AI-assisted research across software and tools supporting the Physical AI ecosystem. These include projects developed or maintained by Google, NVIDIA, and Meta, among others.Based on initial validation, all 28 findings are classified as zero-day vulnerabilities. The count may change following vendor and vulnerability-authority review, and some findings do not yet have CVE tracking numbers.Many of these tools help teams train, simulate, test, and operate robots. Weaknesses in them could influence the models teams build, the test results they trust, and the instructions sent to robots.These findings create two demands for robotics teams: responding as AI helps uncover weaknesses faster, and assessing how each one could affect robot safety and operations.What AI changes about vulnerability discoveryVulnerability discovery involves examining code, tracing how systems communicate, and testing whether a suspected weakness can actually be exploited. AI can accelerate parts of this work, helping researchers analyze more software in less time. Attackers could use similar capabilities.When the weakness is a zero-day — previously unknown and without an available fix — faster discovery can leave teams with little time to respond. While that exposure does not necessarily mean an attack has occurred, teams still need to determine whether they use the affected software and what an attacker could access or change.Where the findings sit across the robot lifecycleVicOne’s findings span three stages of the robotics lifecycle: development and training, simulation and validation, and deployment and runtime. Weaknesses at each stage could affect what a robot learns, h",
+          "fetched_at": "2026-11-17T18:38:39.882642+00:00",
+          "id": "rss:39d06ac9951051ce17214206db39ae0c1db087702d3f58db9fd4058439689df5",
+          "kind": "news",
+          "metric": "Publisher feed · no independent verification",
+          "provider_rank": 2,
+          "published_at": "2026-11-16T10:00:01+00:00",
+          "region": "world",
+          "source": "rss",
+          "stream_id": "robotics-news",
+          "stream_name": "IEEE robotics news",
+          "title": "28 Zero-Day Findings in Under Two Days. Is Robotics Security Keeping Pace?",
+          "topic": "robotics",
+          "url": "https://spectrum.ieee.org/zero-day-robotics-vulnerabilities-vicone-security",
+          "verification": "Fetched from spectrum.ieee.org · publisher statements, not independently verified"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "robotics-models",
+        "kind": "models",
+        "name": "Robotics models",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "models",
+        "query": "robotics",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:40.098713+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "robotics",
+          "fetched_at": "2026-11-17T18:38:39.940233+00:00",
+          "id": "hf:pollen-robotics/microduck-policies",
+          "kind": "models",
+          "metadata": {
+            "downloads": 67184,
+            "library": "microduck",
+            "license": "apache-2.0",
+            "likes": 56,
+            "provider_order": "downloads",
+            "tags": [
+              "microduck",
+              "onnx",
+              "robotics",
+              "license:apache-2.0",
+              "region:us"
+            ],
+            "task": "robotics"
+          },
+          "metric": "67184 downloads · 56 likes",
+          "provider_rank": 1,
+          "published_at": "2026-11-12T08:54:11.000Z",
+          "region": "world",
+          "source": "models",
+          "stream_id": "robotics-models",
+          "stream_name": "Robotics models",
+          "title": "pollen-robotics/microduck-policies",
+          "topic": "robotics",
+          "url": "https://huggingface.co/pollen-robotics/microduck-policies",
+          "verification": "Hugging Face API · provider rank: downloads; metadata only, no model download or inference"
+        },
+        {
+          "description": "robotics",
+          "fetched_at": "2026-11-17T18:38:39.940233+00:00",
+          "id": "hf:robotics-diffusion-transformer/RDT2-VQ",
+          "kind": "models",
+          "metadata": {
+            "downloads": 1823,
+            "library": "transformers",
+            "license": "apache-2.0",
+            "likes": 23,
+            "provider_order": "downloads",
+            "tags": [
+              "transformers",
+              "safetensors",
+              "qwen2_5_vl",
+              "image-text-to-text",
+              "RDT",
+              "rdt",
+              "RDT 2",
+              "Vision-Language-Action",
+              "Bimanual",
+              "Manipulation",
+              "Zero-shot",
+              "UMI",
+              "robotics",
+              "en",
+              "arxiv:2602.03310",
+              "base_model:Qwen/Qwen2.5-VL-7B-Instruct",
+              "base_model:finetune:Qwen/Qwen2.5-VL-7B-Instruct",
+              "license:apache-2.0",
+              "text-generation-inference",
+              "endpoints_compatible",
+              "region:us"
+            ],
+            "task": "robotics"
+          },
+          "metric": "1823 downloads · 23 likes",
+          "provider_rank": 2,
+          "published_at": "2026-02-07T05:18:00.000Z",
+          "region": "world",
+          "source": "models",
+          "stream_id": "robotics-models",
+          "stream_name": "Robotics models",
+          "title": "robotics-diffusion-transformer/RDT2-VQ",
+          "topic": "robotics",
+          "url": "https://huggingface.co/robotics-diffusion-transformer/RDT2-VQ",
+          "verification": "Hugging Face API · provider rank: downloads; metadata only, no model download or inference"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "agri-news",
+        "kind": "news",
+        "name": "USDA research archive",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "rss",
+        "query": "https://www.ars.usda.gov/rss/?productName=Research%20News",
+        "region": "US",
+        "topic": "agriculture"
+      },
+      "health": null,
+      "count": 0,
+      "samples": []
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agri-discussion",
+        "kind": "news",
+        "name": "Agri-tech discussions",
+        "options": {
+          "days": 30,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "date",
+          "task": ""
+        },
+        "provider": "news",
+        "query": "agriculture technology",
+        "region": "world",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:29.814378+00:00",
+        "count": 0,
+        "status": "ok"
+      },
+      "count": 0,
+      "samples": []
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agritech-india",
+        "kind": "events",
+        "name": "AgriTech India events",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "events",
+        "query": "https://agritechindia.com/",
+        "region": "IN",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:21.312933+00:00",
+        "count": 1,
+        "status": "ok"
+      },
+      "count": 1,
+      "samples": [
+        {
+          "country_code": "IN",
+          "description": "20-22 August 2027 KTPO Exhibition Centre, Whitefield, Bangalore, India",
+          "end_date": "2027-08-22",
+          "fetched_at": "2026-11-17T18:38:21.310602+00:00",
+          "id": "event:88f007753d719e2b36d2deec5c17cf844a86c2544758ea4db0e40bda414d4b42",
+          "kind": "events",
+          "location": "Bangalore, India",
+          "metric": "2027-08-20 → 2027-08-22 · Bangalore, India · AgriTech India events",
+          "provider_rank": 1,
+          "published_at": null,
+          "region": "IN",
+          "source": "events",
+          "start_date": "2027-08-20",
+          "stream_id": "agritech-india",
+          "stream_name": "AgriTech India events",
+          "title": "18th AgriTech India 2027",
+          "topic": "agriculture",
+          "url": "https://agritechindia.com/",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agritechnica",
+        "kind": "events",
+        "name": "AGRITECHNICA calendar",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "calendar",
+        "query": "https://www.agritechnica.com/fileadmin/redaktion/downloads/2027/AGRITECHNICA_2027_The_world_s_leading_trade_fair_for_agricultural_machinery.ics",
+        "region": "world",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:22.500905+00:00",
+        "count": 1,
+        "status": "ok"
+      },
+      "count": 1,
+      "samples": [
+        {
+          "description": " \n",
+          "end_date": "2027-11-20",
+          "event_status": "",
+          "fetched_at": "2026-11-17T18:38:22.496801+00:00",
+          "id": "event:cc779bd38af607ad0d508fd8a278129d60179d19b8421c77a9e1648e1175c76a",
+          "kind": "events",
+          "location": "",
+          "metric": "2027-11-14 → 2027-11-20 ·  · AGRITECHNICA calendar",
+          "provider_rank": 1,
+          "published_at": null,
+          "region": "world",
+          "source": "events",
+          "start_date": "2027-11-14",
+          "stream_id": "agritechnica",
+          "stream_name": "AGRITECHNICA calendar",
+          "title": "AGRITECHNICA 2027_The world's leading trade fair for agricultural machinery",
+          "topic": "agriculture",
+          "url": "https://www.agritechnica.com/fileadmin/redaktion/downloads/2027/AGRITECHNICA_2027_The_world_s_leading_trade_fair_for_agricultural_machinery.ics",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "world-ag-expo",
+        "kind": "events",
+        "name": "World Ag Expo",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "events",
+        "query": "https://www.worldagexpo.com/",
+        "region": "US",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:40.758959+00:00",
+        "count": 1,
+        "status": "ok"
+      },
+      "count": 1,
+      "samples": [
+        {
+          "country_code": "US",
+          "description": "2027 wORLD aG eXPO February 9-11, 2027 • Tulare, CA Purchase Tickets",
+          "end_date": "2027-02-11",
+          "fetched_at": "2026-11-17T18:38:40.737681+00:00",
+          "id": "event:db51f39c127dc01484d97c13e1008a75af0bf87de08bae3887d861623e841575",
+          "kind": "events",
+          "location": "Tulare, California, United States",
+          "metric": "2027-02-09 → 2027-02-11 · Tulare, California, United States · World Ag Expo",
+          "provider_rank": 1,
+          "published_at": null,
+          "region": "US",
+          "source": "events",
+          "start_date": "2027-02-09",
+          "stream_id": "world-ag-expo",
+          "stream_name": "World Ag Expo",
+          "title": "World Ag Expo",
+          "topic": "agriculture",
+          "url": "https://www.worldagexpo.com/",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "poker-news",
+        "kind": "news",
+        "name": "PokerNews headlines",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "rss",
+        "query": "https://www.pokernews.com/rss.php",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:37.770062+00:00",
+        "count": 20,
+        "status": "ok"
+      },
+      "count": 20,
+      "samples": [
+        {
+          "description": "Kevin Martin's risking half of it all on just one poker game.",
+          "fetched_at": "2026-11-17T18:38:37.741856+00:00",
+          "id": "rss:3da03de3e13c14aa925eb2aece7a30c84e09a425f56db87fd20c2c83d8ce37c0",
+          "kind": "news",
+          "metric": "Publisher feed · no independent verification",
+          "provider_rank": 1,
+          "published_at": "2026-11-17T16:24:00+00:00",
+          "region": "world",
+          "source": "rss",
+          "stream_id": "poker-news",
+          "stream_name": "PokerNews headlines",
+          "title": "Poker Streamer Risks Big Chunk of His Net Worth on $100k Poker Buy-In",
+          "topic": "poker",
+          "url": "https://www.pokernews.com/news/2026/11/poker-streamer-takes-massive-gamble-52823.htm?utm_medium=feed&utm_campaign=homefeed&utm_source=rss",
+          "verification": "Fetched from www.pokernews.com · publisher statements, not independently verified"
+        },
+        {
+          "description": "Coming to Pokerstars on Betfair and PaddyPower Poker this November",
+          "fetched_at": "2026-11-17T18:38:37.741856+00:00",
+          "id": "rss:6c97ee133439b4fdd74ec6e3139dbf974e9b049bb4e1ae4eb870ec4f7e86ba53",
+          "kind": "news",
+          "metric": "Publisher feed · no independent verification",
+          "provider_rank": 2,
+          "published_at": "2026-11-17T10:52:00+00:00",
+          "region": "world",
+          "source": "rss",
+          "stream_id": "poker-news",
+          "stream_name": "PokerNews headlines",
+          "title": "PokerStars on Betfair and Paddy Power Poker Running 50 x 50 Series All Next Week",
+          "topic": "poker",
+          "url": "https://www.pokernews.com/news/2026/11/pokerstars-on-betfair-and-paddy-power-poker-50-x-50-series-52822.htm?utm_medium=feed&utm_campaign=homefeed&utm_source=rss",
+          "verification": "Fetched from www.pokernews.com · publisher statements, not independently verified"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "poker-wpt",
+        "kind": "events",
+        "name": "WPT tournament schedule",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "events",
+        "query": "https://www.worldpokertour.com/event/schedule",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:39.319624+00:00",
+        "count": 9,
+        "status": "ok"
+      },
+      "count": 9,
+      "samples": [
+        {
+          "country_code": "US",
+          "description": "",
+          "end_date": "2026-12-13T07:59:59.999Z",
+          "event_status": "https://schema.org/EventScheduled",
+          "fetched_at": "2026-11-17T18:38:39.294792+00:00",
+          "id": "event:6fa08d255f4f113351d0db64db08d71ea81f56f6a65fefcc2729741fdcbe1523",
+          "kind": "events",
+          "location": "Wynn Las Vegas Wynn Las Vegas, Las Vegas Boulevard South, Las Vegas, NV, USA",
+          "metric": "2026-12-05T19:00:00.000Z → 2026-12-13T07:59:59.999Z · Wynn Las Vegas Wynn Las Vegas, Las Vegas Boulevard South, Las Vegas, NV, USA · WPT tournament schedule",
+          "provider_rank": 1,
+          "published_at": null,
+          "region": "world",
+          "source": "events",
+          "start_date": "2026-12-05T19:00:00.000Z",
+          "stream_id": "poker-wpt",
+          "stream_name": "WPT tournament schedule",
+          "title": "WPT Prime Championship at Wynn Las Vegas",
+          "topic": "poker",
+          "url": "https://www.worldpokertour.com/event/prime-wpt-prime-championship-at-wynn-las-vegas-season-2026",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        },
+        {
+          "country_code": "US",
+          "description": "",
+          "end_date": "2026-12-15T07:59:59.999Z",
+          "event_status": "https://schema.org/EventScheduled",
+          "fetched_at": "2026-11-17T18:38:39.294896+00:00",
+          "id": "event:4d1cfcf35bdc3a2e3e39292a9d7bd8988ae3b6b83f961b5163a1414b6395785e",
+          "kind": "events",
+          "location": "Wynn Las Vegas Wynn Las Vegas, Las Vegas Boulevard South, Las Vegas, NV, USA",
+          "metric": "2026-12-10T18:00:00.000Z → 2026-12-15T07:59:59.999Z · Wynn Las Vegas Wynn Las Vegas, Las Vegas Boulevard South, Las Vegas, NV, USA · WPT tournament schedule",
+          "provider_rank": 2,
+          "published_at": null,
+          "region": "world",
+          "source": "events",
+          "start_date": "2026-12-10T18:00:00.000Z",
+          "stream_id": "poker-wpt",
+          "stream_name": "WPT tournament schedule",
+          "title": "Special Event: ClubWPT Gold Super Gold Million",
+          "topic": "poker",
+          "url": "https://www.worldpokertour.com/event/special-events-special-event-clubwpt-gold-super-gold-million-season-2026",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "poker-wsop",
+        "kind": "events",
+        "name": "WSOP tournament schedule",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "events",
+        "query": "https://www.wsop.com/schedule/",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:39.701594+00:00",
+        "count": 6,
+        "status": "ok"
+      },
+      "count": 6,
+      "samples": [
+        {
+          "country_code": "CA",
+          "description": "Official WSOP schedule; confirm current venue and registration details.",
+          "end_date": "2026-11-17",
+          "fetched_at": "2026-11-17T18:38:39.678804+00:00",
+          "id": "event:fb76b6e5eed8faae69fcfce87f4085c613b7e93c1396b3ee38518fa6d7d0736d",
+          "kind": "events",
+          "location": "Playground Kahnawake, QC, Canada",
+          "metric": "2026-11-02 → 2026-11-17 · Playground Kahnawake, QC, Canada · WSOP tournament schedule",
+          "provider_rank": 1,
+          "published_at": null,
+          "region": "world",
+          "source": "events",
+          "start_date": "2026-11-02",
+          "stream_id": "poker-wsop",
+          "stream_name": "WSOP tournament schedule",
+          "title": "WSOP Circuit - Canada (Playground)",
+          "topic": "poker",
+          "url": "https://www.wsop.com/tournaments/wsop-circuit-canada-playground/",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        },
+        {
+          "country_code": "US",
+          "description": "Official WSOP schedule; confirm current venue and registration details.",
+          "end_date": "2026-11-23",
+          "fetched_at": "2026-11-17T18:38:39.678930+00:00",
+          "id": "event:51d77b6679c669b93653a9e87c18b8c9c305a803ccf0729be932bb54f5049fcd",
+          "kind": "events",
+          "location": "Caesars New Orleans New Orleans, LA, United States",
+          "metric": "2026-11-12 → 2026-11-23 · Caesars New Orleans New Orleans, LA, United States · WSOP tournament schedule",
+          "provider_rank": 2,
+          "published_at": null,
+          "region": "world",
+          "source": "events",
+          "start_date": "2026-11-12",
+          "stream_id": "poker-wsop",
+          "stream_name": "WSOP tournament schedule",
+          "title": "WSOP Circuit - Caesars New Orleans",
+          "topic": "poker",
+          "url": "https://www.wsop.com/tournaments/wsop-circuit-caesars-new-orleans/",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "poker-stars",
+        "kind": "events",
+        "name": "PokerStars live festivals",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "events",
+        "query": "https://www.pokerstarslive.com/",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:38.042134+00:00",
+        "count": 4,
+        "status": "ok"
+      },
+      "count": 4,
+      "samples": [
+        {
+          "description": "Festival Dates: December 2-13, 2026",
+          "end_date": "2026-12-13",
+          "fetched_at": "2026-11-17T18:38:38.016738+00:00",
+          "id": "event:b6ec581b3539e9f16cf6f20bb8eed47fa039f40233a4d7b01012b31dd91266e8",
+          "kind": "events",
+          "location": "See official festival venue",
+          "metric": "2026-12-02 → 2026-12-13 · See official festival venue · PokerStars live festivals",
+          "provider_rank": 1,
+          "published_at": null,
+          "region": "world",
+          "source": "events",
+          "start_date": "2026-12-02",
+          "stream_id": "poker-stars",
+          "stream_name": "PokerStars live festivals",
+          "title": "EPT Prague",
+          "topic": "poker",
+          "url": "https://www.pokerstarslive.com/ept/prague/",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        },
+        {
+          "description": "Festival Dates: January 8-17, 2027",
+          "end_date": "2027-01-17",
+          "fetched_at": "2026-11-17T18:38:38.016803+00:00",
+          "id": "event:85216fda61d1436a82b0af42952abfc49d46a6d2e2af26120d0271d059682aba",
+          "kind": "events",
+          "location": "See official festival venue",
+          "metric": "2027-01-08 → 2027-01-17 · See official festival venue · PokerStars live festivals",
+          "provider_rank": 2,
+          "published_at": null,
+          "region": "world",
+          "source": "events",
+          "start_date": "2027-01-08",
+          "stream_id": "poker-stars",
+          "stream_name": "PokerStars live festivals",
+          "title": "PokerStars Open Campione",
+          "topic": "poker",
+          "url": "https://www.pokerstarslive.com/pokerstarsopen/campione/",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "poker-all",
+        "kind": "events",
+        "name": "Multi-organizer tournament calendar",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "events",
+        "query": "https://www.cardplayer.com/poker-tournaments",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:45.214131+00:00",
+        "count": 39,
+        "status": "ok"
+      },
+      "count": 39,
+      "samples": [
+        {
+          "country_code": "US",
+          "description": "Multi-organizer publisher calendar; confirm current details with the organizer before registration or travel.",
+          "end_date": "2026-11-21",
+          "fetched_at": "2026-11-17T18:38:36.968234+00:00",
+          "id": "event:adc8ee1f18ec75e7281b1d091bc83ef8b812082e89e37fcc911f475abd33b000",
+          "kind": "events",
+          "location": "Bally-s Black Hawk (Black Hawk, CO)",
+          "location_evidence": {
+            "basis": "Publisher venue address",
+            "checked_at": "2026-11-17T18:38:37.737023+00:00",
+            "detail_error": null,
+            "http_status": 200,
+            "source_url": "https://www.cardplayer.com/poker-tournaments/1680617-2026-fall-colorado-poker-championship-2"
+          },
+          "metric": "2026-10-28 → 2026-11-21 · Bally-s Black Hawk Black Hawk · Multi-organizer tournament calendar",
+          "provider_rank": 1,
+          "published_at": null,
+          "region": "world",
+          "source": "events",
+          "start_date": "2026-10-28",
+          "stream_id": "poker-all",
+          "stream_name": "Multi-organizer tournament calendar",
+          "title": "2026 Fall Colorado Poker Championship",
+          "topic": "poker",
+          "url": "https://www.cardplayer.com/poker-tournaments/1680617-2026-fall-colorado-poker-championship-2",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        },
+        {
+          "country_code": "US",
+          "description": "Multi-organizer publisher calendar; confirm current details with the organizer before registration or travel.",
+          "end_date": "2026-11-17",
+          "fetched_at": "2026-11-17T18:38:36.969362+00:00",
+          "id": "event:43e8d72dca2850cc2029eb1f2fb339bc746cc26658ed8a8b834e55fabf48161a",
+          "kind": "events",
+          "location": "Borgata Hotel Casino - Spa (Atlantic City, NJ)",
+          "location_evidence": {
+            "basis": "Publisher venue address",
+            "checked_at": "2026-11-17T18:38:37.737045+00:00",
+            "detail_error": null,
+            "http_status": 200,
+            "source_url": "https://www.cardplayer.com/poker-tournaments/1636425-2026-fall-poker-open"
+          },
+          "metric": "2026-11-04 → 2026-11-17 · Borgata Hotel Casino – Spa Atlantic City · Multi-organizer tournament calendar",
+          "provider_rank": 2,
+          "published_at": null,
+          "region": "world",
+          "source": "events",
+          "start_date": "2026-11-04",
+          "stream_id": "poker-all",
+          "stream_name": "Multi-organizer tournament calendar",
+          "title": "2026 Fall Poker Open",
+          "topic": "poker",
+          "url": "https://www.cardplayer.com/poker-tournaments/1636425-2026-fall-poker-open",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "stanford-lectures",
+        "kind": "videos",
+        "name": "Stanford Online lectures",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "youtube_feed",
+        "query": "UCBa5G_ESCn8Yd4vw5U-gIcg",
+        "region": "world",
+        "topic": "learning"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:40.156383+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "count": 15,
+      "samples": [
+        {
+          "description": "Explore AI courses and programs from Stanford Online: https://stanford.io/4BYTekh Once AI can take actions on its own, how do you stay in control? In this Stanford CS193T: Thinking with AI lecture, Senior Lecturer Cynthia Bailey previews this week's tools, Claude Code and Codex, with a three-step process for preparing, generating, and reviewing vibe-coded work. Then she looks past launch: why even a carefully built AI tool needs monitoring, how the NIST AI Risk Management Framework structures responsible AI across a product's life cycle, and what Stanford's Responsible AI guidance asks of you. The lecture closes with evaluation: what you are measuring, and why ground truth is harder to pin down than it looks. Key questions answered in this lecture: Q: What is vibe coding? A: Bailey describes vibe coding as using English as a programming language with AI tools like Claude Code and Codex. Done professionally (some call it agentic engineering) it follows three steps: prepare a detailed spec with the elephant and goldfish process, hand it to a fresh coding agent, then review the result. Q: How can I review vibe-coded work if I can't read code? A: Bailey recommends starting another fresh 'goldfish' agent in a coding environment, giving it your scope of work and the code, and asking it to act as a severe code reviewer. Frame the code as someone else's work that may not follow the spec, to push the AI away from praise. Q: Why do AI systems need monitoring after deployment? A: Bailey says conditions change after deployment: distribution shift, users changing behavior once they know AI is involved (like students adding prompt-injection notes for an AI autograder), and models that update their weights. Thorough pre-deployment testing on historical data cannot catch these. Q: What",
+          "fetched_at": "2026-11-17T18:38:40.127998+00:00",
+          "id": "rss:0d2fce0ae0278be00cf7a02bef04d6199d2eab425a7c4a4ce4c623c6ba7aadb3",
+          "kind": "videos",
+          "metric": "Stanford Online lectures · public channel feed",
+          "provider_rank": 1,
+          "published_at": "2026-11-17T17:00:03+00:00",
+          "region": "world",
+          "source": "youtube",
+          "stream_id": "stanford-lectures",
+          "stream_name": "Stanford Online lectures",
+          "title": "Vibe Coding, AI Risk&AI Evaluation | Stanford CS193T Lecture 6 with Cynthia Bailey",
+          "topic": "learning",
+          "url": "https://www.youtube.com/watch?v=0Uk4uLjuEeY",
+          "verification": "Fetched from www.youtube.com · publisher statements, not independently verified"
+        },
+        {
+          "description": "Explore AI courses and programs from Stanford Online: https://stanford.io/4BYTekh What happens when AI stops just writing and starts acting on your behalf? In this Stanford CS193T: Thinking with AI lecture recording, Senior Lecturer Cynthia Bailey explains how AI agents work and why prompt injection gets much worse once AI can take actions. She opens with connectors, the links that let AI read your email, calendar, or files and act on your behalf, and shows that nothing new is happening inside the model: it's the same next-token prediction behind every chatbot, occasionally generating specially structured text that triggers actions. From there she builds the vocabulary for autonomous work: the analyze, act, observe loop every agent runs on, the seven-part\"anatomy\"of a well-specified agent, and professional-grade agentic workflow techniques like\"the elephant and the goldfish.\"The lecture closes by putting on a pessimistic security hat: for any agent you design, what's the worst that could happen, and whose permissions made it possible? Key questions answered in this lecture recording: Q: What is the difference between generative AI and agentic AI? A: Bailey says agentic AI focuses on taking actions rather than only generating content, but it runs on the same next-token prediction: the LLM emits structured JSON text that a connector turns into an action. Q: What is an AI connector? A: Connectors are access permissions that plug your AI tool into apps like Gmail or Outlook so it can pull in data or act on your behalf. Enabling one adds tool instructions to the context window, using the Model Context Protocol (MCP). Q: What should you include when you define an AI agent? A: Bailey treats an agent spec as a detailed scope of work with seven parts: goal, context, tools, permi",
+          "fetched_at": "2026-11-17T18:38:40.127998+00:00",
+          "id": "rss:651861e38e4ea644d52a2b1306dd06da45aa80ae32ae869be379ec9854b1e124",
+          "kind": "videos",
+          "metric": "Stanford Online lectures · public channel feed",
+          "provider_rank": 2,
+          "published_at": "2026-11-17T00:00:36+00:00",
+          "region": "world",
+          "source": "youtube",
+          "stream_id": "stanford-lectures",
+          "stream_name": "Stanford Online lectures",
+          "title": "How AI Agents Work: Connectors, MCP&Agent Safety | Stanford CS193T Lecture 5 with Cynthia Bailey",
+          "topic": "learning",
+          "url": "https://www.youtube.com/watch?v=ho00IesajkY",
+          "verification": "Fetched from www.youtube.com · publisher statements, not independently verified"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "mit-robotics-videos",
+        "kind": "videos",
+        "name": "MIT CSAIL research videos",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "youtube_feed",
+        "query": "UCBpxspUNl1Th33XbugiHJzw",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:27.601799+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "count": 15,
+      "samples": [
+        {
+          "description": "Executive Producer: Rachel Gordon DP&Editor: Time Malieckal Script Supervisor: Alex Shipps Special Thanks: John J. Leonard | MIT Mechanical Engineering Caroline Keenan | Graduate Student, MIT WHOI Tim Briggs | Filmmaker, MIT Lincoln Laboratory Kevin Kibitz | Chief Historian, Heritage Operations at General Motors Rebecca Buschmann | Archivist, General Motors Craig LaPlante | Director of Digital Media, Woods Hole Oceanographic Institution Ken Kostel | Director of Research Communication, Woods Hole Oceanographic Institution Steve Minehan | IMCA Closed Bell Diving Supervisor",
+          "fetched_at": "2026-11-17T18:38:27.585248+00:00",
+          "id": "rss:564781aadefeaf03e35917d73c0d07e29abd208a068fc83b1483db6d1974fa88",
+          "kind": "videos",
+          "metric": "MIT CSAIL research videos · public channel feed",
+          "provider_rank": 1,
+          "published_at": "2026-10-14T17:00:19+00:00",
+          "region": "world",
+          "source": "youtube",
+          "stream_id": "mit-robotics-videos",
+          "stream_name": "MIT CSAIL research videos",
+          "title": "Underwater Robotics: Physical AI's Toughest Test",
+          "topic": "robotics",
+          "url": "https://www.youtube.com/watch?v=i0O2URp0HpM",
+          "verification": "Fetched from www.youtube.com · publisher statements, not independently verified"
+        },
+        {
+          "description": "Featuring: Daniela Rus | Director, MIT CSAIL Russ Tedrake | Toyota Professor of EECS, MIT John Leonard | Professor of Mechanical Engineering, MIT Pras Velagapudi | CTO, Agility Robotics [ agilityrobotics.com youtube.com/@AgilityRobotics ] Deepak Pathak | CEO, Skild AI [ skild.ai | youtube.com/@SkildAI ] Executive Producer: Rachel Gordon Director of Photography: Tim Malieckal Script Supervisor: Alex Shipps Special Thanks: Thomas Cohn | PhD Student in Computer Science, MIT CSAIL Lexi Foland | Undergraduate Robotics Researcher, MIT CSAIL Michael Oldenburg | Marketing&Communications Leader, Agility AI Bobby Carlton | Digital Solutions, FS Studio [ fsstudio.com ] Sanjil Jain | Co-Founder, Drift AI [ godrift.ai ] Steve Minehan | IMCA Closed Bell Diving Supervisor, IOSH [ youtube.com/@steveminehan277 ]",
+          "fetched_at": "2026-11-17T18:38:27.585248+00:00",
+          "id": "rss:938f55f47ec33fc29445cfc12831740284e8a73f3647434aa303642e1f5e4da2",
+          "kind": "videos",
+          "metric": "MIT CSAIL research videos · public channel feed",
+          "provider_rank": 2,
+          "published_at": "2026-09-23T16:02:12+00:00",
+          "region": "world",
+          "source": "youtube",
+          "stream_id": "mit-robotics-videos",
+          "stream_name": "MIT CSAIL research videos",
+          "title": "So... What Exactly is Physical AI?",
+          "topic": "robotics",
+          "url": "https://www.youtube.com/watch?v=L6bSqc5ccCw",
+          "verification": "Fetched from www.youtube.com · publisher statements, not independently verified"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agri-videos",
+        "kind": "videos",
+        "name": "John Deere technology videos",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "youtube_feed",
+        "query": "@JohnDeere",
+        "region": "world",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:21.170993+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "count": 15,
+      "samples": [
+        {
+          "description": "Say hello to JD™, the artificial intelligence (AI) assistant by John Deere. JD helps you get more value from your equipment and operational data by making it easier to find answers, understand what’s happening, and make decisions with confidence. Ask JD questions about: Equipment and how to use it Maintenance and troubleshooting Fields, jobsites, and work Machine performance and utilization Crop inputs and products Work Plans and upcoming tasks Licenses and software John Deere equipment and technology Find JD today in John Deere Operations Center™ web, Operations Center mobile, and Equipment Mobile. Just ask JD! #JohnDeere #JDAIAssistant #JohnDeereTech #AskJD ✅ Subscribe for more John Deere videos: http://bit.ly/2Yo9Oad More From John Deere: Twitter/X: https://twitter.com/johndeere TikTok: https://www.tiktok.com/@JohnDeere Facebook: https://www.facebook.com/JohnDeereUSCA Instagram: https://www.instagram.com/JohnDeere/ LinkedIn: https://www.linkedin.com/company/john-deere Find a Dealer: http://bit.ly/2l8PivS Visit our Website: https://www.deere.com",
+          "fetched_at": "2026-11-17T18:38:21.164322+00:00",
+          "id": "rss:ccaeb01fea5efe73f37f9c95af373cce683223872d68ea227bdb70166a7dff10",
+          "kind": "videos",
+          "metric": "John Deere technology videos · public channel feed",
+          "provider_rank": 1,
+          "published_at": "2026-11-17T17:37:16+00:00",
+          "region": "world",
+          "source": "youtube",
+          "stream_id": "agri-videos",
+          "stream_name": "John Deere technology videos",
+          "title": "JD™ AI Assistant: Built for Your Work | John Deere",
+          "topic": "agriculture",
+          "url": "https://www.youtube.com/watch?v=8_pL9Avr1_g",
+          "verification": "Fetched from www.youtube.com · publisher statements, not independently verified"
+        },
+        {
+          "description": "A fresh bite can take you way back. #JohnDeere #Shorts #AddisonBounds #Cooking4Wifey #LodgeCastIron #WhitePeaksBison ✅ Subscribe for more John Deere videos: http://bit.ly/2Yo9Oad More From John Deere: Twitter/X: https://twitter.com/johndeere TikTok: https://www.tiktok.com/@JohnDeere Facebook: https://www.facebook.com/JohnDeereUSCA Instagram: https://www.instagram.com/JohnDeere/ LinkedIn: https://www.linkedin.com/company/john-deere Find a Dealer: http://bit.ly/2l8PivS Visit our Website: https://www.deere.com",
+          "fetched_at": "2026-11-17T18:38:21.164322+00:00",
+          "id": "rss:f504d7461641fa91a4dbf81a97b6b6fcd22566a433e98c14888a086b42b6dcd0",
+          "kind": "videos",
+          "metric": "John Deere technology videos · public channel feed",
+          "provider_rank": 2,
+          "published_at": "2026-11-16T18:25:31+00:00",
+          "region": "world",
+          "source": "youtube",
+          "stream_id": "agri-videos",
+          "stream_name": "John Deere technology videos",
+          "title": "One meal, lots of memories | John Deere X @lodgecastiron",
+          "topic": "agriculture",
+          "url": "https://www.youtube.com/shorts/-ZpkVR-qIoc",
+          "verification": "Fetched from www.youtube.com · publisher statements, not independently verified"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "poker-videos",
+        "kind": "videos",
+        "name": "PokerStars videos",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "youtube_feed",
+        "query": "@PokerStars",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:38.619620+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "count": 15,
+      "samples": [
+        {
+          "description": "Antonio Esfandiari fires a $10,500 river bluff into Tony Hinchcliffe and Loose Cannon Scott Gaughan—but Scott is holding pocket aces. Can Antonio talk his way out of this one? 👀 ♠️ Missed the first episode with this lineup? Catch up here: https://youtu.be/wzgHLrilMxA 📺 Watch more Big Game on Tour episodes: https://www.youtube.com/show/VLPLDU-9X8MlT5s?sbp=QAE%3D Watch the action from Big Game On Tour Season 3, Episode 7. #PokerStars #BigGameOnTour #Poker ----------------- 🔔 Subscribe to PokerStars for more poker highlights, cash games and tournament action. PokerStars is the home of world-class poker, featuring the European Poker Tour (EPT), The Big Game On Tour, high-stakes cash games, tournament highlights, poker strategy, and more. ----------------- Follow PokerStars: Facebook: https://www.facebook.com/PokerStars Instagram: https://www.instagram.com/pokerstars/ X (Twitter): https://twitter.com/pokerstars Twitch: https://www.twitch.tv/PokerStars Portuguese, French, or Spanish-speaking? Check out our local channels: https://psta.rs/PokerStarsBrasil https://psta.rs/PokerStarsFrench https://psta.rs/PokerStarsSpanish ----------------- Keep it cool, Keep it fun, Play Responsibly: https://www.pokerstars.net/about/responsible-gaming/ 18+ Play responsibly. https://www.gamblingtherapy.org/",
+          "fetched_at": "2026-11-17T18:38:38.588439+00:00",
+          "id": "rss:04c6ec443f96f1ec52b5534c04ff9316d294e3703b8ba6e6b4a492114a59c717",
+          "kind": "videos",
+          "metric": "PokerStars videos · public channel feed",
+          "provider_rank": 1,
+          "published_at": "2026-11-17T17:00:26+00:00",
+          "region": "world",
+          "source": "youtube",
+          "stream_id": "poker-videos",
+          "stream_name": "PokerStars videos",
+          "title": "Poker Pro vs 2 Comedians",
+          "topic": "poker",
+          "url": "https://www.youtube.com/shorts/gOVWdybmE8Q",
+          "verification": "Fetched from www.youtube.com · publisher statements, not independently verified"
+        },
+        {
+          "description": "Tony Hinchcliffe and Doug Polk trade bets and table talk before a remarkable river card sets up a costly decision. Can Tony get away from this one? ♠️ Missed the first episode with this lineup? Catch up here: https://youtu.be/D7lJNJE2bbE 📺 Watch more Big Game on Tour episodes: https://www.youtube.com/show/VLPLYyagvzIlX9o?sbp=QAE%3D Watch the action from Big Game On Tour Season 3, Episode 7. #PokerStars #BigGameOnTour #Poker ----------------- 🔔 Subscribe to PokerStars for more poker highlights, cash games and tournament action. PokerStars is the home of world-class poker, featuring the European Poker Tour (EPT), The Big Game On Tour, high-stakes cash games, tournament highlights, poker strategy, and more. ----------------- Follow PokerStars: Facebook: https://www.facebook.com/PokerStars Instagram: https://www.instagram.com/pokerstars/ X (Twitter): https://twitter.com/pokerstars Twitch: https://www.twitch.tv/PokerStars Portuguese, French, or Spanish-speaking? Check out our local channels: https://psta.rs/PokerStarsBrasil https://psta.rs/PokerStarsFrench https://psta.rs/PokerStarsSpanish ----------------- Keep it cool, Keep it fun, Play Responsibly: https://www.pokerstars.net/about/responsible-gaming/ 18+ Play responsibly. https://www.gamblingtherapy.org/",
+          "fetched_at": "2026-11-17T18:38:38.588439+00:00",
+          "id": "rss:4db7380bceb9b1fe18e3393bada9034ce4d8900389dbee309794b6e5b9326882",
+          "kind": "videos",
+          "metric": "PokerStars videos · public channel feed",
+          "provider_rank": 2,
+          "published_at": "2026-11-16T17:00:14+00:00",
+          "region": "world",
+          "source": "youtube",
+          "stream_id": "poker-videos",
+          "stream_name": "PokerStars videos",
+          "title": "Such a Beautiful River Card",
+          "topic": "poker",
+          "url": "https://www.youtube.com/shorts/-g5cfkImlj0",
+          "verification": "Fetched from www.youtube.com · publisher statements, not independently verified"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "ai-videos",
+        "kind": "videos",
+        "name": "Hugging Face videos",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "youtube_feed",
+        "query": "@huggingface",
+        "region": "world",
+        "topic": "ai"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:22.003613+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "count": 15,
+      "samples": [
+        {
+          "description": "How to use 🤗 Jobs to run any kind of training task when your GPU is too small Code: https://github.com/scienceetonnante/nanogpt-jobs 00:00 Introduction 01:21 Model and training code 02:57 Using Jobs 04:15 The shell script 05:35 Run and results",
+          "fetched_at": "2026-11-17T18:38:21.994040+00:00",
+          "id": "rss:b01c288aff08feca6cabdd4ded9ca53bc01128b7c1929a614c1e10ffb6f53e72",
+          "kind": "videos",
+          "metric": "Hugging Face videos · public channel feed",
+          "provider_rank": 1,
+          "published_at": "2026-11-16T16:00:20+00:00",
+          "region": "world",
+          "source": "youtube",
+          "stream_id": "ai-videos",
+          "stream_name": "Hugging Face videos",
+          "title": "Using Hugging Face Jobs to train a NanoGPT model",
+          "topic": "ai",
+          "url": "https://www.youtube.com/watch?v=7Yx_7byZiFU",
+          "verification": "Fetched from www.youtube.com · publisher statements, not independently verified"
+        },
+        {
+          "description": "Learn about quantization in this livestream and get started with quantization using llama.cpp and vLLM. Program: - Introduction to Quantization, Merve Noyan, Hugging Face - Calibration based quantization, Colin Kealty (aka bartowski), RedHat - Quantization Aware Distillation, Maxime Labonne, Aditya Tadimeti, LiquidAI - Fast Microscaling Formats on Any GPU with vLLM, Michael Goin, RedHat",
+          "fetched_at": "2026-11-17T18:38:21.994040+00:00",
+          "id": "rss:ad0575260105d97f05a49f2bd603b35e3f8a02e3edfd53a0b85090e44650194b",
+          "kind": "videos",
+          "metric": "Hugging Face videos · public channel feed",
+          "provider_rank": 2,
+          "published_at": "2026-11-11T06:39:06+00:00",
+          "region": "world",
+          "source": "youtube",
+          "stream_id": "ai-videos",
+          "stream_name": "Hugging Face videos",
+          "title": "Local AI 301: Quantization",
+          "topic": "ai",
+          "url": "https://www.youtube.com/watch?v=il0dgxjpoC0",
+          "verification": "Fetched from www.youtube.com · publisher statements, not independently verified"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "mit-lectures",
+        "kind": "videos",
+        "name": "MIT OpenCourseWare lectures",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "youtube_feed",
+        "query": "UCEBb1b_L6zDS3xTUrIALZOw",
+        "region": "world",
+        "topic": "learning"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:27.379996+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "count": 15,
+      "samples": [
+        {
+          "description": "An Open Conversation with Dr. Desirée Plata and Dr. Chris Raben Hosted by Curt Newton Understanding the connections between climate, energy, and economic growth is critical to shaping a future where thriving communities and economic prosperity are no longer tied to greenhouse gas emissions. How can we think differently about climate, energy, and cross-sector solutions that build resilience, support adaptation, and create a healthier, more prosperous and equitable future for all? Join Dr. Desirée Plata, Dr. Chris Rabe, and Curt Newton from MIT Open Learning for an engaging conversation about what climate and energy actions are needed now and how education can empower people to make informed decisions and drive meaningful change. During this conversation, the team will share the vision behind Universal Climate and Energy, an effort designed to bridge climate and energy knowledge with real-world application. They will discuss how the program will prepare learners for impactful careers, informed civic engagement, and leadership for a more sustainable future. About the Speakers Desirée Plata is the School of Engineering Distinguished Professor of Climate and Energy at MIT and a hard technology innovator. She focuses on sustainable design and translates geochemical insight to inform deployable technologies that achieve high performance and reduce emissions in industrial systems, unlock circular resource flows, and promote ecosystem health and sustainability. She leads the MIT Methane Network, directs the MIT Climate and Sustainability Consortium, directs the Parsons Laboratory for Environmental Science and Engineering, and co-directs MIT’s Superfund Research Program. Plata is co-founder of Nth Cycle and Moxair, companies advancing domestic critical mineral recovery and low-te",
+          "fetched_at": "2026-11-17T18:38:27.364353+00:00",
+          "id": "rss:1f9211dbe084ebe8de8d3953bf11986cc85043f7144ebe1f4397cb3757a98781",
+          "kind": "videos",
+          "metric": "MIT OpenCourseWare lectures · public channel feed",
+          "provider_rank": 1,
+          "published_at": "2026-11-17T15:23:41+00:00",
+          "region": "world",
+          "source": "youtube",
+          "stream_id": "mit-lectures",
+          "stream_name": "MIT OpenCourseWare lectures",
+          "title": "Building Climate and Energy Resilience through Education Live Webcast",
+          "topic": "learning",
+          "url": "https://www.youtube.com/watch?v=uqFwmaLoQcw",
+          "verification": "Fetched from www.youtube.com · publisher statements, not independently verified"
+        },
+        {
+          "description": "Which way is she facing? Is the dress black&blue, or white&gold? Prof. Josh McDermott explores our fascination with optical illusions and explains how the brain uses visual signals to make inferences about the world around us.",
+          "fetched_at": "2026-11-17T18:38:27.364353+00:00",
+          "id": "rss:e3c3591d0f34a8a37e66a779eec8e08b62fde41124d6f212b977441219bb3bcc",
+          "kind": "videos",
+          "metric": "MIT OpenCourseWare lectures · public channel feed",
+          "provider_rank": 2,
+          "published_at": "2026-11-16T18:00:17+00:00",
+          "region": "world",
+          "source": "youtube",
+          "stream_id": "mit-lectures",
+          "stream_name": "MIT OpenCourseWare lectures",
+          "title": "Optical Illusions!",
+          "topic": "learning",
+          "url": "https://www.youtube.com/shorts/QMt6FEuXz0s",
+          "verification": "Fetched from www.youtube.com · publisher statements, not independently verified"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "robotics-reddit",
+        "kind": "social",
+        "name": "Reddit robotics",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "reddit",
+        "query": "robotics",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": null,
+      "count": 0,
+      "samples": []
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "ai-reddit",
+        "kind": "social",
+        "name": "Reddit LocalLLaMA",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "reddit",
+        "query": "LocalLLaMA",
+        "region": "world",
+        "topic": "ai"
+      },
+      "health": null,
+      "count": 0,
+      "samples": []
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "poker-reddit",
+        "kind": "social",
+        "name": "Reddit poker",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "reddit",
+        "query": "poker",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": null,
+      "count": 0,
+      "samples": []
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "robotics-bluesky",
+        "kind": "social",
+        "name": "Bluesky robotics",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "bluesky",
+        "query": "robotics",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:23.053099+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "Attached article: Promise Robotics raises $25M to scale automated homebuilding\n\nPromise says Series B funds the platform, not factories, as it plans a Phoenix facility and 2028 deployments",
+          "fetched_at": "2026-11-17T18:38:23.037216+00:00",
+          "id": "bluesky:173ae04fdd44798fd9e1f4d4e4985815f39916bd4e5bad4699e196bf29cb99f3",
+          "kind": "social",
+          "metadata": {
+            "attached_description": "Promise says Series B funds the platform, not factories, as it plans a Phoenix facility and 2028 deployments",
+            "attached_title": "Promise Robotics raises $25M to scale automated homebuilding",
+            "attached_url": "http://dlvr.it/TWMpQs",
+            "embed_type": "app.bsky.embed.external#view",
+            "media_descriptions": [],
+            "original_text_supplied": false,
+            "quoted_text": ""
+          },
+          "metric": "@nexthomeres.bsky.social · 0 likes · 0 reposts",
+          "provider_rank": 1,
+          "published_at": "2026-11-17T18:36:01Z",
+          "region": "world",
+          "source": "bluesky",
+          "stream_id": "robotics-bluesky",
+          "stream_name": "Bluesky robotics",
+          "title": "Promise Robotics raises $25M to scale automated homebuilding",
+          "topic": "robotics",
+          "url": "https://bsky.app/profile/nexthomeres.bsky.social/post/3n2jopd5wud2m",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        },
+        {
+          "description": "Consider filling your free time creating things that help other groups of people, indirect to your line of work. Our local middle school robotics team had a lot of new kids so I made some tutorials and trainers for them. I've also made other tutoring SW for kids, it's fun for me & they like it",
+          "fetched_at": "2026-11-17T18:38:23.037496+00:00",
+          "id": "bluesky:f02e289a87dac01c14db60213d30223ebe0b3b97a905d144fe0f2a94fc82640d",
+          "kind": "social",
+          "metadata": {
+            "attached_description": "",
+            "attached_title": "",
+            "attached_url": null,
+            "embed_type": "app.bsky.embed.images#view",
+            "media_descriptions": [],
+            "original_text_supplied": true,
+            "quoted_text": ""
+          },
+          "metric": "@jsherman999.bsky.social · 2 likes · 0 reposts",
+          "provider_rank": 2,
+          "published_at": "2026-11-17T18:24:13.449Z",
+          "region": "world",
+          "source": "bluesky",
+          "stream_id": "robotics-bluesky",
+          "stream_name": "Bluesky robotics",
+          "title": "Consider filling your free time creating things that help other groups of people, indirect to your line of work. Our local middle school rob",
+          "topic": "robotics",
+          "url": "https://bsky.app/profile/jsherman999.bsky.social/post/3n2jo27resk2i",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agri-bluesky",
+        "kind": "social",
+        "name": "Bluesky agri-tech",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "bluesky",
+        "query": "agritech",
+        "region": "world",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:23.436866+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "Farmer Lifeline Technologies will use a US$50,000 Innovate Africa implementation grant to run a six-month roll-out of solar AI cameras that detect crop pests and send SMS alerts with treatment... #Kenya #Agritech #Agriculture #AI #Africa\n\nAttached article: Kenyan agritech wins US$50,000 Innovate Africa grant to deploy solar AI pest-detection cameras\n\nFarmer Lifeline Technologies will use a US$50,000 Innovate Africa implementation grant to run a six-month roll-out of solar AI cameras that detect crop pests and send SMS alerts with treatment...",
+          "fetched_at": "2026-11-17T18:38:23.424619+00:00",
+          "id": "bluesky:22c674a3424a7b41dc56a0fd1c2a1c01360dd67480617303e55bf098ba211e04",
+          "kind": "social",
+          "metadata": {
+            "attached_description": "Farmer Lifeline Technologies will use a US$50,000 Innovate Africa implementation grant to run a six-month roll-out of solar AI cameras that detect crop pests and send SMS alerts with treatment...",
+            "attached_title": "Kenyan agritech wins US$50,000 Innovate Africa grant to deploy solar AI pest-detection cameras",
+            "attached_url": "https://newzroom.africa/news/kenyan-agritech-wins-us-50-000-innovate-africa-grant-to-deploy-solar-ai-pest-det/",
+            "embed_type": "app.bsky.embed.external#view",
+            "media_descriptions": [],
+            "original_text_supplied": true,
+            "quoted_text": ""
+          },
+          "metric": "@newzdotafrica.bsky.social · 0 likes · 0 reposts",
+          "provider_rank": 1,
+          "published_at": "2026-11-17T18:01:06.884Z",
+          "region": "world",
+          "source": "bluesky",
+          "stream_id": "agri-bluesky",
+          "stream_name": "Bluesky agri-tech",
+          "title": "Farmer Lifeline Technologies will use a US$50,000 Innovate Africa implementation grant to run a six-month roll-out of solar AI cameras that ",
+          "topic": "agriculture",
+          "url": "https://bsky.app/profile/newzdotafrica.bsky.social/post/3n2jmqw2i2c2b",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        },
+        {
+          "description": "Secerna has partnered with UK Urban #AgriTech (UKUAT) to host a free live #webinar dedicated to the role of intellectual property in grant and funding applications. This webinar will be presented by Secerna Patent Attorney Dr Huw Jenkins. ukuat.org/event/consid... #Grants #Funding #IP #Patents",
+          "fetched_at": "2026-11-17T18:38:23.424749+00:00",
+          "id": "bluesky:0886b51c3da083ba69bd5f708a6bd2549ee81423ae2c186ab73c46c744389abf",
+          "kind": "social",
+          "metadata": {
+            "attached_description": "",
+            "attached_title": "",
+            "attached_url": null,
+            "embed_type": "app.bsky.embed.images#view",
+            "media_descriptions": [],
+            "original_text_supplied": true,
+            "quoted_text": ""
+          },
+          "metric": "@secernallp.bsky.social · 0 likes · 0 reposts",
+          "provider_rank": 2,
+          "published_at": "2026-11-17T15:22:55.638Z",
+          "region": "world",
+          "source": "bluesky",
+          "stream_id": "agri-bluesky",
+          "stream_name": "Bluesky agri-tech",
+          "title": "Secerna has partnered with UK Urban #AgriTech (UKUAT) to host a free live #webinar dedicated to the role of intellectual property in grant a",
+          "topic": "agriculture",
+          "url": "https://bsky.app/profile/secernallp.bsky.social/post/3n2jdvzuzgk2i",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "robotics-mastodon",
+        "kind": "social",
+        "name": "Mastodon robotics",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "mastodon",
+        "query": "robotics",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:26.908244+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "🤖 NEW: Engineers at the University of #Pennsylvania built an artificial muscle from a rubbery liquid crystal elastomer reinforced with #graphene and threaded with an ultrathin copper coil.Because heating makes the material contract, the coil doubles as heater and sensor, keeping the #muscle at a fixed length. Additionally, a #robot hand played #piano keys at varied force, and robotic #eyes held a gaze.👉 https://www.popsci.com/technology/artificial-muscles-humanoid-robot-play-piano/#engineering #materials #robotics #science #tech #technology #humanoids #muscles #research\n\nAttached article: Scientists created artificial, life-like muscles for humanoid robots\n\nThe components help robots play piano and dart detached eyeballs.",
+          "fetched_at": "2026-11-17T18:38:26.882059+00:00",
+          "id": "mastodon:33e8d263fff73068f46627574b520eef3cff9bc43b8a819a6f8fdba532d08732",
+          "kind": "social",
+          "metadata": {
+            "attached_description": "The components help robots play piano and dart detached eyeballs.",
+            "attached_title": "Scientists created artificial, life-like muscles for humanoid robots",
+            "attached_url": "https://www.popsci.com/technology/artificial-muscles-humanoid-robot-play-piano/",
+            "embed_type": null,
+            "media_descriptions": [],
+            "original_text_supplied": true,
+            "quoted_text": ""
+          },
+          "metric": "@tksst@fediscience.org · 0 favourites",
+          "provider_rank": 1,
+          "published_at": "2026-11-17T18:35:29.000Z",
+          "region": "world",
+          "source": "mastodon",
+          "stream_id": "robotics-mastodon",
+          "stream_name": "Mastodon robotics",
+          "title": "🤖 NEW: Engineers at the University of #Pennsylvania built an artificial muscle from a rubbery liquid crystal elastomer reinforced with #grap",
+          "topic": "robotics",
+          "url": "https://fediscience.org/@tksst/117633222544837816",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        },
+        {
+          "description": "BYD Reveals A Robot Charger That Plugs Itself In — Here's What It Really Changes. Via @theelectricvking #EVs #ElectricCars #ElectricVehicles #EV #KillGasCars ⚡🚘🔌🚗🔋 #Robotics 🤖 youtu.be/2M4L9UZ5tmM?...BYD Reveals A Robot Charger Th...\n\nAttached article: BYD Reveals A Robot Charger That Plugs Itself In — Here's What It Really Changes",
+          "fetched_at": "2026-11-17T18:38:26.882341+00:00",
+          "id": "mastodon:97e3e7325121c9aaa5c7c15d3f866f9473b71884c3c88c76ce6d3015fcad7bca",
+          "kind": "social",
+          "metadata": {
+            "attached_description": "",
+            "attached_title": "BYD Reveals A Robot Charger That Plugs Itself In — Here's What It Really Changes",
+            "attached_url": "https://youtube.com/watch?v=2M4L9UZ5tmM&si=RVEFJDcyLUGM29YH",
+            "embed_type": null,
+            "media_descriptions": [],
+            "original_text_supplied": true,
+            "quoted_text": ""
+          },
+          "metric": "@foxmental.bsky.social@bsky.brid.gy · 0 favourites",
+          "provider_rank": 2,
+          "published_at": "2026-11-17T18:20:08.000Z",
+          "region": "world",
+          "source": "mastodon",
+          "stream_id": "robotics-mastodon",
+          "stream_name": "Mastodon robotics",
+          "title": "BYD Reveals A Robot Charger That Plugs Itself In — Here's What It Really Changes. Via @theelectricvking #EVs #ElectricCars #ElectricVehicles",
+          "topic": "robotics",
+          "url": "https://fed.brid.gy/r/https://bsky.app/profile/did:plc:zhq4wxlxtiwc2hznld4w364j/post/3n2jnswtaoe2m",
+          "verification": "Live public source metadata; publisher/user claims require verification."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "ai-news",
+        "kind": "news",
+        "name": "AI community news",
+        "options": {
+          "days": 30,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "date",
+          "task": ""
+        },
+        "provider": "news",
+        "query": "artificial intelligence",
+        "region": "world",
+        "topic": "ai"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:36.120090+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "Discussion by 50kIters",
+          "fetched_at": "2026-11-17T18:38:35.816902+00:00",
+          "id": "hn:50531226",
+          "kind": "news",
+          "metric": "2 points · 1 comments",
+          "provider_rank": 1,
+          "published_at": "2026-11-17T13:41:08Z",
+          "region": "world",
+          "source": "news",
+          "stream_id": "ai-news",
+          "stream_name": "AI community news",
+          "title": "Unauthorized third-party AI agents or assistants",
+          "topic": "ai",
+          "url": "https://news.ycombinator.com/item?id=50531226",
+          "verification": "HN search API · community report, not independently verified"
+        },
+        {
+          "description": "Discussion by hamoodalitansha",
+          "fetched_at": "2026-11-17T18:38:35.816902+00:00",
+          "id": "hn:50530787",
+          "kind": "news",
+          "metric": "1 points · 0 comments",
+          "provider_rank": 2,
+          "published_at": "2026-11-17T13:01:29Z",
+          "region": "world",
+          "source": "news",
+          "stream_id": "ai-news",
+          "stream_name": "AI community news",
+          "title": "Intelligence, Data Arrangement, and Artificial Intelligence",
+          "topic": "ai",
+          "url": "https://news.ycombinator.com/item?id=50530787",
+          "verification": "HN search API · community report, not independently verified"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "x-robotics",
+        "kind": "social",
+        "name": "X robotics search",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "x",
+        "query": "robotics -is:retweet",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": null,
+      "count": 0,
+      "samples": []
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "linkedin",
+        "kind": "social",
+        "name": "LinkedIn source import",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "linkedin",
+        "query": "",
+        "region": "world",
+        "topic": "code"
+      },
+      "health": null,
+      "count": 0,
+      "samples": []
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agfunder-news",
+        "kind": "news",
+        "name": "AgFunderNews agri-food technology",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "rss",
+        "query": "https://agfundernews.com/feed",
+        "region": "world",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:20.883119+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "“We can develop traits very, very fast, and we are not bound by specific organisms,” says Traitomic CEO Gustav Hambraeus. The post Carlsberg spinout Traitomic lands $22m to speed up trait discovery and development appeared first on AgFunderNews.",
+          "fetched_at": "2026-11-17T18:38:20.866515+00:00",
+          "id": "rss:0f71cde5539c1fe1db0d697f57bd99967dae56e71c022ed051c720df7d6f222f",
+          "kind": "news",
+          "metric": "Publisher feed · no independent verification",
+          "provider_rank": 1,
+          "published_at": "2026-11-17T15:34:02+00:00",
+          "region": "world",
+          "source": "rss",
+          "stream_id": "agfunder-news",
+          "stream_name": "AgFunderNews agri-food technology",
+          "title": "Carlsberg spinout Traitomic lands $22m to speed up trait discovery and development",
+          "topic": "agriculture",
+          "url": "https://agfundernews.com/carlsberg-spinout-traitomic-lands-22m-to-speed-up-trait-discovery-and-development",
+          "verification": "Fetched from agfundernews.com · publisher statements, not independently verified"
+        },
+        {
+          "description": "\"At this point we have more than $15 million in early demand from pizzerias and foodservice operators of all sorts,\" says VP commercial Benjamin Friedman. The post ‘A massive step closer to commercialization…’ New Culture gets OK to make animal-free dairy cheese in California appeared first on AgFunderNews. New Culture was founded by Matt Gibson and Inja Radman in late 2018/early 2019. Image courtesy of New CultureAccording to Gibson, New Culture’s sensory and analytical testing shows its animal-free mozzarella rivals dairy mozzarella on 15 key attributes such melt and stretch for pizza and mouthfeel and flavor for salads), with half the casein. Image courtesy of New Culture",
+          "fetched_at": "2026-11-17T18:38:20.866515+00:00",
+          "id": "rss:cf1912c602916c373b5db8be2f5988070dbc387e7584cc0eef131b53b4a05317",
+          "kind": "news",
+          "metric": "Publisher feed · no independent verification",
+          "provider_rank": 2,
+          "published_at": "2026-11-17T14:06:21+00:00",
+          "region": "world",
+          "source": "rss",
+          "stream_id": "agfunder-news",
+          "stream_name": "AgFunderNews agri-food technology",
+          "title": "‘A massive step closer to commercialization…’New Culture gets OK to make animal-free dairy cheese in California",
+          "topic": "agriculture",
+          "url": "https://agfundernews.com/a-massive-step-closer-to-commercialization-new-culture-gets-ok-to-make-animal-free-dairy-cheese-in-california",
+          "verification": "Fetched from agfundernews.com · publisher statements, not independently verified"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agdaily-news",
+        "kind": "news",
+        "name": "AGDAILY agriculture news",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "rss",
+        "query": "https://www.agdaily.com/feed/",
+        "region": "US",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:23.991362+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "A Georgia farmer is challenging incoming Agriculture Commissioner Katherine Juhan-Arnold's qualifications, calling for a legislative review of her experience. The post Georgia farmer challenges new ag commissioner’s qualifications appeared first on AGDAILY.",
+          "fetched_at": "2026-11-17T18:38:23.967118+00:00",
+          "id": "rss:2a1b8482df6033268ed7df6959e1cd3597165415ce51fcf947ed93880fd9d32d",
+          "kind": "news",
+          "metric": "Publisher feed · no independent verification",
+          "provider_rank": 1,
+          "published_at": "2026-11-17T18:07:39+00:00",
+          "region": "US",
+          "source": "rss",
+          "stream_id": "agdaily-news",
+          "stream_name": "AGDAILY agriculture news",
+          "title": "Georgia farmer challenges new ag commissioner’s qualifications",
+          "topic": "agriculture",
+          "url": "https://www.agdaily.com/news/georgia-farmer-challenges-new-ag-commissioners-qualifications/",
+          "verification": "Fetched from www.agdaily.com · publisher statements, not independently verified"
+        },
+        {
+          "description": "Colorado's drought is deepening a mental health crisis among farmers and ranchers as state programs face cuts and advocates fight stigma. The post Colorado’s drought deepens a mental health crisis in agriculture appeared first on AGDAILY.",
+          "fetched_at": "2026-11-17T18:38:23.967118+00:00",
+          "id": "rss:d9cc1892938acf828d0942ae14e6465df8dfb8881ca0470e2220c1f3826d2d89",
+          "kind": "news",
+          "metric": "Publisher feed · no independent verification",
+          "provider_rank": 2,
+          "published_at": "2026-11-17T16:28:41+00:00",
+          "region": "US",
+          "source": "rss",
+          "stream_id": "agdaily-news",
+          "stream_name": "AGDAILY agriculture news",
+          "title": "Colorado’s drought deepens a mental health crisis in agriculture",
+          "topic": "agriculture",
+          "url": "https://www.agdaily.com/news/colorado-drought-deepens-a-mental-health-crisis-in-agriculture/",
+          "verification": "Fetched from www.agdaily.com · publisher statements, not independently verified"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "crossref-robotics",
+        "kind": "papers",
+        "name": "Crossref robotics research",
+        "options": {
+          "days": 90,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "crossref",
+        "query": "robotics",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:23.946473+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "A combination of pressure points that question traditional approaches to evaluation is experienced in the Global South and low-density rural higher education contexts. The chapter explores the AI-enabled assessment for the Global South, rural and resource-constrained higher education. It draws together cross-sectional evidence about approaches to architecture, governance, pedagogy and equity in order to explore how AI can support assessment whilst respecting local goals and limitations. The Principal Analysis spots four design levers, namely: lightweight and offline-capable assessment tools; governance and data sovereignty-based data collection; modular architectures through capacity building and evidence across domains. But there will be growing dangers in relation to data privacy, algorithmic bias, inequalities in language and culture, as well as dependency on suppliers. The chapter ends with policy, university governance and sustainable scaling implications focused on learner rights and educational justice that is locally stewarded.",
+          "fetched_at": "2026-11-17T18:38:23.930089+00:00",
+          "id": "crossref:9d422dc5a99cd13dbfa8cc47d22da141cdc603f4354b8a43cbe5806ded069110",
+          "kind": "papers",
+          "metadata": {
+            "doi": "10.4018/979-8-3373-8939-4.ch013",
+            "license": null,
+            "publisher": "IGI Global Scientific Publishing",
+            "source": "Crossref member-deposited metadata",
+            "type": "book-chapter"
+          },
+          "metric": "0 provider-reported citations · book-chapter",
+          "provider_rank": 1,
+          "published_at": "2026-11-17T00:00:00Z",
+          "region": "world",
+          "source": "crossref",
+          "stream_id": "crossref-robotics",
+          "stream_name": "Crossref robotics research",
+          "title": "AI and Assessment in Global South, Rural, and Resource-Constrained Higher Education Contexts",
+          "topic": "robotics",
+          "url": "https://doi.org/10.4018/979-8-3373-8939-4.ch013",
+          "verification": "Public indexed metadata. Publication, patent status and publisher claims need source review; no full text or model weights downloaded."
+        },
+        {
+          "description": "The rapid growth of Generative Artificial Intelligence in higher education has made assessment more complex. Its importance lies in protecting genuine learning and academic integrity in AI rich environments. The main objective of this chapter is to explain how assessment and feedback practices can be redesigned to measure real understanding instead of automated output. The chapter shows that authentic tasks, staged submissions, reflection, and oral interaction improve validity and fairness. Key findings suggest that formative feedback, clear AI guidelines, and process based evaluation strengthen integrity. The chapter concludes that thoughtful redesign helps institutions maintain standards while adapting to technological change.",
+          "fetched_at": "2026-11-17T18:38:23.930239+00:00",
+          "id": "crossref:0ac8666ac993eaaa7d6708040ba519e0b6e45b5354d2ec1788cc10b90390c6a5",
+          "kind": "papers",
+          "metadata": {
+            "doi": "10.4018/979-8-3373-8939-4.ch005",
+            "license": null,
+            "publisher": "IGI Global Scientific Publishing",
+            "source": "Crossref member-deposited metadata",
+            "type": "book-chapter"
+          },
+          "metric": "0 provider-reported citations · book-chapter",
+          "provider_rank": 2,
+          "published_at": "2026-11-17T00:00:00Z",
+          "region": "world",
+          "source": "crossref",
+          "stream_id": "crossref-robotics",
+          "stream_name": "Crossref robotics research",
+          "title": "Redesigning Authentic Assessment and Feedback Practices in the Generative AI Era",
+          "topic": "robotics",
+          "url": "https://doi.org/10.4018/979-8-3373-8939-4.ch005",
+          "verification": "Public indexed metadata. Publication, patent status and publisher claims need source review; no full text or model weights downloaded."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "epmc-agriculture",
+        "kind": "papers",
+        "name": "Europe PMC agricultural research",
+        "options": {
+          "days": 90,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "europepmc",
+        "query": "precision agriculture",
+        "region": "world",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:25.280416+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "Pigs are important agricultural resources and valuable biomedical models, necessitating a high-quality pan-genome to comprehensively capture genomic diversity. Here we present an extensive genomic and phenotypic resource comprising 3 telomere-to-telomere (T2T) genomes and 16 high-quality assemblies. This resource enables the construction of the pig pan-transcriptome and pan-metabolome, thereby enhancing genotype-phenotype mapping. Using 12 Y-chromosome assemblies, we resolved centromere repositioning at basepair resolution, establishing centromeres as unique evolutionary markers. Reconstruction of centromeric three-dimensional genomic architecture revealed their role as structural scaffolds that concentrate chromatin interactions. We identified eEF1A1, a transcriptionally active gene consistently located near chromosome 1 centromeres, as a candidate hotspot for karyotype variation. From a pan-structural variation map, we pinpointed AKR1B1 as a key gene underlying hypoxia adaptation. Moreover, a graph-based pan-genome built from T2T genomes improved heritability capture. Together, this work provides a foundation for studies of centromere evolution, adaptive genetics and precision breeding.",
+          "fetched_at": "2026-11-17T18:38:25.259287+00:00",
+          "id": "europepmc:273e983e90610830127b232d10e67fd3599a014147f84d8e5cf8a1680f0a6136",
+          "kind": "papers",
+          "metadata": {
+            "doi": "10.1038/s41588-026-02829-y",
+            "id": "43039959",
+            "index": "MED",
+            "patent_notice": "Not applicable",
+            "publication_year": "2026"
+          },
+          "metric": "0 provider citations · Europe PMC indexed literature",
+          "provider_rank": 1,
+          "published_at": "2026-11-16T00:00:00Z",
+          "region": "world",
+          "source": "europepmc",
+          "stream_id": "epmc-agriculture",
+          "stream_name": "Europe PMC agricultural research",
+          "title": "High-quality pig pan-genome resources illuminate centromere evolution and enhance genotype-phenotype mapping.",
+          "topic": "agriculture",
+          "url": "https://europepmc.org/article//MED/43039959",
+          "verification": "Public indexed metadata. Publication, patent status and publisher claims need source review; no full text or model weights downloaded."
+        },
+        {
+          "description": "Liquid scintillation counting provides high efficiency for beta emitters, but strongly acidic, alkaline, and saline samples can restrict sample loading and increase blank signals. Polystyrene-based plastic scintillation microspheres (PSm) doped with PPO and bis-MSB were therefore evaluated as a heterogeneous counting medium and compared with OptiPhase HiSafe 3 in representative aqueous matrices. The prepared PSm were spherical, with particle sizes mainly of 110-230 μm. Their response was strongly energy dependent: counting efficiencies were 0.38% for 3H, 40.2% for 14C, and an apparent 184.6% for 90Sr/90Y at secular equilibrium when normalized to 90Sr activity, compared with 41.5%, 93.2%, and 198.9%, respectively, for HiSafe 3. PSm allowed a fixed sample loading ratio of 0.50 mL/g under all tested matrix conditions and exhibited blank count rates of 20.9-28.1 cpm when measured for 10 min after 24 h of dark storage. The operational loading capacity of HiSafe 3 varied from 0.04 to 0.80 mL/mL. Following approximately 24 h of dark storage, its blank count rate reached 246.6 cpm in 4 mol/L NaOH during a 10 min measurement. For 14C, under the standardized conditions of 24 h dark storage and 10 min counting, PSm gave calculated minimum detectable activity concentrations (MDCs) of 138.8-170.2 Bq/L. HiSafe 3 gave lower MDCs for water, 1 mol/L NaOH, and 1 mol/L NaCl, whereas PSm gave lower MDCs in 2-4 mol/L NaOH, all tested HCl matrices, and 2-4 mol/L NaCl, including a 6.8-fold lower MDC in 2 mol/L HCl. Independent quantitative evaluation of the PSm system was limited to water and 1 mol/L HCl, NaOH, and NaCl over 1.8-200 kBq/L, with relative deviations within 11.1%. The lower calculated MDCs indicate potential detection advantages in concentrated matrices, where quantitative perfo",
+          "fetched_at": "2026-11-17T18:38:25.259481+00:00",
+          "id": "europepmc:3c7ae97ea8e37c8c039e6b65639f4b7152320f2a3ff3047a5c94da9e41601835",
+          "kind": "papers",
+          "metadata": {
+            "doi": "10.1016/j.apradiso.2026.113113",
+            "id": "43038612",
+            "index": "MED",
+            "patent_notice": "Not applicable",
+            "publication_year": "2026"
+          },
+          "metric": "0 provider citations · Europe PMC indexed literature",
+          "provider_rank": 2,
+          "published_at": "2026-11-16T00:00:00Z",
+          "region": "world",
+          "source": "europepmc",
+          "stream_id": "epmc-agriculture",
+          "stream_name": "Europe PMC agricultural research",
+          "title": "Analytical performance of plastic scintillation microspheres versus a liquid scintillation cocktail for measuring beta-emitting radionuclides in representative aqueous media.",
+          "topic": "agriculture",
+          "url": "https://europepmc.org/article//MED/43038612",
+          "verification": "Public indexed metadata. Publication, patent status and publisher claims need source review; no full text or model weights downloaded."
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "patent-index",
+        "kind": "papers",
+        "name": "Patent index — historical coverage",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "patents",
+        "query": "robot",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": null,
+      "count": 0,
+      "samples": []
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "india-schemes",
+        "kind": "news",
+        "name": "Official India agriculture announcements",
+        "options": {
+          "days": 90,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "schemes",
+        "query": "",
+        "region": "IN",
+        "topic": "agriculture"
+      },
+      "health": null,
+      "count": 0,
+      "samples": []
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "app-charts-us",
+        "kind": "apps",
+        "name": "Top free iPhone apps · US",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "apps",
+        "query": "us",
+        "region": "US",
+        "topic": "apps"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:22.823218+00:00",
+        "count": 50,
+        "status": "ok"
+      },
+      "count": 50,
+      "samples": [
+        {
+          "description": "TikTok Ltd.",
+          "fetched_at": "2026-11-17T18:38:22.005309+00:00",
+          "id": "apple:us:6741796873",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-17T10:38:22-07:00",
+            "feed_url": "https://itunes.apple.com/us/rss/topfreeapplications/limit=50/json",
+            "storefront": "US"
+          },
+          "metric": "#1 · top free · US",
+          "provider_rank": 1,
+          "published_at": "2026-06-03T00:00:00-07:00",
+          "region": "US",
+          "source": "apps",
+          "stream_id": "app-charts-us",
+          "stream_name": "Top free iPhone apps · US",
+          "title": "TikTok Pro - Events",
+          "topic": "apps",
+          "url": "https://apps.apple.com/us/app/tiktok-pro-events/id6741796873?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot · rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "Meta Platforms, Inc.",
+          "fetched_at": "2026-11-17T18:38:22.005309+00:00",
+          "id": "apple:us:6760173601",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-17T10:38:22-07:00",
+            "feed_url": "https://itunes.apple.com/us/rss/topfreeapplications/limit=50/json",
+            "storefront": "US"
+          },
+          "metric": "#2 · top free · US",
+          "provider_rank": 2,
+          "published_at": "2026-09-08T00:00:00-07:00",
+          "region": "US",
+          "source": "apps",
+          "stream_id": "app-charts-us",
+          "stream_name": "Top free iPhone apps · US",
+          "title": "Muse from Meta",
+          "topic": "apps",
+          "url": "https://apps.apple.com/us/app/muse-from-meta/id6760173601?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot · rank, not download estimate or growth velocity"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "app-charts-india",
+        "kind": "apps",
+        "name": "Top free iPhone apps · India",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "apps",
+        "query": "in",
+        "region": "IN",
+        "topic": "apps"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:29.552398+00:00",
+        "count": 50,
+        "status": "ok"
+      },
+      "count": 50,
+      "samples": [
+        {
+          "description": "OpenAI OpCo, LLC",
+          "fetched_at": "2026-11-17T18:38:28.826435+00:00",
+          "id": "apple:in:6448311069",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-17T10:38:28-07:00",
+            "feed_url": "https://itunes.apple.com/in/rss/topfreeapplications/limit=50/json",
+            "storefront": "IN"
+          },
+          "metric": "#1 · top free · IN",
+          "provider_rank": 1,
+          "published_at": "2023-05-25T00:00:00-07:00",
+          "region": "IN",
+          "source": "apps",
+          "stream_id": "app-charts-india",
+          "stream_name": "Top free iPhone apps · India",
+          "title": "ChatGPT",
+          "topic": "apps",
+          "url": "https://apps.apple.com/in/app/chatgpt/id6448311069?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot · rank, not download estimate or growth velocity"
+        },
+        {
+          "description": "Instagram, Inc.",
+          "fetched_at": "2026-11-17T18:38:28.826435+00:00",
+          "id": "apple:in:6738967378",
+          "kind": "apps",
+          "metadata": {
+            "chart": "top-free",
+            "fallback_used": false,
+            "feed_updated": "2026-11-17T10:38:28-07:00",
+            "feed_url": "https://itunes.apple.com/in/rss/topfreeapplications/limit=50/json",
+            "storefront": "IN"
+          },
+          "metric": "#2 · top free · IN",
+          "provider_rank": 2,
+          "published_at": "2025-04-22T00:00:00-07:00",
+          "region": "IN",
+          "source": "apps",
+          "stream_id": "app-charts-india",
+          "stream_name": "Top free iPhone apps · India",
+          "title": "Edits: Video Editor",
+          "topic": "apps",
+          "url": "https://apps.apple.com/in/app/edits-video-editor/id6738967378?uo=2",
+          "verification": "Apple iTunes RSS chart snapshot · rank, not download estimate or growth velocity"
+        }
+      ]
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "mcp-public-registry",
+        "kind": "tools",
+        "name": "Public MCP tools",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "mcp",
+        "query": "",
+        "region": "world",
+        "topic": "apps"
+      },
+      "health": {
+        "checked_at": "2026-11-17T18:38:27.152682+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30,
+      "samples": [
+        {
+          "description": "run any ai model. compose agents, stack knowledge, connect tools. one api, pay per run.",
+          "fetched_at": "2026-11-17T18:38:26.909698+00:00",
+          "id": "mcp:ac.inference.sh/mcp@2.0.1",
+          "kind": "tools",
+          "metadata": {
+            "description": "run any ai model. compose agents, stack knowledge, connect tools. one api, pay per run.",
+            "notice": "Public registry declarations. This lists available integrations; connecting or running tools remains separately approved.",
+            "packages": null,
+            "registry_name": "ac.inference.sh/mcp",
+            "remotes": [
+              {
+                "type": "streamable-http",
+                "url": "https://api.inference.sh/mcp"
+              }
+            ],
+            "repository": null,
+            "version": "2.0.1",
+            "website": null
+          },
+          "metric": "Version 2.0.1",
+          "provider_rank": 1,
+          "published_at": null,
+          "region": "world",
+          "source": "mcp",
+          "stream_id": "mcp-public-registry",
+          "stream_name": "Public MCP tools",
+          "title": "ac.inference.sh/mcp",
+          "topic": "apps",
+          "url": "https://registry.modelcontextprotocol.io/v0.1/servers?search=ac.inference.sh%2Fmcp&version=2.0.1&limit=30",
+          "verification": "Registry listing only · publisher and tool safety not audited"
+        },
+        {
+          "description": "Player ban records from 560+ game community ban lists, with Steam's own bans. Reads need no key.",
+          "fetched_at": "2026-11-17T18:38:26.909698+00:00",
+          "id": "mcp:ac.mizan/registry@1.2.0",
+          "kind": "tools",
+          "metadata": {
+            "description": "Player ban records from 560+ game community ban lists, with Steam's own bans. Reads need no key.",
+            "notice": "Public registry declarations. This lists available integrations; connecting or running tools remains separately approved.",
+            "packages": null,
+            "registry_name": "ac.mizan/registry",
+            "remotes": [
+              {
+                "type": "streamable-http",
+                "url": "https://mizan.ac/mcp"
+              }
+            ],
+            "repository": null,
+            "version": "1.2.0",
+            "website": "https://mizan.ac/capabilities"
+          },
+          "metric": "Version 1.2.0",
+          "provider_rank": 2,
+          "published_at": null,
+          "region": "world",
+          "source": "mcp",
+          "stream_id": "mcp-public-registry",
+          "stream_name": "Public MCP tools",
+          "title": "ac.mizan/registry",
+          "topic": "apps",
+          "url": "https://registry.modelcontextprotocol.io/v0.1/servers?search=ac.mizan%2Fregistry&version=1.2.0&limit=30",
+          "verification": "Registry listing only · publisher and tool safety not audited"
+        }
+      ]
+    }
+  ],
+  "data_quality_problems": [],
+  "restart_passed": true,
+  "cached_payloads_unchanged": true,
+  "explicit_off_policy_preserved": true,
+  "native_launch_and_local_workflows_passed": true,
+  "delivery_sha256": "14ed1ab80ba7f38b7d7a95cff05573e239db464e21f115de8fb360ce57e08202",
+  "coverage_summary": "Exact unchanged DMG process: 35/35 no-account public feeds, 801 real entries, valid IDs/titles/links/storefront ranks; isolated restart/cache/off policy passed. Poker public data and actual frontend filters checked separately. Interactive UI automation unavailable; no all-button acceptance."
+}
