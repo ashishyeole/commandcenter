@@ -1,0 +1,21 @@
+   Compiling pcc-public-workflow-audit v0.1.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/public-workflow-qa)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.34s
+     Running `target/public-workflow-qa-build/debug/audit target/final-dmg-audit/workflow-input.json target/final-dmg-audit/workflows.json`
+{
+  "api_keys_used": false,
+  "app_login_used": false,
+  "attachment_bytes_index_trash_restore_passed": true,
+  "checked_at": "2026-11-17T14:07:42.676577+00:00",
+  "dmg_sha256": "47b6fb0cb7e97a1637fc78f240c95a72bc7d619d56ea7c112ef9699f3796bf0a",
+  "duplicate_restore_added": 0,
+  "native_core_not_ui": true,
+  "normal_profile_accessed": false,
+  "plain_encrypted_backup_roundtrip_passed": true,
+  "provider_documents_saved": 14,
+  "public_items_saved": 798,
+  "reopen_and_fts_passed": true,
+  "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+  "task_month_end_recurrence_passed": true,
+  "workspace_links": 28,
+  "wrong_password_rejected": true
+}

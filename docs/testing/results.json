@@ -1,21 +1,51 @@
 {
-  "generated_at": "2026-11-17T07:32:20.086359+00:00",
+  "generated_at": "2026-11-17T14:19:50.396360+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
-  "rust_test_executions": 117,
-  "rust_distinct_tests": 115,
+  "rust_test_executions": 120,
+  "rust_distinct_tests": 118,
   "python_tests": 10,
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
   "results": [
     {
+      "status": "PASS \u00b7 exact DMG process/data",
+      "area": "Final packaged Mac no-account acceptance",
+      "evidence": "Source 5bde681 actual DMG mounted/verified/copied without rebuilding; exact executable ran in a fresh QA profile. All 35 enabled streams refreshed 798 real entries without login/key, seeded records or account flags. Card title/link/identity checks and 50 US/50 India app charts pass; caches and explicit off policy survived termination/relaunch. Interactive UI automation was unavailable; this is not all-button acceptance. See final-dmg-native-qa.json."
+    },
+    {
+      "status": "FIXED \u00b7 live + regressions",
+      "area": "Additional public feed defects found by audit",
+      "evidence": "Fixed apps/tools source editing and provider kind, declared-region precedence, cross-storefront app ID/read-state collisions, Apple canonical-link duplicate saves, and blank Bluesky/Mastodon article/media-only cards. Actual first-DMG audit failed on three blank titles; failure retained, final data-quality audit passes. Native media-card persistence tests and frontend regressions pass."
+    },
+    {
+      "status": "PASS \u00b7 native core with real data",
+      "area": "Save/document/workspace/task/file/backup acceptance",
+      "evidence": "Used final DMG public data: 798 fetched entries saved, 14 cited provider documents, workspace with 28 links, month-end task completion, attachment bytes/index/trash/restore, FTS/reopen, plain/encrypted backups, rejected wrong password and duplicate restore adding zero. Temporary native-core databases only; no UI clicks or real files/accounts. See final-public-workflows.json."
+    },
+    {
+      "status": "PASS \u00b7 real cache/frontend logic",
+      "area": "Actual feed filters and cited documents",
+      "evidence": "All seven topic groups, nine content kinds and fourteen providers populated. Unique card IDs, exact 50 US/50 India app filters, read/dismissed/saved filtering, all sort modes and original citations across fourteen providers pass against actual DMG caches. See final-dmg-feed-behavior.json; interactive controls were not clicked."
+    },
+    {
+      "status": "PASS \u00b7 final CI/packages/Windows bootstrap",
+      "area": "Final desktop builds and exact Windows public startup",
+      "evidence": "Final source 5bde681: Mac/Windows checks 44098600840 and package jobs 44098611111 passed. Exact SHA-matched Windows EXE passed install/native-window/uninstall and installed audit 44101384980: 35/35 sources, 800 real entries, zero failures, no login/key/seeded records, both charts 50 entries. See final-*-ci.json and final-windows-bootstrap.json. Full Windows feature UI remains separate."
+    },
+    {
+      "status": "LIMITATION \u00b7 UI tool unavailable",
+      "area": "Current interactive Mac UI acceptance",
+      "evidence": "Native UI automation was unavailable in this session. No new claim for every form, native dialog, player, drag/keyboard/theme state, assistive technology, OS permission/reminder or account-only integration. Earlier selected UI evidence remains revision-specific. Core/data/process tests do not certify these interactions."
+    },
+    {
       "status": "PASS \u00b7 live native + fresh Mac UI",
-      "area": "Apple US/India chart repair",
+      "area": "Earlier Apple chart UI \u00b7 source 36350b0",
       "evidence": "Source 36350b0: direct old-host read reproduced 502; native hub refresh returned 50 actual ranked entries per storefront with exact cached content. Fresh isolated Mac startup fetched 35/35 public sources; actual US/India cards rendered and US details exposed Apple iTunes feed URL/storefront/update time. Five parser/fallback/HTTP/refusal/quota regressions pass. No login/key or normal profile used. See apple-live-sources.json and apple-native-qa.json."
     },
     {
       "status": "PASS \u00b7 installed Windows live charts",
-      "area": "Final Windows public feeds and Apple charts",
+      "area": "Earlier Windows public feeds \u00b7 source 36350b0",
       "evidence": "Source 36350b0 package 44037013075; exact SHA-matched EXE passed install/native-window/uninstall. Fresh installed audit 44039054861 fetched 800 real entries from 35/35 sources, no failures; both US and India charts contain 50 correctly ranked entries with actual iTunes source metadata. No login/key, seeded personal records or enabled account flags. See apple-windows-bootstrap.json. Full Windows feature UI remains unverified."
     },
     {
@@ -25,7 +55,7 @@
     },
     {
       "status": "PASS \u00b7 selected native workflows",
-      "area": "Business native Mac UI",
+      "area": "Earlier business native Mac UI \u00b7 source 50bffb5",
       "evidence": "Final global Photon UI returned 50 actual Bengaluru listings, saved The Merak Brewhouse, retained prior 24 Diner lead (2 CRM records), showed 49 untracked India records and reused the same cache/fetch time. Default Austin UI/lead/cache/restart and Stop recovery also pass at their recorded revisions. Earlier global Overpass failures were resolved by Photon, not hidden. No account/key/outreach."
     },
     {
@@ -35,7 +65,7 @@
     },
     {
       "status": "PASS \u00b7 selected native workflows",
-      "area": "Fresh-install / native integration",
+      "area": "Earlier native UI integration \u00b7 source 2cb141d",
       "evidence": "Isolated empty Mac profile connected without login or Load action. 791 combined entries after recovering one transient chart error; unified search returned 150 real results from five providers. Save/cited document/project/native attachment/preview/event/channel/research/task/FTS/restart checks and MCP UI correction recorded in online-native-qa.json. Every-use-case acceptance is not claimed."
     },
     {
@@ -71,12 +101,12 @@
     {
       "status": "PASS",
       "area": "Frontend and native compilation",
-      "evidence": "Final 36350b0 full workspace passed 117 target/test executions (115 distinct), including five Apple regressions. Both Mac/Windows CI checks 44037013263 passed TypeScript/Vite, all five frontend assertion scripts (74 assertions) and native build/tests. Four live tests are excluded from default runs; the Apple live test explicitly returned 50 US/50 India entries. Exact package/runtime evidence is separate."
+      "evidence": "Final 5bde681 native sources pass 120 workspace executions (118 distinct); frontend scripts pass 79 assertions and TypeScript/Vite. Four explicit native live checks and actual packaged-process/data/core acceptance have separate evidence. Current CI/package results are recorded separately."
     },
     {
       "status": "PASS",
       "area": "Mac DMG integrity/copy",
-      "evidence": "Source 36350b0: rebuilt local ARM64 DMG passed checksum, read-only mounted signature, version and Applications symlink checks; delivery copy hash matches. See apple-dmg-inspection.json. Development/ad-hoc signing, not production notarization."
+      "evidence": "Final 5bde681 normal development DMG passed checksum, readonly mount, strict deep signature, Applications shortcut and matching copy/executable checks. Exact copied binary refreshed all 35 public starters and preserved caches/off policy after process restart. See final-dmg-inspection.json and final-dmg-native-qa.json. Development signing, not notarization."
     },
     {
       "status": "FIXED",
@@ -205,7 +235,7 @@
     },
     {
       "status": "PASS",
-      "area": "Latest frontend/mobile compilation",
+      "area": "Earlier frontend/mobile compilation \u00b7 source 7167bfa",
       "evidence": "TypeScript/Vite, 68 UI logic assertions, both rebuilt Rust mobile libraries, iOS Simulator app and Android ARM64 debug APK compile at source 7167bfa. No real-device runtime acceptance."
     },
     {
@@ -235,21 +265,21 @@
     },
     {
       "status": "PASS",
-      "area": "Final Mac/Windows CI and packages",
+      "area": "Earlier Mac/Windows CI/packages \u00b7 source 36350b0",
       "evidence": "Source 36350b0: both desktop checks 44037013263 and both packaging jobs 44037013075 passed; exact Windows installed chart audit 44039054861 passed. Local Mac DMG checksum/mount/version/strict ad-hoc signature/delivery hash pass. See apple-*-ci.json and apple-dmg-inspection.json."
     }
   ],
-  "ui_logic_assertions": 74,
-  "rust_workspace_executions": 117,
+  "ui_logic_assertions": 10,
+  "rust_workspace_executions": 120,
   "rust_additional_targeted_executions": 0,
-  "research_analytics_assertions": 13,
+  "research_analytics_assertions": 14,
   "source_image_theme_assertions": 13,
-  "total_ui_assertions": 74,
-  "additional_targeted_note": "Final full workspace: 112 passing target/test executions (110 distinct). Live business test explicitly run separately. Earlier targeted run counts are historical, not added to the final total.",
-  "discovery_feed_assertions": 20,
-  "source_revision": "7167bfa9d1493774de3883594d5bc8e03bd0b40c",
-  "counting_method": "Latest passing per-target results: 52 core/mobile target cases plus 48 desktop cases; shared transport tests execute in two targets. Full workspace log had 97 before three final desktop regressions; final native rerun has 48. 68 frontend assertions run separately. Existing Python checks remain historical.",
-  "remaining_code_assertions": 12,
+  "total_ui_assertions": 79,
+  "additional_targeted_note": "New regressions cover QA isolation, media/article-only social saves, apps/tools editing, strict storefront filters, per-storefront read/selection state and App Store saved-link deduplication. Historical UI/provider evidence keeps its original revision.",
+  "discovery_feed_assertions": 28,
+  "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+  "counting_method": "Latest full workspace: 120 target/test executions, 118 distinct cases (shared transport tests execute in two targets). Five frontend scripts total 79 assertions (10+14+13+28+14). Four live native checks explicitly run separately; public-data workflow acceptance is separate, not added to unit counts.",
+  "remaining_code_assertions": 14,
   "previous_aggregation_evidence": {
     "source_revision": "dc1b077183130f0fabd2dbaece29cd96153b6f19",
     "rust_workspace_executions": 79,
@@ -260,7 +290,8 @@
     "native_qa": "discovery-native-qa.json"
   },
   "isolated_mac_qa_smoke_tested": true,
-  "mac_native_qa": "remaining-native-qa.json",
-  "frontend_assertions": 74,
-  "desktop_source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45"
+  "mac_native_qa": "final-dmg-native-qa.json",
+  "frontend_assertions": 79,
+  "desktop_source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+  "python_evidence_status": "10 historical mocked-provider tests; not rerun in this public Mac audit"
 }

@@ -1,0 +1,5 @@
+10 UI logic assertions passed: ongoing/past dates, exclusive end dates, timed events, cancelled events, invalid/stored positions and resized bounds.
+14 research analytics assertions passed: separate metric units, peer percentiles, rate calculation, stale observations, cache deduplication, publication windows, token boundaries and cross-creator evidence.
+13 source-image/theme assertions passed: fixed CDN destinations, dropped private query strings, rejected credentials/local or spoofed URLs, four themes and safe fallback.
+28 discovery feed assertions passed: cross-source/topic deduplication, video URL normalization, text/reading/date/region filters, ended/cancelled events and cited document creation.
+14 remaining-code assertions passed: feed intents, local action routing, dates and personal analytics.

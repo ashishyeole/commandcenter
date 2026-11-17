@@ -1,0 +1,1181 @@
+{
+  "checked_at": "2026-11-17T13:53:02.364433+00:00",
+  "source_revision": "e57dd73ea9c9df880cf8b842b0a0a67c5fb540c3",
+  "dmg_sha256": "706e64e8bb400b639fa10a91e3a78f28ba3e985e797dff2dfc10df6af7d1e661",
+  "profile": "com.personal.commandcenter.qa.dmg-4b9e1a0fa0",
+  "normal_profile_accessed": false,
+  "app_login_used": false,
+  "api_keys_used": false,
+  "interactive_ui_automation_available": false,
+  "all_use_cases_passed": false,
+  "mounted": true,
+  "version": "0.5.0",
+  "executable_sha256": "a00830c64f396380d9d4a717932bdcfeae2137eac0066e4e34045a5e63870041",
+  "copied_executable_matches_dmg": true,
+  "signature_verified": true,
+  "applications_shortcut_verified": true,
+  "bootstrap": {
+    "batch": {
+      "at": "2026-11-17T13:53:24.937525+00:00",
+      "cancelled": false,
+      "failed": 0,
+      "refreshed": 35
+    },
+    "configured_sources": 43,
+    "auto_refresh_minutes": "30",
+    "live_item_count": 798,
+    "ordinary_item_count": 0,
+    "workspace_record_count": 0,
+    "enabled_account_flags": []
+  },
+  "sources": [
+    {
+      "stream": {
+        "enabled": true,
+        "id": "hf-trending",
+        "kind": "models",
+        "name": "Trending models",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "trendingScore",
+          "task": ""
+        },
+        "provider": "models",
+        "query": "",
+        "region": "world",
+        "topic": "ai"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:12.619733+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "hf-downloads",
+        "kind": "models",
+        "name": "Most downloaded models",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "downloads",
+          "task": ""
+        },
+        "provider": "models",
+        "query": "",
+        "region": "world",
+        "topic": "ai"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:18.765620+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "ollama-catalogue",
+        "kind": "models",
+        "name": "Ollama model catalogue",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "ollama",
+        "query": "",
+        "region": "world",
+        "topic": "ai"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:19.922033+00:00",
+        "count": 20,
+        "status": "ok"
+      },
+      "count": 20
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "github-top",
+        "kind": "repos",
+        "name": "Top public repositories",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "stars",
+          "task": ""
+        },
+        "provider": "github",
+        "query": "stars:>1000 archived:false",
+        "region": "world",
+        "topic": "code"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:12.515540+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "github-new",
+        "kind": "repos",
+        "name": "New repositories this month",
+        "options": {
+          "days": 30,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "github",
+        "query": "stars:>20 archived:false",
+        "region": "world",
+        "topic": "code"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:17.880113+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "robotics-repos",
+        "kind": "repos",
+        "name": "Robotics libraries",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "github",
+        "query": "topic:robotics archived:false",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:24.604403+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "robotics-papers",
+        "kind": "papers",
+        "name": "Robotics papers",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "arxiv",
+        "query": "cat:cs.RO",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:08.116931+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "robotics-news",
+        "kind": "news",
+        "name": "IEEE robotics news",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "rss",
+        "query": "https://spectrum.ieee.org/feeds/topic/robotics.rss",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:23.537434+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "robotics-models",
+        "kind": "models",
+        "name": "Robotics models",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "models",
+        "query": "robotics",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:24.936860+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "agri-news",
+        "kind": "news",
+        "name": "USDA research archive",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "rss",
+        "query": "https://www.ars.usda.gov/rss/?productName=Research%20News",
+        "region": "US",
+        "topic": "agriculture"
+      },
+      "health": null,
+      "count": 0
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agri-discussion",
+        "kind": "news",
+        "name": "Agri-tech discussions",
+        "options": {
+          "days": 30,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "date",
+          "task": ""
+        },
+        "provider": "news",
+        "query": "agriculture technology",
+        "region": "world",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:14.190818+00:00",
+        "count": 0,
+        "status": "ok"
+      },
+      "count": 0
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agritech-india",
+        "kind": "events",
+        "name": "AgriTech India events",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "events",
+        "query": "https://agritechindia.com/",
+        "region": "IN",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:07.087581+00:00",
+        "count": 1,
+        "status": "ok"
+      },
+      "count": 1
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agritechnica",
+        "kind": "events",
+        "name": "AGRITECHNICA calendar",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "calendar",
+        "query": "https://www.agritechnica.com/fileadmin/redaktion/downloads/2027/AGRITECHNICA_2027_The_world_s_leading_trade_fair_for_agricultural_machinery.ics",
+        "region": "world",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:08.013965+00:00",
+        "count": 1,
+        "status": "ok"
+      },
+      "count": 1
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "world-ag-expo",
+        "kind": "events",
+        "name": "World Ag Expo",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "events",
+        "query": "https://www.worldagexpo.com/",
+        "region": "US",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:24.861563+00:00",
+        "count": 1,
+        "status": "ok"
+      },
+      "count": 1
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "poker-news",
+        "kind": "news",
+        "name": "PokerNews headlines",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "rss",
+        "query": "https://www.pokernews.com/rss.php",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:21.298859+00:00",
+        "count": 20,
+        "status": "ok"
+      },
+      "count": 20
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "poker-wpt",
+        "kind": "events",
+        "name": "WPT tournament schedule",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "events",
+        "query": "https://www.worldpokertour.com/event/schedule",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:22.944987+00:00",
+        "count": 9,
+        "status": "ok"
+      },
+      "count": 9
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "poker-wsop",
+        "kind": "events",
+        "name": "WSOP tournament schedule",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "events",
+        "query": "https://www.wsop.com/schedule/",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:23.312680+00:00",
+        "count": 6,
+        "status": "ok"
+      },
+      "count": 6
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "poker-stars",
+        "kind": "events",
+        "name": "PokerStars live festivals",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "events",
+        "query": "https://www.pokerstarslive.com/",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:21.535726+00:00",
+        "count": 4,
+        "status": "ok"
+      },
+      "count": 4
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "poker-all",
+        "kind": "events",
+        "name": "Multi-organizer tournament calendar",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "events",
+        "query": "https://www.cardplayer.com/poker-tournaments",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:20.842623+00:00",
+        "count": 38,
+        "status": "ok"
+      },
+      "count": 38
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "stanford-lectures",
+        "kind": "videos",
+        "name": "Stanford Online lectures",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "youtube_feed",
+        "query": "UCBa5G_ESCn8Yd4vw5U-gIcg",
+        "region": "world",
+        "topic": "learning"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:23.791725+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "count": 15
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "mit-robotics-videos",
+        "kind": "videos",
+        "name": "MIT CSAIL research videos",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "youtube_feed",
+        "query": "UCBpxspUNl1Th33XbugiHJzw",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:12.455501+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "count": 15
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agri-videos",
+        "kind": "videos",
+        "name": "John Deere technology videos",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "youtube_feed",
+        "query": "@JohnDeere",
+        "region": "world",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:06.778666+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "count": 15
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "poker-videos",
+        "kind": "videos",
+        "name": "PokerStars videos",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "youtube_feed",
+        "query": "@PokerStars",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:22.506394+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "count": 15
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "ai-videos",
+        "kind": "videos",
+        "name": "Hugging Face videos",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "youtube_feed",
+        "query": "@huggingface",
+        "region": "world",
+        "topic": "ai"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:07.630898+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "count": 15
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "mit-lectures",
+        "kind": "videos",
+        "name": "MIT OpenCourseWare lectures",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "youtube_feed",
+        "query": "UCEBb1b_L6zDS3xTUrIALZOw",
+        "region": "world",
+        "topic": "learning"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:12.287317+00:00",
+        "count": 15,
+        "status": "ok"
+      },
+      "count": 15
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "robotics-reddit",
+        "kind": "social",
+        "name": "Reddit robotics",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "reddit",
+        "query": "robotics",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": null,
+      "count": 0
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "ai-reddit",
+        "kind": "social",
+        "name": "Reddit LocalLLaMA",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "reddit",
+        "query": "LocalLLaMA",
+        "region": "world",
+        "topic": "ai"
+      },
+      "health": null,
+      "count": 0
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "poker-reddit",
+        "kind": "social",
+        "name": "Reddit poker",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "reddit",
+        "query": "poker",
+        "region": "world",
+        "topic": "poker"
+      },
+      "health": null,
+      "count": 0
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "robotics-bluesky",
+        "kind": "social",
+        "name": "Bluesky robotics",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "bluesky",
+        "query": "robotics",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:08.368037+00:00",
+        "count": 28,
+        "status": "ok"
+      },
+      "count": 28
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agri-bluesky",
+        "kind": "social",
+        "name": "Bluesky agri-tech",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "bluesky",
+        "query": "agritech",
+        "region": "world",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:08.707523+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "robotics-mastodon",
+        "kind": "social",
+        "name": "Mastodon robotics",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "mastodon",
+        "query": "robotics",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:11.951137+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "ai-news",
+        "kind": "news",
+        "name": "AI community news",
+        "options": {
+          "days": 30,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "date",
+          "task": ""
+        },
+        "provider": "news",
+        "query": "artificial intelligence",
+        "region": "world",
+        "topic": "ai"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:19.751980+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "x-robotics",
+        "kind": "social",
+        "name": "X robotics search",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "x",
+        "query": "robotics -is:retweet",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": null,
+      "count": 0
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "linkedin",
+        "kind": "social",
+        "name": "LinkedIn source import",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "linkedin",
+        "query": "",
+        "region": "world",
+        "topic": "code"
+      },
+      "health": null,
+      "count": 0
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agfunder-news",
+        "kind": "news",
+        "name": "AgFunderNews agri-food technology",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "rss",
+        "query": "https://agfundernews.com/feed",
+        "region": "world",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:06.367252+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "agdaily-news",
+        "kind": "news",
+        "name": "AGDAILY agriculture news",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "rss",
+        "query": "https://www.agdaily.com/feed/",
+        "region": "US",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:09.140204+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "crossref-robotics",
+        "kind": "papers",
+        "name": "Crossref robotics research",
+        "options": {
+          "days": 90,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "crossref",
+        "query": "robotics",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:10.986588+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "epmc-agriculture",
+        "kind": "papers",
+        "name": "Europe PMC agricultural research",
+        "options": {
+          "days": 90,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "europepmc",
+        "query": "precision agriculture",
+        "region": "world",
+        "topic": "agriculture"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:11.205081+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "patent-index",
+        "kind": "papers",
+        "name": "Patent index \u2014 historical coverage",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "patents",
+        "query": "robot",
+        "region": "world",
+        "topic": "robotics"
+      },
+      "health": null,
+      "count": 0
+    },
+    {
+      "stream": {
+        "enabled": false,
+        "id": "india-schemes",
+        "kind": "news",
+        "name": "Official India agriculture announcements",
+        "options": {
+          "days": 90,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "schemes",
+        "query": "",
+        "region": "IN",
+        "topic": "agriculture"
+      },
+      "health": null,
+      "count": 0
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "app-charts-us",
+        "kind": "apps",
+        "name": "Top free iPhone apps \u00b7 US",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "apps",
+        "query": "us",
+        "region": "US",
+        "topic": "apps"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:07.776988+00:00",
+        "count": 50,
+        "status": "ok"
+      },
+      "count": 50
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "app-charts-india",
+        "kind": "apps",
+        "name": "Top free iPhone apps \u00b7 India",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "apps",
+        "query": "in",
+        "region": "IN",
+        "topic": "apps"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:13.944841+00:00",
+        "count": 50,
+        "status": "ok"
+      },
+      "count": 50
+    },
+    {
+      "stream": {
+        "enabled": true,
+        "id": "mcp-public-registry",
+        "kind": "tools",
+        "name": "Public MCP tools",
+        "options": {
+          "days": 0,
+          "duration": "",
+          "language": "",
+          "license": "",
+          "region": "",
+          "sort": "",
+          "task": ""
+        },
+        "provider": "mcp",
+        "query": "",
+        "region": "world",
+        "topic": "apps"
+      },
+      "health": {
+        "checked_at": "2026-11-17T13:53:12.144809+00:00",
+        "count": 30,
+        "status": "ok"
+      },
+      "count": 30
+    }
+  ],
+  "data_quality_problems": [
+    {
+      "source": "robotics-bluesky",
+      "id": "bluesky:134583c4b11e72bc6737d2009d9ec56b67d6c63a12ef4e4686f25256fc9c971a",
+      "issue": "missing identity/title or invalid public link"
+    },
+    {
+      "source": "agri-bluesky",
+      "id": "bluesky:d664721aafa2da33c215f4c571f275592ec0d49b6536132125825fe068ac1f5f",
+      "issue": "missing identity/title or invalid public link"
+    },
+    {
+      "source": "agri-bluesky",
+      "id": "bluesky:79183309ff102d1df82c064943017d5bfbc1635c505e2607e8e4d2d39e521e7f",
+      "issue": "missing identity/title or invalid public link"
+    }
+  ],
+  "superseded_by": "testing/final-dmg-native-qa.json",
+  "resolution": "Article/media-only Bluesky and Mastodon cards now retain attached metadata or an explicit attributed no-text caption; saved-record regression passes."
+}

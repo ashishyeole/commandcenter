@@ -180,7 +180,7 @@
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 100,
       "in_scope": true,
-      "verification": "Public GitHub adapters and Python/MIT filters pass native live reads; top/recent/robotics caches also populated in installed Windows. Mac save/in-app README/project linking and unified keyword search pass."
+      "verification": "Public GitHub adapters and Python/MIT filters pass native live reads; top/recent/robotics caches also populated in installed Windows. Mac save/in-app README/project linking and unified keyword search pass. Final 5bde681 exact-DMG process refreshed all 35 enabled sources; actual caches/filter/citation behavior passed. See testing/final-dmg-native-qa.json and testing/final-dmg-feed-behavior.json. Interactive UI not repeated."
     },
     {
       "id": "T011",
@@ -197,7 +197,7 @@
       "evidence": "apps/desktop/src/ModelIntelligence.tsx",
       "original_prd_percent": 75,
       "in_scope": true,
-      "verification": "Hugging Face and Ollama metadata pass native public reads on Mac/Windows; model task/library/license filters pass. Selected metadata displayed natively. No weights downloaded or local inference tested."
+      "verification": "Hugging Face and Ollama metadata pass native public reads on Mac/Windows; model task/library/license filters pass. Selected metadata displayed natively. No weights downloaded or local inference tested. Final 5bde681 exact-DMG process refreshed all 35 enabled sources; actual caches/filter/citation behavior passed. See testing/final-dmg-native-qa.json and testing/final-dmg-feed-behavior.json. Interactive UI not repeated."
     },
     {
       "id": "T012",
@@ -220,7 +220,7 @@
       ],
       "owner_actions": [],
       "coding_remaining": [],
-      "verification": "arXiv, publisher RSS, Crossref and Europe PMC return actual native live data; installed Windows also populated them. Historical patents and failed PIB announcements remain paused."
+      "verification": "arXiv, publisher RSS, Crossref and Europe PMC return actual native live data; installed Windows also populated them. Historical patents and failed PIB announcements remain paused. Final 5bde681 exact-DMG process refreshed all 35 enabled sources; actual caches/filter/citation behavior passed. See testing/final-dmg-native-qa.json and testing/final-dmg-feed-behavior.json. Interactive UI not repeated."
     },
     {
       "id": "T013",
@@ -237,7 +237,7 @@
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 75,
       "in_scope": true,
-      "verification": "Six starter public channels and @StanfordOnline direct refresh work without key; 15 uploads displayed. Creator research now consumes public RSS IDs. Earlier Stanford playback QA is revision-specific. Optional API keyword search needs a key and remains unverified."
+      "verification": "Six starter public channels and @StanfordOnline direct refresh work without key; 15 uploads displayed. Creator research now consumes public RSS IDs. Earlier Stanford playback QA is revision-specific. Optional API keyword search needs a key and remains unverified. Final 5bde681 exact-DMG process refreshed all 35 enabled sources; actual caches/filter/citation behavior passed. See testing/final-dmg-native-qa.json and testing/final-dmg-feed-behavior.json. Interactive UI not repeated."
     },
     {
       "id": "T014",
@@ -262,7 +262,7 @@
         "Provide licensed data only if this optional feature is wanted"
       ],
       "coding_remaining": [],
-      "verification": "Source 36350b0 native live pipeline returned 50 ranked US and 50 India entries with matching caches. Fresh isolated Mac startup passed 35/35 public reads; actual chart cards and correct source/storefront metadata rendered. Five Apple regressions passed. See testing/apple-live-sources.json and testing/apple-native-qa.json. Licensed app-market datasets remain optional. Exact installed Windows audit 44039054861 also passed both 50-entry charts and all 35 public reads (800 real entries, zero failures), with matching installer hash."
+      "verification": "Actual final DMG contains 50 correctly ranked US and 50 India Apple entries. Per-storefront native IDs/selection/read state, strict declared-region filtering, apps/tools source editing and canonical Apple deduplication pass native/frontend/data tests. Earlier native UI evidence is historical; current UI automation unavailable. Licensed data remains optional."
     },
     {
       "id": "T015",
@@ -279,7 +279,7 @@
       "evidence": "apps/desktop/src-tauri/src/connectors.rs",
       "original_prd_percent": 100,
       "in_scope": true,
-      "verification": "Fresh auto-refresh and a due automatic cycle observed. Transient retry, quotas/cache-failure rules tested. Stop retained cache; subsequent current Mac refresh recovered 40/40 sources including five added searches. Every scheduling/race condition is not verified."
+      "verification": "Fresh auto-refresh and a due automatic cycle observed. Transient retry, quotas/cache-failure rules tested. Stop retained cache; subsequent current Mac refresh recovered 40/40 sources including five added searches. Every scheduling/race condition is not verified. Final 5bde681 exact-DMG process refreshed all 35 enabled sources; actual caches/filter/citation behavior passed. See testing/final-dmg-native-qa.json and testing/final-dmg-feed-behavior.json. Interactive UI not repeated."
     },
     {
       "id": "T016",
@@ -579,7 +579,7 @@
       "evidence": "crates/core/src/sync.rs",
       "original_prd_percent": 100,
       "in_scope": true,
-      "verification": "Current native document creation/save plus workspace selected-file attachment/safe preview and exact-byte restart checks pass. Rich Markdown/attachment boundaries have separate earlier/automated evidence."
+      "verification": "Current native document creation/save plus workspace selected-file attachment/safe preview and exact-byte restart checks pass. Rich Markdown/attachment boundaries have separate earlier/automated evidence. Current native-core public-data audit saved 798 real entries, fourteen cited documents, linked workspace/task/attachment and backup/reopen workflows; see testing/final-public-workflows.json. This is not a new UI/dialog exercise."
     },
     {
       "id": "T032",
@@ -810,7 +810,7 @@
       "evidence": "apps/desktop/src/WorkspaceTools.tsx",
       "original_prd_percent": 75,
       "in_scope": true,
-      "verification": "Current cached real robotics research saved as an evidence-linked local idea. Generated cited document and project links passed; no code/prototype executed."
+      "verification": "Current cached real robotics research saved as an evidence-linked local idea. Generated cited document and project links passed; no code/prototype executed. Current native-core public-data audit saved 798 real entries, fourteen cited documents, linked workspace/task/attachment and backup/reopen workflows; see testing/final-public-workflows.json. This is not a new UI/dialog exercise."
     },
     {
       "id": "T045",
@@ -1078,7 +1078,7 @@
       "evidence": "docs/ATTACHMENT-SYNC.md",
       "original_prd_percent": 100,
       "in_scope": true,
-      "verification": "Native selected-file upload and safe text preview (85-byte isolated fixture) pass and exact text survives restart. Automated attachment hashes/version/scope/backup tests pass. External PDF/OCR tools remain optional."
+      "verification": "Native selected-file upload and safe text preview (85-byte isolated fixture) pass and exact text survives restart. Automated attachment hashes/version/scope/backup tests pass. External PDF/OCR tools remain optional. Current native-core public-data audit saved 798 real entries, fourteen cited documents, linked workspace/task/attachment and backup/reopen workflows; see testing/final-public-workflows.json. This is not a new UI/dialog exercise."
     },
     {
       "id": "T059",
@@ -1213,7 +1213,7 @@
       "evidence": "crates/core/src/archive.rs",
       "original_prd_percent": 100,
       "in_scope": true,
-      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established. Current native-core public-data audit saved 798 real entries, fourteen cited documents, linked workspace/task/attachment and backup/reopen workflows; see testing/final-public-workflows.json. This is not a new UI/dialog exercise."
     },
     {
       "id": "T066",
@@ -1230,7 +1230,7 @@
       "evidence": "crates/core/src/archive.rs",
       "original_prd_percent": 100,
       "in_scope": true,
-      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established."
+      "verification": "Automated build/regression evidence is available. Full end-to-end acceptance of this task is not established. Current native-core public-data audit saved 798 real entries, fourteen cited documents, linked workspace/task/attachment and backup/reopen workflows; see testing/final-public-workflows.json. This is not a new UI/dialog exercise."
     },
     {
       "id": "T067",
@@ -1247,7 +1247,7 @@
       "evidence": "apps/desktop/src-tauri/src/main.rs",
       "original_prd_percent": 75,
       "in_scope": true,
-      "verification": "Repository tests and frontend/native compilation recorded in TEST-REPORT.html. New UI paths have not received native acceptance."
+      "verification": "Repository tests and frontend/native compilation recorded in TEST-REPORT.html. New UI paths have not received native acceptance. Current native-core public-data audit saved 798 real entries, fourteen cited documents, linked workspace/task/attachment and backup/reopen workflows; see testing/final-public-workflows.json. This is not a new UI/dialog exercise."
     },
     {
       "id": "T068",
@@ -1495,13 +1495,13 @@
       "percent": 100,
       "weight": 2,
       "status": "Implemented in source",
-      "implemented": "Windows NSIS installer built at final source 36350b0. SHA-matched EXE silently installed, created a native window, loaded live public feeds and uninstalled (exit 0).",
+      "implemented": "Final source 5bde681 Windows NSIS installer passed matching package/build checks, silent install/native-window/uninstall and fresh no-account 35/35 public bootstrap. Local copy SHA-256 matches CI.",
       "remaining": "No known code gap in the installer-delivery task. Broader feature/interactive-hook acceptance remains verification work; commercial signing is excluded from current scope.",
-      "notes": "Unsigned personal-use release installer, version 0.5.0 x64. Current evidence: testing/windows-package-qa.json, testing/apple-package-ci.json and testing/apple-windows-bootstrap.json. Full feature acceptance is tracked separately.",
+      "notes": "Version 0.5.0 x64, unsigned personal build. Evidence: testing/windows-package-qa.json, testing/final-package-ci.json and testing/final-windows-bootstrap.json.",
       "evidence": "apps/desktop/src-tauri/windows/hooks.nsh",
       "original_prd_percent": 50,
       "in_scope": true,
-      "verification": "Exact-source installed audit: 35/35 public streams, 800 real entries, 50 correctly ranked US/India chart entries each, no login/keys or seeded personal records. Full Windows feature UI remains unverified."
+      "verification": "Exact installed Windows audit 44101384980 fetched 800 real entries from all 35 sources with zero failures, no login/key or seeded records. Both Apple charts have 50 ranked entries. Full Windows feature UI remains unverified."
     },
     {
       "id": "T082",
@@ -1547,8 +1547,8 @@
       "percent": 50,
       "weight": 5,
       "status": "Partially implemented",
-      "implemented": "117 Rust target/test executions (115 distinct) pass at 36350b0, including five Apple regressions; live US/India chart pipeline and actual fresh isolated Mac chart display/cache pass. Installer and CI evidence is recorded separately. Both Mac/Windows checks and packaging passed; installed Windows no-account charts and 35/35 live sources passed with matching installer SHA.",
-      "remaining": "Complete Windows feature UI, physical mobile devices, real private account integrations, scheduled OS delivery, assistive technology and broader performance/security acceptance remain unverified. No code-only gap is asserted by this acceptance row.",
+      "implemented": "120 workspace executions (118 distinct), 79 frontend assertions, four explicit native live checks, exact packaged Mac no-account refresh/data/restart audit and real public-data native-core save/document/workspace/attachment/backup workflows pass. Final Mac/Windows checks and packaging passed at 5bde681; exact Windows installed public startup also passed.",
+      "remaining": "Current interactive native UI could not be repeated because the automation tool is unavailable. Full Windows feature UI, physical mobile devices, OS permissions/notifications and configured private providers remain separately unverified.",
       "notes": "Isolated tests only; no real account or normal profile used. Development signing remains distinct from excluded production release work.",
       "evidence": "docs/TEST-REPORT.html",
       "original_prd_percent": 50,
@@ -1856,7 +1856,8 @@
     "GOOGLE-MESSAGE-PREVIEWS.md",
     "APPEARANCE.md",
     "DISCOVERY-AGGREGATION.md",
-    "REMAINING-CODE-DELIVERY.md"
+    "REMAINING-CODE-DELIVERY.md",
+    "DMG-ACCEPTANCE.md"
   ],
   "blockers": [
     {
@@ -1866,7 +1867,7 @@
     },
     {
       "title": "Windows and mobile device verification",
-      "detail": "Final source 36350b0 Windows install/native-window/uninstall and no-account public bootstrap passed: 35/35 sources, 800 real entries, 50 US and 50 India chart rows each. Complete Windows feature UI and physical mobile-device testing remain open; production signing/store release is excluded.",
+      "detail": "Final source 5bde681 Windows installer/native-window/uninstall and 35/35 no-account bootstrap passed (800 real entries, zero failures; both 50-entry charts). Full Windows feature UI and real mobile devices remain open. Current Mac interactive UI automation unavailable. Production signing excluded.",
       "tasks": "T079, T081"
     },
     {
@@ -1883,10 +1884,15 @@
       "title": "Source availability and optional datasets",
       "detail": "Apple US/India chart transport path is repaired: native/Mac and exact installed Windows checks have 50 ranked entries each; both fresh desktop startups passed 35/35 public reads. Earlier old-host 502/transport failure is retained as history. PIB RSS remains paused after DNS failure; patent index is historical. Proprietary market/custom price datasets need authorized sources. Provider uptime remains external.",
       "tasks": "T012, T014, T019, T047"
+    },
+    {
+      "title": "Current interactive UI verification",
+      "detail": "The exact DMG passed runtime/data/restart and automated native-core/frontend checks. Native UI automation was unavailable in this session, so every form/dialog/media player/keyboard/theme/assistive-technology/OS-permission interaction is not newly certified. Earlier selected UI evidence keeps its source revision.",
+      "tasks": "Current acceptance; not a new code gap"
     }
   ],
   "scope": "Personal local command center: discover, monitor, organize, compare and track. No local LLM/model downloads, robotics execution, prototype execution or production commercialization.",
-  "desktop_source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
+  "desktop_source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
   "resolved_blockers": [
     {
       "title": "New native Mac UI checks",
@@ -1906,32 +1912,37 @@
       "title": "Apple US charts transport failure",
       "detail": "Source 36350b0 replaces the unreliable primary with Apple-owned iTunes RSS plus bounded official fallback. Live native and fresh Mac UI/cache checks returned 50 US and 50 India ranked entries without login/key. Prior failed source 50bffb5 is preserved in the evidence.",
       "evidence": "testing/apple-live-sources.json"
+    },
+    {
+      "title": "Public card/editor/storefront defects found by exact-DMG audit",
+      "detail": "Added safe development QA profiles to test the actual DMG binary. Fixed media/article-only social cards, missing apps/tools editor kinds, region precedence, cross-storefront IDs/read state and Apple feed alias saved duplicates. First failing artifact evidence is retained; exact final DMG data/restart and native-core workflows pass.",
+      "evidence": "testing/final-dmg-native-qa.json"
     }
   ],
   "online_readiness": {
-    "source_revision": "2cb141dd36bb081a6845ed76112b4b973cfa54cc",
+    "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
     "public_sources_passed": 35,
     "public_sources_enabled": 35,
-    "raw_live_results": 803,
-    "fresh_gui_unique_results": 791,
+    "raw_live_results": 798,
+    "fresh_gui_unique_results": null,
     "app_login_required": false,
     "automatic_first_launch_refresh": true,
     "all_features_verified": false,
-    "evidence": "testing/online-live-sources.json",
-    "notes": "Historical native-source/MCP audit at 2cb141d is retained with its original evidence. Current chart-specific source 36350b0 uses iTunes RSS plus bounded official fallback; fresh Mac startup passed 35/35 without login/key. Optional private services remain separate.",
+    "evidence": "testing/final-dmg-native-qa.json",
+    "notes": "Exact current DMG process fetched 35/35 sources without login/key, validated card data and preserved caches/off policy after restart. Data and native-core workflows passed separately. Interactive UI automation unavailable; old UI evidence is historical, not a current all-feature claim.",
     "windows_installed_sources_passed": 35,
     "windows_installed_sources_enabled": 35,
     "windows_live_items": 800,
-    "windows_evidence": "testing/online-windows-bootstrap.json",
+    "windows_evidence": "testing/final-windows-bootstrap.json",
     "windows_public_sources_passed": 35,
-    "windows_bootstrap_evidence": "testing/online-windows-bootstrap.json",
-    "windows_source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
+    "windows_bootstrap_evidence": "testing/final-windows-bootstrap.json",
+    "windows_source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
     "windows_failed_sources": 0,
-    "windows_failure_detail": "Resolved in 36350b0: installed app loads 50 US and 50 India chart entries; all 35 starter reads succeeded. Earlier failed Windows run retained at online-windows-bootstrap-50bffb5.json.",
-    "mac_source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
+    "windows_failure_detail": "Final exact installed Windows package passed 35/35 sources with zero failures; earlier failed transport run remains historical.",
+    "mac_source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
     "mac_public_sources_passed": 35,
-    "mac_live_items": 800,
-    "mac_evidence": "testing/apple-native-qa.json"
+    "mac_live_items": 798,
+    "mac_evidence": "testing/final-dmg-native-qa.json"
   },
   "business_lookup": {
     "source_revision": "50bffb5ecc2ac927aca77c956009c4dfbd4dab45",
@@ -1948,18 +1959,36 @@
     "global_provider": "https://photon.komoot.io/reverse"
   },
   "apple_charts": {
-    "source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
+    "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
     "account_required": false,
     "api_key_required": false,
     "us_live_results": 50,
     "india_live_results": 50,
-    "mac_ui_passed": true,
-    "native_live_evidence": "testing/apple-live-sources.json",
-    "mac_evidence": "testing/apple-native-qa.json",
+    "mac_ui_passed": false,
+    "native_live_evidence": "testing/final-live-apple-sources.json",
+    "mac_evidence": "testing/final-dmg-native-qa.json",
     "known_code_only_gaps": [],
     "provider_limits": "Two Apple-owned public endpoints, maximum 50 per storefront; provider uptime remains external.",
     "windows_installed_passed": true,
-    "windows_evidence": "testing/apple-windows-bootstrap.json",
-    "windows_installer_sha256": "fb892ebd5354f8332fe898a545a98d3e650d2887832fa97f384b8854079e2cdf"
+    "windows_evidence": "testing/final-windows-bootstrap.json",
+    "windows_installer_sha256": "9349e7e67e4f2bd0e1720d8c940c5925a312cc4da876e64b5c5728e1aad4cf15",
+    "mac_packaged_process_and_data_passed": true,
+    "notes": "50 US/50 India ranked entries in actual DMG; frontend/native identity, storefront and saved-link fixes pass. Earlier source 36350b0 had selected UI evidence; UI not repeated here."
+  },
+  "packaged_mac_audit": {
+    "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+    "dmg_sha256": "47b6fb0cb7e97a1637fc78f240c95a72bc7d619d56ea7c112ef9699f3796bf0a",
+    "public_sources_passed": 35,
+    "public_sources_enabled": 35,
+    "real_entries": 798,
+    "normal_profile_accessed": false,
+    "app_login_required": false,
+    "api_key_required": false,
+    "restart_and_cached_off_policy_passed": true,
+    "data_quality_passed": true,
+    "native_public_workflows_passed": true,
+    "interactive_ui_retested": false,
+    "ui_limit": "Native UI automation unavailable in current session; earlier UI acceptance remains tied to its own revision.",
+    "evidence": "testing/final-dmg-native-qa.json"
   }
 }

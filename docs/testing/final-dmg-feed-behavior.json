@@ -1,0 +1,52 @@
+{
+  "checked_at": "2026-11-17T14:06:55.547Z",
+  "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+  "dmg_sha256": "47b6fb0cb7e97a1637fc78f240c95a72bc7d619d56ea7c112ef9699f3796bf0a",
+  "public_rows": 798,
+  "aggregated_rows": 798,
+  "visible_current_rows": 798,
+  "unique_card_ids": true,
+  "by_topic": {
+    "ai": 125,
+    "code": 60,
+    "robotics": 223,
+    "agriculture": 138,
+    "poker": 92,
+    "learning": 30,
+    "apps": 130
+  },
+  "by_kind": {
+    "models": 110,
+    "repos": 90,
+    "news": 140,
+    "papers": 90,
+    "videos": 90,
+    "social": 88,
+    "events": 60,
+    "apps": 100,
+    "tools": 30
+  },
+  "by_provider": {
+    "models": 90,
+    "ollama": 20,
+    "github": 90,
+    "arxiv": 30,
+    "rss": 110,
+    "events": 60,
+    "youtube": 90,
+    "bluesky": 58,
+    "mastodon": 30,
+    "news": 30,
+    "crossref": 30,
+    "europepmc": 30,
+    "apps": 100,
+    "mcp": 30
+  },
+  "us_chart_count": 50,
+  "india_chart_count": 50,
+  "reading_selection_and_saved_filters_passed": true,
+  "all_sort_modes_retained_rows": true,
+  "citation_document_providers": 14,
+  "bounded_saved_titles_passed": true,
+  "interactive_ui_exercised": false
+}

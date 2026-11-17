@@ -1,65 +1,65 @@
 {
-  "source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
-  "generated_at": "2026-11-17T07:32:20.086359+00:00",
+  "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+  "generated_at": "2026-11-17T14:19:50.396360+00:00",
   "all_use_cases_verified": false,
   "overall_operational_percent": null,
-  "method": "Evidence-based statuses. Source completion percentages are separate; no aggregate operational percentage is invented for untested/external cases. Earlier UI evidence explicitly names its own revision. Apple chart rows were rechecked at 36350b0; other cases retain their recorded earlier evidence and limits.",
+  "method": "Current pass tested the exact DMG process/caches/restart and automated native-core/frontend workflows, with no accounts/keys or real profile. Interactive UI automation unavailable, so prior UI evidence remains historical and revision-specific. 35 enabled public starters passed; eight paused/access-limited sources and optional private services are not presented as working no-key integrations.",
   "cases": [
     {
       "id": "UC01",
       "use_case": "Fresh installed Mac/Windows no-login startup",
-      "status": "PASS \u00b7 native + automated",
+      "status": "PASS \u00b7 exact Mac DMG process/cache/restart",
       "dependencies": "None beyond internet",
-      "evidence_and_limits": "An empty isolated profile configured public sources and began fetching without Load, login, keys or seeded records. Existing off/custom/restored policies are preserved. Installed Windows EXE also populated a fresh profile with 799 live items from all 35 sources, no account/keys or seeded personal data."
+      "evidence_and_limits": "Exact 5bde681 DMG mounted, signature/hash verified and copied unchanged. Fresh isolated app profile fetched 35/35 public streams and 798 real entries, no login/key/seeded records. Termination/relaunch preserved caches and explicit off policy. No new interactive UI acceptance. final-dmg-native-qa.json."
     },
     {
       "id": "UC02",
       "use_case": "GitHub repositories and native filters",
       "status": "PASS \u00b7 live + UI",
       "dependencies": "Public GitHub API availability / anonymous quota",
-      "evidence_and_limits": "Top and recent repositories plus robotics Python/MIT filtering returned real records. Saving and in-app README reading passed."
+      "evidence_and_limits": "Top and recent repositories plus robotics Python/MIT filtering returned real records. Saving and in-app README reading passed. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session."
     },
     {
       "id": "UC03",
       "use_case": "Hugging Face models and filters",
       "status": "PASS \u00b7 live + UI",
       "dependencies": "Public Hugging Face API",
-      "evidence_and_limits": "Trending/download metadata plus task/library/license filters passed; visible card license, task, library and metrics inspected. No weights downloaded."
+      "evidence_and_limits": "Trending/download metadata plus task/library/license filters passed; visible card license, task, library and metrics inspected. No weights downloaded. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session."
     },
     {
       "id": "UC04",
       "use_case": "Ollama catalogue",
       "status": "PASS \u00b7 live native",
       "dependencies": "Public Ollama catalogue",
-      "evidence_and_limits": "20 real catalogue metadata entries. No local runtime or download is needed."
+      "evidence_and_limits": "20 real catalogue metadata entries. No local runtime or download is needed. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session."
     },
     {
       "id": "UC05",
       "use_case": "Robotics news, papers, libraries and videos",
       "status": "PASS \u00b7 live + UI",
       "dependencies": "Public publishers / arXiv / GitHub / YouTube",
-      "evidence_and_limits": "Real topic panels, publisher papers/videos and research scoring used fetched caches; sourced research idea saved."
+      "evidence_and_limits": "Real topic panels, publisher papers/videos and research scoring used fetched caches; sourced research idea saved. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session."
     },
     {
       "id": "UC06",
       "use_case": "Agriculture developments and India events",
       "status": "PASS \u00b7 live + UI",
       "dependencies": "Public publishers / organizers",
-      "evidence_and_limits": "Current publisher data and AgriTech India 2027 dates/venue/URL displayed. US/India filters use reported locations; unknown venues remain worldwide."
+      "evidence_and_limits": "Current publisher data and AgriTech India 2027 dates/venue/URL displayed. US/India filters use reported locations; unknown venues remain worldwide. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session."
     },
     {
       "id": "UC07",
       "use_case": "Poker current/upcoming tournaments",
       "status": "PASS \u00b7 live + UI",
       "dependencies": "WPT, WSOP, PokerStars, CardPlayer availability",
-      "evidence_and_limits": "Four real organizer/schedule adapters passed. Fresh UI tracked Grand Victoria with official URL and venue. US filter yielded events; India had no matching upcoming listing. Coverage is not exhaustive."
+      "evidence_and_limits": "Four real organizer/schedule adapters passed. Fresh UI tracked Grand Victoria with official URL and venue. US filter yielded events; India had no matching upcoming listing. Coverage is not exhaustive. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session."
     },
     {
       "id": "UC08",
       "use_case": "Keyless YouTube channel refresh",
       "status": "PASS \u00b7 live + UI",
       "dependencies": "Public channel feeds; no key",
-      "evidence_and_limits": "Final Mac build refreshed @StanfordOnline and displayed 15 current uploads without account or API key."
+      "evidence_and_limits": "Final Mac build refreshed @StanfordOnline and displayed 15 current uploads without account or API key. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session."
     },
     {
       "id": "UC09",
@@ -73,7 +73,7 @@
       "use_case": "Public social feeds",
       "status": "PASS \u00b7 live native",
       "dependencies": "Bluesky/Mastodon public services",
-      "evidence_and_limits": "Both public source adapters returned records without account credentials. Social content remains attributed/unverified."
+      "evidence_and_limits": "Both public source adapters returned records without account credentials. Social content remains attributed/unverified. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session."
     },
     {
       "id": "UC11",
@@ -94,7 +94,7 @@
       "use_case": "Crossref and Europe PMC research",
       "status": "PASS \u00b7 live native",
       "dependencies": "Public scholarly APIs",
-      "evidence_and_limits": "Both newly enabled paper feeds returned 30 actual metadata/abstract records."
+      "evidence_and_limits": "Both newly enabled paper feeds returned 30 actual metadata/abstract records. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session."
     },
     {
       "id": "UC14",
@@ -106,9 +106,9 @@
     {
       "id": "UC15",
       "use_case": "Public US/India app charts",
-      "status": "PASS \u00b7 live native + Mac UI + installed Windows",
+      "status": "PASS \u00b7 exact DMG data + automated",
       "dependencies": "Public Apple iTunes RSS; Marketing Tools fallback. No login/key.",
-      "evidence_and_limits": "Source 36350b0: 50 actual US and 50 India results through native hub/cache; fresh Mac startup rendered real ranked chart cards and source metadata. Five regressions cover gateway fallback, refusals/quota pauses and strict parser/identity. Prior Marketing Tools transport failure is resolved by primary endpoint change; provider uptime remains external. See apple-live-sources.json and apple-native-qa.json. Exact installed Windows 36350b0 also returned 50 per storefront and passed 35/35 public reads (800 entries, zero failures), no login/key. See apple-windows-bootstrap.json."
+      "evidence_and_limits": "Final DMG has 50 US/50 India correctly ranked Apple entries. Region-specific IDs/read state and endpoint-alias saved deduplication pass. Earlier 36350b0 native UI evidence is retained; no current UI tool. See final-dmg-native-qa.json and final-dmg-feed-behavior.json."
     },
     {
       "id": "UC16",
@@ -122,7 +122,7 @@
       "use_case": "MCP public catalogue and details",
       "status": "PASS \u00b7 live + targeted regression",
       "dependencies": "Public official registry; no key",
-      "evidence_and_limits": "Found version/metadata collision during UI QA; latest-version filtering, version-specific identities/source URLs and nested JSON details fix it. Final native live assertions require matching metric/version/source."
+      "evidence_and_limits": "Found version/metadata collision during UI QA; latest-version filtering, version-specific identities/source URLs and nested JSON details fix it. Final native live assertions require matching metric/version/source. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session."
     },
     {
       "id": "UC18",
@@ -136,42 +136,42 @@
       "use_case": "Unified public keyword search",
       "status": "PASS \u00b7 native UI",
       "dependencies": "Five public providers / anonymous quotas",
-      "evidence_and_limits": "Searching robotics created five real sources and returned 150 records across GitHub, Hugging Face, arXiv, Hacker News and Bluesky; all five refreshes succeeded."
+      "evidence_and_limits": "Searching robotics created five real sources and returned 150 records across GitHub, Hugging Face, arXiv, Hacker News and Bluesky; all five refreshes succeeded. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session."
     },
     {
       "id": "UC20",
       "use_case": "Filter, sort, read state and deduplication",
-      "status": "PASS \u00b7 automated + selected UI",
+      "status": "PASS \u00b7 current real cache + regressions",
       "dependencies": "None for cached data",
-      "evidence_and_limits": "23 feed assertions cover deduplication, video canonicalization, region/content/text/date/read filters, ended/cancelled events, citations and nested metadata. Selected region/content filters inspected natively; not every UI combination. Native Stop retained cached results; a subsequent full refresh recovered all 40/40 sources (876 combined entries, including five added search sources)."
+      "evidence_and_limits": "79 frontend assertions; all actual DMG topics/content/providers, card ID uniqueness, US/India chart filters, reading/saved state, canonical deduplication, sort retention and citations pass. Fixed editor content kinds and explicit-region precedence. Not every interactive UI combination was clicked."
     },
     {
       "id": "UC21",
       "use_case": "Save source / create cited document",
-      "status": "PASS \u00b7 native UI",
+      "status": "PASS \u00b7 current native core; earlier UI",
       "dependencies": "None",
-      "evidence_and_limits": "Saved live repository and event. Created and saved a research document from two sources with original URLs, observations, fetch times and provenance."
+      "evidence_and_limits": "Saved live repository and event. Created and saved a research document from two sources with original URLs, observations, fetch times and provenance. Current real public-data native-core audit saved 798 entries, fourteen cited documents, 28 workspace links, task recurrence, original attachment/index/trash/restore, FTS/reopen and plain/encrypted duplicate-safe backups. Temporary fixtures only, not current UI/dialog clicks. final-public-workflows.json."
     },
     {
       "id": "UC22",
       "use_case": "Create linked research workspace",
-      "status": "PASS \u00b7 native UI",
+      "status": "PASS \u00b7 current native core; earlier UI",
       "dependencies": "None",
-      "evidence_and_limits": "Created QA live public research workspace; selected repository and event remained linked. Saved a linked follow-up task and completed it."
+      "evidence_and_limits": "Created QA live public research workspace; selected repository and event remained linked. Saved a linked follow-up task and completed it. Current real public-data native-core audit saved 798 entries, fourteen cited documents, 28 workspace links, task recurrence, original attachment/index/trash/restore, FTS/reopen and plain/encrypted duplicate-safe backups. Temporary fixtures only, not current UI/dialog clicks. final-public-workflows.json."
     },
     {
       "id": "UC23",
       "use_case": "Attach files and safe preview",
-      "status": "PASS \u00b7 native UI + automated",
+      "status": "PASS \u00b7 current native core; earlier UI",
       "dependencies": "Only file selected by owner; PDF/OCR tools optional",
-      "evidence_and_limits": "Native picker attached an 85-byte synthetic text file to the isolated workspace; safe preview showed expected content. Peer/backup byte-integrity tests pass. No private files scanned."
+      "evidence_and_limits": "Native picker attached an 85-byte synthetic text file to the isolated workspace; safe preview showed expected content. Peer/backup byte-integrity tests pass. No private files scanned. Current real public-data native-core audit saved 798 entries, fourteen cited documents, 28 workspace links, task recurrence, original attachment/index/trash/restore, FTS/reopen and plain/encrypted duplicate-safe backups. Temporary fixtures only, not current UI/dialog clicks. final-public-workflows.json."
     },
     {
       "id": "UC24",
       "use_case": "Ordinary notes, FTS, tasks, recurrence and persistence",
-      "status": "PASS \u00b7 automated + selected UI",
+      "status": "PASS \u00b7 current native core; earlier UI",
       "dependencies": "None",
-      "evidence_and_limits": "Storage tests cover persistence/search/recurrence/stale edits. Current UI saved document and task; earlier isolated UI verified pin/search/restart and month-end recurrence. OS reminder delivery is separately unverified."
+      "evidence_and_limits": "Storage tests cover persistence/search/recurrence/stale edits. Current UI saved document and task; earlier isolated UI verified pin/search/restart and month-end recurrence. OS reminder delivery is separately unverified. Current real public-data native-core audit saved 798 entries, fourteen cited documents, 28 workspace links, task recurrence, original attachment/index/trash/restore, FTS/reopen and plain/encrypted duplicate-safe backups. Temporary fixtures only, not current UI/dialog clicks. final-public-workflows.json."
     },
     {
       "id": "UC25",
@@ -211,9 +211,9 @@
     {
       "id": "UC30",
       "use_case": "Portable and encrypted backups / selective restore",
-      "status": "PASS \u00b7 automated + earlier UI",
+      "status": "PASS \u00b7 current native core; earlier UI",
       "dependencies": "Local destination / recovery password",
-      "evidence_and_limits": "ZIP, encrypted and streaming archives, wrong passwords, tampering, conflicts, field-only restores and original attachments covered. Prior native title-only restore preserved edited body across restart."
+      "evidence_and_limits": "ZIP, encrypted and streaming archives, wrong passwords, tampering, conflicts, field-only restores and original attachments covered. Prior native title-only restore preserved edited body across restart. Current real public-data native-core audit saved 798 entries, fourteen cited documents, 28 workspace links, task recurrence, original attachment/index/trash/restore, FTS/reopen and plain/encrypted duplicate-safe backups. Temporary fixtures only, not current UI/dialog clicks. final-public-workflows.json."
     },
     {
       "id": "UC31",
@@ -262,14 +262,14 @@
       "use_case": "Themes, keyboard navigation and accessibility",
       "status": "PARTIAL \u00b7 UI + automated",
       "dependencies": "None; assistive-technology verification still required",
-      "evidence_and_limits": "Four themes, image-only draggable assistant, keyboard tabs and stored display preferences are implemented. Automated theme/position tests and selected native screenshots pass; complete screen-reader/contrast acceptance not established."
+      "evidence_and_limits": "Four themes, image-only draggable assistant, keyboard tabs and stored display preferences are implemented. Automated theme/position tests and selected native screenshots pass; complete screen-reader/contrast acceptance not established. Current native UI automation unavailable; earlier theme/keyboard evidence is not a new final-DMG interaction test."
     },
     {
       "id": "UC38",
       "use_case": "Mac DMG / Windows installer",
-      "status": "PASS \u00b7 package / installed startup",
+      "status": "PASS \u00b7 actual DMG runtime/data/restart",
       "dependencies": "Target OS; Mac development package is ad-hoc signed",
-      "evidence_and_limits": "Mac checksum/read-only mount/resource-seal/version/Applications shortcut checked. Windows CI install/window/uninstall evidence is tied to downloaded artifact source/hash. Full Windows feature UI remains unverified. Final Windows installed startup audit passed 35/35 sources (799 items); the earlier 34/35 run is retained. Full feature UI still not claimed."
+      "evidence_and_limits": "Current normal DMG checksum/mounted signature/shortcut and exact copied executable passed. Actual process refreshed 35/35 public streams and restarted with caches/off policy preserved. Development/ad-hoc trust only; current interactive UI unavailable. Windows evidence is separate and revision-bound. Final Windows CI/packages and exact installed no-account startup also pass at 5bde681 (35/35, 800 entries, zero failures)."
     },
     {
       "id": "UC39",

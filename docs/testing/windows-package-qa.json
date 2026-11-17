@@ -1,14 +1,14 @@
 {
   "platform": "windows",
   "installer": "Personal Command Center_0.5.0_x64-setup.exe",
-  "sha256": "fb892ebd5354f8332fe898a545a98d3e650d2887832fa97f384b8854079e2cdf",
+  "sha256": "9349e7e67e4f2bd0e1720d8c940c5925a312cc4da876e64b5c5728e1aad4cf15",
   "install_exit": 0,
   "launch": "native window created and process stayed running for 15 seconds",
   "uninstall_exit": 0,
   "synthetic_runner": true,
   "full_feature_acceptance": false,
   "window_title": "Personal Command Center",
-  "source_revision": "36350b078e8df67fa3899af9edc77373bf10bc2e",
-  "workflow": "https://github.com/ashishyeole/commandcenter/actions/runs/44037013075",
-  "checked_at": "2026-11-17T07:29:48.649708+00:00"
+  "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+  "workflow": "https://github.com/ashishyeole/commandcenter/actions/runs/44098611111",
+  "checked_at": "2026-11-17T14:18:03.554993+00:00"
 }

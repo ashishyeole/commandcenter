@@ -1,0 +1,210 @@
+   Compiling command-center-mobile-peer v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/crates/mobile-peer)
+   Compiling command-center-core v0.5.0 (/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/crates/core)
+warning: linker stderr: ld: duplicate -rpath '@executable_path/../Frameworks' ignored
+  |
+  = note: `#[warn(linker_messages)]` on by default
+
+warning: `personal-command-center` (bin "personal-command-center" test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.88s
+     Running unittests src/lib.rs (target/debug/deps/command_center_core-8789edf0255ac3e1)
+
+running 10 tests
+test archive::tests::csv_formula_protection ... ok
+test archive::tests::rejects_modified_payload_and_future_schema ... ok
+test tests::invalid_import_is_atomic ... ok
+test tests::restore_is_idempotent_and_preserves_local_conflicts ... ok
+test tests::tombstones_and_hostile_search ... ok
+test reminder_lease::tests::independent_connections_share_the_lease ... ok
+test tests::persists_searches_and_recurs ... ok
+test stream_archive::hostile_tests::authenticated_duplicate_ids_roll_back_all_prior_frames ... ok
+test stream_archive::hostile_tests::unknown_versions_and_cancellation_do_not_import_partial_data ... ok
+test archive::tests::portable_roundtrip_and_tampering ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.87s
+
+     Running tests/local_controls.rs (target/debug/deps/local_controls-a3dae424e3064d99)
+
+running 5 tests
+test checked_private_batch_is_atomic_on_stale_input ... ok
+test per_record_ai_policy_is_enforced_without_mutating_source ... ok
+test price_watches_require_currency_and_stock_then_trigger_once ... ok
+test compaction_waits_for_all_peers_and_retains_current_state ... ok
+test integration_lifecycle_rejects_unknown_flags_and_is_bounded ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+     Running tests/record_briefing.rs (target/debug/deps/record_briefing-e9a952d60e41fd43)
+
+running 2 tests
+test briefing_rejects_unbounded_or_invalid_requests ... ok
+test briefing_only_uses_selected_current_ordinary_records ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/reminder_policy.rs (target/debug/deps/reminder_policy-957e7880e8c79b31)
+
+running 3 tests
+test policy_cadence_snooze_and_eligibility ... ok
+test policy_rejects_non_tasks_and_unknown_modes ... ok
+test acknowledgement_survives_reopen_but_does_not_suppress_next_occurrence ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/research_collections.rs (target/debug/deps/research_collections-ad6795ea0bf64087)
+
+running 2 tests
+test collections_preserve_queries_and_cache_independently ... ok
+test collection_limits_and_cache_bound ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/streaming_archives.rs (target/debug/deps/streaming_archives-ec8138ee87820b74)
+
+running 13 tests
+test standard_archives_accept_all_nine_current_feed_sources ... ok
+test aggregated_sources_and_caches_roundtrip_without_auto_read_permission ... ok
+test linked_copy_private_records_use_fresh_ids_and_receiver_key ... ok
+test streaming_preserves_workspace_relationships_and_original_attachments ... ok
+test private_records_are_reencrypted_with_receiver_key ... ok
+test linked_copy_rejects_bad_review_and_changed_second_pass_atomically ... ok
+test selected_record_fields_are_atomic_and_keep_relationships ... ok
+test streaming_roundtrip_keeps_conflicts_and_excludes_permissions ... ok
+test linked_copies_preserve_originals_and_remap_relationships_and_history ... ok
+test selected_field_restore_keeps_unselected_content_and_rejects_stale_review ... ok
+test corrupt_truncated_wrong_password_and_review_mismatch_are_atomic ... ok
+test display_themes_roundtrip_without_permission_preferences ... ok
+test streams_beyond_standard_archive_size_without_collecting_the_output ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 34.47s
+
+     Running tests/sync_acceptance.rs (target/debug/deps/sync_acceptance-8c54d210fe5c5a96)
+
+running 8 tests
+test attachment_checksum_failure_does_not_advance_cursor ... ok
+test concurrent_note_edits_never_silently_overwrite ... ok
+test existing_file_content_cannot_change_under_same_identity ... ok
+test receiver_rejects_attachment_when_parent_category_is_not_granted ... ok
+test file_requires_both_attachment_and_parent_scope ... ok
+test attachment_delete_vs_index_edit_is_reviewable ... ok
+test attachment_roundtrip_reopen_and_idempotence ... ok
+test maximum_file_fits_wire_and_retries_after_lost_ack ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 21.09s
+
+     Running tests/watchlist_thresholds.rs (target/debug/deps/watchlist_thresholds-644691285a5cfcec)
+
+running 4 tests
+test enabled_monitor_rejects_invalid_threshold_or_mismatched_host ... ok
+test arbitrary_prices_and_disabled_monitors_are_not_evaluated ... ok
+test cached_threshold_triggers_once_and_preserves_source_evidence ... ok
+test topic_feed_observations_override_stale_queries_and_trigger_once ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/workspace_ownership.rs (target/debug/deps/workspace_ownership-dba3cdc348c9756f)
+
+running 2 tests
+test arbitrary_or_missing_owners_are_rejected ... ok
+test ownership_is_linked_and_cycles_are_rejected ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running unittests src/lib.rs (target/debug/deps/pcc_mobile_peer-f88cd2892e704517)
+
+running 3 tests
+test sync_wire::transport_tests::wrong_pinned_peer_cannot_authenticate ... ok
+test mobile_reminders::tests::submission_is_bounded_to_current_due_tasks ... ok
+test sync_wire::transport_tests::authenticated_large_file_frames_roundtrip ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.89s
+
+     Running unittests src/main.rs (target/debug/deps/personal_command_center-1a5604d699cf08dd)
+
+running 72 tests
+test apple_charts::tests::live_apple_charts ... ignored, Live Apple public feed reads through isolated native hub; no account/key
+test business_discovery::tests::live_public_business_lookup ... ignored, Live public lookup; isolated DB, no account or key
+test background_reminders::tests::launch_agent_escapes_paths_and_has_no_shell ... ok
+test business_discovery::tests::bounded_queries_preserve_circle_and_do_not_clip_the_dateline ... ok
+test apple_charts::tests::fallback_never_rotates_on_access_limits_or_retry_after ... ok
+test backups::stream_schedule_tests::legacy_schedules_keep_standard_format ... ok
+test business_discovery::tests::bbox_candidates_are_filtered_by_actual_distance_and_way_centres ... ok
+test business_discovery::tests::listings_reject_partial_and_malformed_data_and_keep_attribution_inputs ... ok
+test business_discovery::tests::photon_businesses_keep_osm_identity_and_reject_wrong_category_or_location ... ok
+test discovery_hub::failure_tests::youtube_handles_accept_only_channel_locations ... ok
+test business_discovery::tests::provider_scope_and_custom_urls_are_explicit ... ok
+test apple_charts::tests::both_official_schemas_preserve_identity_rank_storefront_and_provenance ... ok
+test bank_accounts::enrollment_tests::hosted_url_and_completed_tokens_are_validated ... ok
+test apple_charts::tests::rejects_wrong_storefront_duplicates_invalid_urls_and_partial_rows ... ok
+test business_discovery::tests::unavailable_provider_falls_back_without_fabricating_rows ... ok
+test discovery_hub::tests::custom_sources_reject_credentials_and_invalid_channels ... ok
+test business_discovery::tests::permission_and_quota_refusals_do_not_rotate_providers ... ok
+test discovery_hub::tests::live_public_aggregation ... ignored, Live internet test: explicitly run with --ignored; isolated temp database, no credentials
+test discovery_hub::tests::defaults_validate_and_public_events_are_not_fake_bookmarks ... ok
+test event_sources::detail_tests::registration_and_satellite_changes_are_reviewed ... ok
+test discovery_hub::tests::publisher_date_ranges_are_strict ... ok
+test bank_reconcile::tests::preview_requires_exact_account_amount_and_deduplicates ... ok
+test event_sources::expanded_calendar_tests::individual_override_replaces_original_occurrence ... ok
+test discovery_hub::media_post_tests::media_and_quote_posts_do_not_invent_body_or_blank_titles ... ok
+test discovery_hub::tests::event_markup_filters_ended_cancelled_and_preserves_source_dates ... ok
+test event_sources::expanded_calendar_tests::monthly_invalid_month_days_are_skipped_instead_of_clamped ... ok
+test event_sources::expanded_calendar_tests::exclusions_win_and_unknown_exception_syntax_prevents_expansion ... ok
+test event_sources::expanded_calendar_tests::nonexistent_local_time_does_not_consume_count ... ok
+test event_sources::expanded_calendar_tests::timezone_dst_preserves_wall_clock_and_duration_with_exceptions ... ok
+test event_sources::expanded_calendar_tests::weekly_days_respect_interval_and_week_start ... ok
+test event_sources::expanded_calendar_tests::positional_weekdays_duration_and_exrules_expand ... ok
+test event_sources::expanded_calendar_tests::ordinal_weekdays_negative_month_days_and_leap_years ... ok
+test event_sources::recurrence_tests::until_between_weekly_dates_does_not_drop_supported_rule ... ok
+test google_accounts::message_tests::body_scope_does_not_follow_from_metadata_grant ... ok
+test event_sources::recurrence_tests::weekly_all_day_instances_preserve_exclusive_duration ... ok
+test google_accounts::message_tests::mime_preview_prefers_plain_and_ignores_attachments ... ok
+test google_accounts::message_tests::unnamed_attachment_subtrees_are_not_used_as_message_body ... ok
+test google_background::tests::background_requires_saved_consent_and_matching_scopes ... ok
+test google_background::tests::expired_reset_revoked_and_replaced_snapshots_are_hidden ... ok
+test large_archives::cancellation_tests::cancelled_io_never_forwards_new_data ... ok
+test google_accounts::message_tests::html_is_inert_and_preview_is_utf8_bounded ... ok
+test model_catalogue::tests::catalogue_only_accepts_model_links_and_plain_metadata ... ok
+test model_catalogue::tests::layout_failure_is_not_a_successful_empty_feed ... ok
+test poker_search::tests::cross_provider_query_rolls_across_year_end_and_encodes_input ... ok
+test poker_search::tests::invalid_horizons_and_unbounded_input_fail ... ok
+test price_watch::tests::currency_and_boolean_types_are_required ... ok
+test qa_profile::tests::packaged_qa_is_explicit_namespaced_and_rejects_unsafe_or_release_use ... ok
+test rendered_audit::tests::rendered_signals_have_bounded_explained_score ... ok
+test research::aggregation_parser_tests::channel_media_titles_do_not_duplicate_and_markup_is_inert ... ok
+test scholarly_sources::live_tests::live_remaining_sources ... ignored, Explicit public internet adapter verification
+test scholarly_sources::tests::partial_dates_and_patent_provenance_remain_explicit ... ok
+test apple_charts::tests::actual_gateway_failure_uses_one_fallback_and_labels_it ... ok
+test startup_config_tests::bundled_updater_configuration_deserializes_without_network_defaults ... ok
+test event_sources::recurrence_tests::unsupported_rules_remain_unexpanded_and_unbounded_rules_are_windowed ... ok
+test event_sources::expanded_calendar_tests::utc_until_is_inclusive_and_unsupported_rules_stay_explicit ... ok
+test sync_wire::transport_tests::wrong_pinned_peer_cannot_authenticate ... ok
+test event_sources::expanded_calendar_tests::unbounded_series_has_explicit_finite_window ... ok
+test webdav_stream::tests::readback_and_download_reject_changed_sizes_and_honor_cancel ... ok
+test discovery_hub::failure_tests::failure_keeps_last_cache_and_reports_health ... ok
+test discovery_hub::media_post_tests::article_only_bluesky_posts_remain_named_savable_and_source_attributed ... ok
+test discovery_hub::watched_event_tests::event_details_alert_once_and_keep_saved_plans ... ok
+test business_discovery::tests::cancelled_or_reset_lookup_cannot_publish_and_invalid_consent_does_not_send ... ok
+test discovery_hub::failure_tests::link_import_validates_whole_batch_before_writing ... ok
+test citation_review::tests::review_hash_changes_with_source_and_exclusions_block_review ... ok
+test business_discovery::tests::cache_scope_throttle_deduplication_and_failure_preserve_records ... ok
+test apple_charts::tests::actual_refusals_stop_and_quota_pause_is_persisted ... ok
+test discovery_hub::first_install_tests::fresh_profile_connects_public_defaults_without_accounts_and_keeps_owner_policy ... ok
+test performance::tests::synthetic_benchmark_reports_actual_latency ... ok
+test backups::stream_schedule_tests::scheduled_stream_is_verified_encrypted_and_restorable ... ok
+test discovery_hub::public_retry_tests::transient_public_reads_retry_once_but_auth_and_private_reads_do_not ... ok
+test sync_wire::transport_tests::authenticated_large_file_frames_roundtrip ... ok
+test business_discovery::tests::transient_failure_retries_once_on_the_same_provider ... ok
+
+test result: ok. 68 passed; 0 failed; 4 ignored; 0 measured; 0 filtered out; finished in 4.01s
+
+   Doc-tests command_center_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests pcc_mobile_peer
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

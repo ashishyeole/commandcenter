@@ -1,0 +1,14 @@
+    Blocking waiting for file lock on build directory
+warning: linker stderr: ld: duplicate -rpath '@executable_path/../Frameworks' ignored
+  |
+  = note: `#[warn(linker_messages)]` on by default
+
+warning: `personal-command-center` (bin "personal-command-center" test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.49s
+     Running unittests src/main.rs (target/debug/deps/personal_command_center-1a5604d699cf08dd)
+
+running 1 test
+test scholarly_sources::live_tests::live_remaining_sources ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 71 filtered out; finished in 10.53s
+
