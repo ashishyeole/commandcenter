@@ -1,0 +1,37 @@
+{
+  "checked_at": "2026-11-17T20:42:53.752026+00:00",
+  "source_revision": "eecb0df660fd3e538e9a61b2c544e45de0328ad1",
+  "dmg_sha256": "ff7d8a97e27141ef3f5b2f8033e9f8c080fc4db94646655052e3ad3d5400413f",
+  "profile": "com.personal.commandcenter.qa.dmg-baa2b91fed",
+  "normal_profile_accessed": false,
+  "app_login_used": false,
+  "api_keys_used": false,
+  "interactive_ui_automation_available": false,
+  "all_use_cases_passed": false,
+  "mounted": true,
+  "version": "0.5.0",
+  "executable_sha256": "af8d14e29588ef52cab43a14ae6b18b0f39c970ea47ed81e1d40cc0ded7c4f99",
+  "copied_executable_matches_dmg": true,
+  "signature_verified": true,
+  "applications_shortcut_verified": true,
+  "bootstrap": {
+    "batch": {
+      "at": "2026-11-17T20:43:22.319504+00:00",
+      "cancelled": false,
+      "failed": 0,
+      "refreshed": 35
+    },
+    "configured_sources": 43,
+    "auto_refresh_minutes": "30",
+    "live_item_count": 801,
+    "ordinary_item_count": 0,
+    "workspace_record_count": 0,
+    "enabled_account_flags": []
+  },
+  "data_quality_problems": [],
+  "restart_passed": true,
+  "cached_payloads_unchanged": true,
+  "explicit_off_policy_preserved": true,
+  "native_launch_and_local_workflows_passed": true,
+  "delivery_sha256": "ff7d8a97e27141ef3f5b2f8033e9f8c080fc4db94646655052e3ad3d5400413f"
+}

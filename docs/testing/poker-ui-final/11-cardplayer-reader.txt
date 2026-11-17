@@ -1,0 +1,17 @@
+Window: "www.cardplayer.com · Source reader", App: Poker UI Final QA.
+0 standard window www.cardplayer.com · Source reader, Secondary Actions: Raise
+	1 scroll area
+		2 HTML content Description: Poker Tournaments - Schedules and Results, URL: cardplayer.com/poker-tournaments
+	3 close button
+	4 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	5 minimize button
+	6 text www.cardplayer.com · Source reader
+7 menu bar
+	8 Poker UI Final QA
+	9 File
+	10 Edit
+	11 View
+	12 Window
+	13 Help
+
+The focused UI element is 2 HTML content Description: Poker Tournaments - Schedules and Results, URL: cardplayer.com/poker-tournaments

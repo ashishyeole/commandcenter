@@ -1,0 +1,406 @@
+Window: "Personal Command Center — Isolated QA", App: Poker UI Final QA.
+0 standard window Personal Command Center — Isolated QA, Secondary Actions: Raise
+	1 scroll area
+		2 HTML content Description: Personal Command Center, URL: tauri://localhost
+			3 container Current poker tournaments
+				4 heading Current & upcoming tournaments, Value: 2
+					5 text Current & upcoming tournaments
+				6 button Close tournament list
+				7 text Public tournament schedules, ordered by start date. Ended and cancelled events are hidden. Schedule links open the publisher directly in the app.
+				8 container
+					9 text Search tournaments
+					10 text field (settable) Search tournaments, Placeholder: Tournament, organizer or venue…
+				11 container
+					12 text Region
+					13 pop up button Region, Value: Worldwide
+				14 container
+					15 text When
+					16 pop up button When, Value: Current only
+				17 text 22
+				18 text  tournaments · 
+				19 text 4
+				20 text  public schedules
+				21 button Refresh tournaments
+				22 table
+					23 row (selectable) Tournament
+Dates
+Venue
+Schedule
+					24 row (selectable)
+						25 cell (selectable) 2026 Fall Colorado Poker Championship
+Multi-organizer tournament calendar
+Current
+						26 cell (selectable) 2026-10-28
+to
+2026-11-21
+						27 cell (selectable) Bally-s Black Hawk (Black Hawk, CO)
+Venue checked
+11/17/2026
+						28 cell (selectable) Description: View schedule for 2026 Fall Colorado Poker Championship, View schedule for 2026 Fall Colorado Poker Championship
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					29 row (selectable)
+						30 cell (selectable) WSOP Circuit - Canada (Playground)
+WSOP tournament schedule
+Current
+						31 cell (selectable) 2026-11-02
+to
+2026-11-17
+						32 cell (selectable) Playground Kahnawake, QC, Canada
+						33 cell (selectable) Description: View schedule for WSOP Circuit - Canada (Playground), View schedule for WSOP Circuit - Canada (Playground)
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:44:02 PM
+					34 row (selectable)
+						35 cell (selectable) 2026 Fall Poker Open
+Multi-organizer tournament calendar
+Current
+						36 cell (selectable) 2026-11-04
+to
+2026-11-17
+						37 cell (selectable) Borgata Hotel Casino - Spa (Atlantic City, NJ)
+Venue checked
+11/17/2026
+						38 cell (selectable) Description: View schedule for 2026 Fall Poker Open, View schedule for 2026 Fall Poker Open
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					39 row (selectable)
+						40 cell (selectable) 2026 L.A. Poker Open
+Multi-organizer tournament calendar
+Current
+						41 cell (selectable) 2026-11-06
+to
+2026-11-25
+						42 cell (selectable) Commerce Casino (Commerce, CA)
+Venue checked
+11/17/2026
+						43 cell (selectable) Description: View schedule for 2026 L.A. Poker Open, View schedule for 2026 L.A. Poker Open
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					44 row (selectable)
+						45 cell (selectable) 2026 Fall Classic
+Multi-organizer tournament calendar
+Current
+						46 cell (selectable) 2026-11-09
+to
+2026-11-22
+						47 cell (selectable) One-Eyed Jacks (Sarasota, FL)
+Venue checked
+11/17/2026
+						48 cell (selectable) Description: View schedule for 2026 Fall Classic, View schedule for 2026 Fall Classic
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					49 row (selectable)
+						50 cell (selectable) 2026 Fall Caribbean Poker Tour – St. Maarten
+Multi-organizer tournament calendar
+Current
+						51 cell (selectable) 2026-11-11
+to
+2026-11-22
+						52 cell (selectable) Casino Royale St- Maarten (St. Maarten)
+Venue checked
+11/17/2026
+						53 cell (selectable) Description: View schedule for 2026 Fall Caribbean Poker Tour – St. Maarten, View schedule for 2026 Fall Caribbean Poker Tour – St. Maarten
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					54 row (selectable)
+						55 cell (selectable) 2026 The PokerAtlas Tour – Austin
+Multi-organizer tournament calendar
+Current
+						56 cell (selectable) 2026-11-11
+to
+2026-11-23
+						57 cell (selectable) TCH Social Austin (formerly Texas Card House Austin) (Austin, TX)
+Venue checked
+11/17/2026
+						58 cell (selectable) Description: View schedule for 2026 The PokerAtlas Tour – Austin, View schedule for 2026 The PokerAtlas Tour – Austin
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					59 row (selectable)
+						60 cell (selectable) WSOP Circuit - Caesars New Orleans
+WSOP tournament schedule
+Current
+						61 cell (selectable) 2026-11-12
+to
+2026-11-23
+						62 cell (selectable) Caesars New Orleans New Orleans, LA, United States
+						63 cell (selectable) Description: View schedule for WSOP Circuit - Caesars New Orleans, View schedule for WSOP Circuit - Caesars New Orleans
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:44:02 PM
+					64 row (selectable)
+						65 cell (selectable) 2026 WSOP Circuit – New Orleans (Fall)
+Multi-organizer tournament calendar
+Current
+						66 cell (selectable) 2026-11-12
+to
+2026-11-23
+						67 cell (selectable) Caesars New Orleans (New Orleans, LA)
+Venue checked
+11/17/2026
+						68 cell (selectable) Description: View schedule for 2026 WSOP Circuit – New Orleans (Fall), View schedule for 2026 WSOP Circuit – New Orleans (Fall)
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					69 row (selectable)
+						70 cell (selectable) 2026 Rungood – Graton
+Multi-organizer tournament calendar
+Current
+						71 cell (selectable) 2026-11-12
+to
+2026-11-22
+						72 cell (selectable) Graton Resort - Casino (Rohnert Park, CA)
+Venue checked
+11/17/2026
+						73 cell (selectable) Description: View schedule for 2026 Rungood – Graton, View schedule for 2026 Rungood – Graton
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					74 row (selectable)
+						75 cell (selectable) 2026 CNP Winamax Madrid
+Multi-organizer tournament calendar
+Current
+						76 cell (selectable) 2026-11-12
+to
+2026-11-23
+						77 cell (selectable) Casino Gran Madrid (Madrid)
+Venue checked
+11/17/2026
+						78 cell (selectable) Description: View schedule for 2026 CNP Winamax Madrid, View schedule for 2026 CNP Winamax Madrid
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					79 row (selectable)
+						80 cell (selectable) 2026 Fall Showdown
+Multi-organizer tournament calendar
+Current
+						81 cell (selectable) 2026-11-12
+to
+2026-11-22
+						82 cell (selectable) Mohegan Sun (Uncasville, CT)
+Venue checked
+11/17/2026
+						83 cell (selectable) Description: View schedule for 2026 Fall Showdown, View schedule for 2026 Fall Showdown
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					84 row (selectable)
+						85 cell (selectable) 2026 APT Championship
+Multi-organizer tournament calendar
+Current
+						86 cell (selectable) 2026-11-13
+to
+2026-11-29
+						87 cell (selectable) Red Space - Taipei (Taipei City)
+Venue checked
+11/17/2026
+						88 cell (selectable) Description: View schedule for 2026 APT Championship, View schedule for 2026 APT Championship
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					89 row (selectable)
+						90 cell (selectable) 2026 Masters Classics of Poker
+Multi-organizer tournament calendar
+Current
+						91 cell (selectable) 2026-11-13
+to
+2026-11-21
+						92 cell (selectable) Holland Casino - Amsterdam (Amsterdam)
+Venue checked
+11/17/2026
+						93 cell (selectable) Description: View schedule for 2026 Masters Classics of Poker, View schedule for 2026 Masters Classics of Poker
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					94 row (selectable)
+						95 cell (selectable) 2026 BSOP Millions
+Multi-organizer tournament calendar
+Current
+						96 cell (selectable) 2026-11-13
+to
+2026-11-28
+						97 cell (selectable) Sheraton Sau Paulo WTC Hotel (Sao Paulo)
+Venue checked
+11/17/2026
+						98 cell (selectable) Description: View schedule for 2026 BSOP Millions, View schedule for 2026 BSOP Millions
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					99 row (selectable)
+						100 cell (selectable) 2026 Triton Super High Roller Series North Cyprus
+Multi-organizer tournament calendar
+Current
+						101 cell (selectable) 2026-11-15
+to
+2026-11-30
+						102 cell (selectable) Merit Royal Hotel - Casino (Kyrenia)
+Venue checked
+11/17/2026
+						103 cell (selectable) Description: View schedule for 2026 Triton Super High Roller Series North Cyprus, View schedule for 2026 Triton Super High Roller Series North Cyprus
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					104 row (selectable)
+						105 cell (selectable) 2026 Deepstack Extravaganza IV
+Multi-organizer tournament calendar
+Current
+						106 cell (selectable) 2026-11-16
+to
+2026-12-23
+						107 cell (selectable) Venetian Hotel and Casino (Las Vegas, NV)
+Venue checked
+11/17/2026
+						108 cell (selectable) Description: View schedule for 2026 Deepstack Extravaganza IV, View schedule for 2026 Deepstack Extravaganza IV
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					109 row (selectable)
+						110 cell (selectable) 2026 Rock ‘n’ Roll Poker Open
+Multi-organizer tournament calendar
+Current
+						111 cell (selectable) 2026-11-17
+to
+2026-12-02
+						112 cell (selectable) Seminole Hard Rock Hotel - Casino Hollywood (Hollywood, FL)
+Venue checked
+11/17/2026
+						113 cell (selectable) Description: View schedule for 2026 Rock ‘n’ Roll Poker Open, View schedule for 2026 Rock ‘n’ Roll Poker Open
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					114 row (selectable)
+						115 cell (selectable) 2026 Rungood – Council Bluffs
+Multi-organizer tournament calendar
+Current
+						116 cell (selectable) 2026-11-17
+to
+2026-11-22
+						117 cell (selectable) Horseshoe Casino - Hotel-Council Bluffs (Council Bluffs, IA)
+Venue checked
+11/17/2026
+						118 cell (selectable) Description: View schedule for 2026 Rungood – Council Bluffs, View schedule for 2026 Rungood – Council Bluffs
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					119 row (selectable)
+						120 cell (selectable) 2026 Rungood – Jamul
+Multi-organizer tournament calendar
+Current
+						121 cell (selectable) 2026-11-17
+to
+2026-11-22
+						122 cell (selectable) Jamul Casino (Jamul, CA)
+Venue checked
+11/17/2026
+						123 cell (selectable) Description: View schedule for 2026 Rungood – Jamul, View schedule for 2026 Rungood – Jamul
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					124 row (selectable)
+						125 cell (selectable) 2026 Rungood – OG Clubhouse
+Multi-organizer tournament calendar
+Current
+						126 cell (selectable) 2026-11-17
+to
+2026-11-22
+						127 cell (selectable) The OG Clubhouse (Oak Grove, KY)
+Venue checked
+11/17/2026
+						128 cell (selectable) Description: View schedule for 2026 Rungood – OG Clubhouse, View schedule for 2026 Rungood – OG Clubhouse
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+					129 row (selectable)
+						130 cell (selectable) 2026 Circus Poker Series
+Multi-organizer tournament calendar
+Current
+						131 cell (selectable) 2026-11-17
+to
+2026-11-29
+						132 cell (selectable) Circus Casino Resort Namur (Namur)
+Venue checked
+11/17/2026
+						133 cell (selectable) Description: View schedule for 2026 Circus Poker Series, View schedule for 2026 Circus Poker Series
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+				134 container (expanded) Secondary Actions: Collapse
+					135 summary Direct provider schedules, Value: on
+						136 text Direct provider schedules
+					137 content list
+						138 container
+							139 list marker •
+							140 link WPT tournament schedule, Value: worldpokertour.com/event/schedule
+						141 container
+							142 list marker •
+							143 link WSOP tournament schedule, Value: wsop.com/schedule/
+						144 container
+							145 list marker •
+							146 link PokerStars live festivals, Value: pokerstarslive.com/
+						147 container
+							148 list marker •
+							149 link Multi-organizer tournament calendar, Value: cardplayer.com/poker-tournaments
+				150 text Region filters use the published venue/country, not words in tournament names. Unclassified locations remain in Worldwide. Dates and coverage come from the publishers; confirm the linked schedule before making plans.
+			151 stepper 0
+				152 unknown
+				153 unknown
+			154 stepper 0
+				155 unknown
+				156 unknown
+			157 stepper 0
+				158 unknown
+				159 unknown
+			160 stepper 0
+				161 unknown
+				162 unknown
+			163 stepper 0
+				164 unknown
+				165 unknown
+			166 stepper 0
+				167 unknown
+				168 unknown
+			169 stepper 0
+				170 unknown
+				171 unknown
+		172 scroll bar (settable, float) 0
+	173 close button
+	174 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	175 minimize button
+	176 text Personal Command Center — Isolated QA
+177 menu bar
+	178 Poker UI Final QA
+	179 File
+	180 Edit
+	181 View
+	182 Window
+	183 Help
+
+The focused UI element is 16 pop up button When, Value: Current only

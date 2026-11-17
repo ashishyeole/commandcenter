@@ -1,0 +1,688 @@
+Window: "Personal Command Center — Isolated QA", App: Poker UI Final QA.
+0 standard window Personal Command Center — Isolated QA, Secondary Actions: Raise
+	1 scroll area
+		2 HTML content Description: Personal Command Center, URL: tauri://localhost
+			3 link Skip to main content, Value: tauri://localhost#main-content
+			4 container
+				5 text Command Center YOUR PERSONAL WORKSPACE ME Personal workspace Local first. Yours to keep.
+				6 container Main navigation
+					7 text EVERYDAY
+					8 button Discover
+					9 button Today
+					10 button Inbox
+					11 button Notes
+					12 button Documents
+					13 button Tasks
+					14 button Saved
+					15 text EXPLORE & BUILD
+					16 button Workspaces
+					17 button Assistant
+					18 button Automations
+					19 text MANAGE
+					20 button Device sync
+					21 button Vault
+					22 button Timeline
+					23 button Settings
+					24 button Data & privacy
+				25 text Stored on this device No account. No mandatory cloud.
+			26 container
+				27 text Personal
+				28 text Discover
+				29 button Search, capture or navigate… ⌘ / Ctrl K
+				30 container
+					31 text Color theme
+					32 pop up button Color theme, Value: Monochrome
+				33 text ME
+				34 text No verified backup has been recorded on this device.
+				35 button Review backup options
+				36 heading Discover, Value: 1
+					37 text Discover
+				38 text One feed for models, repos, videos, social posts, research and upcoming events.
+				39 tab group (selectable) Discovery views
+					40 tab (selected) Your feed
+					41 tab (selectable) Sources & filters
+					42 tab (selectable) Research & collections
+					43 tab (selectable) Single-source search
+				44 container Your feed
+					45 text No app account needed · Public feeds connect automatically on a new installation. Only public queries go to these providers.  Last refresh 11/17/2026, 2:44:07 PM: 35 sources succeeded.
+					46 button Connection status & refresh settings
+					47 heading Your information, in one feed, Value: 2
+						48 text Your information, in one feed
+					49 text Models, repositories, videos, research, news, social posts and upcoming events. Save what matters and turn it into your own work.
+					50 button Refresh all feeds
+					51 button Sources
+					52 container Feed topics
+						53 toggle button For you 801, Value: on
+						54 toggle button AI & models 125, Value: off
+						55 toggle button Code & libraries 60, Value: off
+						56 toggle button Robotics 225, Value: off
+						57 toggle button Agriculture 138, Value: off
+						58 toggle button Poker 93, Value: off
+						59 toggle button Lectures & learning 30, Value: off
+						60 toggle button Apps & tools 130, Value: off
+						61 toggle button Your searches 0, Value: off
+					62 text field (settable) Search all aggregated feeds, Placeholder: Search everything in your feed…
+					63 button (disabled) Search live sources
+					64 summary Search scope, Value: off
+						65 text Search scope
+					66 container
+						67 text Content
+						68 pop up button Content, Value: Everything
+					69 container
+						70 text Source
+						71 pop up button Source, Value: All providers
+					72 container
+						73 text Region
+						74 pop up button Region, Value: Worldwide
+					75 container
+						76 text Published / updated
+						77 pop up button Published / updated, Value: All reported dates
+					78 container
+						79 text Reading
+						80 pop up button Reading, Value: all
+					81 container
+						82 text Order
+						83 pop up button Order, Value: Balanced topics & sources
+					84 text 801  results ·  35 / 35  sources refreshed
+					85 button Reset view
+					86 container MiniMaxAI/MiniMax-H3-Image
+						87 text HUGGING FACE  ·  MODELS
+						88 checkbox Select MiniMaxAI/MiniMax-H3-Image, Value: 0
+						89 heading MiniMaxAI/MiniMax-H3-Image, Value: 3
+							90 button MiniMaxAI/MiniMax-H3-Image
+						91 text text-to-image
+						92 text 727110 downloads · 1426 likes
+						93 text Trending models  · 11/16/2026
+						94 button Save
+						95 button Read details
+						96 summary More, Value: off
+							97 text More
+					98 container codecrafters-io/build-your-own-x
+						99 text GITHUB  ·  REPOS
+						100 checkbox Select codecrafters-io/build-your-own-x, Value: 0
+						101 heading codecrafters-io/build-your-own-x, Value: 3
+							102 button codecrafters-io/build-your-own-x
+						103 text Master programming by recreating your favorite technologies from scratch.
+						104 text 563429 stars · Markdown
+						105 text Top public repositories  · 5/9/2018
+						106 button Save
+						107 button Read details
+						108 summary More, Value: off
+							109 text More
+					110 container Developer-Y/cs-video-courses
+						111 text GITHUB  ·  REPOS
+						112 checkbox Select Developer-Y/cs-video-courses, Value: 0
+						113 heading Developer-Y/cs-video-courses, Value: 3
+							114 button Developer-Y/cs-video-courses
+						115 text List of Computer Science courses with video lectures.
+						116 text 84876 stars ·
+						117 text Robotics libraries  · 10/21/2016
+						118 button Save
+						119 button Read details
+						120 summary More, Value: off
+							121 text More
+					122 container 18th AgriTech India 2027
+						123 text EVENT SCHEDULES  ·  EVENTS
+						124 checkbox Select 18th AgriTech India 2027, Value: 0
+						125 heading 18th AgriTech India 2027, Value: 3
+							126 button 18th AgriTech India 2027
+						127 text 2027-08-20  →  2027-08-22 Bangalore, India 20-22 August 2027 KTPO Exhibition Centre, Whitefield, Bangalore, India
+						128 text 2027-08-20 → 2027-08-22 · Bangalore, India · AgriTech India events
+						129 text AgriTech India events
+						130 button Save
+						131 button Read details
+						132 button Track event
+						133 summary More, Value: off
+							134 text More
+					135 container FanDuel Poker Launches Unlimited High Hands Cash Game Bonus Through Nov. 23
+						136 text PUBLISHER FEEDS  ·  NEWS
+						137 checkbox Select FanDuel Poker Launches Unlimited High Hands Cash Game Bonus Through Nov. 23, Value: 0
+						138 heading FanDuel Poker Launches Unlimited High Hands Cash Game Bonus Through Nov. 23, Value: 3
+							139 button FanDuel Poker Launches Unlimited High Hands Cash Game Bonus Through Nov. 23
+						140 text FanDuel Poker players can earn up to $100 cash for Quads or better
+						141 text Publisher feed · no independent verification
+						142 text PokerNews headlines  · 11/17/2026
+						143 button Save
+						144 button Read details
+						145 summary More, Value: off
+							146 text More
+					147 container Vibe Coding, AI Risk&AI Evaluation | Stanford CS193T Lecture 6 with Cynthia Bailey
+						148 text YOUTUBE  ·  VIDEOS
+						149 checkbox Select Vibe Coding, AI Risk&AI Evaluation | Stanford CS193T Lecture 6 with Cynthia Bailey, Value: 0
+						150 heading Vibe Coding, AI Risk&AI Evaluation | Stanford CS193T Lecture 6 with Cynthia Bailey, Value: 3
+							151 button Vibe Coding, AI Risk&AI Evaluation | Stanford CS193T Lecture 6 with Cynthia Bailey
+						152 text Explore AI courses and programs from Stanford Online: https://stanford.io/4BYTekh Once AI can take actions on its own, how do you stay in control? In this Stanford CS193T: Thinking with AI lecture, Senior Lecturer Cynthia Bailey previews this week's tools, Claude Code and Codex, with a three-step process for preparing, generating, and reviewing vibe-coded work. Then she looks past launch: why even a carefully built AI tool needs monitoring, how the NIST AI Risk Management Framework structures responsible AI
+						153 text Stanford Online lectures · public channel feed
+						154 text Stanford Online lectures  · 11/17/2026
+						155 button Save
+						156 button Read details
+						157 summary More, Value: off
+							158 text More
+					159 container TikTok Pro - Events
+						160 text APP CHARTS  ·  APPS
+						161 checkbox Select TikTok Pro - Events, Value: 0
+						162 heading TikTok Pro - Events, Value: 3
+							163 button TikTok Pro - Events
+						164 text TikTok Ltd.
+						165 text #1 · top free · US
+						166 text Top free iPhone apps · US  · 6/3/2026
+						167 button Save
+						168 button Read details
+						169 summary More, Value: off
+							170 text More
+					171 container sentence-transformers/all-MiniLM-L6-v2
+						172 text HUGGING FACE  ·  MODELS
+						173 checkbox Select sentence-transformers/all-MiniLM-L6-v2, Value: 0
+						174 heading sentence-transformers/all-MiniLM-L6-v2, Value: 3
+							175 button sentence-transformers/all-MiniLM-L6-v2
+						176 text sentence-similarity
+						177 text 169858605 downloads · 6142 likes
+						178 text Most downloaded models  · 6/1/2026
+						179 button Save
+						180 button Read details
+						181 summary More, Value: off
+							182 text More
+					183 container storytold/craft-anything
+						184 text GITHUB  ·  REPOS
+						185 checkbox Select storytold/craft-anything, Value: 0
+						186 heading storytold/craft-anything, Value: 3
+							187 button storytold/craft-anything
+						188 text Craft Anything: understand how any software works, and craft your own.
+						189 text 35629 stars · Rust
+						190 text New repositories this month  · 10/31/2026
+						191 button Save
+						192 button Read details
+						193 summary More, Value: off
+							194 text More
+					195 container ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters
+						196 text ARXIV  ·  PAPERS
+						197 checkbox Select ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters, Value: 0
+						198 heading ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters, Value: 3
+							199 button ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters
+						200 text Frontier Vision-Language Models (VLMs) such as GPT-6 Astra have demonstrated remarkable capabilities in robot control, suggesting that broad pretraining provides knowledge valuable for physical action. Yet most Vision-Language-Action (VLA) policies still rely on much smaller VLM backbones, leaving this potential largely untapped. We ask whether frontier-scale representations can provide a stronger foundation for robot learning. We introduce ScaleVLA, which connects a 552B DeepSeek-V4.1-Flash backbone to a t
+						201 text Research preprint · review methods and evidence
+						202 text Robotics papers  · 11/16/2026
+						203 button Save
+						204 button Read details
+						205 summary More, Value: off
+							206 text More
+					207 container AGRITECHNICA 2027_The world's leading trade fair for agricultural machinery
+						208 text EVENT SCHEDULES  ·  EVENTS
+						209 checkbox Select AGRITECHNICA 2027_The world's leading trade fair for agricultural machinery, Value: 0
+						210 heading AGRITECHNICA 2027_The world's leading trade fair for agricultural machinery, Value: 3
+							211 button AGRITECHNICA 2027_The world's leading trade fair for agricultural machinery
+						212 text 2027-11-14  →  2027-11-20 See organizer for venue
+						213 text 2027-11-14 → 2027-11-20 · · AGRITECHNICA calendar
+						214 text AGRITECHNICA calendar
+						215 button Save
+						216 button Read details
+						217 button Track event
+						218 summary More, Value: off
+							219 text More
+					220 container WPT Prime Championship at Wynn Las Vegas
+						221 text EVENT SCHEDULES  ·  EVENTS
+						222 checkbox Select WPT Prime Championship at Wynn Las Vegas, Value: 0
+						223 heading WPT Prime Championship at Wynn Las Vegas, Value: 3
+							224 button WPT Prime Championship at Wynn Las Vegas
+						225 text Dec 5, 2026 at 19:00 UTC  →  Dec 13, 2026 at 07:59 UTC Wynn Las Vegas Wynn Las Vegas, Las Vegas Boulevard South, Las Vegas, NV, USA Open details for source metadata.
+						226 text 2026-12-05T19:00:00.000Z → 2026-12-13T07:59:59.999Z · Wynn Las Vegas Wynn Las Vegas, Las Vegas Boulevard South, Las Vegas, NV, USA · WPT tournament schedule
+						227 text WPT tournament schedule
+						228 button Save
+						229 button Read details
+						230 button Track event
+						231 summary More, Value: off
+							232 text More
+					233 container Building Climate and Energy Resilience through Education Live Webcast
+						234 text YOUTUBE  ·  VIDEOS
+						235 checkbox Select Building Climate and Energy Resilience through Education Live Webcast, Value: 0
+						236 heading Building Climate and Energy Resilience through Education Live Webcast, Value: 3
+							237 button Building Climate and Energy Resilience through Education Live Webcast
+						238 text An Open Conversation with Dr. Desirée Plata and Dr. Chris Raben Hosted by Curt Newton Understanding the connections between climate, energy, and economic growth is critical to shaping a future where thriving communities and economic prosperity are no longer tied to greenhouse gas emissions. How can we think differently about climate, energy, and cross-sector solutions that build resilience, support adaptation, and create a healthier, more prosperous and equitable future for all? Join Dr. Desirée Plata, Dr. 
+						239 text MIT OpenCourseWare lectures · public channel feed
+						240 text MIT OpenCourseWare lectures  · 11/17/2026
+						241 button Save
+						242 button Read details
+						243 summary More, Value: off
+							244 text More
+					245 container ChatGPT
+						246 text APP CHARTS  ·  APPS
+						247 checkbox Select ChatGPT, Value: 0
+						248 heading ChatGPT, Value: 3
+							249 button ChatGPT
+						250 text OpenAI OpCo, LLC
+						251 text #1 · top free · IN
+						252 text Top free iPhone apps · India  · 5/25/2023
+						253 button Save
+						254 button Read details
+						255 summary More, Value: off
+							256 text More
+					257 container deepseek-v4.1-flash
+						258 text OLLAMA  ·  MODELS
+						259 checkbox Select deepseek-v4.1-flash, Value: 0
+						260 heading deepseek-v4.1-flash, Value: 3
+							261 button deepseek-v4.1-flash
+						262 text Designed for greater capability, faster inference, higher throughput, and scaling to larger models.
+						263 text Catalogue position 1 in this response
+						264 text Ollama model catalogue
+						265 button Save
+						266 button Read details
+						267 summary More, Value: off
+							268 text More
+					269 container sindresorhus/awesome
+						270 text GITHUB  ·  REPOS
+						271 checkbox Select sindresorhus/awesome, Value: 0
+						272 heading sindresorhus/awesome, Value: 3
+							273 button sindresorhus/awesome
+						274 text 😎 Awesome lists about all kinds of interesting topics [NOTE: Pull requests are temporarily disabled until I have a chance to catch up with the existing ones]
+						275 text 538480 stars ·
+						276 text Top public repositories  · 7/11/2014
+						277 button Save
+						278 button Read details
+						279 summary More, Value: off
+							280 text More
+					281 container Can Robots Bring Stroke Surgery to Remote Hospitals?
+						282 text PUBLISHER FEEDS  ·  NEWS
+						283 checkbox Select Can Robots Bring Stroke Surgery to Remote Hospitals?, Value: 0
+						284 heading Can Robots Bring Stroke Surgery to Remote Hospitals?, Value: 3
+							285 button Can Robots Bring Stroke Surgery to Remote Hospitals?
+						286 text I am practicing brain surgery on a patient lying 6 meters away, out of my sight and reach. I press a foot pedal, activating the controller in my hand, and carefully steer a thin flexible tube called a catheter up through the patient’s blood vessels. I head for what I believe to be the brain, tracking my progress on the live X-ray feed. As I imagine finding a blood clot, David Bell, the surgeon seated to my right, helpfully reminds me that every minute a stroke goes untreated, millions of brain cells suffoca
+						287 text Publisher feed · no independent verification
+						288 text IEEE robotics news  · 11/16/2026
+						289 button Save
+						290 button Read details
+						291 summary More, Value: off
+							292 text More
+					293 container World Ag Expo
+						294 text EVENT SCHEDULES  ·  EVENTS
+						295 checkbox Select World Ag Expo, Value: 0
+						296 heading World Ag Expo, Value: 3
+							297 button World Ag Expo
+						298 text 2027-02-09  →  2027-02-11 Tulare, California, United States 2027 wORLD aG eXPO February 9-11, 2027 • Tulare, CA Purchase Tickets
+						299 text 2027-02-09 → 2027-02-11 · Tulare, California, United States · World Ag Expo
+						300 text World Ag Expo
+						301 button Save
+						302 button Read details
+						303 button Track event
+						304 summary More, Value: off
+							305 text More
+					306 container WSOP Circuit - Canada (Playground)
+						307 text EVENT SCHEDULES  ·  EVENTS
+						308 checkbox Select WSOP Circuit - Canada (Playground), Value: 0
+						309 heading WSOP Circuit - Canada (Playground), Value: 3
+							310 button WSOP Circuit - Canada (Playground)
+						311 text 2026-11-02  →  2026-11-17 Playground Kahnawake, QC, Canada Official WSOP schedule; confirm current venue and registration details.
+						312 text 2026-11-02 → 2026-11-17 · Playground Kahnawake, QC, Canada · WSOP tournament schedule
+						313 text WSOP tournament schedule
+						314 button Save
+						315 button Read details
+						316 button Track event
+						317 summary More, Value: off
+							318 text More
+					319 container How AI Agents Work: Connectors, MCP&Agent Safety | Stanford CS193T Lecture 5 with Cynthia Bailey
+						320 text YOUTUBE  ·  VIDEOS
+						321 checkbox Value: 0, Select How AI Agents Work: Connectors, MCP&Agent Safety | Stanford CS193T Lecture 5 with Cynthia Bailey
+						322 heading How AI Agents Work: Connectors, MCP&Agent Safety | Stanford CS193T Lecture 5 with Cynthia Bailey, Value: 3
+							323 button How AI Agents Work: Connectors, MCP&Agent Safety | Stanford CS193T Lecture 5 with Cynthia Bailey
+						324 text Explore AI courses and programs from Stanford Online: https://stanford.io/4BYTekh What happens when AI stops just writing and starts acting on your behalf? In this Stanford CS193T: Thinking with AI lecture recording, Senior Lecturer Cynthia Bailey explains how AI agents work and why prompt injection gets much worse once AI can take actions. She opens with connectors, the links that let AI read your email, calendar, or files and act on your behalf, and shows that nothing new is happening inside the model: it
+						325 text Stanford Online lectures · public channel feed
+						326 text Stanford Online lectures  · 11/16/2026
+						327 button Save
+						328 button Read details
+						329 summary More, Value: off
+							330 text More
+					331 container ac.inference.sh/mcp
+						332 text MCP REGISTRY  ·  TOOLS
+						333 checkbox Select ac.inference.sh/mcp, Value: 0
+						334 heading ac.inference.sh/mcp, Value: 3
+							335 button ac.inference.sh/mcp
+						336 text run any ai model. compose agents, stack knowledge, connect tools. one api, pay per run.
+						337 text Version 2.0.1
+						338 text Public MCP tools
+						339 button Save
+						340 button Read details
+						341 summary More, Value: off
+							342 text More
+					343 container Using Hugging Face Jobs to train a NanoGPT model
+						344 text YOUTUBE  ·  VIDEOS
+						345 checkbox Select Using Hugging Face Jobs to train a NanoGPT model, Value: 0
+						346 heading Using Hugging Face Jobs to train a NanoGPT model, Value: 3
+							347 button Using Hugging Face Jobs to train a NanoGPT model
+						348 text How to use 🤗 Jobs to run any kind of training task when your GPU is too small Code: https://github.com/scienceetonnante/nanogpt-jobs 00:00 Introduction 01:21 Model and training code 02:57 Using Jobs 04:15 The shell script 05:35 Run and results
+						349 text Hugging Face videos · public channel feed
+						350 text Hugging Face videos  · 11/16/2026
+						351 button Save
+						352 button Read details
+						353 summary More, Value: off
+							354 text More
+					355 container ccch1mneyyy/dsh-Go
+						356 text GITHUB  ·  REPOS
+						357 checkbox Select ccch1mneyyy/dsh-Go, Value: 0
+						358 heading ccch1mneyyy/dsh-Go, Value: 3
+							359 button ccch1mneyyy/dsh-Go
+						360 text dsh-go — DeepSeek Harness 装进口袋：手机本机运行，也能遥控你的电脑。
+						361 text 25950 stars · Dart
+						362 text New repositories this month  · 10/25/2026
+						363 button Save
+						364 button Read details
+						365 summary More, Value: off
+							366 text More
+					367 container pollen-robotics/microduck-policies
+						368 text HUGGING FACE  ·  MODELS
+						369 checkbox Select pollen-robotics/microduck-policies, Value: 0
+						370 heading pollen-robotics/microduck-policies, Value: 3
+							371 button pollen-robotics/microduck-policies
+						372 text robotics
+						373 text 67184 downloads · 56 likes
+						374 text Robotics models  · 11/12/2026
+						375 button Save
+						376 button Read details
+						377 summary More, Value: off
+							378 text More
+					379 container JD™ AI Assistant: Built for Your Work | John Deere
+						380 text YOUTUBE  ·  VIDEOS
+						381 checkbox Select JD™ AI Assistant: Built for Your Work | John Deere, Value: 0
+						382 heading JD™ AI Assistant: Built for Your Work | John Deere, Value: 3
+							383 button JD™ AI Assistant: Built for Your Work | John Deere
+						384 text Say hello to JD™, the artificial intelligence (AI) assistant by John Deere. JD helps you get more value from your equipment and operational data by making it easier to find answers, understand what’s happening, and make decisions with confidence. Ask JD questions about: Equipment and how to use it Maintenance and troubleshooting Fields, jobsites, and work Machine performance and utilization Crop inputs and products Work Plans and upcoming tasks Licenses and software John Deere equipment and technology Find 
+						385 text John Deere technology videos · public channel feed
+						386 text John Deere technology videos  · 11/17/2026
+						387 button Save
+						388 button Read details
+						389 summary More, Value: off
+							390 text More
+					391 container EPT Prague
+						392 text EVENT SCHEDULES  ·  EVENTS
+						393 checkbox Select EPT Prague, Value: 0
+						394 heading EPT Prague, Value: 3
+							395 button EPT Prague
+						396 text 2026-12-02  →  2026-12-13 See official festival venue Festival Dates: December 2-13, 2026
+						397 text 2026-12-02 → 2026-12-13 · See official festival venue · PokerStars live festivals
+						398 text PokerStars live festivals
+						399 button Save
+						400 button Read details
+						401 button Track event
+						402 summary More, Value: off
+							403 text More
+					404 container Optical Illusions!
+						405 text YOUTUBE  ·  VIDEOS
+						406 checkbox Select Optical Illusions!, Value: 0
+						407 heading Optical Illusions!, Value: 3
+							408 button Optical Illusions!
+						409 text Which way is she facing? Is the dress black&blue, or white&gold? Prof. Josh McDermott explores our fascination with optical illusions and explains how the brain uses visual signals to make inferences about the world around us.
+						410 text MIT OpenCourseWare lectures · public channel feed
+						411 text MIT OpenCourseWare lectures  · 11/16/2026
+						412 button Save
+						413 button Read details
+						414 summary More, Value: off
+							415 text More
+					416 container Muse from Meta
+						417 text APP CHARTS  ·  APPS
+						418 checkbox Select Muse from Meta, Value: 0
+						419 heading Muse from Meta, Value: 3
+							420 button Muse from Meta
+						421 text Meta Platforms, Inc.
+						422 text #2 · top free · US
+						423 text Top free iPhone apps · US  · 9/8/2026
+						424 button Save
+						425 button Read details
+						426 summary More, Value: off
+							427 text More
+					428 container Unauthorized third-party AI agents or assistants
+						429 text HACKER NEWS  ·  NEWS
+						430 checkbox Select Unauthorized third-party AI agents or assistants, Value: 0
+						431 heading Unauthorized third-party AI agents or assistants, Value: 3
+							432 button Unauthorized third-party AI agents or assistants
+						433 text Discussion by 50kIters
+						434 text 2 points · 1 comments
+						435 text AI community news  · 11/17/2026
+						436 button Save
+						437 button Read details
+						438 summary More, Value: off
+							439 text More
+					440 container public-apis/public-apis
+						441 text GITHUB  ·  REPOS
+						442 checkbox Select public-apis/public-apis, Value: 0
+						443 heading public-apis/public-apis, Value: 3
+							444 button public-apis/public-apis
+						445 text A collective list of free APIs
+						446 text 499837 stars · Python
+						447 text Top public repositories  · 3/20/2016
+						448 button Save
+						449 button Read details
+						450 summary More, Value: off
+							451 text More
+					452 container Underwater Robotics: Physical AI's Toughest Test
+						453 text YOUTUBE  ·  VIDEOS
+						454 checkbox Select Underwater Robotics: Physical AI's Toughest Test, Value: 0
+						455 heading Underwater Robotics: Physical AI's Toughest Test, Value: 3
+							456 button Underwater Robotics: Physical AI's Toughest Test
+						457 text Executive Producer: Rachel Gordon DP&Editor: Time Malieckal Script Supervisor: Alex Shipps Special Thanks: John J. Leonard | MIT Mechanical Engineering Caroline Keenan | Graduate Student, MIT WHOI Tim Briggs | Filmmaker, MIT Lincoln Laboratory Kevin Kibitz | Chief Historian, Heritage Operations at General Motors Rebecca Buschmann | Archivist, General Motors Craig LaPlante | Director of Digital Media, Woods Hole Oceanographic Institution Ken Kostel | Director of Research Communication, Woods Hole Oceanograph
+						458 text MIT CSAIL research videos · public channel feed
+						459 text MIT CSAIL research videos  · 10/14/2026
+						460 button Save
+						461 button Read details
+						462 summary More, Value: off
+							463 text More
+					464 container Farmer Lifeline Technologies will use a US$50,000 Innovate Africa implementation grant to run a six-month roll-out of solar AI cameras that
+						465 text BLUESKY  ·  SOCIAL
+						466 checkbox Value: 0, Select Farmer Lifeline Technologies will use a US$50,000 Innovate Africa implementation grant to run a six-month roll-out of solar AI cameras that
+						467 heading Value: 3, Farmer Lifeline Technologies will use a US$50,000 Innovate Africa implementation grant to run a six-month roll-out of solar AI cameras that
+							468 button Farmer Lifeline Technologies will use a US$50,000 Innovate Africa implementation grant to run a six-month roll-out of solar AI cameras that
+						469 text Farmer Lifeline Technologies will use a US$50,000 Innovate Africa implementation grant to run a six-month roll-out of solar AI cameras that detect crop pests and send SMS alerts with treatment... #Kenya #Agritech #Agriculture #AI #Africa  Attached article: Kenyan agritech wins US$50,000 Innovate Africa grant to deploy solar AI pest-detection cameras  Farmer Lifeline Technologies will use a US$50,000 Innovate Africa implementation grant to run a six-month roll-out of solar AI cameras that detect crop pests a
+						470 text @newzdotafrica.bsky.social · 0 likes · 0 reposts
+						471 text Bluesky agri-tech  · 11/17/2026
+						472 button Save
+						473 button Read details
+						474 summary More, Value: off
+							475 text More
+					476 container 2026 Fall Colorado Poker Championship
+						477 text EVENT SCHEDULES  ·  EVENTS
+						478 checkbox Select 2026 Fall Colorado Poker Championship, Value: 0
+						479 heading 2026 Fall Colorado Poker Championship, Value: 3
+							480 button 2026 Fall Colorado Poker Championship
+						481 text 2026-10-28  →  2026-11-21 Bally-s Black Hawk (Black Hawk, CO) Multi-organizer publisher calendar; confirm current details with the organizer before registration or travel.
+						482 text 2026-10-28 → 2026-11-21 · Bally-s Black Hawk Black Hawk · Multi-organizer tournament calendar
+						483 text Multi-organizer tournament calendar
+						484 button Save
+						485 button Read details
+						486 button Track event
+						487 summary More, Value: off
+							488 text More
+					489 container Multi-Agent Systems: When More Agents Help or Hurt | Stanford CS329Z Lecture 8 with Michael Ryan
+						490 text YOUTUBE  ·  VIDEOS
+						491 checkbox Value: 0, Select Multi-Agent Systems: When More Agents Help or Hurt | Stanford CS329Z Lecture 8 with Michael Ryan
+						492 heading Multi-Agent Systems: When More Agents Help or Hurt | Stanford CS329Z Lecture 8 with Michael Ryan, Value: 3
+							493 button Multi-Agent Systems: When More Agents Help or Hurt | Stanford CS329Z Lecture 8 with Michael Ryan
+						494 text Browse Stanford's online courses in Agentic AI: https://stanford.io/4AIRb2z Lecture Overview: Are multi-agent systems better than a single AI agent? Often not. In this Stanford CS329Z: Engineering AI Agents lecture, Michael Ryan explains when to use one agent vs. many, orchestration patterns (orchestrator-worker, swarm, hybrid), how agents communicate through handoffs, message boards, and Google's Agent2Agent (A2A) protocol, coordination tools like task ledgers, shared memory, and git worktrees, and the res
+						495 text Stanford Online lectures · public channel feed
+						496 text Stanford Online lectures  · 11/16/2026
+						497 button Save
+						498 button Read details
+						499 summary More, Value: off
+							500 text More
+					501 container Edits: Video Editor
+						502 text APP CHARTS  ·  APPS
+						503 checkbox Select Edits: Video Editor, Value: 0
+						504 heading Edits: Video Editor, Value: 3
+							505 button Edits: Video Editor
+						506 text Instagram, Inc.
+						507 text #2 · top free · IN
+						508 text Top free iPhone apps · India  · 4/22/2025
+						509 button Save
+						510 button Read details
+						511 summary More, Value: off
+							512 text More
+					513 container Qwen/Qwen3.8-27B
+						514 text HUGGING FACE  ·  MODELS
+						515 checkbox Select Qwen/Qwen3.8-27B, Value: 0
+						516 heading Qwen/Qwen3.8-27B, Value: 3
+							517 button Qwen/Qwen3.8-27B
+						518 text image-text-to-text
+						519 text 6942530 downloads · 20400 likes
+						520 text Trending models  · 11/6/2026
+						521 button Save
+						522 button Read details
+						523 summary More, Value: off
+							524 text More
+					525 container deepseek-ai/dsh-superagent-prototype
+						526 text GITHUB  ·  REPOS
+						527 checkbox Select deepseek-ai/dsh-superagent-prototype, Value: 0
+						528 heading deepseek-ai/dsh-superagent-prototype, Value: 3
+							529 button deepseek-ai/dsh-superagent-prototype
+						530 text Towards a More Autonomous Agent System
+						531 text 23663 stars · TypeScript
+						532 text New repositories this month  · 10/31/2026
+						533 button Save
+						534 button Read details
+						535 summary More, Value: off
+							536 text More
+					537 container Mechatronics & Robotics Tech - West Columbia Job educativ.net/jobs/job/68555...
+						538 text BLUESKY  ·  SOCIAL
+						539 checkbox Select Mechatronics & Robotics Tech - West Columbia Job educativ.net/jobs/job/68555..., Value: 0
+						540 heading Mechatronics & Robotics Tech - West Columbia Job educativ.net/jobs/job/68555..., Value: 3
+							541 button Mechatronics & Robotics Tech - West Columbia Job educativ.net/jobs/job/68555...
+						542 text Mechatronics & Robotics Tech - West Columbia Job educativ.net/jobs/job/68555...
+						543 text @educativ.bsky.social · 0 likes · 0 reposts
+						544 text Bluesky robotics  · 11/17/2026
+						545 button Save
+						546 button Read details
+						547 summary More, Value: off
+							548 text More
+					549 container Carlsberg spinout Traitomic lands $22m to speed up trait discovery and development
+						550 text PUBLISHER FEEDS  ·  NEWS
+						551 checkbox Select Carlsberg spinout Traitomic lands $22m to speed up trait discovery and development, Value: 0
+						552 heading Carlsberg spinout Traitomic lands $22m to speed up trait discovery and development, Value: 3
+							553 button Carlsberg spinout Traitomic lands $22m to speed up trait discovery and development
+						554 text “We can develop traits very, very fast, and we are not bound by specific organisms,” says Traitomic CEO Gustav Hambraeus. The post Carlsberg spinout Traitomic lands $22m to speed up trait discovery and development appeared first on AgFunderNews.
+						555 text Publisher feed · no independent verification
+						556 text AgFunderNews agri-food technology  · 11/17/2026
+						557 button Save
+						558 button Read details
+						559 summary More, Value: off
+							560 text More
+					561 container Poker Pro vs 2 Comedians
+						562 text YOUTUBE  ·  VIDEOS
+						563 checkbox Select Poker Pro vs 2 Comedians, Value: 0
+						564 heading Poker Pro vs 2 Comedians, Value: 3
+							565 button Poker Pro vs 2 Comedians
+						566 text Antonio Esfandiari fires a $10,500 river bluff into Tony Hinchcliffe and Loose Cannon Scott Gaughan—but Scott is holding pocket aces. Can Antonio talk his way out of this one? 👀 ♠️ Missed the first episode with this lineup? Catch up here: https://youtu.be/wzgHLrilMxA 📺 Watch more Big Game on Tour episodes: https://www.youtube.com/show/VLPLDU-9X8MlT5s?sbp=QAE%3D Watch the action from Big Game On Tour Season 3, Episode 7. #PokerStars #BigGameOnTour #Poker ----------------- 🔔 Subscribe to PokerStars for mor
+						567 text PokerStars videos · public channel feed
+						568 text PokerStars videos  · 11/17/2026
+						569 button Save
+						570 button Read details
+						571 summary More, Value: off
+							572 text More
+					573 container Lecture 5 on Topic 5: Viscosity of Glass
+						574 text YOUTUBE  ·  VIDEOS
+						575 checkbox Select Lecture 5 on Topic 5: Viscosity of Glass, Value: 0
+						576 heading Lecture 5 on Topic 5: Viscosity of Glass, Value: 3
+							577 button Lecture 5 on Topic 5: Viscosity of Glass
+						578 text MIT 3.071 Amorphous Materials, Spring 2025 Instructor: Juejun Hu View the complete course: https://ocw.mit.edu/courses/3-071-amorphous-materials-spring-2025/ YouTube Playlist: https://www.youtube.com/playlist?list=PLMFCFeCMp5Zc The lecture discusses phase-change materials used in data storage, such as CDs and DVDs, and in phase-change memory (PCM) technology. PCM stores data by changing electrical conductivity. License: Creative Commons BY-NC-SA More information at https://ocw.mit.edu/terms More courses at 
+						579 text MIT OpenCourseWare lectures · public channel feed
+						580 text MIT OpenCourseWare lectures  · 11/13/2026
+						581 button Save
+						582 button Read details
+						583 summary More, Value: off
+							584 text More
+					585 container ac.mizan/registry
+						586 text MCP REGISTRY  ·  TOOLS
+						587 checkbox Select ac.mizan/registry, Value: 0
+						588 heading ac.mizan/registry, Value: 3
+							589 button ac.mizan/registry
+						590 text Player ban records from 560+ game community ban lists, with Steam's own bans. Reads need no key.
+						591 text Version 1.2.0
+						592 text Public MCP tools
+						593 button Save
+						594 button Read details
+						595 summary More, Value: off
+							596 text More
+					597 container argmaxinc/whisperkit-coreml
+						598 text HUGGING FACE  ·  MODELS
+						599 checkbox Select argmaxinc/whisperkit-coreml, Value: 0
+						600 heading argmaxinc/whisperkit-coreml, Value: 3
+							601 button argmaxinc/whisperkit-coreml
+						602 text automatic-speech-recognition
+						603 text 77897989 downloads · 271 likes
+						604 text Most downloaded models  · 8/19/2026
+						605 button Save
+						606 button Read details
+						607 summary More, Value: off
+							608 text More
+					609 container morluto/rea
+						610 text GITHUB  ·  REPOS
+						611 checkbox Select morluto/rea, Value: 0
+						612 heading morluto/rea, Value: 3
+							613 button morluto/rea
+						614 text Reverse engineer anything with agents, from app behavior down to native binaries.
+						615 text 466060 stars · TypeScript
+						616 text Top public repositories  · 4/13/2026
+						617 button Save
+						618 button Read details
+						619 summary More, Value: off
+							620 text More
+					621 container Google patents telling robots how to walk using text commands. This patent describes a system where a robot receives a text description of a
+						622 text MASTODON  ·  SOCIAL
+						623 checkbox Value: 0, Select Google patents telling robots how to walk using text commands. This patent describes a system where a robot receives a text description of a
+						624 heading Value: 3, Google patents telling robots how to walk using text commands. This patent describes a system where a robot receives a text description of a
+							625 button Google patents telling robots how to walk using text commands. This patent describes a system where a robot receives a text description of a
+						626 text Google patents telling robots how to walk using text commands. This patent describes a system where a robot receives a text description of a task and uses a large language model to figure out how to move. Interest 8/10 on the Nebula Patent Tracker.#patents #Google #Roboticshttps://kcnebula.com/patents/US12801150B2
+						627 text @kcnebula · 0 favourites
+						628 text Mastodon robotics  · 11/17/2026
+						629 button Save
+						630 button Read details
+						631 summary More, Value: off
+							632 text More
+					633 container Georgia farmer challenges new ag commissioner’s qualifications
+						634 text PUBLISHER FEEDS  ·  NEWS
+						635 checkbox Select Georgia farmer challenges new ag commissioner’s qualifications, Value: 0
+						636 heading Georgia farmer challenges new ag commissioner’s qualifications, Value: 3
+							637 button Georgia farmer challenges new ag commissioner’s qualifications
+						638 text A Georgia farmer is challenging incoming Agriculture Commissioner Katherine Juhan-Arnold's qualifications, calling for a legislative review of her experience. The post Georgia farmer challenges new ag commissioner’s qualifications appeared first on AGDAILY.
+						639 text Publisher feed · no independent verification
+						640 text AGDAILY agriculture news  · 11/17/2026
+						641 button Save
+						642 button Read details
+						643 summary More, Value: off
+							644 text More
+					645 container Poker Dad Overcomes Cracked Aces to Win $30K for Daughter's Disneyland Trip
+						646 text PUBLISHER FEEDS  ·  NEWS
+						647 checkbox Select Poker Dad Overcomes Cracked Aces to Win $30K for Daughter's Disneyland Trip, Value: 0
+						648 heading Poker Dad Overcomes Cracked Aces to Win $30K for Daughter's Disneyland Trip, Value: 3
+							649 button Poker Dad Overcomes Cracked Aces to Win $30K for Daughter's Disneyland Trip
+						650 text Ian Auvil came back with a vengeance to win $30,000.
+						651 text Publisher feed · no independent verification
+						652 text PokerNews headlines  · 11/17/2026
+						653 button Save
+						654 button Read details
+						655 summary More, Value: off
+							656 text More
+					657 container Dan Boneh: Cryptography Is Everywhere in Everday Life
+						658 text YOUTUBE  ·  VIDEOS
+						659 checkbox Select Dan Boneh: Cryptography Is Everywhere in Everday Life, Value: 0
+						660 heading Dan Boneh: Cryptography Is Everywhere in Everday Life, Value: 3
+							661 button Dan Boneh: Cryptography Is Everywhere in Everday Life
+						662 text Dan Boneh, Professor of Computer Science and Electrical Engineering at Stanford University, explains that cryptography is everywhere in everyday life. It keeps your text messages private and secures your online financial activity. It also authenticates and encrypts the information that government agencies and financial institutions send to one another. Boneh says that reach, a field used by everyone, is exactly why he loves it. Winter quarter enrollment is open now for CS255: Introduction to Cryptography, a
+						663 text Stanford Online lectures · public channel feed
+						664 text Stanford Online lectures  · 11/16/2026
+						665 button Save
+						666 button Read details
+						667 summary More, Value: off
+							668 text More
+					669 button Show 48 more · 753 remaining
+					670 summary How this feed is assembled, Value: off
+						671 text How this feed is assembled
+				672 text Local-first by design
+				673 text Personal workspace · v0.5.0
+			674 button (collapsed) Open AI assistant. Drag to move; Alt plus arrow keys also move it., Help: AI assistant · drag to move · Alt + arrows to move with keyboard, Secondary Actions: Expand
+		675 scroll bar (settable, float) 0
+	676 close button
+	677 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	678 minimize button
+	679 text Personal Command Center — Isolated QA
+680 menu bar
+	681 Poker UI Final QA
+	682 File
+	683 Edit
+	684 View
+	685 Window
+	686 Help

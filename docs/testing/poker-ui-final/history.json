@@ -1,0 +1,110 @@
+[
+  {
+    "label": "01-fresh-startup",
+    "observed_at": "2026-11-17T20:44:59.215Z",
+    "text_file": "01-fresh-startup.txt",
+    "screenshot_file": null
+  },
+  {
+    "label": "02-poker-hub",
+    "observed_at": "2026-11-17T20:45:23.758Z",
+    "text_file": "02-poker-hub.txt",
+    "screenshot_file": "02-poker-hub.jpg"
+  },
+  {
+    "label": "03-worldwide",
+    "observed_at": "2026-11-17T20:45:29.784Z",
+    "text_file": "03-worldwide.txt",
+    "screenshot_file": "03-worldwide.jpg"
+  },
+  {
+    "label": "04-us",
+    "observed_at": "2026-11-17T20:46:32.044Z",
+    "text_file": "04-us.txt",
+    "screenshot_file": "04-us.jpg"
+  },
+  {
+    "label": "05-india",
+    "observed_at": "2026-11-17T20:46:46.399Z",
+    "text_file": "05-india.txt",
+    "screenshot_file": "05-india.jpg"
+  },
+  {
+    "label": "06-worldwide-restored",
+    "observed_at": "2026-11-17T20:47:02.872Z",
+    "text_file": "06-worldwide-restored.txt",
+    "screenshot_file": null
+  },
+  {
+    "label": "07-direct-event-reader",
+    "observed_at": "2026-11-17T20:47:29.971Z",
+    "text_file": "07-direct-event-reader.txt",
+    "screenshot_file": "07-direct-event-reader.jpg"
+  },
+  {
+    "label": "08-wpt-reader",
+    "observed_at": "2026-11-17T20:47:46.070Z",
+    "text_file": "08-wpt-reader.txt",
+    "screenshot_file": "08-wpt-reader.jpg"
+  },
+  {
+    "label": "09-wsop-reader",
+    "observed_at": "2026-11-17T20:47:47.974Z",
+    "text_file": "09-wsop-reader.txt",
+    "screenshot_file": "09-wsop-reader.jpg"
+  },
+  {
+    "label": "10-pokerstars-reader",
+    "observed_at": "2026-11-17T20:47:50.476Z",
+    "text_file": "10-pokerstars-reader.txt",
+    "screenshot_file": "10-pokerstars-reader.jpg"
+  },
+  {
+    "label": "11-cardplayer-reader",
+    "observed_at": "2026-11-17T20:47:52.457Z",
+    "text_file": "11-cardplayer-reader.txt",
+    "screenshot_file": "11-cardplayer-reader.jpg"
+  },
+  {
+    "label": "12-current-only",
+    "observed_at": "2026-11-17T20:48:08.281Z",
+    "text_file": "12-current-only.txt",
+    "screenshot_file": null
+  },
+  {
+    "label": "13-upcoming-only",
+    "observed_at": "2026-11-17T20:48:10.583Z",
+    "text_file": "13-upcoming-only.txt",
+    "screenshot_file": null
+  },
+  {
+    "label": "14-search",
+    "observed_at": "2026-11-17T20:48:23.317Z",
+    "text_file": "14-search.txt",
+    "screenshot_file": null
+  },
+  {
+    "label": "15-reset",
+    "observed_at": "2026-11-17T20:48:26.984Z",
+    "text_file": "15-reset.txt",
+    "screenshot_file": null
+  },
+  {
+    "label": "16-refresh-complete",
+    "observed_at": "2026-11-17T20:48:41.655Z",
+    "text_file": "16-refresh-complete.txt",
+    "screenshot_file": "16-refresh-complete.jpg"
+  },
+  {
+    "label": "17-close",
+    "observed_at": "2026-11-17T20:48:42.241Z",
+    "text_file": "17-close.txt",
+    "screenshot_file": null
+  },
+  {
+    "label": "18-reopened",
+    "observed_at": "2026-11-17T20:48:43.276Z",
+    "text_file": "18-reopened.txt",
+    "screenshot_file": null
+  }
+]

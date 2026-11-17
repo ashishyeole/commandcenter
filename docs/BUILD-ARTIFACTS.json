@@ -1,27 +1,27 @@
 {
   "version": "0.5.0",
-  "generated_at": "2026-11-17T18:39:28.979344+00:00",
+  "generated_at": "2026-11-17T20:51:33.061665+00:00",
   "runtime_tested": false,
   "isolated_mac_qa_smoke_tested": true,
   "production_signed": false,
   "artifacts": [
     {
       "platform": "macOS app",
-      "source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
+      "source_revision": "eecb0df660fd3e538e9a61b2c544e45de0328ad1",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app",
       "bytes": 84177966,
-      "sha256": "91c5c5f2be6def57624acde464c9698f131a36cd29c34c29b24c7d47732d91e1",
+      "sha256": "3c7207d232f3f21b8e3b6dba6c50e90a71b6f5a7a1ad69ef348574b07ed0578c",
       "hash_method": "SHA-256 of compact UTF-8 JSON array sorted by relative path; each entry has path plus file sha256 or symlink target; object keys sorted",
       "files": 5
     },
     {
       "platform": "macOS DMG",
-      "source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
+      "source_revision": "eecb0df660fd3e538e9a61b2c544e45de0328ad1",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/dmg/Personal Command Center_0.5.0_arm64.dmg",
-      "bytes": 24443506,
-      "sha256": "14ed1ab80ba7f38b7d7a95cff05573e239db464e21f115de8fb360ce57e08202",
+      "bytes": 24443929,
+      "sha256": "ff7d8a97e27141ef3f5b2f8033e9f8c080fc4db94646655052e3ad3d5400413f",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     },
@@ -69,12 +69,12 @@
     "macOS voice bridge is bundled and referenced through @rpath.",
     "Installer smoke and selected isolated native workflows are revision-specific. The matching Mac evidence is identified below; earlier business, document/workspace, backup, vault and sync evidence remains at its original source revision. Full feature/provider/device acceptance remains separate. No normal user profile, real account, tool container or hosted service was used. See docs/testing/results.json for exact coverage."
   ],
-  "desktop_source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
-  "mac_native_qa_evidence": "testing/poker-live-dmg-qa.json",
+  "desktop_source_revision": "eecb0df660fd3e538e9a61b2c544e45de0328ad1",
+  "mac_native_qa_evidence": "testing/poker-ui-dmg-qa.json",
   "windows_installer_smoke_verified": true,
   "mobile_ui_source_revision": "ceb64f376fdb7b6898c41752d75727ae0035c884",
   "runtime_coverage_by_platform": {
-    "macOS": "Exact unchanged DMG process: 35/35 no-account public feeds, 801 real entries, valid IDs/titles/links/storefront ranks; isolated restart/cache/off policy passed. Poker public data and actual frontend filters checked separately. Interactive UI automation unavailable; no all-button acceptance.",
+    "macOS": "Unchanged DMG executable: 35/35 public feeds, 801 real entries, integrity/title/link/storefront checks and restart/cache/off policy passed. Actual Mac poker UI from matching code/assets with QA bundle identity/signature: tile, 58 worldwide/29 US/0 India, timing/search/refresh, direct schedule and all four provider readers passed. See poker-ui-native-qa.json; not universal feature acceptance.",
     "Windows": "Installer/native-window/uninstaller smoke passed",
     "iOS": "Compilation only",
     "Android": "Compilation only"

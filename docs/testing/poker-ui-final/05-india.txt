@@ -1,0 +1,61 @@
+Window: "Personal Command Center — Isolated QA", App: Poker UI Final QA.
+0 standard window Personal Command Center — Isolated QA, Secondary Actions: Raise
+	1 scroll area
+		2 HTML content Description: Personal Command Center, URL: tauri://localhost
+			3 container Current poker tournaments
+				4 heading Current & upcoming tournaments, Value: 2
+					5 text Current & upcoming tournaments
+				6 button Close tournament list
+				7 text Public tournament schedules, ordered by start date. Ended and cancelled events are hidden. Schedule links open the publisher directly in the app.
+				8 container
+					9 text Search tournaments
+					10 text field (settable) Search tournaments, Placeholder: Tournament, organizer or venue…
+				11 container
+					12 text Region
+					13 pop up button Region, Value: India
+				14 container
+					15 text When
+					16 pop up button When, Value: Current & upcoming
+				17 text 0
+				18 text  tournaments · 
+				19 text 4
+				20 text  public schedules
+				21 button Refresh tournaments
+				22 table
+					23 row (selectable) Tournament
+Dates
+Venue
+Schedule
+				24 text No current or upcoming India tournaments were reported by these enabled schedules. Try Worldwide or the provider links; coverage is not exhaustive.
+				25 summary Direct provider schedules, Value: off
+					26 text Direct provider schedules
+				27 text Region filters use the published venue/country, not words in tournament names. Unclassified locations remain in Worldwide. Dates and coverage come from the publishers; confirm the linked schedule before making plans.
+			28 stepper 0
+				29 unknown
+				30 unknown
+			31 stepper 0
+				32 unknown
+				33 unknown
+			34 stepper 0
+				35 unknown
+				36 unknown
+			37 stepper 0
+				38 unknown
+				39 unknown
+			40 stepper 0
+				41 unknown
+				42 unknown
+		43 scroll bar (settable, float) 0
+	44 close button
+	45 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	46 minimize button
+	47 text Personal Command Center — Isolated QA
+48 menu bar
+	49 Poker UI Final QA
+	50 File
+	51 Edit
+	52 View
+	53 Window
+	54 Help
+
+The focused UI element is 13 pop up button Region, Value: India

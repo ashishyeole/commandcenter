@@ -1,6 +1,6 @@
 {
-  "source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
-  "generated_at": "2026-11-17T18:39:28.747946+00:00",
+  "source_revision": "eecb0df660fd3e538e9a61b2c544e45de0328ad1",
+  "generated_at": "2026-11-17T20:51:32.696517+00:00",
   "all_use_cases_verified": false,
   "overall_operational_percent": null,
   "method": "Current pass tested the exact DMG process/caches/restart and automated native-core/frontend workflows, with no accounts/keys or real profile. Interactive UI automation unavailable, so prior UI evidence remains historical and revision-specific. 35 enabled public starters passed; eight paused/access-limited sources and optional private services are not presented as working no-key integrations.",
@@ -10,7 +10,7 @@
       "use_case": "Fresh installed Mac/Windows no-login startup",
       "status": "PASS \u00b7 latest exact Mac DMG; Windows historical",
       "dependencies": "None beyond internet",
-      "evidence_and_limits": "Exact 50c55de DMG mounted, strict signature/hash/shortcut verified and copied unchanged. Fresh isolated process fetched 35/35 public sources (801 real entries), no login/key/personal seed/account flag. Valid card IDs/titles/links and 50 US/50 India app chart ranks. Restart retained caches and off policy; owner profile untouched. Interactive UI not retested. Windows remains at its separately recorded installer source."
+      "evidence_and_limits": "Unchanged DMG executable: 35/35 public feeds, 801 real entries, integrity/title/link/storefront checks and restart/cache/off policy passed. Actual Mac poker UI from matching code/assets with QA bundle identity/signature: tile, 58 worldwide/29 US/0 India, timing/search/refresh, direct schedule and all four provider readers passed. See poker-ui-native-qa.json; not universal feature acceptance. Windows installer remains at its separately recorded source; latest desktop checks are separate."
     },
     {
       "id": "UC02",
@@ -50,9 +50,9 @@
     {
       "id": "UC07",
       "use_case": "Poker current/upcoming tournaments",
-      "status": "PASS \u00b7 live schedules, HTTP links and actual filter logic",
+      "status": "PASS \u00b7 actual final Mac UI + live links/data",
       "dependencies": "WPT, WSOP, PokerStars, CardPlayer availability",
-      "evidence_and_limits": "Source 50c55de: four native public schedules returned 58 current/upcoming tournaments, 29 US and 0 India. All 62/62 event/provider HTTPS schedule links passed live reads with no reader-origin changes. Venue/address evidence fixes missed US cities and foreign Texas Hold\u2019em false positives; India positive-case regression passes. No live India matches: enabled-provider coverage is not exhaustive. Unknown countries remain Worldwide. No account/key. 123 workspace test executions (121 distinct), 91 frontend assertions and TypeScript/Vite pass. Interactive UI automation unavailable; no click/player acceptance claimed. See poker-live-*.json. Current/upcoming/search/date exclusions covered; modal clicks not retested."
+      "evidence_and_limits": "Actual Mac UI passed: tile pointer open, 58 worldwide / 29 US / 0 India, foreign-venue exclusion, restore Worldwide, 22 current / 36 upcoming, Borgata venue search, four-source live refresh, direct event schedule plus WPT/WSOP/PokerStars/CardPlayer readers, close/Escape/reopen. No login/key or normal profile. Fixed inherited six-column filters and narrow dialog; full filter text and readable schedule columns verified in rebuilt UI. India has no matches in enabled sources; coverage is not exhaustive. QA copy changed only bundle identity/name/signature; unchanged delivered DMG executable checked separately. See testing/poker-ui-native-qa.json and screenshots in testing/poker-ui-final/."
     },
     {
       "id": "UC08",

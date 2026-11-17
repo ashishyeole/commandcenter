@@ -9,7 +9,7 @@ desktop_revision=subprocess.check_output(['git','log','-1','--format=%H','--','a
 mobile_revision=subprocess.check_output(['git','log','-1','--format=%H','--','apps/mobile-ios','apps/mobile-android','crates/mobile-peer','crates/core'],cwd=ROOT,text=True).strip()
 evidence=ROOT/'docs/testing/windows-package-qa.json'
 qa=json.loads(evidence.read_text()) if evidence.exists() else {}
-mac_candidates=[ROOT/'docs/testing/poker-live-dmg-qa.json',ROOT/'docs/testing/final-dmg-native-qa.json',ROOT/'docs/testing/apple-native-qa.json',ROOT/'docs/testing/business-native-qa.json',ROOT/'docs/testing/online-native-qa.json',ROOT/'docs/testing/remaining-native-qa.json']
+mac_candidates=[ROOT/'docs/testing/poker-ui-dmg-qa.json',ROOT/'docs/testing/poker-live-dmg-qa.json',ROOT/'docs/testing/final-dmg-native-qa.json',ROOT/'docs/testing/apple-native-qa.json',ROOT/'docs/testing/business-native-qa.json',ROOT/'docs/testing/online-native-qa.json',ROOT/'docs/testing/remaining-native-qa.json']
 mac_evidence=next((p for p in mac_candidates if p.exists() and json.loads(p.read_text()).get('source_revision')==desktop_revision),next(p for p in mac_candidates if p.exists()))
 mac_qa=json.loads(mac_evidence.read_text())
 mac_smoke=mac_qa.get('source_revision')==desktop_revision and (mac_qa.get('native_launch_and_local_workflows_passed') is True or mac_qa.get('all_selected_checks_passed') is True)

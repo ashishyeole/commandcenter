@@ -1,0 +1,129 @@
+Window: "www.worldpokertour.com · Source reader", App: Poker UI Final QA.
+0 standard window www.worldpokertour.com · Source reader, Secondary Actions: Raise
+	1 scroll area
+		2 HTML content Description: Event Schedule - World Poker Tour, URL: worldpokertour.com/event/schedule
+			3 container
+				4 link WPT, Help: Home, Value: worldpokertour.com/
+				5 link PLAY ONLINE, Value: clubwptgold.com/?promo=WPTCOM
+				6 button Open mobile menu
+				7 container Event tracker
+					8 text WPT PRIME
+					9 text 5 – 12 Dec
+					10 link Prime Championship at Wynn Las Vegas ›, Value: worldpokertour.com/event/prime-wpt-prime-championship-at-wynn-las-vegas-season-2026
+					11 text MY TIME --:-- VENUE TIME --:--
+			12 container
+				13 heading EVENT SCHEDULE, Value: 1
+					14 text EVENT SCHEDULE
+				15 container Events
+					16 link Schedule, Value: worldpokertour.com/event/schedule
+					17 link Results, Value: worldpokertour.com/event/results
+			18 container
+				19 text OCT 23–26 FINAL TABLE · DEC 15 Fri – Mon
+				20 link WPT Bay 101 Shooting Star Championship, Value: worldpokertour.com/event/main-tour-wpt-bay-101-shooting-star-championship-season-2026
+				21 text Bay 101 Casino
+				22 image Main Tour
+				23 text Buy-in $5,300 DEC 5–12 Sat – Sat
+				24 link WPT Prime Championship at Wynn Las Vegas, Value: worldpokertour.com/event/prime-wpt-prime-championship-at-wynn-las-vegas-season-2026
+				25 text Wynn Las Vegas
+				26 image Prime
+				27 text Buy-in $1,100 DEC 10–14 Thu – Mon
+				28 link Special Event: ClubWPT Gold Super Gold Million, Value: worldpokertour.com/event/special-events-special-event-clubwpt-gold-super-gold-million-season-2026
+				29 text Wynn Las Vegas SPECIAL EVENTS Buy-in $400 DEC 13–20 Sun – Sun
+				30 link WPT World Championship at Wynn Las Vegas, Value: worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026
+				31 text Wynn Las Vegas
+				32 image Main Tour
+				33 text Buy-in $10,400 DEC 13–14 Sun – Mon
+				34 link Special Event: WPT Ladies Championship, Value: worldpokertour.com/event/special-events-special-event-wpt-ladies-championship-season-2026
+				35 text Wynn Las Vegas SPECIAL EVENTS Buy-in $1,100 JAN 7–11, 2027 Thu – Mon
+				36 link Special Event: WPT Prime Taiwan, Value: worldpokertour.com/event/special-events-special-event-wpt-prime-taiwan-season-2027
+				37 text Chinese Texas Hold'em Poker Association, Taipei SPECIAL EVENTS Buy-in TWD 35,000 JAN 22–26, 2027 Fri – Tue
+				38 link WPT Prime Cambodia Championship, Value: worldpokertour.com/event/prime-wpt-prime-cambodia-championship-season-2027
+				39 text NagaWorld Integrated Resort, Phnom Penh
+				40 image Prime
+				41 text Buy-in $1,100 JAN 22–27, 2027 Fri – Wed
+				42 link WPT Seminole Hard Rock Poker Showdown Championship, Value: worldpokertour.com/event/main-tour-wpt-seminole-hard-rock-poker-showdown-championship-season-2027
+				43 text Seminole Hard Rock Hotel & Casino Hollywood
+				44 image Main Tour
+				45 text Buy-in $3,500 JAN 27 – FEB 1, 2027 Wed – Mon
+				46 link WPT Cambodia Championship, Value: worldpokertour.com/event/main-tour-wpt-cambodia-championship-season-2027
+				47 text NagaWorld Integrated Resort, Phnom Penh
+				48 image Main Tour
+				49 text Buy-in $3,500 FEB 26 – MAR 3, 2027 Fri – Wed
+				50 link WPT LAPC Championship, Value: worldpokertour.com/event/main-tour-wpt-lapc-championship-season-2027
+				51 text The Commerce Hotel & Casino
+				52 image Main Tour
+				53 text Buy-in $10,000
+			54 container Footer
+				55 heading Footer, Value: 2
+					56 text Footer
+				57 image WPT
+				58 link Description: Twitter, Value: twitter.com/WPT
+				59 link Description: Facebook, Value: facebook.com/WorldPokerTour/
+				60 link Description: Youtube, Value: youtube.com/user/TheWPT/
+				61 link Description: Instagram, Value: instagram.com/worldpokertour/
+				62 link Description: discord, Value: discord.gg/M9pbY9a
+				63 link US, Value: worldpokertour.com/
+				64 link FR, Value: fr.worldpokertour.com/
+				65 link BR, Value: br.worldpokertour.com/
+				66 link PT, Value: pt.worldpokertour.com/
+				67 link ES, Value: es.worldpokertour.com/
+				68 heading Events, Value: 3
+					69 text Events
+				70 content list
+					71 link Main Tour, Value: worldpokertour.com/tours/main-tour
+					72 link WPT Prime, Value: worldpokertour.com/tours/prime
+					73 link Meet Up Games, Value: worldpokertour.com/tours/meet-up-game
+					74 link Special Events, Value: worldpokertour.com/tours/special-events
+					75 link Alpha8, Value: worldpokertour.com/tours/alpha8
+					76 link WPT League, Value: wptleague.com/?ref=WorldPokerTour.com
+					77 link WPT Passport, Value: worldpokertour.com/wpt-passport
+				78 heading Players, Value: 3
+					79 text Players
+				80 content list
+					81 link Players of the Year, Value: worldpokertour.com/players/player-of-the-year
+					82 link Players of the Year Official Rules, Value: worldpokertour.com/player-of-the-year-official-rules
+					83 link Players of the Festival, Value: worldpokertour.com/players/player-of-the-festival
+					84 link Leaderboard, Value: worldpokertour.com/players/leaderboard
+					85 link Champions Club, Value: worldpokertour.com/players/champions-club
+					86 link WPT Prime Champions, Value: worldpokertour.com/players/wpt-prime-champions
+				87 heading WPT, Value: 3
+					88 text WPT
+				89 content list
+					90 link History, Value: worldpokertour.com/about-us
+					91 link Talent, Value: worldpokertour.com/talent
+					92 link Careers, Value: worldpokertour.com/careers-job-listings
+					93 link Shop, Value: worldpokertour.com/shop
+				94 heading Our Sites, Value: 3
+					95 text Our Sites
+				96 content list
+					97 link WPT.com, Value: worldpokertour.com/
+					98 link ClubWPT.com, Value: clubwpt.com/?affid=wptsite003&utm_source=wpt&utm_medium=footer&utm_campaign=referral
+					99 link WPTGlobal.com, Value: wptglobal.com/
+					100 link LearnWPT.com, Value: learnwpt.com/?ref=WorldPokerTour.com
+					101 link WPTFoundation.org, Value: wptfoundation.org/?utm_source=WPT&utm_medium=Footer&utm_content=Text
+					102 link WPTVoyage.com, Value: wptvoyage.com/
+					103 link WPTatSea.com, Value: wptatsea.com/
+					104 link WPTLeague.com, Value: wptleague.com/?ref=WorldPokerTour.com
+				105 heading Legal / Media, Value: 3
+					106 text Legal / Media
+				107 content list
+					108 link Terms & Conditions, Value: worldpokertour.com/terms-of-service
+					109 link Privacy Policy, Value: worldpokertour.com/privacy-policy
+					110 link Contact Us, Value: worldpokertour.com/contact-us
+					111 link Press Room, Value: worldpokertour.com/press-room
+					112 link Media Guidelines, Value: worldpokertour.com/media-guidelines
+				113 text Copyright © 2026 WPT Enterprises, Inc WPT, World Poker Tour and Spade Card Design are registered trademarks of WPT Enterprises, Inc. All rights reserved.
+		114 scroll bar (settable, float) 0
+	115 close button
+	116 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	117 minimize button
+	118 text www.worldpokertour.com · Source reader
+119 menu bar
+	120 Poker UI Final QA
+	121 File
+	122 Edit
+	123 View
+	124 Window
+	125 Help
+
+The focused UI element is 2 HTML content Description: Event Schedule - World Poker Tour, URL: worldpokertour.com/event/schedule

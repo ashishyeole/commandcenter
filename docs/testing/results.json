@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T18:39:28.747946+00:00",
+  "generated_at": "2026-11-17T20:51:32.696517+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
   "rust_test_executions": 123,
@@ -8,6 +8,21 @@
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
   "results": [
+    {
+      "status": "PASS \u00b7 Mac and Windows CI",
+      "area": "Final poker UI desktop checks \u00b7 eecb0df",
+      "evidence": "Both macos-latest and windows-latest passed TypeScript/Vite, all six frontend scripts (91 assertions), full workspace regressions (123 executions / 121 distinct) and native build. CI run 44172103801. Actual Mac UI and DMG acceptance are recorded separately; the Windows installer was not rebuilt in this Mac delivery. See poker-ui-desktop-ci.json."
+    },
+    {
+      "status": "PASS \u00b7 actual Mac UI with live data",
+      "area": "Poker tile UI and readable dialog \u00b7 eecb0df",
+      "evidence": "Actual Mac UI passed: tile pointer open, 58 worldwide / 29 US / 0 India, foreign-venue exclusion, restore Worldwide, 22 current / 36 upcoming, Borgata venue search, four-source live refresh, direct event schedule plus WPT/WSOP/PokerStars/CardPlayer readers, close/Escape/reopen. No login/key or normal profile. Fixed inherited six-column filters and narrow dialog; full filter text and readable schedule columns verified in rebuilt UI. India has no matches in enabled sources; coverage is not exhaustive. QA copy changed only bundle identity/name/signature; unchanged delivered DMG executable checked separately. See testing/poker-ui-native-qa.json and screenshots in testing/poker-ui-final/. Latest native/HTTP cache audit again verified 62/62 event/provider links; see poker-ui-live-*.json."
+    },
+    {
+      "status": "PASS \u00b7 exact final DMG",
+      "area": "Updated Mac installer \u00b7 eecb0df",
+      "evidence": "Unchanged DMG executable: 35/35 public feeds, 801 real entries, integrity/title/link/storefront checks and restart/cache/off policy passed. Actual Mac poker UI from matching code/assets with QA bundle identity/signature: tile, 58 worldwide/29 US/0 India, timing/search/refresh, direct schedule and all four provider readers passed. See poker-ui-native-qa.json; not universal feature acceptance. SHA-256 ff7d8a97e27141ef3f5b2f8033e9f8c080fc4db94646655052e3ad3d5400413f. See poker-ui-dmg-qa.json."
+    },
     {
       "status": "PASS \u00b7 live native/HTTP/filter logic",
       "area": "Poker tournament live schedules and US/India filters \u00b7 50c55de",
@@ -292,7 +307,7 @@
   "total_ui_assertions": 91,
   "additional_targeted_note": "Three new native regressions cover published venue/address classification, URL boundaries and cached/pause behavior. Structured India country data preserved; frontend cases reject title-based country false positives and retain unknown countries in Worldwide. Earlier UI/provider evidence remains revision-specific.",
   "discovery_feed_assertions": 28,
-  "source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
+  "source_revision": "eecb0df660fd3e538e9a61b2c544e45de0328ad1",
   "counting_method": "Latest workspace: 123 target/test executions, 121 distinct cases (two shared transport cases run in two targets). Six frontend scripts: 91 assertions (10+14+13+28+12+14). Ignored live provider tests run explicitly and are separate from unit counts; exact packaged process and HTTP audits are separate evidence.",
   "remaining_code_assertions": 14,
   "previous_aggregation_evidence": {
@@ -305,11 +320,13 @@
     "native_qa": "discovery-native-qa.json"
   },
   "isolated_mac_qa_smoke_tested": true,
-  "mac_native_qa": "poker-live-dmg-qa.json",
+  "mac_native_qa": "poker-ui-dmg-qa.json",
   "frontend_assertions": 91,
-  "desktop_source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
+  "desktop_source_revision": "eecb0df660fd3e538e9a61b2c544e45de0328ad1",
   "python_evidence_status": "10 historical mocked-provider tests; not rerun in this public Mac audit",
-  "latest_frontend_source_revision": "50c55deba48f2d11a689557d1be3539679ae9b98",
+  "latest_frontend_source_revision": "eecb0df660fd3e538e9a61b2c544e45de0328ad1",
   "latest_frontend_assertions": 91,
-  "poker_tournament_assertions": 12
+  "poker_tournament_assertions": 12,
+  "rust_workspace_source_revision": "eecb0df660fd3e538e9a61b2c544e45de0328ad1",
+  "latest_desktop_ci": "poker-ui-desktop-ci.json"
 }

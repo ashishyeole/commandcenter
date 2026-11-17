@@ -1,0 +1,227 @@
+Window: "Personal Command Center — Isolated QA", App: Poker UI Final QA.
+0 standard window Personal Command Center — Isolated QA, Secondary Actions: Raise
+	1 scroll area
+		2 HTML content Description: Personal Command Center, URL: tauri://localhost
+			3 link Skip to main content, Value: tauri://localhost#main-content
+			4 container
+				5 text Command Center YOUR PERSONAL WORKSPACE ME Personal workspace Local first. Yours to keep.
+				6 container Main navigation
+					7 text EVERYDAY
+					8 button Discover
+					9 button Today
+					10 button Inbox
+					11 button Notes
+					12 button Documents
+					13 button Tasks
+					14 button Saved
+					15 text EXPLORE & BUILD
+					16 button Workspaces
+					17 button Assistant
+					18 button Automations
+					19 text MANAGE
+					20 button Device sync
+					21 button Vault
+					22 button Timeline
+					23 button Settings
+					24 button Data & privacy
+				25 text Stored on this device No account. No mandatory cloud.
+			26 container
+				27 text Personal
+				28 text Workspaces
+				29 button Search, capture or navigate… ⌘ / Ctrl K
+				30 container
+					31 text Color theme
+					32 pop up button Color theme, Value: Monochrome
+				33 text ME
+				34 text No verified backup has been recorded on this device.
+				35 button Review backup options
+				36 text PERSONAL COMMAND CENTER
+				37 heading Workspaces, Value: 1
+					38 text Workspaces
+				39 text One connected place for your research, projects and everyday life.
+				40 text Workspace domain
+				41 pop up button Workspace domain, Value: Poker Hub · 0
+				42 text 0
+				43 text  records in this domain · 
+				44 text 0
+				45 text  across your workspace
+				46 heading Poker Hub, Value: 2
+					47 text Poker Hub
+				48 text Track events and study notes. Verify dates against an official source before planning travel.
+				49 button New record
+				50 container Current tournaments
+					51 text Public Schedules
+					52 heading Current tournaments, Value: 3
+						53 pop up button Current tournaments
+					54 text A separate tournament list with direct links to event schedules.
+					55 text 22 current · 36 upcoming
+					56 text Worldwide · no login
+					57 button View tournament list
+				58 text field (settable) Filter workspace, Placeholder: Filter by name, text or tag…
+				59 pop up button Filter status, Value: All statuses
+				60 button Pipeline view
+				61 heading Current & upcoming poker events, Value: 2
+					62 text Current & upcoming poker events
+				63 text Public internet sources · no account or model installation. Your saved workspace records are below.
+				64 button Refresh live sources
+				65 text Search live results
+				66 text field (settable) Search live results, Placeholder: Filter titles, venues and publisher details
+				67 text Region
+				68 pop up button Region, Value: Worldwide
+				69 text Content
+				70 pop up button Content, Value: events
+				71 container 2026 Fall Colorado Poker Championship
+					72 text Event schedules  ·  events
+					73 heading 2026 Fall Colorado Poker Championship, Value: 3
+						74 text 2026 Fall Colorado Poker Championship
+					75 container
+						76 text 2026-10-28  →  2026-11-21  ·  Bally-s Black Hawk (Black Hawk, CO)
+					77 text Multi-organizer publisher calendar; confirm current details with the organizer before registration or travel.
+					78 text 2026-10-28 → 2026-11-21 · Bally-s Black Hawk Black Hawk · Multi-organizer tournament calendar
+					79 text Fetched  11/17/2026, 2:48:27 PM
+					80 button Save source
+					81 button Track event
+					82 button Read in app
+					83 button Open original
+				84 container WSOP Circuit - Canada (Playground)
+					85 text Event schedules  ·  events
+					86 heading WSOP Circuit - Canada (Playground), Value: 3
+						87 text WSOP Circuit - Canada (Playground)
+					88 container
+						89 text 2026-11-02  →  2026-11-17  ·  Playground Kahnawake, QC, Canada
+					90 text Official WSOP schedule; confirm current venue and registration details.
+					91 text 2026-11-02 → 2026-11-17 · Playground Kahnawake, QC, Canada · WSOP tournament schedule
+					92 text Fetched  11/17/2026, 2:48:27 PM
+					93 button Save source
+					94 button Track event
+					95 button Read in app
+					96 button Open original
+				97 container 2026 Fall Poker Open
+					98 text Event schedules  ·  events
+					99 heading 2026 Fall Poker Open, Value: 3
+						100 text 2026 Fall Poker Open
+					101 container
+						102 text 2026-11-04  →  2026-11-17  ·  Borgata Hotel Casino - Spa (Atlantic City, NJ)
+					103 text Multi-organizer publisher calendar; confirm current details with the organizer before registration or travel.
+					104 text 2026-11-04 → 2026-11-17 · Borgata Hotel Casino – Spa Atlantic City · Multi-organizer tournament calendar
+					105 text Fetched  11/17/2026, 2:48:27 PM
+					106 button Save source
+					107 button Track event
+					108 button Read in app
+					109 button Open original
+				110 container 2026 L.A. Poker Open
+					111 text Event schedules  ·  events
+					112 heading 2026 L.A. Poker Open, Value: 3
+						113 text 2026 L.A. Poker Open
+					114 container
+						115 text 2026-11-06  →  2026-11-25  ·  Commerce Casino (Commerce, CA)
+					116 text Multi-organizer publisher calendar; confirm current details with the organizer before registration or travel.
+					117 text 2026-11-06 → 2026-11-25 · Commerce Casino Commerce · Multi-organizer tournament calendar
+					118 text Fetched  11/17/2026, 2:48:27 PM
+					119 button Save source
+					120 button Track event
+					121 button Read in app
+					122 button Open original
+				123 container 2026 Fall Classic
+					124 text Event schedules  ·  events
+					125 heading 2026 Fall Classic, Value: 3
+						126 text 2026 Fall Classic
+					127 container
+						128 text 2026-11-09  →  2026-11-22  ·  One-Eyed Jacks (Sarasota, FL)
+					129 text Multi-organizer publisher calendar; confirm current details with the organizer before registration or travel.
+					130 text 2026-11-09 → 2026-11-22 · One-Eyed Jacks Sarasota · Multi-organizer tournament calendar
+					131 text Fetched  11/17/2026, 2:48:27 PM
+					132 button Save source
+					133 button Track event
+					134 button Read in app
+					135 button Open original
+				136 container 2026 Fall Caribbean Poker Tour – St. Maarten
+					137 text Event schedules  ·  events
+					138 heading 2026 Fall Caribbean Poker Tour – St. Maarten, Value: 3
+						139 text 2026 Fall Caribbean Poker Tour – St. Maarten
+					140 container
+						141 text 2026-11-11  →  2026-11-22  ·  Casino Royale St- Maarten (St. Maarten)
+					142 text Multi-organizer publisher calendar; confirm current details with the organizer before registration or travel.
+					143 text 2026-11-11 → 2026-11-22 · Casino Royale St- Maarten St. Maarten · Multi-organizer tournament calendar
+					144 text Fetched  11/17/2026, 2:48:27 PM
+					145 button Save source
+					146 button Track event
+					147 button Read in app
+					148 button Open original
+				149 button Show 6 more · 52 remaining
+				150 button Full feed & source status
+				151 summary Search additional organizers on the web, Value: off
+					152 text Search additional organizers on the web
+				153 summary Travel budget & itinerary comparison, Value: off
+					154 text Travel budget & itinerary comparison
+				155 container (collapsed) Secondary Actions: Expand
+					156 summary Public event schedules & change alerts, Value: off
+						157 text Public event schedules & change alerts
+					158 stepper 0
+						159 unknown
+						160 unknown
+				161 container (collapsed) Secondary Actions: Expand
+					162 summary Public event schedules & change alerts, Value: off
+						163 text Public event schedules & change alerts
+					164 stepper 0
+						165 unknown
+						166 unknown
+				167 container (collapsed) Secondary Actions: Expand
+					168 summary Public event schedules & change alerts, Value: off
+						169 text Public event schedules & change alerts
+					170 stepper 0
+						171 unknown
+						172 unknown
+				173 container (collapsed) Secondary Actions: Expand
+					174 summary Public event schedules & change alerts, Value: off
+						175 text Public event schedules & change alerts
+					176 stepper 0
+						177 unknown
+						178 unknown
+				179 container (collapsed) Secondary Actions: Expand
+					180 summary Public event schedules & change alerts, Value: off
+						181 text Public event schedules & change alerts
+					182 stepper 0
+						183 unknown
+						184 unknown
+				185 container (collapsed) Secondary Actions: Expand
+					186 summary Public event schedules & change alerts, Value: off
+						187 text Public event schedules & change alerts
+					188 stepper 0
+						189 unknown
+						190 unknown
+				191 container (collapsed) Secondary Actions: Expand
+					192 summary Public event schedules & change alerts, Value: off
+						193 text Public event schedules & change alerts
+					194 stepper 0
+						195 unknown
+						196 unknown
+				197 text Project / company filter
+				198 pop up button Project / company filter, Value: All records
+				199 summary ▸ Plans, comparisons & connections, Value: off
+					200 text ▸
+					201 text Plans, comparisons & connections
+				202 text Completed event net
+				203 text $
+				204 text 0
+				205 text Manual records only · dates and guarantees require source verification.
+				206 heading Start your poker hub workspace., Value: 3
+					207 text Start your  poker hub  workspace.
+				208 text Add a record, capture evidence, and connect your next action.
+				209 text Local-first by design
+				210 text Personal workspace · v0.5.0
+			211 button (collapsed) Open AI assistant. Drag to move; Alt plus arrow keys also move it., Help: AI assistant · drag to move · Alt + arrows to move with keyboard, Secondary Actions: Expand
+		212 scroll bar (settable, float) 0
+	213 close button
+	214 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	215 minimize button
+	216 text Personal Command Center — Isolated QA
+217 menu bar
+	218 Poker UI Final QA
+	219 File
+	220 Edit
+	221 View
+	222 Window
+	223 Help
+
+The focused UI element is 2 HTML content Description: Personal Command Center, URL: tauri://localhost

@@ -1,0 +1,158 @@
+Window: "www.pokerstarslive.com · Source reader", App: Poker UI Final QA.
+0 standard window www.pokerstarslive.com · Source reader, Secondary Actions: Raise
+	1 scroll area
+		2 HTML content Description: Live Poker International Tournaments – PokerStars™ Live, URL: pokerstarslive.com/
+			3 container
+				4 container
+					5 image
+					6 text EN
+				7 link FAQ, Value: pokerstarslive.com/about/faq/
+				8 image PS Live logo
+			9 content list
+				10 link Home, Value: pokerstarslive.com/
+				11 container EPT
+				12 container APPT
+				13 link BSOP, Value: bsop.com.br/
+				14 container PokerStars Open
+				15 container Sponsored
+				16 link PokerStars Live League, Value: pokerstarslive.com/psliveleague/
+				17 link SAG Live, Value: pokerstarslive.com/spin-and-go-championship-live/
+				18 link Live Poker Rooms, Value: pokerstarslive.com/livepokerrooms/
+				19 link Travel, Value: pokerstarstravel.com/
+				20 container About
+				21 container More
+			22 container
+				23 link pokerstarslive.com/ept/prague/
+				24 heading EPT Prague, Value: 1
+					25 text EPT Prague
+				26 text Festival Dates: December 2-13, 2026
+				27 link Find out more, Value: pokerstarslive.com/ept/prague/
+			28 container
+				29 button 1
+				30 button 2
+				31 button 3
+				32 button 4
+				33 button 5
+				34 button 6
+			35 heading Global Tours, Value: 2
+				36 text Global Tours
+			37 text Click through for news on upcoming events, schedules and exciting action from the world’s biggest poker tours.
+			38 container EPT
+				39 link EPT, Value: pokerstarslive.com/ept/
+				40 heading EPT, Value: 3
+					41 link EPT, Value: pokerstarslive.com/ept/
+				42 text The most iconic live poker tour in history.
+			43 container BSOP
+				44 link BSOP, Value: bsop.com.br/
+				45 heading BSOP, Value: 3
+					46 link BSOP, Value: bsop.com.br/
+				47 text Brazil's biggest poker tour. 
+			48 container APPT
+				49 link pokerstarslive.com/appt/
+				50 heading APPT, Value: 3
+					51 link APPT, Value: pokerstarslive.com/appt/
+				52 text Ready to join the APPT action in 2026?
+			53 heading PokerStars Open Tour, Value: 2
+				54 text PokerStars Open Tour
+			55 text Check out all the information for the biggest stops on the PokerStars Open tour, including the latest 2027 stops.
+			56 container Sunday Million Live
+				57 link pokerstarslive.com/sunday-million-live/
+				58 heading Sunday Million Live, Value: 3
+					59 link Sunday Million Live, Value: pokerstarslive.com/sunday-million-live/
+				60 text The Sunday Million is coming to the live felt for the first time in nine years.
+			61 container PokerStars Open Aix-en-Provence
+				62 link pokerstarslive.com/pokerstarsopen/aixenprovence/
+				63 heading PokerStars Open Aix-en-Provence, Value: 3
+					64 link PokerStars Open Aix-en-Provence, Value: pokerstarslive.com/pokerstarsopen/aixenprovence/
+				65 text High stakes action meets the glamorous surroundings of the south of France in Provence.
+			66 container PokerStars Open Campione
+				67 link PokerStars Open - Campione, Value: pokerstarslive.com/pokerstarsopen/campione/
+				68 heading PokerStars Open Campione, Value: 3
+					69 link PokerStars Open Campione, Value: pokerstarslive.com/pokerstarsopen/campione/
+				70 text The epic Casinò di Campione once again kickstarts the latest PokerStars Open season at the PokerStars Poker Room.
+			71 container PokerStars Open Namur
+				72 link pokerstarslive.com/pokerstarsopen/namur/
+				73 heading PokerStars Open Namur, Value: 3
+					74 link PokerStars Open Namur, Value: pokerstarslive.com/pokerstarsopen/namur/
+				75 text The biggest poker festival in Belgium combines huge action with an historic setting.
+			76 heading Spin & Go Championship Live, Value: 2
+				77 text Spin & Go Championship Live
+			78 text Dynamic. Prestigious. Gloriously unpredictable.
+			79 text This exciting live game is bringing its electrifying format to the tables in Malaga.
+			80 container Spin & Go Championship Live
+				81 link pokerstarslive.com/spin-and-go-championship-live-malaga/
+				82 heading Spin & Go Championship Live, Value: 3
+					83 link Spin & Go Championship Live, Value: pokerstarslive.com/spin-and-go-championship-live-malaga/
+			84 heading The PokerStars Live experience, Value: 1
+				85 link The PokerStars Live experience, Value: pokerstarslive.com/about/
+			86 text Our live events are much, much more than just poker.
+			87 text Whether you’re new to the game, an experienced hand or a seasoned pro, there’s something for everyone – on and off the tables.
+			88 image The PSLive Experience
+			89 heading And how to qualify, Value: 1
+				90 link And how to qualify, Value: pokerstarslive.com/qualify/
+			91 text We hold everything from massive global tournaments to action-packed regional events across the world in Europe, Asia and South America.
+			92 container
+				93 text Find out how to qualify for one of our live events 
+				94 link here, Value: pokerstarslive.com/qualify/
+				95 text .
+			96 image And how to qualify.
+			97 container Watch All the Action
+				98 image Watch All the Action
+				99 heading Watch All the Action, Value: 3
+					100 text Watch All the Action
+				101 text Visit PokerStars.tv for live streaming for the biggest events and more.
+				102 link Watch All the Action, Value: pokerstars.tv/
+			103 container PokerStars Travel
+				104 image PokerStars Travel
+				105 heading PokerStars Travel, Value: 3
+					106 text PokerStars Travel
+				107 text Get the best hotel rooms and exclusive discounts.
+				108 link PokerStars Travel, Value: pokerstarstravel.com/
+			109 container Contact Us
+				110 image Contact Us
+				111 heading Contact Us, Value: 3
+					112 text Contact Us
+				113 text Need help with all things PokerStars Live? Contact the team.
+				114 link Contact Us, Value: mailto:live@pokerstarslive.com
+			115 container PokerStars LIVE App
+				116 image PokerStars Live App
+				117 heading PokerStars LIVE App, Value: 3
+					118 text PokerStars LIVE App
+				119 container
+					120 text Follow our Live events with the PokerStars Live app. Download it now for 
+					121 link Android, Value: play.google.com/store/apps/details?id=com.europeanpokertour.www&fbclid=IwAR3J3BizjycErmEKVeqa44smKLhkKbXnnslgVinkD7RzvR7GXMa3ttL3eX8
+					122 text  or
+					123 link iOS, Value: apps.apple.com/us/app/pokerstars-live/id549121555
+					124 text .
+			125 container
+				126 heading About:, Value: 3
+					127 text About:
+				128 link Security & Integrity, Value: pokerstarslive.com/about/security-integrity/
+				129 link Terms & Conditions, Value: pokerstarslive.com/tos/
+				130 link FAQs, Value: pokerstarslive.com/about/faq/
+				131 link Tournament Rules, Value: pokerstarslive.com/poker/rules/
+				132 link flutterLogo, Value: flutter.com/
+				133 link plus18, Value: pokerstars.com/about/responsible-gaming/
+				134 link rg-check-new, Value: responsiblegambling.org/for-industry/rg-check-accreditation/
+				135 link fournier, Value: nhfournier.es/en/
+				136 text Copyright © 2026, Rational Intellectual Holdings Limited. All rights reserved. Global Poker Tours Limited, Douglas Bay Complex, King Edward Road, Onchan, Isle of Man IM3 1DZ.
+				137 link www.begambleaware.org, Value: begambleaware.org/
+				138 link Cookie Policy, Value: pokerstarslive.com/cookies/
+				139 text  | 
+				140 link Privacy Preferences, Value: pokerstarslive.com/#
+				141 link pokerstarslive.com/
+				142 text 11/16/2026, 08:08:32 PM
+		143 scroll bar (settable, float) 0
+	144 close button
+	145 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	146 minimize button
+	147 text www.pokerstarslive.com · Source reader
+148 menu bar
+	149 Poker UI Final QA
+	150 File
+	151 Edit
+	152 View
+	153 Window
+	154 Help
+
+The focused UI element is 2 HTML content Description: Live Poker International Tournaments – PokerStars™ Live, URL: pokerstarslive.com/

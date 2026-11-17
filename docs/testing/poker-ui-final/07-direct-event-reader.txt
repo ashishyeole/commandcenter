@@ -1,0 +1,666 @@
+Window: "www.cardplayer.com · Source reader", App: Poker UI Final QA.
+0 standard window www.cardplayer.com · Source reader, Secondary Actions: Raise
+	1 scroll area
+		2 HTML content Description: 2026 Fall Colorado Poker Championship Schedule (Oct 28, '26 - Nov 21, '26) - Poker Tournaments, URL: cardplayer.com/poker-tournaments/1680617-2026-fall-colorado-poker-championship-2
+			4 text Ad
+			5 image PGT KickOff Online
+			6 text $50M GTD
+			7 text BUY-INS FOR EVERY LEVEL OF PLAY
+			8 text 8–30 NOVEMBER
+			10 container
+				11 container
+					12 image Players Icon
+					13 text PLAYERS 564,976
+				14 container
+					15 image Events Icon
+					16 text EVENTS 108,625
+				17 container
+					18 image Results Icon
+					19 text RESULTS 2,769,591
+				20 container
+					21 image Hand Matchups Icon
+					22 text HAND MATCHUPS 2,825
+				23 link cardplayer-logo.svg, Value: cardplayer.com/
+				24 pop up button How To Play
+				25 link News, Value: cardplayer.com/poker-news
+				26 pop up button Poker Sites
+				27 link Poker Players, Value: cardplayer.com/poker-players
+				28 link Tournaments, Value: cardplayer.com/poker-tournaments
+				29 link Odds Calculator, Value: cardplayer.com/poker-tools/odds-calculator/texas-holdem
+				30 link Magazine, Value: cardplayer.com/cardplayer-poker-magazines/archives
+			31 container
+				32 text Sweepstakes Casino Reviews
+				33 link SpinBlitz logo SpinBlitz, Value: cardplayer.com/online-casinos/sweepstakes-casinos/spinblitz
+				34 link Casinio logo Casinio, Value: cardplayer.com/online-casinos/sweepstakes-casinos/casinio
+				35 link Mega Bonanza logo Mega Bonanza, Value: cardplayer.com/online-casinos/sweepstakes-casinos/mega-bonanza
+				36 link PlayFame logo PlayFame, Value: cardplayer.com/online-casinos/sweepstakes-casinos/playfame
+				37 link Lucky.me logo Lucky.me, Value: cardplayer.com/online-casinos/sweepstakes-casinos/lucky-me
+				38 text Poker Training
+				39 link Card Player Poker School, Value: cardplayer.pokercoaching.com/courses
+				40 text Newsletter
+				41 link Sign Up, Value: cardplayer.com/newsletter/subscribe
+				42 text Find Your Local Card Room
+				43 link Casino Poker Rooms, Value: cardplayer.com/poker-rooms
+				44 link Las Vegas Tournaments, Value: cardplayer.com/lasvegaspoker
+				46 scroll area
+					47 HTML content about:blank
+				48 container Breadcrumb
+					49 content list
+						50 link Home, Value: cardplayer.com/
+						51 link Tournaments, Value: cardplayer.com/poker-tournaments
+						52 text 2026 Fall Colorado Poker Championship
+				53 search text field (settable) Search, Placeholder: Search players, events, news
+				54 button Search
+				55 image Bally-s Black Hawk
+				56 heading 2026 Fall Colorado Poker Championship, Value: 1
+					57 text 2026 Fall Colorado Poker Championship
+				58 text Oct 28, '26 – Nov 21, '26
+				59 link Bally-s Black Hawk (Black Hawk, CO), Value: ballysblackhawk.com/
+				60 heading Today's Events, Value: 2
+					61 text Today's Events
+				62 table
+					63 row (selectable) Event
+Starts
+Days
+Buy-In
+POY
+Coverage
+					64 row (selectable)
+						65 cell (selectable) $100 No-Limit Hold'em Turbo
+						66 cell (selectable) Nov 17
+						67 cell (selectable) 1
+						68 cell (selectable) $100
+						69 cell (selectable)
+						70 cell (selectable)
+					71 row (selectable)
+						72 cell (selectable) $250 No-Limit Hold'em Deep Stack
+						73 cell (selectable) Nov 17
+						74 cell (selectable) 1
+						75 cell (selectable) $250
+						76 cell (selectable)
+						77 cell (selectable)
+					78 row (selectable)
+						79 cell (selectable) $300 2-7 Lowball Triple Draw
+						80 cell (selectable) Nov 17
+						81 cell (selectable) 1
+						82 cell (selectable) $300
+						83 cell (selectable)
+						84 cell (selectable)
+					85 row (selectable)
+						86 cell (selectable) $200 No-Limit Hold'em
+						87 cell (selectable) Nov 17
+						88 cell (selectable) 1
+						89 cell (selectable) $200
+						90 cell (selectable)
+						91 cell (selectable)
+				92 heading Complete Schedule of Events, Value: 2
+					93 text Complete Schedule of Events
+				94 table
+					95 row (selectable) Event
+Starts
+Days
+Buy-In
+POY
+Coverage
+					96 row (selectable)
+						97 cell (selectable) $400 No-Limit Hold'em $100K GTD, Value: $400 No-Limit Hold'em $100K GTD
+*
+						98 cell (selectable) Oct 28
+						99 cell (selectable) 5
+						100 cell (selectable) $400
+						101 cell (selectable)
+						102 cell (selectable)
+					103 row (selectable)
+						104 cell (selectable) $100 No-Limit Hold'em Turbo
+						105 cell (selectable) Oct 29
+						106 cell (selectable) 1
+						107 cell (selectable) $100
+						108 cell (selectable)
+						109 cell (selectable)
+					110 row (selectable)
+						111 cell (selectable) $200 No-Limit Hold'em
+						112 cell (selectable) Oct 30
+						113 cell (selectable) 1
+						114 cell (selectable) $200
+						115 cell (selectable)
+						116 cell (selectable)
+					117 row (selectable)
+						118 cell (selectable) $100 No-Limit Hold'em Turbo
+						119 cell (selectable) Oct 30
+						120 cell (selectable) 1
+						121 cell (selectable) $100
+						122 cell (selectable)
+						123 cell (selectable)
+					124 row (selectable)
+						125 cell (selectable) $200 No-Limit Hold'em
+						126 cell (selectable) Oct 31
+						127 cell (selectable) 1
+						128 cell (selectable) $200
+						129 cell (selectable)
+						130 cell (selectable)
+					131 row (selectable)
+						132 cell (selectable) $100 No-Limit Hold'em Turbo
+						133 cell (selectable) Oct 31
+						134 cell (selectable) 1
+						135 cell (selectable) $100
+						136 cell (selectable)
+						137 cell (selectable)
+					138 row (selectable)
+						139 cell (selectable) $250 No-Limit Hold'em Deep Stack
+						140 cell (selectable) Nov 1
+						141 cell (selectable) 1
+						142 cell (selectable) $250
+						143 cell (selectable)
+						144 cell (selectable)
+					145 row (selectable)
+						146 cell (selectable) $200 No-Limit Hold'em
+						147 cell (selectable) Nov 1
+						148 cell (selectable) 1
+						149 cell (selectable) $200
+						150 cell (selectable)
+						151 cell (selectable)
+					152 row (selectable)
+						153 cell (selectable) $100 No-Limit Hold'em Turbo
+						154 cell (selectable) Nov 1
+						155 cell (selectable) 1
+						156 cell (selectable) $100
+						157 cell (selectable)
+						158 cell (selectable)
+					159 row (selectable)
+						160 cell (selectable) $300 No-Limit Hold'em Seniors
+						161 cell (selectable) Nov 2
+						162 cell (selectable) 1
+						163 cell (selectable) $300
+						164 cell (selectable)
+						165 cell (selectable)
+					166 row (selectable)
+						167 cell (selectable) $250 No-Limit Hold'em Deep Stack
+						168 cell (selectable) Nov 2
+						169 cell (selectable) 1
+						170 cell (selectable) $250
+						171 cell (selectable)
+						172 cell (selectable)
+					173 row (selectable)
+						174 cell (selectable) $200 No-Limit Hold'em
+						175 cell (selectable) Nov 2
+						176 cell (selectable) 1
+						177 cell (selectable) $200
+						178 cell (selectable)
+						179 cell (selectable)
+					180 row (selectable)
+						181 cell (selectable) $100 No-Limit Hold'em Turbo
+						182 cell (selectable) Nov 3
+						183 cell (selectable) 1
+						184 cell (selectable) $100
+						185 cell (selectable)
+						186 cell (selectable)
+					187 row (selectable)
+						188 cell (selectable) $400 No-Limit Hold'em
+						189 cell (selectable) Nov 3
+						190 cell (selectable) 1
+						191 cell (selectable) $400
+						192 cell (selectable)
+						193 cell (selectable)
+					194 row (selectable)
+						195 cell (selectable) $200 No-Limit Hold'em
+						196 cell (selectable) Nov 3
+						197 cell (selectable) 1
+						198 cell (selectable) $200
+						199 cell (selectable)
+						200 cell (selectable)
+					201 row (selectable)
+						202 cell (selectable) $100 No-Limit Hold'em Turbo
+						203 cell (selectable) Nov 4
+						204 cell (selectable) 1
+						205 cell (selectable) $100
+						206 cell (selectable)
+						207 cell (selectable)
+					208 row (selectable)
+						209 cell (selectable) $300 No-Limit Hold'em Deep Stack
+						210 cell (selectable) Nov 4
+						211 cell (selectable) 1
+						212 cell (selectable) $300
+						213 cell (selectable)
+						214 cell (selectable)
+					215 row (selectable)
+						216 cell (selectable) $200 No-Limit Hold'em
+						217 cell (selectable) Nov 4
+						218 cell (selectable) 1
+						219 cell (selectable) $200
+						220 cell (selectable)
+						221 cell (selectable)
+					222 row (selectable)
+						223 cell (selectable) $100 No-Limit Hold'em Turbo
+						224 cell (selectable) Nov 5
+						225 cell (selectable) 1
+						226 cell (selectable) $100
+						227 cell (selectable)
+						228 cell (selectable)
+					229 row (selectable)
+						230 cell (selectable) $200 No-Limit Hold'em
+						231 cell (selectable) Nov 5
+						232 cell (selectable) 1
+						233 cell (selectable) $200
+						234 cell (selectable)
+						235 cell (selectable)
+					236 row (selectable)
+						237 cell (selectable) $200 No-Limit Hold'em Tag Team
+						238 cell (selectable) Nov 5
+						239 cell (selectable) 1
+						240 cell (selectable) $200
+						241 cell (selectable)
+						242 cell (selectable)
+					243 row (selectable)
+						244 cell (selectable) $200 No-Limit Hold'em
+						245 cell (selectable) Nov 5
+						246 cell (selectable) 1
+						247 cell (selectable) $200
+						248 cell (selectable)
+						249 cell (selectable)
+					250 row (selectable)
+						251 cell (selectable) $100 No-Limit Hold'em Turbo
+						252 cell (selectable) Nov 6
+						253 cell (selectable) 1
+						254 cell (selectable) $100
+						255 cell (selectable)
+						256 cell (selectable)
+					257 row (selectable)
+						258 cell (selectable) $300 No-Limit Hold'em Deep Stack
+						259 cell (selectable) Nov 6
+						260 cell (selectable) 1
+						261 cell (selectable) $300
+						262 cell (selectable)
+						263 cell (selectable)
+					264 row (selectable)
+						265 cell (selectable) $200 No-Limit Hold'em
+						266 cell (selectable) Nov 6
+						267 cell (selectable) 1
+						268 cell (selectable) $200
+						269 cell (selectable)
+						270 cell (selectable)
+					271 row (selectable)
+						272 cell (selectable) $100 No-Limit Hold'em Turbo
+						273 cell (selectable) Nov 6
+						274 cell (selectable) 1
+						275 cell (selectable) $100
+						276 cell (selectable)
+						277 cell (selectable)
+					278 row (selectable)
+						279 cell (selectable) $100 No-Limit Hold'em Turbo
+						280 cell (selectable) Nov 7
+						281 cell (selectable) 1
+						282 cell (selectable) $100
+						283 cell (selectable)
+						284 cell (selectable)
+					285 row (selectable)
+						286 cell (selectable) $500 No-Limit Hold'em Super Stack
+						287 cell (selectable) Nov 7
+						288 cell (selectable) 1
+						289 cell (selectable) $500
+						290 cell (selectable)
+						291 cell (selectable)
+					292 row (selectable)
+						293 cell (selectable) $200 No-Limit Hold'em
+						294 cell (selectable) Nov 7
+						295 cell (selectable) 1
+						296 cell (selectable) $200
+						297 cell (selectable)
+						298 cell (selectable)
+					299 row (selectable)
+						300 cell (selectable) $100 No-Limit Hold'em Turbo
+						301 cell (selectable) Nov 7
+						302 cell (selectable) 1
+						303 cell (selectable) $100
+						304 cell (selectable)
+						305 cell (selectable)
+					306 row (selectable)
+						307 cell (selectable) $100 No-Limit Hold'em Turbo
+						308 cell (selectable) Nov 8
+						309 cell (selectable) 1
+						310 cell (selectable) $100
+						311 cell (selectable)
+						312 cell (selectable)
+					313 row (selectable)
+						314 cell (selectable) $600 No-Limit Hold'em Deep Stack 6-Max
+						315 cell (selectable) Nov 8
+						316 cell (selectable) 1
+						317 cell (selectable) $600
+						318 cell (selectable)
+						319 cell (selectable)
+					320 row (selectable)
+						321 cell (selectable) $200 No-Limit Hold'em
+						322 cell (selectable) Nov 8
+						323 cell (selectable) 1
+						324 cell (selectable) $200
+						325 cell (selectable)
+						326 cell (selectable)
+					327 row (selectable)
+						328 cell (selectable) $100 No-Limit Hold'em Turbo
+						329 cell (selectable) Nov 8
+						330 cell (selectable) 1
+						331 cell (selectable) $100
+						332 cell (selectable)
+						333 cell (selectable)
+					334 row (selectable)
+						335 cell (selectable) $100 No-Limit Hold'em Turbo
+						336 cell (selectable) Nov 9
+						337 cell (selectable) 1
+						338 cell (selectable) $100
+						339 cell (selectable)
+						340 cell (selectable)
+					341 row (selectable)
+						342 cell (selectable) $300 No-Limit Hold'em Deep Stack
+						343 cell (selectable) Nov 9
+						344 cell (selectable) 1
+						345 cell (selectable) $300
+						346 cell (selectable)
+						347 cell (selectable)
+					348 row (selectable)
+						349 cell (selectable) $200 Pot-Limit Omaha
+						350 cell (selectable) Nov 9
+						351 cell (selectable) 1
+						352 cell (selectable) $200
+						353 cell (selectable)
+						354 cell (selectable)
+					355 row (selectable)
+						356 cell (selectable) $100 No-Limit Hold'em Turbo
+						357 cell (selectable) Nov 10
+						358 cell (selectable) 1
+						359 cell (selectable) $100
+						360 cell (selectable)
+						361 cell (selectable)
+					362 row (selectable)
+						363 cell (selectable) $250 Big O
+						364 cell (selectable) Nov 10
+						365 cell (selectable) 1
+						366 cell (selectable) $250
+						367 cell (selectable)
+						368 cell (selectable)
+					369 row (selectable)
+						370 cell (selectable) $200 No-Limit Hold'em
+						371 cell (selectable) Nov 10
+						372 cell (selectable) 1
+						373 cell (selectable) $200
+						374 cell (selectable)
+						375 cell (selectable)
+					376 row (selectable)
+						377 cell (selectable) $100 No-Limit Hold'em Turbo
+						378 cell (selectable) Nov 11
+						379 cell (selectable) 1
+						380 cell (selectable) $100
+						381 cell (selectable)
+						382 cell (selectable)
+					383 row (selectable)
+						384 cell (selectable) $300 No-Limit Hold'em Deep Stack
+						385 cell (selectable) Nov 11
+						386 cell (selectable) 1
+						387 cell (selectable) $300
+						388 cell (selectable)
+						389 cell (selectable)
+					390 row (selectable)
+						391 cell (selectable) $1,200 No-Limit Hold'em $200K GTD, Value: $1,200 No-Limit Hold'em $200K GTD
+*
+						392 cell (selectable) Nov 12
+						393 cell (selectable) 4
+						394 cell (selectable) $1,200
+						395 cell (selectable)
+						396 cell (selectable)
+					397 row (selectable)
+						398 cell (selectable) $100 No-Limit Hold'em Turbo
+						399 cell (selectable) Nov 12
+						400 cell (selectable) 1
+						401 cell (selectable) $100
+						402 cell (selectable)
+						403 cell (selectable)
+					404 row (selectable)
+						405 cell (selectable) $100 No-Limit Hold'em Turbo
+						406 cell (selectable) Nov 13
+						407 cell (selectable) 1
+						408 cell (selectable) $100
+						409 cell (selectable)
+						410 cell (selectable)
+					411 row (selectable)
+						412 cell (selectable) $200 No-Limit Hold'em
+						413 cell (selectable) Nov 14
+						414 cell (selectable) 1
+						415 cell (selectable) $200
+						416 cell (selectable)
+						417 cell (selectable)
+					418 row (selectable)
+						419 cell (selectable) $100 No-Limit Hold'em Turbo
+						420 cell (selectable) Nov 14
+						421 cell (selectable) 1
+						422 cell (selectable) $100
+						423 cell (selectable)
+						424 cell (selectable)
+					425 row (selectable)
+						426 cell (selectable) $250 No-Limit Hold'em Deep Stack
+						427 cell (selectable) Nov 15
+						428 cell (selectable) 1
+						429 cell (selectable) $250
+						430 cell (selectable)
+						431 cell (selectable)
+					432 row (selectable)
+						433 cell (selectable) $200 No-Limit Hold'em Ladies
+						434 cell (selectable) Nov 15
+						435 cell (selectable) 1
+						436 cell (selectable) $200
+						437 cell (selectable)
+						438 cell (selectable)
+					439 row (selectable)
+						440 cell (selectable) $100 No-Limit Hold'em Turbo
+						441 cell (selectable) Nov 15
+						442 cell (selectable) 1
+						443 cell (selectable) $100
+						444 cell (selectable)
+						445 cell (selectable)
+					446 row (selectable)
+						447 cell (selectable) $100 No-Limit Hold'em Turbo
+						448 cell (selectable) Nov 16
+						449 cell (selectable) 1
+						450 cell (selectable) $100
+						451 cell (selectable)
+						452 cell (selectable)
+					453 row (selectable)
+						454 cell (selectable) $250 No-Limit Hold'em Deep Stack 8-Max
+						455 cell (selectable) Nov 16
+						456 cell (selectable) 1
+						457 cell (selectable) $250
+						458 cell (selectable)
+						459 cell (selectable)
+					460 row (selectable)
+						461 cell (selectable) $200 7-Card Stud Hi-Lo/Pot-Limit Omaha Hi-Lo
+						462 cell (selectable) Nov 16
+						463 cell (selectable) 1
+						464 cell (selectable) $200
+						465 cell (selectable)
+						466 cell (selectable)
+					467 row (selectable)
+						468 cell (selectable) $200 No-Limit Hold'em/Pot-Limit Omaha Mix 8-Max
+						469 cell (selectable) Nov 16
+						470 cell (selectable) 1
+						471 cell (selectable) $200
+						472 cell (selectable)
+						473 cell (selectable)
+					474 row (selectable)
+						475 cell (selectable) $100 No-Limit Hold'em Turbo
+						476 cell (selectable) Nov 17
+						477 cell (selectable) 1
+						478 cell (selectable) $100
+						479 cell (selectable)
+						480 cell (selectable)
+					481 row (selectable)
+						482 cell (selectable) $250 No-Limit Hold'em Deep Stack
+						483 cell (selectable) Nov 17
+						484 cell (selectable) 1
+						485 cell (selectable) $250
+						486 cell (selectable)
+						487 cell (selectable)
+					488 row (selectable)
+						489 cell (selectable) $300 2-7 Lowball Triple Draw
+						490 cell (selectable) Nov 17
+						491 cell (selectable) 1
+						492 cell (selectable) $300
+						493 cell (selectable)
+						494 cell (selectable)
+					495 row (selectable)
+						496 cell (selectable) $200 No-Limit Hold'em
+						497 cell (selectable) Nov 17
+						498 cell (selectable) 1
+						499 cell (selectable) $200
+						500 cell (selectable)
+						501 cell (selectable)
+					502 row (selectable)
+						503 cell (selectable) $100 No-Limit Hold'em Turbo
+						504 cell (selectable) Nov 18
+						505 cell (selectable) 1
+						506 cell (selectable) $100
+						507 cell (selectable)
+						508 cell (selectable)
+					509 row (selectable)
+						510 cell (selectable) $250 No-Limit Hold'em Deep Stack
+						511 cell (selectable) Nov 18
+						512 cell (selectable) 1
+						513 cell (selectable) $250
+						514 cell (selectable)
+						515 cell (selectable)
+					516 row (selectable)
+						517 cell (selectable) $200 Big O
+						518 cell (selectable) Nov 18
+						519 cell (selectable) 1
+						520 cell (selectable) $200
+						521 cell (selectable)
+						522 cell (selectable)
+					523 row (selectable)
+						524 cell (selectable) $200 No-Limit Hold'em
+						525 cell (selectable) Nov 18
+						526 cell (selectable) 1
+						527 cell (selectable) $200
+						528 cell (selectable)
+						529 cell (selectable)
+					530 row (selectable)
+						531 cell (selectable) $100 No-Limit Hold'em Turbo
+						532 cell (selectable) Nov 19
+						533 cell (selectable) 1
+						534 cell (selectable) $100
+						535 cell (selectable)
+						536 cell (selectable)
+					537 row (selectable)
+						538 cell (selectable) $250 No-Limit Hold'em Deep Stack
+						539 cell (selectable) Nov 19
+						540 cell (selectable) 1
+						541 cell (selectable) $250
+						542 cell (selectable)
+						543 cell (selectable)
+					544 row (selectable)
+						545 cell (selectable) $200 Pot-Limit Omaha
+						546 cell (selectable) Nov 19
+						547 cell (selectable) 1
+						548 cell (selectable) $200
+						549 cell (selectable)
+						550 cell (selectable)
+					551 row (selectable)
+						552 cell (selectable) $200 No-Limit Hold'em Freezeout
+						553 cell (selectable) Nov 19
+						554 cell (selectable) 1
+						555 cell (selectable) $200
+						556 cell (selectable)
+						557 cell (selectable)
+					558 row (selectable)
+						559 cell (selectable) $100 No-Limit Hold'em Turbo
+						560 cell (selectable) Nov 19
+						561 cell (selectable) 1
+						562 cell (selectable) $100
+						563 cell (selectable)
+						564 cell (selectable)
+					565 row (selectable)
+						566 cell (selectable) $100 No-Limit Hold'em Turbo
+						567 cell (selectable) Nov 20
+						568 cell (selectable) 1
+						569 cell (selectable) $100
+						570 cell (selectable)
+						571 cell (selectable)
+					572 row (selectable)
+						573 cell (selectable) $500 No-Limit Hold'em Super Stack
+						574 cell (selectable) Nov 20
+						575 cell (selectable) 1
+						576 cell (selectable) $500
+						577 cell (selectable)
+						578 cell (selectable)
+					579 row (selectable)
+						580 cell (selectable) $2,500 No-Limit Hold'em
+						581 cell (selectable) Nov 21
+						582 cell (selectable) 1
+						583 cell (selectable) $2,500
+						584 cell (selectable)
+						585 cell (selectable)
+					586 row (selectable)
+						587 cell (selectable) Columns: 0-5, Value: * Indicates multiple starting days
+				588 text Help Card Player keep its database accurate. Email 
+				589 link results@cardplayer.com, Value: mailto:results@cardplayer.com
+				590 text to report any errors or omissions.
+			591 container
+				592 heading 6
+				593 link cardplayer.com/poker-news
+				594 link cardplayer.com/poker-players
+				595 link cardplayer.com/poker-leaderboards
+				596 link cardplayer.com/poker-blogs
+				597 link cardplayer.com/online-poker/california
+				598 link cardplayer.com/online-poker/florida
+				599 link cardplayer.com/online-poker/texas
+				600 heading 6
+				601 link cardplayer.com/rules-of-poker/how-to-play-poker
+				602 link cardplayer.com/rules-of-poker
+				603 link cardplayer.com/rules-of-poker/hand-rankings
+				604 link cardplayer.com/poker-tools
+				605 link cardplayer.com/poker-tools/odds-calculator/texas-holdem
+				606 link cardplayer.com/poker-tools/odds-calculator/omaha
+				607 link cardplayer.com/poker-strategy
+				608 link cardplayer.com/cardplayer-poker-magazines/archives
+				609 heading 6
+				610 link cardplayer.com/rules-of-poker/tournaments
+				611 link cardplayer.com/poker-tournaments
+				612 link cardplayer.com/poker-tournaments/wsop
+				613 link cardplayer.com/poker-tournaments/wsop
+				614 link cardplayer.com/poker-tournaments/ept
+				615 link cardplayer.com/poker-tournaments/wsop-circuit
+				616 link cardplayer.com/poker-tournaments/women-in-poker
+				617 heading 6
+				618 link cardplayer.com/au
+				619 link cardplayer.com/ca
+				620 link cardplayer.com/de
+				621 link cardplayer.com/nl
+				622 link cardplayer.com/se
+				623 link cardplayer.com/uk
+				624 heading 6
+				625 link cardplayer.com/contact
+				626 link facebook.com/cardplayer
+				627 link x.com/CardPlayerMedia
+				628 link youtube.com/@cardplayermedia
+				629 link instagram.com/cardplayermedia
+				630 image footer-logo.png
+				631 heading 3
+				632 heading 4
+				633 link cardplayer.com/
+				634 link cardplayer.com/about
+				635 link cardplayer.com/media-kit
+				636 link cardplayer.com/newsletter/subscribe
+				637 link cardplayer.com/terms-of-use
+				638 link cardplayer.com/privacy
+				639 link cardplayer.com/sitemap
+				640 link cardplayer.com/webmasters
+				641 link cardplayer.com/responsible-gambling
+		642 scroll bar (settable, float) 0
+	643 close button
+	644 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	645 minimize button
+	646 text www.cardplayer.com · Source reader
+647 menu bar
+	648 Poker UI Final QA
+	649 File
+	650 Edit
+	651 View
+	652 Window
+	653 Help
+
+The focused UI element is 2 HTML content Description: 2026 Fall Colorado Poker Championship Schedule (Oct 28, '26 - Nov 21, '26) - Poker Tournaments, URL: cardplayer.com/poker-tournaments/1680617-2026-fall-colorado-poker-championship-2

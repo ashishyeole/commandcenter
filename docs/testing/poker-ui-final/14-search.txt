@@ -1,0 +1,95 @@
+Window: "Personal Command Center — Isolated QA", App: Poker UI Final QA.
+0 standard window Personal Command Center — Isolated QA, Secondary Actions: Raise
+	1 scroll area
+		2 HTML content Description: Personal Command Center, URL: tauri://localhost
+			3 container Current poker tournaments
+				4 heading Current & upcoming tournaments, Value: 2
+					5 text Current & upcoming tournaments
+				6 button Close tournament list
+				7 text Public tournament schedules, ordered by start date. Ended and cancelled events are hidden. Schedule links open the publisher directly in the app.
+				8 container
+					9 text Search tournaments
+					10 text field (settable) Search tournaments, Value: Borgata, Placeholder: Tournament, organizer or venue…
+				11 container
+					12 text Region
+					13 pop up button Region, Value: Worldwide
+				14 container
+					15 text When
+					16 pop up button When, Value: Upcoming only
+				17 text 1
+				18 text  tournaments · 
+				19 text 4
+				20 text  public schedules
+				21 button Refresh tournaments
+				22 table
+					23 row (selectable) Tournament
+Dates
+Venue
+Schedule
+					24 row (selectable)
+						25 cell (selectable) 2026 Pure Grind Series – November
+Multi-organizer tournament calendar
+Upcoming
+						26 cell (selectable) 2026-11-25
+to
+2026-11-29
+						27 cell (selectable) Borgata Hotel Casino - Spa (Atlantic City, NJ)
+Venue checked
+11/17/2026
+						28 cell (selectable) Description: View schedule for 2026 Pure Grind Series – November, View schedule for 2026 Pure Grind Series – November
+Provider schedule, Value: View schedule
+Provider schedule
+Fetched
+11/17/2026, 2:43:59 PM
+				29 container (expanded) Secondary Actions: Collapse
+					30 summary Direct provider schedules, Value: on
+						31 text Direct provider schedules
+					32 content list
+						33 container
+							34 list marker •
+							35 link WPT tournament schedule, Value: worldpokertour.com/event/schedule
+						36 container
+							37 list marker •
+							38 link WSOP tournament schedule, Value: wsop.com/schedule/
+						39 container
+							40 list marker •
+							41 link PokerStars live festivals, Value: pokerstarslive.com/
+						42 container
+							43 list marker •
+							44 link Multi-organizer tournament calendar, Value: cardplayer.com/poker-tournaments
+				45 text Region filters use the published venue/country, not words in tournament names. Unclassified locations remain in Worldwide. Dates and coverage come from the publishers; confirm the linked schedule before making plans.
+			46 stepper 0
+				47 unknown
+				48 unknown
+			49 stepper 0
+				50 unknown
+				51 unknown
+			52 stepper 0
+				53 unknown
+				54 unknown
+			55 stepper 0
+				56 unknown
+				57 unknown
+			58 stepper 0
+				59 unknown
+				60 unknown
+			61 stepper 0
+				62 unknown
+				63 unknown
+			64 stepper 0
+				65 unknown
+				66 unknown
+		67 scroll bar (settable, float) 0
+	68 close button
+	69 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	70 minimize button
+	71 text Personal Command Center — Isolated QA
+72 menu bar
+	73 Poker UI Final QA
+	74 File
+	75 Edit
+	76 View
+	77 Window
+	78 Help
+
+The focused UI element is 10 text field (settable) Search tournaments, Value: Borgata, Placeholder: Tournament, organizer or venue…
