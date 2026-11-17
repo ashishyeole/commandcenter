@@ -8,8 +8,8 @@ use tokio_util::sync::CancellationToken;
 
 const JOB: &str = "business:public";
 const NORTH_AMERICA: &str = "https://ovp.dresel.systems/api-na/interpreter";
-const GLOBAL: &str = "https://maps.mail.ru/osm/tools/overpass/api/interpreter";
-const ALTERNATE: &str = "https://overpass.private.coffee/api/interpreter";
+const GLOBAL: &str = "https://photon.komoot.io/reverse";
+const ALTERNATE: &str = "https://maps.mail.ru/osm/tools/overpass/api/interpreter";
 
 fn safe_url(raw: &str) -> Option<String> {
     if raw.len() > 2000 {
@@ -184,6 +184,39 @@ fn parse_scoped_rows(
     }
     Ok(rows)
 }
+fn photon_rows(value: &Value, category: &str, scope: (f64, f64, u32)) -> Result<Vec<Value>> {
+    let features = value["features"]
+        .as_array()
+        .ok_or("Unexpected Photon result: missing features")?;
+    let elements=features.iter().take(500).filter_map(|feature| {
+        let p=&feature["properties"];
+        let kind=match p["osm_type"].as_str()? {"N"=>"node","W"=>"way","R"=>"relation",_=>return None};
+        if feature["geometry"]["type"]!="Point" {return None;}
+        let coords=feature["geometry"]["coordinates"].as_array()?;
+        let key=p["osm_key"].as_str()?;let value=p["osm_value"].as_str()?;
+        if !["amenity","shop","office"].contains(&key) {return None;}
+        let mut tags=serde_json::Map::new();tags.insert(key.into(),json!(value));
+        for (target,source) in [("name","name"),("addr:housenumber","housenumber"),("addr:street","street"),("addr:city","city"),("addr:postcode","postcode"),("website","website")] {
+            if let Some(value)=p[source].as_str(){tags.insert(target.into(),json!(value));}
+        }
+        Some(json!({"type":kind,"id":p["osm_id"],"lon":coords.first(),"lat":coords.get(1),"tags":tags}))
+    }).collect::<Vec<_>>();
+    let mut rows = parse_scoped_rows(&json!({"elements":elements}), category, Some(scope))?;
+    for row in &mut rows {
+        row["verification"]=json!("Public Photon index of OpenStreetMap; verify operation, ownership and website. This index may omit website tags; an absent value does not establish that no website exists.");
+    }
+    Ok(rows)
+}
+fn photon_tag(category: &str) -> Result<&'static str> {
+    match category {
+        "restaurants" => Ok("amenity:restaurant"),
+        "cafes" => Ok("amenity:cafe"),
+        "shops" => Ok("shop"),
+        "offices" => Ok("office"),
+        "salons" => Ok("shop:hairdresser"),
+        _ => Err("Choose a supported business category".into()),
+    }
+}
 #[derive(Debug)]
 struct ProviderFailure {
     message: String,
@@ -246,15 +279,32 @@ async fn read_provider(
     let c = crate::research::public_client(&url)
         .await
         .map_err(ProviderFailure::unavailable)?;
-    // Short, read-only Overpass queries support GET; no account, proxy credentials or cookies.
-    let response = c
-        .get(url)
+    // Overpass POST is a read-only query. Prefer it for global/custom services;
+    // their gateways can reject/time out encoded GET queries. The regional replica supports GET.
+    let request = if endpoint == GLOBAL {
+        c.get(url).query(&[
+            ("lat", scope.0.to_string()),
+            ("lon", scope.1.to_string()),
+            ("radius", (f64::from(scope.2) / 1000.).to_string()),
+            ("limit", "50".into()),
+            (
+                "osm_tag",
+                photon_tag(category)
+                    .map_err(ProviderFailure::unavailable)?
+                    .into(),
+            ),
+        ])
+    } else if endpoint == NORTH_AMERICA {
+        c.get(url).query(&[("data", query)])
+    } else {
+        c.post(url).form(&[("data", query)])
+    };
+    let response = request
         .header(
             "User-Agent",
             "PersonalCommandCenter/0.5 (+https://github.com/ashishyeole/commandcenter)",
         )
         .header("Accept", "application/json")
-        .query(&[("data", query)])
         .send()
         .await
         .map_err(|e| {
@@ -275,7 +325,12 @@ async fn read_provider(
     let value = crate::connectors::json_response(response)
         .await
         .map_err(ProviderFailure::unavailable)?;
-    parse_scoped_rows(&value, category, Some(scope)).map_err(ProviderFailure::unavailable)
+    if endpoint == GLOBAL {
+        photon_rows(&value, category, scope)
+    } else {
+        parse_scoped_rows(&value, category, Some(scope))
+    }
+    .map_err(ProviderFailure::unavailable)
 }
 #[derive(Debug)]
 struct Lookup {
@@ -491,7 +546,7 @@ where
             return Err(failure.message());
         }
     };
-    let result = json!({"query_hash":query_hash,"latitude":latitude,"longitude":longitude,"radius_metres":radius,"category":category,"provider_mode":endpoint,"endpoint":found.endpoint,"attempts":found.attempts,"fetched_at":command_center_core::now(),"rows":found.rows,"attribution":"© OpenStreetMap contributors · Open Database License (ODbL)","license_url":"https://www.openstreetmap.org/copyright","limits":"At most 50 community listings in source order; not exhaustive or independently verified. Coordinates or way centres are filtered to the requested radius; unlocated listings are skipped. Regional replicas may lag. No device location, account, geocoding, crawling or outreach."});
+    let result = json!({"query_hash":query_hash,"latitude":latitude,"longitude":longitude,"radius_metres":radius,"category":category,"provider_mode":endpoint,"endpoint":found.endpoint,"attempts":found.attempts,"fetched_at":command_center_core::now(),"rows":found.rows,"attribution":"© OpenStreetMap contributors · Open Database License (ODbL)","license_url":"https://www.openstreetmap.org/copyright","limits":"At most 50 community listings in source order; not exhaustive or independently verified. Coordinates or way centres are filtered to the requested radius; unlocated listings are skipped. Public map indexes/replicas may lag or omit website tags. No device location, account, crawling or outreach."});
     repo.set_setting("business_search_last", &result.to_string())?;
     Ok(result)
 }
@@ -627,6 +682,29 @@ mod tests {
         assert_eq!(rows[0]["distance_metres"], 0);
         assert!(rows[1]["distance_metres"].as_u64().unwrap() < 20);
         assert!(distance_metres(0., 179.999, 0., -179.999) < 250.);
+    }
+    #[test]
+    fn photon_businesses_keep_osm_identity_and_reject_wrong_category_or_location() {
+        let feature = |id, tag, lon| json!({"type":"Feature","properties":{"osm_type":"N","osm_id":id,"osm_key":"amenity","osm_value":tag,"name":"Public business","city":"Bengaluru"},"geometry":{"type":"Point","coordinates":[lon,12.9716]}});
+        let v = json!({"features":[feature(1,"restaurant",77.5946),feature(2,"cafe",77.5946),feature(3,"restaurant",80.)]});
+        let rows = photon_rows(&v, "restaurants", (12.9716, 77.5946, 1500)).unwrap();
+        assert_eq!(rows.len(), 1);
+        assert_eq!(rows[0]["id"], "node/1");
+        assert_eq!(
+            rows[0]["source_url"],
+            "https://www.openstreetmap.org/node/1"
+        );
+        assert!(rows[0]["website"].is_null());
+        assert!(rows[0]["verification"]
+            .as_str()
+            .unwrap()
+            .contains("may omit website"));
+        assert!(photon_rows(
+            &json!({"error":"unavailable"}),
+            "restaurants",
+            (12.9716, 77.5946, 1500)
+        )
+        .is_err());
     }
     #[tokio::test]
     async fn unavailable_provider_falls_back_without_fabricating_rows() {
