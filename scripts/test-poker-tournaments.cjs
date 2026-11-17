@@ -1,0 +1,19 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),ts=require('typescript');
+function load(file,imports={}){const sandbox={exports:{},require:id=>imports[id]||require(id),URL,Date,Set,Map,TextEncoder,Intl};vm.runInNewContext(ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,sandbox);return sandbox.exports;}
+const feed=load('apps/desktop/src/discoveryFeed.ts'),{tournamentList,tournamentRunning}=load('apps/desktop/src/tournamentList.ts',{'./discoveryFeed':feed});
+const now=Date.parse('2026-11-17T18:00:00Z');let checks=0;const check=fn=>{fn();checks++;};
+const event=(id,start,end,extra={})=>({id,title:id,description:'',url:`https://organizer.example/${id}`,source:'events',kind:'events',metric:'Official schedule',start_date:start,end_date:end,fetched_at:'2026-11-17T12:00:00Z',verification:'Publisher schedule',...extra});
+const source=(id,items,extra={})=>({stream:{id,name:id,topic:'poker',kind:'events',provider:'events',enabled:true,region:'world',...extra},cache:{items}});
+const ongoing=event('ongoing','2026-11-15','2026-11-20',{location:'Las Vegas, US'}),future=event('future','2026-12-01','2026-12-04',{location:'Goa, India'});
+const hub={streams:[source('WPT',[future,ongoing,event('past','2026-10-01','2026-10-10'),event('cancelled','2026-12-01','2026-12-02',{event_status:'EventCancelled'})]),source('paused',[event('paused','2026-12-01','2026-12-02')],{enabled:false}),source('news',[event('not-a-schedule','2026-12-01','2026-12-02')],{provider:'rss'})]};
+check(()=>assert.deepEqual(Array.from(tournamentList(hub,'world','',now),i=>i.id),['ongoing','future']));
+check(()=>assert.equal(tournamentRunning(ongoing,now),true));
+check(()=>assert.equal(tournamentRunning(future,now),false));
+check(()=>assert.equal(tournamentList(hub,'IN','',now)[0].id,'future'));
+check(()=>assert.equal(tournamentList(hub,'US','',now)[0].id,'ongoing'));
+check(()=>assert.equal(tournamentList(hub,'world','Goa',now).length,1));
+check(()=>assert.equal(tournamentList(hub,'world','',now)[0].url,'https://organizer.example/ongoing'));
+const timed=event('later-today','2026-11-17T20:00:00Z','2026-11-17T23:00:00Z');
+check(()=>assert.equal(tournamentRunning(timed,now),false));
+check(()=>assert.equal(tournamentList({streams:[source('timed',[timed,event('ended-today','2026-11-17T09:00:00Z','2026-11-17T17:00:00Z')])]},'world','',now).length,1));
+console.log(`${checks} poker tournament assertions passed: ongoing/upcoming dates, ended/cancelled/paused exclusion, region/search, original schedule links and timed starts.`);
