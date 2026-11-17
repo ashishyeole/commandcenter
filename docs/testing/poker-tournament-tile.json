@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-11-17T15:21:51.268Z",
+  "logic_source_revision": "0cf4e1db5043925f787d0f9e0bccdaf6828d8901",
+  "data_origin": "Existing real public cache from final DMG audit; no new provider request in this logic check.",
+  "cached_tournaments": 57,
+  "ongoing": 22,
+  "upcoming": 35,
+  "all_schedule_links_https": true,
+  "providers": [
+    {
+      "name": "WPT tournament schedule",
+      "url": "https://www.worldpokertour.com/event/schedule"
+    },
+    {
+      "name": "WSOP tournament schedule",
+      "url": "https://www.wsop.com/schedule/"
+    },
+    {
+      "name": "PokerStars live festivals",
+      "url": "https://www.pokerstarslive.com/"
+    },
+    {
+      "name": "Multi-organizer tournament calendar",
+      "url": "https://www.cardplayer.com/poker-tournaments"
+    }
+  ],
+  "interactive_ui_verified": false
+}

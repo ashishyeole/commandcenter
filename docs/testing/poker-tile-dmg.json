@@ -1,0 +1,11 @@
+{
+  "source_revision": "0cf4e1db5043925f787d0f9e0bccdaf6828d8901",
+  "checked_at": "2026-11-17T15:23:33.436688+00:00",
+  "sha256": "c4db30f75dfa30a79fd6fd01ed850639749d6c0ca5adea82e39018d971ecd481",
+  "delivery_sha256": "c4db30f75dfa30a79fd6fd01ed850639749d6c0ca5adea82e39018d971ecd481",
+  "checksum_and_mounted_signature_verified": true,
+  "applications_shortcut_verified": true,
+  "production_signed": false,
+  "interactive_ui_verified": false,
+  "scope": "Poker tile source/build/logic and installer integrity; prior full-DMG runtime audit remains at 5bde681."
+}

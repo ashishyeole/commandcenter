@@ -1,6 +1,6 @@
 # Final Mac DMG acceptance audit
 
-The current delivery was tested from the actual DMG, not a separately compiled QA app. The audit verifies its checksum, mounted resource signature and Applications shortcut, copies the app unchanged, confirms the executable hash, then launches that executable with a fresh development-only `--qa-profile` namespace. An early guard refuses to open any database if the resolved profile path differs from the requested QA identity. Normal launches keep the standard profile. Release builds reject QA-profile arguments.
+The `5bde681` delivery was tested from the actual DMG, not a separately compiled QA app. The audit verifies its checksum, mounted resource signature and Applications shortcut, copies the app unchanged, confirms the executable hash, then launches that executable with a fresh development-only `--qa-profile` namespace. An early guard refuses to open any database if the resolved profile path differs from the requested QA identity. Normal launches keep the standard profile. Release builds reject QA-profile arguments.
 
 At functional source `5bde681`, all 35 enabled public starters fetched 798 real records with no login, API keys, personal records or account flags. Both Apple storefronts have 50 correctly ranked entries. Every card had a usable title, source identity and public link. The process was terminated/relaunched: exact cached payloads and an explicitly disabled refresh policy survived. This is process/cache acceptance, not a claim that every UI control was clicked.
 
@@ -26,3 +26,5 @@ python3 scripts/audit-public-workflows.py
 The second script uses existing Node/Rust dependencies offline and temporary databases. Outputs stay under `target/final-dmg-audit`; only bounded, source-specific evidence is copied into `docs/testing/final-*`. The installed app itself requires no developer SDK or command-line steps. Ordinary launches do not need a QA flag.
 
 See [HTML status](STATUS-REPORT.html), [use cases](USE-CASE-AUDIT.html), [test report](TEST-REPORT.html), [artifact provenance](BUILD-ARTIFACTS.json) and `testing/final-dmg-native-qa.json`.
+
+Subsequent Poker tile delivery at `0cf4e1d`: frontend build, nine tournament assertions, existing public-cache behavior and installer checksum/mounted-signature checks pass. This newer UI addition has not repeated the full interactive/runtime acceptance above. See `testing/poker-tile-dmg.json`.

@@ -52,7 +52,7 @@
       "use_case": "Poker current/upcoming tournaments",
       "status": "PASS \u00b7 live + UI",
       "dependencies": "WPT, WSOP, PokerStars, CardPlayer availability",
-      "evidence_and_limits": "Four real organizer/schedule adapters passed. Fresh UI tracked Grand Victoria with official URL and venue. US filter yielded events; India had no matching upcoming listing. Coverage is not exhaustive. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session."
+      "evidence_and_limits": "Four real organizer/schedule adapters passed. Fresh UI tracked Grand Victoria with official URL and venue. US filter yielded events; India had no matching upcoming listing. Coverage is not exhaustive. Current exact-DMG native refresh/data checks passed for this public provider/topic; current cache/filter/citation tests pass. Earlier UI observations were not repeated in this session. Source 0cf4e1d adds Poker Hub \u2192 Current tournaments tile with its own date-sorted list, provider/event schedule links and region/current/upcoming/search filters. Build plus nine targeted assertions and real-cache logic checks pass; new UI not repeated."
     },
     {
       "id": "UC08",

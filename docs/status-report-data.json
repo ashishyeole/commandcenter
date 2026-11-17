@@ -1892,7 +1892,7 @@
     }
   ],
   "scope": "Personal local command center: discover, monitor, organize, compare and track. No local LLM/model downloads, robotics execution, prototype execution or production commercialization.",
-  "desktop_source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+  "desktop_source_revision": "0cf4e1db5043925f787d0f9e0bccdaf6828d8901",
   "resolved_blockers": [
     {
       "title": "New native Mac UI checks",
@@ -1990,5 +1990,21 @@
     "interactive_ui_retested": false,
     "ui_limit": "Native UI automation unavailable in current session; earlier UI acceptance remains tied to its own revision.",
     "evidence": "testing/final-dmg-native-qa.json"
+  },
+  "poker_tournament_tile": {
+    "source_revision": "0cf4e1db5043925f787d0f9e0bccdaf6828d8901",
+    "implemented": true,
+    "entry": "Poker Hub \u2192 Current tournaments \u2192 View tournament list",
+    "account_required": false,
+    "api_key_required": false,
+    "features": [
+      "Dedicated chronological list",
+      "Current/upcoming selection",
+      "Worldwide/US/India and text filters",
+      "Original tournament and provider schedule links",
+      "Refresh enabled public tournament sources"
+    ],
+    "verification": "TypeScript/Vite, nine focused assertions, and existing real cache check (57 current/upcoming entries at check time). Interactive UI not repeated.",
+    "evidence": "testing/poker-tournament-tile.json"
   }
 }

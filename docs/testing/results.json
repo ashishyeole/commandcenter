@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T14:19:50.396360+00:00",
+  "generated_at": "2026-11-17T15:24:08.215738+00:00",
   "version": "0.5.0",
   "host": "macOS ARM64",
   "rust_test_executions": 120,
@@ -8,6 +8,11 @@
   "failures_in_final_automated_runs": 0,
   "full_prd_acceptance": false,
   "results": [
+    {
+      "status": "PASS \u00b7 build/logic/cache; UI not repeated",
+      "area": "Poker Hub tournament-list tile \u00b7 source 0cf4e1d",
+      "evidence": "Current tournaments shortcut opens a dedicated chronological schedule list with direct event/provider links, Worldwide/US/India and current/upcoming/search filters. Nine date/exclusion/filter/link assertions and TypeScript/Vite pass; all six frontend scripts total 88 assertions. Existing public-cache integration returned 57 dated tournaments from four providers with HTTPS schedules. This cached-data check does not claim a new provider refresh or interactive UI test. See poker-tournament-tile.json and poker-tile-dmg.json."
+    },
     {
       "status": "PASS \u00b7 exact DMG process/data",
       "area": "Final packaged Mac no-account acceptance",
@@ -293,5 +298,7 @@
   "mac_native_qa": "final-dmg-native-qa.json",
   "frontend_assertions": 79,
   "desktop_source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
-  "python_evidence_status": "10 historical mocked-provider tests; not rerun in this public Mac audit"
+  "python_evidence_status": "10 historical mocked-provider tests; not rerun in this public Mac audit",
+  "latest_frontend_source_revision": "0cf4e1db5043925f787d0f9e0bccdaf6828d8901",
+  "latest_frontend_assertions": 88
 }

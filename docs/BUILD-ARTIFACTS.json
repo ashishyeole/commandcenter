@@ -1,27 +1,27 @@
 {
   "version": "0.5.0",
-  "generated_at": "2026-11-17T14:19:50.600531+00:00",
+  "generated_at": "2026-11-17T15:23:33.593507+00:00",
   "runtime_tested": false,
-  "isolated_mac_qa_smoke_tested": true,
+  "isolated_mac_qa_smoke_tested": false,
   "production_signed": false,
   "artifacts": [
     {
       "platform": "macOS app",
-      "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+      "source_revision": "0cf4e1db5043925f787d0f9e0bccdaf6828d8901",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/macos/Personal Command Center.app",
       "bytes": 83871678,
-      "sha256": "27b4c4b89069114591e6765bcbf92a14f5bef9ba25204aa77d5d543734c78320",
+      "sha256": "857983567d34261e915f4409b4e0bc96076aaae8abcdc6a9b05db561c8907993",
       "hash_method": "SHA-256 of compact UTF-8 JSON array sorted by relative path; each entry has path plus file sha256 or symlink target; object keys sorted",
       "files": 5
     },
     {
       "platform": "macOS DMG",
-      "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
+      "source_revision": "0cf4e1db5043925f787d0f9e0bccdaf6828d8901",
       "rebuilt_for_current_functional_changes": true,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/debug/bundle/dmg/Personal Command Center_0.5.0_arm64.dmg",
-      "bytes": 24368388,
-      "sha256": "47b6fb0cb7e97a1637fc78f240c95a72bc7d619d56ea7c112ef9699f3796bf0a",
+      "bytes": 24371775,
+      "sha256": "c4db30f75dfa30a79fd6fd01ed850639749d6c0ca5adea82e39018d971ecd481",
       "hash_method": "SHA-256 of file bytes",
       "files": 1
     },
@@ -48,7 +48,7 @@
     {
       "platform": "Windows NSIS installer",
       "source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
-      "rebuilt_for_current_functional_changes": true,
+      "rebuilt_for_current_functional_changes": false,
       "path": "/Users/ashishyeole/Documents/ChatGPT/LIfe Management Desktop App/target/windows-package/nsis/Personal Command Center_0.5.0_x64-setup.exe",
       "bytes": 7662309,
       "sha256": "9349e7e67e4f2bd0e1720d8c940c5925a312cc4da876e64b5c5728e1aad4cf15",
@@ -69,17 +69,17 @@
     "macOS voice bridge is bundled and referenced through @rpath.",
     "Installer smoke and selected isolated native workflows are revision-specific. The matching Mac evidence is identified below; earlier business, document/workspace, backup, vault and sync evidence remains at its original source revision. Full feature/provider/device acceptance remains separate. No normal user profile, real account, tool container or hosted service was used. See docs/testing/results.json for exact coverage."
   ],
-  "desktop_source_revision": "5bde681c873b7206a2f0f1d5bd4c41eac1a6316f",
-  "mac_native_qa_evidence": "testing/final-dmg-native-qa.json",
+  "desktop_source_revision": "0cf4e1db5043925f787d0f9e0bccdaf6828d8901",
+  "mac_native_qa_evidence": null,
   "windows_installer_smoke_verified": true,
   "mobile_ui_source_revision": "ceb64f376fdb7b6898c41752d75727ae0035c884",
   "runtime_coverage_by_platform": {
-    "macOS": "Exact final DMG was checksum/signature verified, copied without rebuilding, and its matching executable ran in a fresh isolated profile without login/key. All 35 enabled public streams refreshed with 798 real entries; data-quality/card identity/storefront checks passed. Process termination/relaunch preserved all caches and the explicit off policy. Native-core public-data workflows and frontend behavior checks passed separately. Interactive native UI automation was unavailable in this session; earlier UI evidence remains revision-specific. Full feature/device acceptance is not claimed.",
-    "Windows": "Matching installer silently installed, launched and uninstalled; fresh no-account startup fetched 800 real items from 35/35 successful public sources, 0 failed. No seeded personal records or account keys. Full feature UI remains unverified.",
+    "macOS": "No matching current-source native QA evidence; compilation and artifact integrity are separate from feature acceptance.",
+    "Windows": "Installer/native-window/uninstaller smoke passed",
     "iOS": "Compilation only",
     "Android": "Compilation only"
   },
-  "windows_public_bootstrap_verified": true,
-  "windows_apple_charts_verified": true,
+  "windows_public_bootstrap_verified": false,
+  "windows_apple_charts_verified": false,
   "windows_public_bootstrap_evidence": "testing/online-windows-bootstrap.json"
 }
