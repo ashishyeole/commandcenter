@@ -1,0 +1,30 @@
+name: Verify installed Windows public feeds
+on:
+  workflow_dispatch:
+    inputs:
+      package_run:
+        description: Successful package run containing unsigned-windows-latest
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  installed-public-feeds:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: unsigned-windows-latest
+          run-id: ${{ inputs.package_run }}
+          github-token: ${{ github.token }}
+          path: target/release/bundle
+      - name: Install and verify fresh no-account public bootstrap
+        shell: pwsh
+        run: ./.github/scripts/windows-package-smoke.ps1 -LiveFeedAudit
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: installed-windows-public-feed-evidence
+          path: target/release/bundle/windows-*-smoke.json

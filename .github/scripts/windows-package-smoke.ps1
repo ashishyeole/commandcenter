@@ -1,4 +1,12 @@
+param([switch]$LiveFeedAudit)
 $ErrorActionPreference = 'Stop'
+if ($LiveFeedAudit) {
+  foreach ($base in @($env:APPDATA, $env:LOCALAPPDATA)) {
+    if ($base -and (Test-Path (Join-Path $base 'com.personal.commandcenter'))) {
+      throw 'Live bootstrap audit requires a fresh disposable runner profile'
+    }
+  }
+}
 $installer = Get-ChildItem target/release/bundle/nsis/*.exe | Select-Object -First 1
 if (!$installer) { throw 'NSIS installer was not produced' }
 $install = Join-Path $env:RUNNER_TEMP 'pcc-installed'
@@ -16,6 +24,11 @@ try {
   if ($app.MainWindowHandle -eq 0) { throw 'Application did not create a native window' }
   $report.launch='native window created and process stayed running for 15 seconds'
   $report.window_title=$app.MainWindowTitle
+  if ($LiveFeedAudit) {
+    python .github/scripts/windows-public-feed-audit.py
+    if ($LASTEXITCODE -ne 0) { throw 'Installed public-feed bootstrap audit failed' }
+    $report.public_feed_bootstrap='passed; see windows-public-feed-smoke.json for actual provider counts and failures'
+  }
 } finally {
   if ($app -and !$app.HasExited) { Stop-Process -Id $app.Id -Force; $app.WaitForExit(5000) | Out-Null }
   $uninstaller = Get-ChildItem $install -Filter '*uninstall*.exe' -ErrorAction SilentlyContinue | Select-Object -First 1
