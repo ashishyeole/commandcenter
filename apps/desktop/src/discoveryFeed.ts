@@ -1,11 +1,11 @@
 import type {Discovery} from './modules';
-export const topics=[['all','For you'],['ai','AI & models'],['code','Code & libraries'],['robotics','Robotics'],['agriculture','Agriculture'],['poker','Poker'],['learning','Lectures & learning'],['custom','Your searches']] as const;
+export const topics=[['all','For you'],['ai','AI & models'],['code','Code & libraries'],['robotics','Robotics'],['agriculture','Agriculture'],['poker','Poker'],['learning','Lectures & learning'],['apps','Apps & tools'],['custom','Your searches']] as const;
 export const providers:Record<string,string>={crossref:'Crossref research',europepmc:'Europe PMC',patents:'Patent index (Europe PMC)',schemes:'Official India scheme announcements',github:'GitHub',models:'Hugging Face',ollama:'Ollama',arxiv:'arXiv',rss:'Publisher feeds',news:'Hacker News',youtube:'YouTube',youtube_feed:'YouTube channels',reddit:'Reddit',bluesky:'Bluesky',mastodon:'Mastodon',events:'Event schedules',calendar:'Event calendars',x:'X',linkedin:'LinkedIn',mcp:'MCP registry',apps:'App charts',import:'Imported links'};
 export type SourceOptions={sort:string;days:number;language:string;task:string;license:string;region:string;duration:string};
 export type HubStream={id:string;name:string;topic:string;provider:string;query:string;kind:string;region:string;enabled:boolean;options:SourceOptions};
 export type HubItem=Discovery&{topic?:string;kind?:string;region?:string;stream_id?:string;stream_name?:string;provider_rank?:number;start_date?:string;end_date?:string;location?:string;event_status?:string;imported?:boolean;metadata?:Record<string,unknown>;topics:string[];streams:string[]};
 export type HubSource={stream:HubStream;cache:{source:string;fetched_at:string;items:HubItem[]}|null;health:{status:string;checked_at:string;count?:number;error?:string}|null};
-export type HubStatus={streams:HubSource[];active:string[];auto_refresh_minutes:number};
+export type HubStatus={streams:HubSource[];active:string[];auto_refresh_minutes:number;last_refresh?:{at:string;refreshed:number;failed:number;cancelled:boolean}|null};
 export const emptyHub:HubStatus={streams:[],active:[],auto_refresh_minutes:0};
 export function canonicalURL(raw:string){try{const u=new URL(raw);for(const k of [...u.searchParams.keys()])if(/^utm_|^(fbclid|gclid)$/i.test(k))u.searchParams.delete(k);u.hash='';if(['www.youtube.com','youtube.com','youtu.be'].includes(u.hostname)){const id=u.hostname==='youtu.be'?u.pathname.slice(1):u.pathname.startsWith('/shorts/')?u.pathname.slice(8):u.searchParams.get('v');if(id&&/^[A-Za-z0-9_-]{11}$/.test(id))return `https://www.youtube.com/watch?v=${id}`;}return u.toString().replace(/\/$/,'');}catch{return raw;}}
 export function aggregateFeed(sources:HubSource[]):HubItem[]{

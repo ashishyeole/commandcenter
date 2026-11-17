@@ -106,6 +106,23 @@ pub async fn refresh_source(
     }
     refresh_cached(&state, source, query, SourceOptions::default(), None).await
 }
+#[tauri::command]
+pub async fn refresh_public_channel(
+    state: State<'_, AppState>,
+    channel: String,
+    consent: bool,
+) -> Result<CachedFeed> {
+    if !consent {
+        return Err("Approve reading this public YouTube channel".into());
+    }
+    let epoch = state.data_epoch.load(std::sync::atomic::Ordering::SeqCst);
+    let rows = crate::discovery_hub::public_channel(&state, &channel, &channel).await?;
+    let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+    if state.data_epoch.load(std::sync::atomic::Ordering::SeqCst) != epoch {
+        return Err("Workspace reset during public channel read".into());
+    }
+    repo.cache_feed("youtube", &serde_json::json!(rows))
+}
 #[derive(Clone, Default, Serialize, Deserialize)]
 #[serde(default, deny_unknown_fields)]
 pub struct SourceOptions {
@@ -389,10 +406,15 @@ pub(crate) async fn refresh_cached(
             {
                 let s = &r["server"];
                 let name = text(s, "name");
-                let url = s["repository"]["url"]
-                    .as_str()
-                    .unwrap_or("https://registry.modelcontextprotocol.io")
-                    .to_owned();
+                let mut registry_url =
+                    reqwest::Url::parse("https://registry.modelcontextprotocol.io/v0.1/servers")
+                        .map_err(|e| e.to_string())?;
+                registry_url
+                    .query_pairs_mut()
+                    .append_pair("search", &name)
+                    .append_pair("limit", "30");
+                let url = registry_url.to_string();
+                attributes.insert(format!("mcp:{name}"),json!({"registry_name":name,"version":s["version"],"description":s["description"],"repository":s["repository"],"website":s["websiteUrl"],"remotes":s["remotes"],"packages":s["packages"],"notice":"Public registry declarations. This lists available integrations; connecting or running tools remains separately approved."}));
                 out.push(Discovery {
                     id: format!("mcp:{name}"),
                     title: name,

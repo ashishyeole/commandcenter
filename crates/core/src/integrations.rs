@@ -82,3 +82,46 @@ impl Repository {
         Ok(())
     }
 }
+
+impl Repository {
+    /// Atomic first-launch setup. Existing source/refresh policy (including an
+    /// explicitly disabled or restored configuration) always wins.
+    pub fn initialize_public_feeds(&self, streams: &Value) -> Result<bool> {
+        let mut portable = streams.clone();
+        for row in portable.as_array_mut().ok_or("Invalid starter sources")? {
+            row["enabled"] = json!(false);
+        }
+        crate::workspace::validate_discovery_sources(&portable)?;
+        let tx = self.conn.unchecked_transaction().map_err(err)?;
+        use rusqlite::OptionalExtension;
+        let present = |key: &str| -> Result<bool> {
+            tx.query_row("SELECT 1 FROM settings WHERE key=?1", [key], |_| Ok(()))
+                .optional()
+                .map(|r| r.is_some())
+                .map_err(err)
+        };
+        if present("public_discovery_initialized")? {
+            return Ok(false);
+        }
+        let fresh = !present("discovery_hub_streams")? && !present("discovery_hub_auto_refresh")?;
+        if fresh {
+            tx.execute(
+                "INSERT INTO settings VALUES('discovery_hub_streams',?1)",
+                [serde_json::to_string(streams).map_err(err)?],
+            )
+            .map_err(err)?;
+            tx.execute(
+                "INSERT INTO settings VALUES('discovery_hub_auto_refresh','30')",
+                [],
+            )
+            .map_err(err)?;
+        }
+        tx.execute(
+            "INSERT INTO settings VALUES('public_discovery_initialized','1')",
+            [],
+        )
+        .map_err(err)?;
+        tx.commit().map_err(err)?;
+        Ok(fresh)
+    }
+}

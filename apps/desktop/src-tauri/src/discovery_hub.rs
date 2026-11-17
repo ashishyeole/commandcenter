@@ -99,6 +99,36 @@ pub(crate) fn defaults() -> Vec<Stream> {
         "news",
         "US",
     ));
+    rows.extend(research_starters());
+    rows.extend([
+        stream(
+            "app-charts-us",
+            "Top free iPhone apps · US",
+            "apps",
+            "apps",
+            "us",
+            "apps",
+            "US",
+        ),
+        stream(
+            "app-charts-india",
+            "Top free iPhone apps · India",
+            "apps",
+            "apps",
+            "in",
+            "apps",
+            "IN",
+        ),
+        stream(
+            "mcp-public-registry",
+            "Public MCP tools",
+            "apps",
+            "mcp",
+            "",
+            "tools",
+            "world",
+        ),
+    ]);
     let archive = rows.iter_mut().find(|s| s.id == "agri-news").unwrap();
     archive.enabled = false;
     for s in rows.iter_mut().filter(|s| s.provider == "news") {
@@ -114,11 +144,8 @@ pub(crate) fn defaults() -> Vec<Stream> {
         .for_each(|s| s.enabled = false);
     rows
 }
-#[tauri::command]
-pub fn add_research_starters(state: State<AppState>) -> Result<usize> {
-    let mut rows = list(&state)?;
-    let mut count = 0;
-    for mut s in [
+fn research_starters() -> Vec<Stream> {
+    let mut rows = Vec::from([
         stream(
             "crossref-robotics",
             "Crossref robotics research",
@@ -155,18 +182,32 @@ pub fn add_research_starters(state: State<AppState>) -> Result<usize> {
             "news",
             "IN",
         ),
-    ] {
-        if rows.iter().any(|r| r.id == s.id) {
+    ]);
+    for s in &mut rows {
+        s.enabled = !["patents", "schemes"].contains(&s.provider.as_str());
+        if s.provider != "patents" {
+            s.options.days = 90;
+        }
+    }
+    rows
+}
+/// Enable only built-in public defaults for an unconfigured profile. Never override an
+/// explicit off setting, restored disabled subscriptions or owner-defined source policy.
+pub(crate) fn initialize_public_defaults(repo: &command_center_core::Repository) -> Result<bool> {
+    repo.initialize_public_feeds(&serde_json::to_value(defaults()).map_err(|e| e.to_string())?)
+}
+#[tauri::command]
+pub fn add_research_starters(state: State<AppState>) -> Result<usize> {
+    let mut rows = list(&state)?;
+    let mut count = 0;
+    for source in research_starters() {
+        if rows.iter().any(|r| r.id == source.id) {
             continue;
         }
         if rows.len() >= 64 {
             return Err("Remove a source before adding research starters".into());
         }
-        s.enabled = !["patents", "schemes"].contains(&s.provider.as_str());
-        if s.provider != "patents" {
-            s.options.days = 90;
-        }
-        rows.push(s);
+        rows.push(source);
         count += 1;
     }
     state
@@ -179,6 +220,7 @@ pub fn add_research_starters(state: State<AppState>) -> Result<usize> {
         )?;
     Ok(count)
 }
+
 fn validate(s: &Stream) -> Result<()> {
     if s.id.is_empty()
         || s.id.len() > 80
@@ -194,6 +236,7 @@ fn validate(s: &Stream) -> Result<()> {
             "poker",
             "learning",
             "custom",
+            "apps",
         ]
         .contains(&s.topic.as_str())
         || ![
@@ -222,7 +265,7 @@ fn validate(s: &Stream) -> Result<()> {
         ]
         .contains(&s.provider.as_str())
         || ![
-            "models", "repos", "news", "papers", "videos", "social", "events",
+            "models", "repos", "news", "papers", "videos", "social", "events", "apps", "tools",
         ]
         .contains(&s.kind.as_str())
         || !["world", "US", "IN", "GB", "CA", "AU", "DE"].contains(&s.region.as_str())
@@ -302,7 +345,9 @@ pub(crate) fn status(state: &AppState) -> Result<Value> {
         .filter(|s| s.starts_with("hub:"))
         .cloned()
         .collect::<Vec<_>>();
-    Ok(json!({"streams":rows,"auto_refresh_minutes":auto,"active":active}))
+    Ok(
+        json!({"streams":rows,"auto_refresh_minutes":auto,"active":active,"last_refresh":repo.setting("discovery_hub_last_refresh")?.and_then(|v|serde_json::from_str::<Value>(&v).ok())}),
+    )
 }
 #[tauri::command]
 pub fn save_discovery_stream(state: State<AppState>, stream: Stream) -> Result<()> {
@@ -406,6 +451,40 @@ fn review_event_changes(
     }
     Ok(())
 }
+fn transient_read_error(error: &str) -> bool {
+    [
+        "error sending request",
+        "request failed",
+        "request timed out",
+        "DNS lookup failed",
+        "502 Bad Gateway",
+        "503 Service Unavailable",
+        "504 Gateway Timeout",
+    ]
+    .iter()
+    .any(|needle| error.contains(needle))
+        && !["401", "403", "429", "cooldown", "permission"]
+            .iter()
+            .any(|needle| error.contains(needle))
+}
+async fn retry_public_read<T, F, Fut>(allow: bool, mut read: F) -> Result<T>
+where
+    F: FnMut() -> Fut,
+    Fut: std::future::Future<Output = Result<T>>,
+{
+    let first = read().await;
+    if allow
+        && first
+            .as_ref()
+            .err()
+            .is_some_and(|e| transient_read_error(e))
+    {
+        tokio::time::sleep(std::time::Duration::from_secs(2)).await;
+        read().await
+    } else {
+        first
+    }
+}
 pub(crate) async fn refresh(state: &AppState, id: &str) -> Result<Value> {
     let s = list(state)?
         .into_iter()
@@ -425,7 +504,7 @@ pub(crate) async fn refresh(state: &AppState, id: &str) -> Result<Value> {
         }
         jobs.insert(request.clone(), cancel.clone());
     }
-    let result = tokio::select! {_=cancel.cancelled()=>Err("Refresh cancelled; previous cache retained".into()),r=tokio::time::timeout(std::time::Duration::from_secs(65),fetch(state,&s))=>r.unwrap_or_else(|_|Err("Source timed out; previous cache retained".into()))};
+    let result = tokio::select! {_=cancel.cancelled()=>Err("Refresh cancelled; previous cache retained".into()),r=tokio::time::timeout(std::time::Duration::from_secs(65),retry_public_read(!["x","reddit","youtube","linkedin"].contains(&s.provider.as_str()),||fetch(state,&s)))=>r.unwrap_or_else(|_|Err("Source timed out; previous cache retained".into()))};
     state
         .jobs
         .lock()
@@ -485,7 +564,8 @@ async fn fetch(state: &AppState, s: &Stream) -> Result<Vec<Value>> {
     match s.provider.as_str(){
  "crossref"|"europepmc"|"patents"|"schemes"=>crate::scholarly_sources::fetch(state,&s.provider,&s.query,s.options.days).await,
  "rss"=>values(crate::research::fetch(state,"rss",&s.query).await?),
- "youtube_feed"|"reddit"=>{if s.provider=="reddit" {if let Some(rows)=reddit_authorized(state,s).await?{return Ok(rows);}let until=state.repo.lock().map_err(|_|"Database unavailable")?.setting("hub_reddit_next")?.and_then(|s|s.parse::<i64>().ok()).unwrap_or(0);let delay=until-chrono::Utc::now().timestamp();if delay>10{return Err(format!("Reddit public RSS is paused/rate-limited. Retry in {delay} seconds; existing results retained."));}if delay>0{tokio::time::sleep(std::time::Duration::from_secs(delay as u64+1)).await;}state.repo.lock().map_err(|_|"Database unavailable")?.set_setting("hub_reddit_next",&(chrono::Utc::now().timestamp()+6).to_string())?;}let url=if s.provider=="youtube_feed"{format!("https://www.youtube.com/feeds/videos.xml?channel_id={}",resolve_youtube(&s.query).await?)}else{let order=if ["hot","new","top"].contains(&s.options.sort.as_str()){s.options.sort.as_str()}else{"hot"};format!("https://www.reddit.com/r/{}/{order}/.rss?limit=10",s.query)};let fetched=crate::research::fetch(state,"rss",&url).await;if s.provider=="reddit"&&fetched.is_err(){state.repo.lock().map_err(|_|"Database unavailable")?.set_setting("hub_reddit_next",&(chrono::Utc::now().timestamp()+900).to_string())?;}let mut rows=values(fetched?)?;for r in &mut rows{r["source"]=json!(if s.provider=="youtube_feed"{"youtube"}else{"reddit"});r["metric"]=json!(if s.provider=="youtube_feed"{format!("{} · public channel feed",s.name)}else{format!("r/{} · {}",s.query,if s.options.sort.is_empty(){"hot"}else{&s.options.sort})});}Ok(rows)},
+ "youtube_feed"=>public_channel(state,&s.query,&s.name).await,
+ "reddit"=>{if s.provider=="reddit" {if let Some(rows)=reddit_authorized(state,s).await?{return Ok(rows);}let until=state.repo.lock().map_err(|_|"Database unavailable")?.setting("hub_reddit_next")?.and_then(|s|s.parse::<i64>().ok()).unwrap_or(0);let delay=until-chrono::Utc::now().timestamp();if delay>10{return Err(format!("Reddit public RSS is paused/rate-limited. Retry in {delay} seconds; existing results retained."));}if delay>0{tokio::time::sleep(std::time::Duration::from_secs(delay as u64+1)).await;}state.repo.lock().map_err(|_|"Database unavailable")?.set_setting("hub_reddit_next",&(chrono::Utc::now().timestamp()+6).to_string())?;}let url=if s.provider=="youtube_feed"{format!("https://www.youtube.com/feeds/videos.xml?channel_id={}",resolve_youtube(&s.query).await?)}else{let order=if ["hot","new","top"].contains(&s.options.sort.as_str()){s.options.sort.as_str()}else{"hot"};format!("https://www.reddit.com/r/{}/{order}/.rss?limit=10",s.query)};let fetched=crate::research::fetch(state,"rss",&url).await;if s.provider=="reddit"&&fetched.is_err(){state.repo.lock().map_err(|_|"Database unavailable")?.set_setting("hub_reddit_next",&(chrono::Utc::now().timestamp()+900).to_string())?;}let mut rows=values(fetched?)?;for r in &mut rows{r["source"]=json!(if s.provider=="youtube_feed"{"youtube"}else{"reddit"});r["metric"]=json!(if s.provider=="youtube_feed"{format!("{} · public channel feed",s.name)}else{format!("r/{} · {}",s.query,if s.options.sort.is_empty(){"hot"}else{&s.options.sort})});}Ok(rows)},
  "bluesky"|"mastodon"|"x"=>social(state,s).await,
  "linkedin"=>Err("LinkedIn does not provide an open personal home-feed API. Use an authorized RSS source or save individual post URLs; approved LinkedIn API access is a separate dependency.".into()),
  "events"|"calendar"=>events(s).await,
@@ -498,6 +578,26 @@ async fn fetch(state: &AppState, s: &Stream) -> Result<Vec<Value>> {
  }
  }
 }
+pub(crate) async fn public_channel(
+    state: &AppState,
+    query: &str,
+    name: &str,
+) -> Result<Vec<Value>> {
+    let id = resolve_youtube(query).await?;
+    let rows = crate::research::fetch(
+        state,
+        "rss",
+        &format!("https://www.youtube.com/feeds/videos.xml?channel_id={id}"),
+    )
+    .await?;
+    let mut rows = values(rows)?;
+    for row in &mut rows {
+        row["source"] = json!("youtube");
+        row["metric"] = json!(format!("{name} · public channel feed"));
+    }
+    Ok(rows)
+}
+
 fn values(rows: Vec<Discovery>) -> Result<Vec<Value>> {
     rows.into_iter()
         .map(|r| serde_json::to_value(r).map_err(|e| e.to_string()))
@@ -1072,6 +1172,7 @@ pub fn remove_discovery_x_token(state: State<AppState>) -> Result<()> {
 
 pub(crate) async fn refresh_batch(state: &AppState, ids: Option<Vec<String>>) -> Result<Value> {
     use futures_util::{stream, StreamExt};
+    let epoch = state.data_epoch.load(Ordering::SeqCst);
     let streams = list(state)?
         .into_iter()
         .filter(|s| {
@@ -1126,6 +1227,11 @@ pub(crate) async fn refresh_batch(state: &AppState, ids: Option<Vec<String>>) ->
         .lock()
         .map_err(|_| "Jobs unavailable")?
         .remove("hub:batch");
+    let summary = json!({"at":command_center_core::now(),"refreshed":results.iter().filter(|r|r["ok"]==true).count(),"failed":results.iter().filter(|r|r["ok"]==false).count(),"cancelled":cancel.is_cancelled()});
+    let repo = state.repo.lock().map_err(|_| "Database unavailable")?;
+    if state.data_epoch.load(Ordering::SeqCst) == epoch {
+        repo.set_setting("discovery_hub_last_refresh", &summary.to_string())?;
+    }
     Ok(
         json!({"refreshed":results.iter().filter(|r|r["ok"]==true).count(),"failed":results.iter().filter(|r|r["ok"]==false).count(),"cancelled":cancel.is_cancelled(),"results":results}),
     )
@@ -1967,5 +2073,94 @@ mod watched_event_tests {
             rows.iter().find(|r| r.id == saved.id).unwrap().fields["date"],
             "2026-12-01"
         );
+    }
+}
+
+#[cfg(test)]
+mod first_install_tests {
+    use super::*;
+    #[test]
+    fn fresh_profile_connects_public_defaults_without_accounts_and_keeps_owner_policy() {
+        let repo = command_center_core::Repository::open(":memory:").unwrap();
+        assert!(initialize_public_defaults(&repo).unwrap());
+        assert_eq!(
+            repo.setting("discovery_hub_auto_refresh")
+                .unwrap()
+                .as_deref(),
+            Some("30")
+        );
+        assert!(repo.feeds().unwrap().is_empty());
+        assert!(repo.list("", false).unwrap().is_empty());
+        assert!(repo.records("", false).unwrap().is_empty());
+        for (flag, _) in command_center_core::integrations::FLAGS {
+            assert!(repo.setting(flag).unwrap().is_none());
+        }
+        let sources: Vec<Stream> =
+            serde_json::from_str(&repo.setting("discovery_hub_streams").unwrap().unwrap()).unwrap();
+        assert_eq!(sources.iter().filter(|s| s.enabled).count(), 35);
+        assert!(sources.iter().any(|s| s.provider == "apps" && s.enabled));
+        assert!(sources.iter().any(|s| s.provider == "mcp" && s.enabled));
+        assert!(!sources.iter().any(|s| s.enabled
+            && ["x", "linkedin", "reddit", "youtube", "patents", "schemes"]
+                .contains(&s.provider.as_str())));
+        repo.set_setting("discovery_hub_auto_refresh", "0").unwrap();
+        assert!(!initialize_public_defaults(&repo).unwrap());
+        assert_eq!(
+            repo.setting("discovery_hub_auto_refresh")
+                .unwrap()
+                .as_deref(),
+            Some("0")
+        );
+        let restored = command_center_core::Repository::open(":memory:").unwrap();
+        restored.set_setting("discovery_hub_streams", "[]").unwrap();
+        assert!(!initialize_public_defaults(&restored).unwrap());
+        assert!(restored
+            .setting("discovery_hub_auto_refresh")
+            .unwrap()
+            .is_none());
+        assert_eq!(
+            restored
+                .setting("discovery_hub_streams")
+                .unwrap()
+                .as_deref(),
+            Some("[]")
+        );
+    }
+}
+
+#[cfg(test)]
+mod public_retry_tests {
+    use super::*;
+    use std::sync::atomic::{AtomicUsize, Ordering};
+    #[tokio::test]
+    async fn transient_public_reads_retry_once_but_auth_and_private_reads_do_not() {
+        let calls = AtomicUsize::new(0);
+        let result = retry_public_read(true, || async {
+            if calls.fetch_add(1, Ordering::SeqCst) == 0 {
+                Err("error sending request".into())
+            } else {
+                Ok(7)
+            }
+        })
+        .await
+        .unwrap();
+        assert_eq!(result, 7);
+        assert_eq!(calls.load(Ordering::SeqCst), 2);
+        let calls = AtomicUsize::new(0);
+        let result = retry_public_read::<(), _, _>(true, || async {
+            calls.fetch_add(1, Ordering::SeqCst);
+            Err("Source request failed: 403 Forbidden".into())
+        })
+        .await;
+        assert!(result.is_err());
+        assert_eq!(calls.load(Ordering::SeqCst), 1);
+        let calls = AtomicUsize::new(0);
+        let result = retry_public_read::<(), _, _>(false, || async {
+            calls.fetch_add(1, Ordering::SeqCst);
+            Err("error sending request".into())
+        })
+        .await;
+        assert!(result.is_err());
+        assert_eq!(calls.load(Ordering::SeqCst), 1);
     }
 }

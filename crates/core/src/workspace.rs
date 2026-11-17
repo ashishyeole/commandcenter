@@ -974,6 +974,7 @@ pub fn validate_discovery_sources(value: &serde_json::Value) -> Result<()> {
             "poker",
             "learning",
             "custom",
+            "apps",
         ]
         .contains(&s["topic"].as_str().unwrap_or(""))
             || ![
@@ -1002,7 +1003,7 @@ pub fn validate_discovery_sources(value: &serde_json::Value) -> Result<()> {
             ]
             .contains(&s["provider"].as_str().unwrap_or(""))
             || ![
-                "models", "repos", "news", "papers", "videos", "social", "events",
+                "models", "repos", "news", "papers", "videos", "social", "events", "apps", "tools",
             ]
             .contains(&s["kind"].as_str().unwrap_or(""))
         {

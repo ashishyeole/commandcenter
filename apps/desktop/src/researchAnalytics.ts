@@ -46,7 +46,7 @@ export function measuredGrowth(rows:Discovery[],now=Date.now()){
 }
 const stop=new Set('about after again against also before being between could doing first from have into just learn more most other over should some than that their them then there these they this those through tutorial using very video videos what when where which while with would your robot robots model models'.split(' '));
 export function creatorOpportunities(rows:Discovery[]){
- const videos=newestDiscoveries(rows).filter(r=>r.source==='youtube'&&r.id.startsWith('youtube:')&&!r.id.startsWith('youtube-channel:'));
+ const videos=newestDiscoveries(rows).filter(r=>r.source==='youtube'&&!r.id.startsWith('youtube-channel:')&&/^https:\/\/(?:www\.)?youtube\.com\/(?:watch|shorts\/)|^https:\/\/youtu\.be\//i.test(r.url));
  const groups=new Map<string,Discovery[]>();
  for(const item of videos){
   const words=(item.title.toLowerCase().match(/[\p{L}\p{N}]{3,}/gu)||[]).filter(w=>!stop.has(w)).slice(0,30);

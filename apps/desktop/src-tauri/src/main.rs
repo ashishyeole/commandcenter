@@ -872,6 +872,7 @@ fn main() {
         data_inventory,
         reset_local_data,
         connectors::refresh_source,
+        connectors::refresh_public_channel,
         discovery_hub::discovery_hub,
         discovery_hub::add_research_starters,
         discovery_hub::save_discovery_imports,
@@ -1034,6 +1035,9 @@ fn main() {
             std::fs::create_dir_all(&dir)?;
             let repo =
                 Repository::open(dir.join("command-center.db")).map_err(std::io::Error::other)?;
+            if !background {
+                discovery_hub::initialize_public_defaults(&repo).map_err(std::io::Error::other)?;
+            }
             app.manage(AppState {
                 repo: Mutex::new(repo),
                 peer_sync: Mutex::new(peer_sync::Runtime::default()),
@@ -1110,8 +1114,8 @@ fn main() {
             let discovery_handle = app.handle().clone();
             tauri::async_runtime::spawn(async move {
                 loop {
-                    tokio::time::sleep(std::time::Duration::from_secs(60)).await;
                     let _ = discovery_hub::poll(&discovery_handle).await;
+                    tokio::time::sleep(std::time::Duration::from_secs(60)).await;
                 }
             });
             projects::start_watchers(app.handle().clone());

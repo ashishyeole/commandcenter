@@ -13,4 +13,6 @@ check(()=>assert.ok(new TextEncoder().encode(boundedTitle('हिंदी 🤖 
 check(()=>assert.equal(filterFeed([{...events[0],end_date:'2026-11-16T01:00:00Z'}],f,{},new Set(),now).length,0));
 check(()=>assert.ok(sandbox.exports.eventDateLabel('2026-12-12T23:59:00-08:00').includes('UTC')));
 check(()=>assert.equal(sandbox.exports.eventDatePart('2026-12-12T23:59:00-08:00'),'2026-12-13'));
+const tools=aggregateFeed([{stream:{id:'registry',name:'Registry',topic:'apps',kind:'tools',region:'world'},cache:{items:[{...base,id:'mcp:first',source:'mcp',url:'https://registry.modelcontextprotocol.io/v0.1/servers?search=first',kind:'tools'},{...base,id:'mcp:second',source:'mcp',url:'https://registry.modelcontextprotocol.io/v0.1/servers?search=second',kind:'tools'}]}}]);
+check(()=>assert.equal(filterFeed(tools,{...f,topic:'apps',kind:'tools'},{},new Set(),now).length,2));
 console.log(`${checks} discovery feed assertions passed: cross-source/topic deduplication, video URL normalization, text/reading/date/region filters, ended/cancelled events and cited document creation.`);
