@@ -15,4 +15,6 @@ check(()=>assert.ok(sandbox.exports.eventDateLabel('2026-12-12T23:59:00-08:00').
 check(()=>assert.equal(sandbox.exports.eventDatePart('2026-12-12T23:59:00-08:00'),'2026-12-13'));
 const tools=aggregateFeed([{stream:{id:'registry',name:'Registry',topic:'apps',kind:'tools',region:'world'},cache:{items:[{...base,id:'mcp:first',source:'mcp',url:'https://registry.modelcontextprotocol.io/v0.1/servers?search=first',kind:'tools'},{...base,id:'mcp:second',source:'mcp',url:'https://registry.modelcontextprotocol.io/v0.1/servers?search=second',kind:'tools'}]}}]);
 check(()=>assert.equal(filterFeed(tools,{...f,topic:'apps',kind:'tools'},{},new Set(),now).length,2));
+check(()=>assert.ok(sandbox.exports.metadataText([{type:'streamable-http',url:'https://public.example/mcp'}]).includes('https://public.example/mcp')));
+check(()=>assert.ok(!sandbox.exports.metadataText([{type:'streamable-http'}]).includes('[object Object]')));
 console.log(`${checks} discovery feed assertions passed: cross-source/topic deduplication, video URL normalization, text/reading/date/region filters, ended/cancelled events and cited document creation.`);

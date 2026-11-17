@@ -1490,6 +1490,32 @@ mod tests {
         assert!(filtered_repos
             .iter()
             .all(|r| r["metadata"]["language"] == "Python" && r["metadata"]["license"] == "MIT"));
+        let mcp = status["streams"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|row| row["stream"]["id"] == "mcp-public-registry")
+            .unwrap();
+        let tools = mcp["cache"]["items"].as_array().unwrap();
+        assert!(!tools.is_empty());
+        let identities = tools
+            .iter()
+            .map(|item| item["id"].as_str().unwrap())
+            .collect::<std::collections::HashSet<_>>();
+        assert_eq!(
+            identities.len(),
+            tools.len(),
+            "MCP versions must not overwrite each other's metadata"
+        );
+        for item in tools {
+            assert_eq!(
+                item["metric"],
+                format!("Version {}", item["metadata"]["version"].as_str().unwrap())
+            );
+            let url = reqwest::Url::parse(item["url"].as_str().unwrap()).unwrap();
+            assert!(url.query_pairs().any(|(key, value)| key == "version"
+                && value == item["metadata"]["version"].as_str().unwrap()));
+        }
         let report = json!({"checked_at":command_center_core::now(),"isolated_temp_database":true,"live_public_requests":true,"credentials_used":false,"filter_checks":{"huggingface_task_library_license":filtered_models.len(),"github_language_license":filtered_repos.len()},"result":result,"sources":summary});
         let out = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
             .join("../../../target/live-discovery/native-results.json");

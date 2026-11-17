@@ -42,3 +42,5 @@ export const rankingLabels:Record<string,string>={stars:"Most stars",forks:"Most
 
 export function eventDatePart(raw:string){const t=Date.parse(raw);return raw.includes('T')&&Number.isFinite(t)?new Date(t).toISOString().slice(0,10):raw.slice(0,10);}
 export function eventDateLabel(raw:string){if(!raw)return 'Date not reported';if(!raw.includes('T'))return raw;const t=Date.parse(raw);if(!Number.isFinite(t))return raw;return new Intl.DateTimeFormat('en-US',{timeZone:'UTC',month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(t))+' UTC';}
+
+export function metadataText(value:unknown):string {return typeof value==='object'&&value!==null?JSON.stringify(value,null,2):String(value);}

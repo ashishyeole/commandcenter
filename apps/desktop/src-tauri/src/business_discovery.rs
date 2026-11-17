@@ -98,7 +98,7 @@ pub async fn search_public_businesses(
         .form(&[("data", query)])
         .send()
         .await
-        .map_err(|_| "Public business source request failed")?;
+        .map_err(|e| format!("Public business source request failed: {}. Retry later or choose another approved Overpass endpoint; existing saved leads remain available.", e.without_url()))?;
     let value = crate::connectors::json_response(response).await?;
     if value.get("remark").is_some() {
         return Err(

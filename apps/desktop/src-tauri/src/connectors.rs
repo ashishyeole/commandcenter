@@ -394,7 +394,11 @@ pub(crate) async fn refresh_cached(
                 &source,
                 epoch,
                 c.get("https://registry.modelcontextprotocol.io/v0.1/servers")
-                    .query(&[("limit", "30"), ("search", query.as_str())])
+                    .query(&[
+                        ("limit", "30"),
+                        ("search", query.as_str()),
+                        ("version", "latest"),
+                    ])
                     .send()
                     .await
                     .map_err(|e| e.to_string())?,
@@ -406,17 +410,20 @@ pub(crate) async fn refresh_cached(
             {
                 let s = &r["server"];
                 let name = text(s, "name");
+                let version = text(s, "version");
+                let identity = format!("mcp:{name}@{version}");
                 let mut registry_url =
                     reqwest::Url::parse("https://registry.modelcontextprotocol.io/v0.1/servers")
                         .map_err(|e| e.to_string())?;
                 registry_url
                     .query_pairs_mut()
                     .append_pair("search", &name)
+                    .append_pair("version", &version)
                     .append_pair("limit", "30");
                 let url = registry_url.to_string();
-                attributes.insert(format!("mcp:{name}"),json!({"registry_name":name,"version":s["version"],"description":s["description"],"repository":s["repository"],"website":s["websiteUrl"],"remotes":s["remotes"],"packages":s["packages"],"notice":"Public registry declarations. This lists available integrations; connecting or running tools remains separately approved."}));
+                attributes.insert(identity.clone(),json!({"registry_name":name,"version":s["version"],"description":s["description"],"repository":s["repository"],"website":s["websiteUrl"],"remotes":s["remotes"],"packages":s["packages"],"notice":"Public registry declarations. This lists available integrations; connecting or running tools remains separately approved."}));
                 out.push(Discovery {
-                    id: format!("mcp:{name}"),
+                    id: identity,
                     title: name,
                     description: text(s, "description"),
                     url,
