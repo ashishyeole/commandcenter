@@ -948,6 +948,7 @@ fn main() {
         bank_accounts::read_bank_connection,
         business_discovery::cached_business_search,
         business_discovery::search_public_businesses,
+        business_discovery::cancel_public_businesses,
         business_discovery::save_discovered_lead,
         projects::set_project_watching,
         extensions::list_extensions,
